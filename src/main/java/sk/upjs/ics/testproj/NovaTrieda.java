@@ -12,6 +12,7 @@ package sk.upjs.ics.testproj;
 public class NovaTrieda {
     public static void main(String[] args) {
         System.out.println("ahojSvet");
+        System.out.println("nic");
         System.out.println("Svet je krásny");
     }
     
