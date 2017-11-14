@@ -1,4 +1,4 @@
-package sk.upjs.ics.bookwarehouse.storage;
+package probablyNotUsable;
 
 
 public class SchoolClass {
@@ -7,7 +7,7 @@ public class SchoolClass {
     */ 
     private String type;
     private long idTeacher;
-    private int id;
+    private long id;
     private int year;
 
     public String getType() {
@@ -26,11 +26,11 @@ public class SchoolClass {
         this.idTeacher = idTeacher;
     }
 
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 

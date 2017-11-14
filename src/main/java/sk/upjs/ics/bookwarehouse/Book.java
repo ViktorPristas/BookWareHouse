@@ -1,14 +1,35 @@
-package sk.upjs.ics.bookwarehouse.storage;
+package sk.upjs.ics.bookwarehouse;
 
 public class Book {
-    private long id;
+    private Long id;
     private String title;
     private String author;
-    private String yearOfPublication;
+    private int yearOfPublication;
     private int schoolClass;
     private int numberInStock;
+    private int numberOfUsed;
 
-    public long getId() {
+    public int getNumberOfUsed() {
+        return numberOfUsed;
+    }
+
+    public void setNumberOfUsed(int numberOfUsed) {
+        this.numberOfUsed = numberOfUsed;
+    }
+    
+    //BE AWARE- IN DATABASE THE NAME OF THIS COLUMN IS isUsed AND IT IS TINYINT
+    private boolean used;
+    private String comment;
+
+    public String getComment() {
+        return comment;
+    }
+
+    public void setComment(String comment) {
+        this.comment = comment;
+    }
+
+    public Long getId() {
         return id;
     }
 
@@ -32,11 +53,11 @@ public class Book {
         this.author = author;
     }
 
-    public String getYearOfPublication() {
+    public int getYearOfPublication() {
         return yearOfPublication;
     }
 
-    public void setYearOfPublication(String yearOfPublication) {
+    public void setYearOfPublication(int yearOfPublication) {
         this.yearOfPublication = yearOfPublication;
     }
 
@@ -54,6 +75,14 @@ public class Book {
 
     public void setNumberInStock(int numberInStock) {
         this.numberInStock = numberInStock;
+    }
+
+    public boolean isUsed() {
+        return used;
+    }
+
+    public void setUsed(boolean used) {
+        this.used = used;
     }
     
     
