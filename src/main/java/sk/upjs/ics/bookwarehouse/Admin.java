@@ -2,12 +2,12 @@ package sk.upjs.ics.bookwarehouse;
 
 
 public class Admin {
-    private long id;
+    private Long id;
     private String userName;
     private String email;
     private String password;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

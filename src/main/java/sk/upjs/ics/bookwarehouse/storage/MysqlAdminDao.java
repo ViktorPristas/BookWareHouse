@@ -7,9 +7,12 @@ package sk.upjs.ics.bookwarehouse.storage;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import sk.upjs.ics.bookwarehouse.Admin;
 import sk.upjs.ics.bookwarehouse.Book;
 
@@ -20,15 +23,30 @@ public class MysqlAdminDao implements AdminDao {
     public MysqlAdminDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-
+    
+    
     @Override
-    public boolean create(Admin admin) {
+    public void save(Admin admin) {
         if (admin == null) {
-            return false;
+            return;
         }
-        
-        return true;
+        if (admin.getId() == null) { //INSERT
+            SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
+            simpleJdbcInsert.withTableName("admin");
+            simpleJdbcInsert.usingGeneratedKeyColumns("id");
+            simpleJdbcInsert.usingColumns("userName", "email", "password");
+            Map<String, Object> data = new HashMap<>();
+            data.put("userName", admin.getUserName());
+            data.put("email", admin.getUserName());
+            data.put("password", admin.getUserName());
+            admin.setId(simpleJdbcInsert.executeAndReturnKey(data).longValue());
+        } else {    // UPDATE
+            //NOT SUPPORTED YET
+            throw new UnsupportedOperationException();
+        }
     }
+
+    
 
     @Override
     public List<Admin> getAll() {

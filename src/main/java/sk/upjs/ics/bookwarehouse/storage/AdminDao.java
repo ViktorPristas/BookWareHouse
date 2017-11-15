@@ -14,7 +14,10 @@ import sk.upjs.ics.bookwarehouse.Admin;
  */
 public interface AdminDao {
 
-    boolean create(Admin admin);
+    //CREATE
+    void save(Admin admin);
+    
+    
 
     // DELETE
     boolean deleteById(long id);

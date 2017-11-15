@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sk.upjs.ics.bookwarehouse.storage;
 
 import java.sql.ResultSet;
@@ -28,13 +23,15 @@ public class MysqlBookDao implements BookDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    
+    @Override
     public void save(Book book) {
         if (book == null) {
             return;
         }
         if (book.getId() == null) { //INSERT
             SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
-            simpleJdbcInsert.withTableName("predmet");
+            simpleJdbcInsert.withTableName("Book");
             simpleJdbcInsert.usingGeneratedKeyColumns("id");
             simpleJdbcInsert.usingColumns("title", "author", "yearOfPublication", "schoolClass", "numberInStock",
                     "numberOfUsed", "isUsed", "comment");

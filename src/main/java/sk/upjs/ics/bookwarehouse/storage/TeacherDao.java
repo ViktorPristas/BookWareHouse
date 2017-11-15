@@ -14,12 +14,16 @@ import sk.upjs.ics.bookwarehouse.Teacher;
  */
 public interface TeacherDao {
 
+    //CREATE
+    void save(Teacher teacher);
+
+    //READ
+    List<Teacher> getAll();
+
+    public Teacher findById(long id);
+
+    public Teacher findByEmail(String email);
+
     // DELETE
     boolean deleteById(long id);
-
-    List<Teacher> getAll();
-    
-    public Teacher findById(long id);
-    
-    public Teacher findByEmail(String email);
 }

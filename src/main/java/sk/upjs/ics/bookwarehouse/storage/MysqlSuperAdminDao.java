@@ -2,19 +2,46 @@ package sk.upjs.ics.bookwarehouse.storage;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import sk.upjs.ics.bookwarehouse.SuperAdmin;
 
 public class MysqlSuperAdminDao implements SuperAdminDao {
 
     private JdbcTemplate jdbcTemplate;
-    
+
     public MysqlSuperAdminDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-    
+
+    //CREATE
+    @Override
+    public void save(SuperAdmin superAdmin) {
+        if (superAdmin == null) {
+            return;
+        }
+        if (superAdmin.getId() == null) { //INSERT
+            SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
+            simpleJdbcInsert.withTableName("SuperAdmin");
+            simpleJdbcInsert.usingGeneratedKeyColumns("id");
+            simpleJdbcInsert.usingColumns("userName", "password");
+            Map<String, Object> data = new HashMap<>();
+            data.put("userName", superAdmin.getUsername());
+            data.put("password", superAdmin.getPassword());
+            superAdmin.setId(simpleJdbcInsert.executeAndReturnKey(data).longValue());
+        } else {    // UPDATE
+            
+            //NOT FINISHED YET
+            String sql = "UPDATE SuperAdmin SET userName = ?  WHERE id = " + superAdmin.getId();
+            jdbcTemplate.update(sql, superAdmin.getUsername());
+        }
+    }
+
+    //READ
     @Override
     public List<SuperAdmin> getAll() {
         String sql = "SELECT id, userName, password FROM BookWareHouse.SuperAdmin;";
@@ -27,12 +54,11 @@ public class MysqlSuperAdminDao implements SuperAdminDao {
                 sa.setPassword(rs.getString("password"));
                 return sa;
             }
-            
+
         });
         return superAdmins;
     }
-    
-    
+
     // DELETE
     @Override
     public boolean deleteById(long id) {
@@ -44,4 +70,5 @@ public class MysqlSuperAdminDao implements SuperAdminDao {
             return false;
         }
     }
+
 }

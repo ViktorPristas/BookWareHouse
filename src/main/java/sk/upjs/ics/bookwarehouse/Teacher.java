@@ -2,7 +2,7 @@ package sk.upjs.ics.bookwarehouse;
 
 public class Teacher {
 
-    private long id;
+    private Long id;
     private String name;
     private String surname;
     private String email;
@@ -45,7 +45,7 @@ public class Teacher {
         this.numberOfStudentsInClass = numberOfStudentsInClass;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 

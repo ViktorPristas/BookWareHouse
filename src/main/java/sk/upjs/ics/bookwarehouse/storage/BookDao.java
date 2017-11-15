@@ -14,11 +14,17 @@ import sk.upjs.ics.bookwarehouse.Book;
  */
 public interface BookDao {
 
-    // DELETE
-    boolean deleteById(long id);
+    //CREATE
+    void save(Book book);
 
+    //READ
     Book findById(long id);
 
     List<Book> getAll();
+    
+    // DELETE
+    boolean deleteById(long id);
+    
+    
     
 }

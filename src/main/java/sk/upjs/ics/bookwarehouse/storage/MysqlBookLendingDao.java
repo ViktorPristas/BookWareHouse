@@ -2,10 +2,13 @@ package sk.upjs.ics.bookwarehouse.storage;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import jdk.internal.dynalink.DefaultBootstrapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import sk.upjs.ics.bookwarehouse.Book;
 import sk.upjs.ics.bookwarehouse.BookLending;
 import sk.upjs.ics.bookwarehouse.DaoFactory;
@@ -19,6 +22,51 @@ public class MysqlBookLendingDao implements BookLendingDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
+    //CREATE
+    @Override
+    public void save(BookLending bookLending) {
+        if (bookLending == null) {
+            return;
+        }
+        if (bookLending.getId() == null) { //INSERT
+            SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
+            simpleJdbcInsert.withTableName("BookLending");
+            simpleJdbcInsert.usingGeneratedKeyColumns("id");
+            simpleJdbcInsert.usingColumns("yearOfReturn", "lended", "returned", "lost",
+                    "approved", "comment", "idTeacher", "idBook");
+            Map<String, Object> data = new HashMap<>();
+            data.put("yearOfReturn", bookLending.getYearOfReturn());
+            data.put("lended", bookLending.getLended());
+            data.put("returned", bookLending.getReturned());
+            data.put("lost", bookLending.getLost());
+            if (bookLending.isApproved()) {
+                data.put("approved", 1);
+            } else {
+                data.put("approved", 0);
+            }
+            data.put("comment", bookLending.getComment());
+            data.put("idTeacher", bookLending.getTeacher().getId());
+            data.put("idBook", bookLending.getBook().getId());
+            bookLending.setId(simpleJdbcInsert.executeAndReturnKey(data).longValue());
+        } else {    // UPDATE
+            //NOT SUPPORTED YET
+            throw new UnsupportedOperationException();
+        }
+    }
+
+    @Override
+    public void save(Book book, Teacher teacher, int lended, String comment) {
+        BookLending bookLending = new BookLending(book, teacher, lended, comment);
+        save(bookLending);
+    }
+
+    @Override
+    public void save(Book book, Teacher teacher, int lended, String comment, int yearOfReturn) {
+        BookLending bookLending = new BookLending(book, teacher, lended, comment, yearOfReturn);
+        save(bookLending);
+    }
+
+    //READ
     @Override
     public List<BookLending> getAll() {
         String sql = "SELECT id, yearOfReturn, lended, returned, lost, approved, comment,"
@@ -51,8 +99,6 @@ public class MysqlBookLendingDao implements BookLendingDao {
         });
         return null;
     }
-    
-    
 
     // DELETE
     @Override
@@ -65,4 +111,5 @@ public class MysqlBookLendingDao implements BookLendingDao {
             return false;
         }
     }
+
 }

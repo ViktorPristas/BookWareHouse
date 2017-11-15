@@ -2,19 +2,50 @@ package sk.upjs.ics.bookwarehouse.storage;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
+import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import sk.upjs.ics.bookwarehouse.Teacher;
 
 public class MysqlTeacherDao implements TeacherDao {
-    
+
     private JdbcTemplate jdbcTemplate;
-    
+
     public MysqlTeacherDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-    
+
+    //CREATE
+    @Override
+    public void save(Teacher teacher) {
+        if (teacher == null) {
+            return;
+        }
+        if (teacher.getId() == null) { //INSERT
+            SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
+            simpleJdbcInsert.withTableName("Teacher");
+            simpleJdbcInsert.usingGeneratedKeyColumns("id");
+            simpleJdbcInsert.usingColumns("name", "surname", "email", "password",
+                    "yearOfSchoolClass", "nameOfSchoolClass", "numberOfStudentsInClass");
+            Map<String, Object> data = new HashMap<>();
+            data.put("name", teacher.getName());
+            data.put("surname", teacher.getSurname());
+            data.put("email", teacher.getEmail());
+            data.put("password", teacher.getPassword());
+            data.put("yearOfSchoolClass", teacher.getYearOfSchoolClass());
+            data.put("nameOfSchoolClass", teacher.getNameOfSchoolClass());
+            data.put("numberOfStudentsInClass", teacher.getNumberOfStudentsInClass());
+            teacher.setId(simpleJdbcInsert.executeAndReturnKey(data).longValue());
+        } else {    // UPDATE
+            //NOT SUPPORTED YET
+            throw new UnsupportedOperationException();
+        }
+    }
+
+    //READ
     @Override
     public List<Teacher> getAll() {
         String sql = "SELECT id, name, surname, email, password, yearOfSchoolClass, nameOfSchoolClass,"
@@ -36,7 +67,7 @@ public class MysqlTeacherDao implements TeacherDao {
         });
         return teachers;
     }
-    
+
     @Override
     public Teacher findById(long id) {
         String sql = "SELECT id, name, surname, email, password, yearOfSchoolClass, nameOfSchoolClass,"
@@ -58,9 +89,9 @@ public class MysqlTeacherDao implements TeacherDao {
         });
         return teachers.get(0);
     }
-    
+
     @Override
-    public Teacher findByEmail(String email){
+    public Teacher findByEmail(String email) {
         String sql = "SELECT id, name, surname, email, password, yearOfSchoolClass, nameOfSchoolClass,"
                 + "numberOfStudentsInClass FROM BookWareHouse.Teacher WHERE email = " + email;
         List<Teacher> teachers = jdbcTemplate.query(sql, new RowMapper<Teacher>() {
@@ -79,9 +110,8 @@ public class MysqlTeacherDao implements TeacherDao {
             }
         });
         return teachers.get(0);
-        }
-    
-    
+    }
+
     // DELETE
     @Override
     public boolean deleteById(long id) {

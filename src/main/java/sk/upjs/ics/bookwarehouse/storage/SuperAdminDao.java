@@ -14,9 +14,13 @@ import sk.upjs.ics.bookwarehouse.SuperAdmin;
  */
 public interface SuperAdminDao {
 
+    //CREATE
+    void save(SuperAdmin superAdmin);
+    
+    //READ
+    List<SuperAdmin> getAll();
+    
     // DELETE
     boolean deleteById(long id);
 
-    List<SuperAdmin> getAll();
-    
-}
+    }

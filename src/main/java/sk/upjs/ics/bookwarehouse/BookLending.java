@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class BookLending {
 
-    private long id;
+    private Long id;
     private Teacher teacher;
     private Book book;
     private int yearOfReturn;
@@ -13,6 +13,30 @@ public class BookLending {
     private int lost;
     private String comment;
     private boolean approved;
+    
+    public BookLending(){
+        //THIS CONSTRUCTOR IS USED WHEN FILLING THE OBJECT FROM DATABASE
+    }
+
+    public BookLending(Book book, Teacher teacher,int lended, String comment,  int yearOfReturn) {
+        setBook(book);
+        setTeacher(teacher);
+        setYearOfReturn(yearOfReturn);
+        setLended(lended);
+        setComment(comment);
+    }
+
+    public BookLending(Book book, Teacher teacher, int lended, String comment) {
+        setBook(book);
+        setTeacher(teacher);
+        setLended(lended);
+        setComment(comment);
+        if (LocalDateTime.now().getMonthValue() > 5) {
+            setYearOfReturn(LocalDateTime.now().getYear() + 1);
+        } else {
+            setYearOfReturn(LocalDateTime.now().getYear());
+        }
+    }
 
     public String getComment() {
         return comment;
@@ -22,7 +46,7 @@ public class BookLending {
         this.comment = comment;
     }
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
@@ -85,7 +109,5 @@ public class BookLending {
     public void setApproved(boolean approved) {
         this.approved = approved;
     }
-    
-    
 
 }

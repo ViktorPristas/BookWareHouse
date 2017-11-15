@@ -29,33 +29,13 @@ public class MysqlLostBookDao implements LostBookDao {
         if (bookLending == null || admin == null) {
             return;
         }
-        LostBook lb = new LostBook();
-        SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
-        simpleJdbcInsert.withTableName("lostBook");
-        simpleJdbcInsert.usingGeneratedKeyColumns("id");
-        simpleJdbcInsert.usingColumns("idBook", "title", "author", "yearOfPublication", "schoolClass", "number",
-                "idTeacher", "nameOfTeacher", "surnameOfTeacher", "idAdmin", "date", "comment", "usernameOfAdmin");
-        Map<String, Object> data = new HashMap<>();
-        data.put("idBook", bookLending.getBook().getId());
-        data.put("title", bookLending.getBook().getTitle());
-        data.put("author", bookLending.getBook().getAuthor());
-        data.put("yearOfPublication", bookLending.getBook().getYearOfPublication());
-        data.put("schoolClass", bookLending.getBook().getSchoolClass());
-        data.put("number", bookLending.getLost());
-        data.put("idTeacher", bookLending.getTeacher().getId());
-        data.put("nameOfTeacher", bookLending.getTeacher().getName());
-        data.put("surnameOfTeacher", bookLending.getTeacher().getSurname());
-        data.put("idAdmin", admin.getId());
-        data.put("date", LocalDateTime.now());
-        data.put("comment", comment);
-        data.put("usernameOfAdmin", admin.getUserName());
-        lb.setId(simpleJdbcInsert.executeAndReturnKey(data).longValue());
+        LostBook lostBook = new LostBook(bookLending, admin, comment);
+        save(lostBook);
     }
 
-    
     @Override
     public void save(LostBook lostBook) {
-        if (lostBook  == null) {
+        if (lostBook == null) {
             return;
         }
         SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
@@ -79,7 +59,7 @@ public class MysqlLostBookDao implements LostBookDao {
         data.put("usernameOfAdmin", lostBook.getUsernameOfAdmin());
         lostBook.setId(simpleJdbcInsert.executeAndReturnKey(data).longValue());
     }
-    
+
     // READ
     @Override
     public List<LostBook> getAll() {
@@ -163,3 +143,33 @@ public class MysqlLostBookDao implements LostBookDao {
         }
     }
 }
+
+
+
+ /* @Override
+    public void save(BookLending bookLending, Admin admin, String comment) {
+        if (bookLending == null || admin == null) {
+            return;
+        }
+        LostBook lb = new LostBook();
+        SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
+        simpleJdbcInsert.withTableName("lostBook");
+        simpleJdbcInsert.usingGeneratedKeyColumns("id");
+        simpleJdbcInsert.usingColumns("idBook", "title", "author", "yearOfPublication", "schoolClass", "number",
+                "idTeacher", "nameOfTeacher", "surnameOfTeacher", "idAdmin", "date", "comment", "usernameOfAdmin");
+        Map<String, Object> data = new HashMap<>();
+        data.put("idBook", bookLending.getBook().getId());
+        data.put("title", bookLending.getBook().getTitle());
+        data.put("author", bookLending.getBook().getAuthor());
+        data.put("yearOfPublication", bookLending.getBook().getYearOfPublication());
+        data.put("schoolClass", bookLending.getBook().getSchoolClass());
+        data.put("number", bookLending.getLost());
+        data.put("idTeacher", bookLending.getTeacher().getId());
+        data.put("nameOfTeacher", bookLending.getTeacher().getName());
+        data.put("surnameOfTeacher", bookLending.getTeacher().getSurname());
+        data.put("idAdmin", admin.getId());
+        data.put("date", LocalDateTime.now());
+        data.put("comment", comment);
+        data.put("usernameOfAdmin", admin.getUserName());
+        lb.setId(simpleJdbcInsert.executeAndReturnKey(data).longValue());
+    }*/

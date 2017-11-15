@@ -2,11 +2,11 @@ package sk.upjs.ics.bookwarehouse;
 
 
 public class SuperAdmin {
-    private long id;
+    private Long id;
     private String username;
     private String password;
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
