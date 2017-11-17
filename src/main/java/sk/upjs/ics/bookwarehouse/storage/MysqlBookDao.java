@@ -23,7 +23,6 @@ public class MysqlBookDao implements BookDao {
         this.jdbcTemplate = jdbcTemplate;
     }
 
-    
     @Override
     public void save(Book book) {
         if (book == null) {
@@ -50,8 +49,20 @@ public class MysqlBookDao implements BookDao {
             data.put("comment", book.getComment());
             book.setId(simpleJdbcInsert.executeAndReturnKey(data).longValue());
         } else {    // UPDATE
-            //NOT SUPPORTED YET
-            throw new UnsupportedOperationException();
+            String sql = "UPDATE book SET title = ?, SET author = ?, SET yearOfPublication = ?, "
+                    + "SET schoolClass = ?, SET numberInStock = ?, SET numberOfUsed = ? "
+                    + "SET isUsed = ?, SET comment = ? WHERE id = " + book.getId();
+            if (book.isUsed()) {
+                jdbcTemplate.update(sql, book.getTitle(), book.getAuthor(),
+                        book.getYearOfPublication(), book.getSchoolClass(),
+                        book.getNumberInStock(), book.getNumberOfUsed(),
+                        1, book.getComment());
+            } else {
+                jdbcTemplate.update(sql, book.getTitle(), book.getAuthor(),
+                        book.getYearOfPublication(), book.getSchoolClass(),
+                        book.getNumberInStock(), book.getNumberOfUsed(),
+                        0, book.getComment());
+            }
         }
     }
 

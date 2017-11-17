@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import jdk.internal.dynalink.DefaultBootstrapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
@@ -49,8 +48,16 @@ public class MysqlBookLendingDao implements BookLendingDao {
             data.put("idBook", bookLending.getBook().getId());
             bookLending.setId(simpleJdbcInsert.executeAndReturnKey(data).longValue());
         } else {    // UPDATE
-            //NOT SUPPORTED YET
-            throw new UnsupportedOperationException();
+            String sql = "UPDATE BookLending SET username = ?, SET yearOfReturn = ?,"
+                    + "SET lended = ?, SET returned = ?, SET lost = ?"
+                    + "SET approved = ?, SET comment = ?  WHERE id = " + bookLending.getId();
+            if (bookLending.isApproved()) {
+                jdbcTemplate.update(sql, bookLending.getYearOfReturn(), bookLending.getLended(),
+                        bookLending.getReturned(), bookLending.getLost(), 1, bookLending.getComment());
+            } else {
+                jdbcTemplate.update(sql, bookLending.getYearOfReturn(), bookLending.getLended(),
+                        bookLending.getReturned(), bookLending.getLost(), 0, bookLending.getComment());
+            }
         }
     }
 

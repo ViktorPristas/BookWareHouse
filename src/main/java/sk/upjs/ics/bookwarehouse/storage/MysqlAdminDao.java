@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sk.upjs.ics.bookwarehouse.storage;
 
 import java.sql.ResultSet;
@@ -14,7 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import sk.upjs.ics.bookwarehouse.Admin;
-import sk.upjs.ics.bookwarehouse.Book;
+
 
 public class MysqlAdminDao implements AdminDao {
 
@@ -41,8 +36,8 @@ public class MysqlAdminDao implements AdminDao {
             data.put("password", admin.getUserName());
             admin.setId(simpleJdbcInsert.executeAndReturnKey(data).longValue());
         } else {    // UPDATE
-            //NOT SUPPORTED YET
-            throw new UnsupportedOperationException();
+            String sql = "UPDATE admin SET username = ?, SET email = ?, SET password = ? WHERE id = " + admin.getId();
+            jdbcTemplate.update(sql, admin.getUserName(), admin.getEmail(), admin.getPassword());
         }
     }
 

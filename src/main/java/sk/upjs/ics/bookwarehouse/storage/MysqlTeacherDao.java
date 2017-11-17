@@ -40,8 +40,11 @@ public class MysqlTeacherDao implements TeacherDao {
             data.put("numberOfStudentsInClass", teacher.getNumberOfStudentsInClass());
             teacher.setId(simpleJdbcInsert.executeAndReturnKey(data).longValue());
         } else {    // UPDATE
-            //NOT SUPPORTED YET
-            throw new UnsupportedOperationException();
+            String sql = "UPDATE admin SET name = ?, SET surname = ?, SET email = ?, "
+                    + "SET password = ?, SET yearOfSchoolClass = ?, SET nameOfSchoolClass = ? "
+                    + "WHERE id = " + teacher.getId();
+            jdbcTemplate.update(sql, teacher.getName(), teacher.getSurname(), teacher.getEmail(),
+                    teacher.getPassword(), teacher.getYearOfSchoolClass(), teacher.getNameOfSchoolClass());
         }
     }
 

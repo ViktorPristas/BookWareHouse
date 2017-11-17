@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package sk.upjs.ics.bookwarehouse;
 
 import sk.upjs.ics.bookwarehouse.storage.MysqlLostBookDao;
@@ -11,12 +6,12 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import sk.upjs.ics.bookwarehouse.storage.MysqlAdminDao;
 import sk.upjs.ics.bookwarehouse.storage.MysqlBookDao;
 import sk.upjs.ics.bookwarehouse.storage.MysqlBookLendingDao;
-import probablyNotUsable.MysqlBookInStockDao;
-import probablyNotUsable.MysqlStockDao;
 import sk.upjs.ics.bookwarehouse.storage.AdminDao;
 import sk.upjs.ics.bookwarehouse.storage.BookDao;
+import sk.upjs.ics.bookwarehouse.storage.BookEditDao;
 import sk.upjs.ics.bookwarehouse.storage.BookLendingDao;
 import sk.upjs.ics.bookwarehouse.storage.LostBookDao;
+import sk.upjs.ics.bookwarehouse.storage.MysqlBookEditDao;
 import sk.upjs.ics.bookwarehouse.storage.MysqlSuperAdminDao;
 import sk.upjs.ics.bookwarehouse.storage.MysqlTeacherDao;
 import sk.upjs.ics.bookwarehouse.storage.SuperAdminDao;
@@ -66,5 +61,9 @@ public enum DaoFactory {
     
     public LostBookDao  getLostOrDamagedBookDao(){
         return new MysqlLostBookDao(getJDBCTemplate());
+    }
+    
+    public BookEditDao getBookEditDao(){
+        return new MysqlBookEditDao(getJDBCTemplate());
     }
 }

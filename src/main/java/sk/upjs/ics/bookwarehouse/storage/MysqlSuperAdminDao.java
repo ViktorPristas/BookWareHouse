@@ -34,10 +34,8 @@ public class MysqlSuperAdminDao implements SuperAdminDao {
             data.put("password", superAdmin.getPassword());
             superAdmin.setId(simpleJdbcInsert.executeAndReturnKey(data).longValue());
         } else {    // UPDATE
-            
-            //NOT FINISHED YET
-            String sql = "UPDATE SuperAdmin SET userName = ?  WHERE id = " + superAdmin.getId();
-            jdbcTemplate.update(sql, superAdmin.getUsername());
+            String sql = "UPDATE SuperAdmin SET userName = ?, SET password = ?  WHERE id = " + superAdmin.getId();
+            jdbcTemplate.update(sql, superAdmin.getUsername(), superAdmin.getPassword());
         }
     }
 
