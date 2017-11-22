@@ -24,7 +24,7 @@ public class BookLendingDaoTest {
         }
     }
 
-  @Test
+    @Test
     public void saveNewTest() {
         List<BookLending> list = dao.getAll();
         int size = list.size();
@@ -78,34 +78,11 @@ public class BookLendingDaoTest {
         bookLendingOld.setLost(0);
         bookLendingOld.setComment("comment");
         bookLendingOld.setApproved(false);
-
-        Teacher t = new Teacher();
-        t.setName("name-1");
-        t.setSurname("surname-1");
-        t.setEmail("email-3@gmail.com");
-        t.setPassword("password");
-        t = DaoFactory.INSTANCE.getTeacherDao().save(t);
-        bookLendingOld.setTeacher(t);
-
-        Book b = new Book();
-        b.setAuthor("author");
-        b.setTitle("title" + b.getId());
-        b.setYearOfPublication(2012);
-        b.setSchoolClass("7");
-        b.setNumberInStock(21);
-        b.setNumberOfUsed(17);
-        b.setComment("comment");
-        b.setUsed(true);
-        b = DaoFactory.INSTANCE.getBookDao().save(b);
-        bookLendingOld.setBook(b);
+        bookLendingOld.setTeacher(bookLendingBackup.getTeacher());
+        bookLendingOld.setBook(bookLendingBackup.getBook());
 
         dao.save(bookLendingOld);
-        List<BookLending> list = dao.getAll();
-        BookLending bookLendingNew = new BookLending();
-        for(BookLending ble : list){
-            if(ble.getId() == bookLendingOld.getId())
-                bookLendingNew = ble;
-        }
+        BookLending bookLendingNew = dao.getAll().get(0);
 
         Assert.assertEquals(bookLendingOld.getId(), bookLendingNew.getId());
         Assert.assertEquals(bookLendingOld.getYearOfReturn(), bookLendingNew.getYearOfReturn());
@@ -113,13 +90,11 @@ public class BookLendingDaoTest {
         Assert.assertEquals(bookLendingOld.getReturned(), bookLendingNew.getReturned());
         Assert.assertEquals(bookLendingOld.getLost(), bookLendingOld.getLost());
         Assert.assertEquals(bookLendingOld.getComment(), bookLendingNew.getComment());
-        //Assert.assertEquals(bookLendingOld.getTeacher().getId(), bookLendingNew.getTeacher().getId());
+        Assert.assertEquals(bookLendingOld.getTeacher().getId(), bookLendingNew.getTeacher().getId());
         Assert.assertEquals(bookLendingOld.getBook().getId(), bookLendingOld.getBook().getId());
         Assert.assertEquals(bookLendingOld.isApproved(), bookLendingOld.isApproved());
 
         dao.save(bookLendingBackup);
-        DaoFactory.INSTANCE.getBookDao().deleteById(b.getId());
-        DaoFactory.INSTANCE.getTeacherDao().deleteById(t.getId());
     }
 
     @Test
