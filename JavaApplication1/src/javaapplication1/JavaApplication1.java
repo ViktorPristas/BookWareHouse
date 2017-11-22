@@ -1,4 +1,4 @@
-package probablyNotUsable;
+
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -6,7 +6,7 @@ import static java.util.Objects.hash;
 import javax.xml.bind.DatatypeConverter;
 
 
-public class Stock {
+public class JavaApplication1 {
     private long id;
     private String name;
     private String commnet;
@@ -51,8 +51,15 @@ public class Stock {
          
           } 
           
+          public void test(){
+             // int n = Integer.parseInt("2" + ((Math.random() * 100)/2));
+             double n = (int)((Math.random() * 100)/2);
+              System.out.println(n);
+          }
+          
           public static void main(String[] args) {
-        Stock s = new Stock();
-        s.heslo("heslo");
+              JavaApplication1 s = new JavaApplication1();
+        s.test();
     }
 }
+

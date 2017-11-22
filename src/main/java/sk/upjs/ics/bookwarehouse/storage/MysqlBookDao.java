@@ -24,9 +24,9 @@ public class MysqlBookDao implements BookDao {
     }
 
     @Override
-    public void save(Book book) {
+    public Book save(Book book) {
         if (book == null) {
-            return;
+            return null;
         }
         if (book.getId() == null) { //INSERT
             SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
@@ -49,9 +49,9 @@ public class MysqlBookDao implements BookDao {
             data.put("comment", book.getComment());
             book.setId(simpleJdbcInsert.executeAndReturnKey(data).longValue());
         } else {    // UPDATE
-            String sql = "UPDATE book SET title = ?, SET author = ?, SET yearOfPublication = ?, "
-                    + "SET schoolClass = ?, SET numberInStock = ?, SET numberOfUsed = ? "
-                    + "SET isUsed = ?, SET comment = ? WHERE id = " + book.getId();
+            String sql = "UPDATE book SET title = ?, author = ?, yearOfPublication = ?,"
+                    + " schoolClass = ?, numberInStock = ?, numberOfUsed = ?,"
+                    + "isUsed = ?, comment = ? WHERE id =" + book.getId();
             if (book.isUsed()) {
                 jdbcTemplate.update(sql, book.getTitle(), book.getAuthor(),
                         book.getYearOfPublication(), book.getSchoolClass(),
@@ -64,6 +64,7 @@ public class MysqlBookDao implements BookDao {
                         0, book.getComment());
             }
         }
+        return book;
     }
 
     @Override
@@ -75,9 +76,10 @@ public class MysqlBookDao implements BookDao {
             public Book mapRow(ResultSet rs, int i) throws SQLException {
                 Book b = new Book();
                 b.setId(rs.getLong("id"));
+                b.setTitle(rs.getString("title"));
                 b.setAuthor(rs.getString("author"));
                 b.setYearOfPublication(rs.getInt("yearOfPublication"));
-                b.setSchoolClass(rs.getInt("schoolClass"));
+                b.setSchoolClass(rs.getString("schoolClass"));
                 b.setNumberInStock(rs.getInt("numberInStock"));
                 b.setNumberOfUsed(rs.getInt("numberOfUsed"));
                 b.setComment(rs.getString("comment"));
@@ -105,7 +107,7 @@ public class MysqlBookDao implements BookDao {
                 b.setId(id);
                 b.setAuthor(rs.getString("author"));
                 b.setYearOfPublication(rs.getInt("yearOfPublication"));
-                b.setSchoolClass(rs.getInt("schoolClass"));
+                b.setSchoolClass(rs.getString("schoolClass"));
                 b.setNumberInStock(rs.getInt("numberInStock"));
                 b.setNumberOfUsed(rs.getInt("numberOfUsed"));
                 b.setComment(rs.getString("comment"));

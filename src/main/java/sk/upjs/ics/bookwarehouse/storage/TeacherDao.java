@@ -15,7 +15,7 @@ import sk.upjs.ics.bookwarehouse.Teacher;
 public interface TeacherDao {
 
     //CREATE
-    void save(Teacher teacher);
+    Teacher save(Teacher teacher);
 
     //READ
     List<Teacher> getAll();

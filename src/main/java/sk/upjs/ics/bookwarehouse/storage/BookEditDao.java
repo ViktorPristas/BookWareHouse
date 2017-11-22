@@ -11,7 +11,7 @@ import sk.upjs.ics.bookwarehouse.BookEdit;
 public interface BookEditDao {
 
     // CREATE AND UPDATE
-    void save(BookEdit bookEdit);
+    BookEdit save(BookEdit bookEdit);
     
      // READ
     List<BookEdit> getAll();

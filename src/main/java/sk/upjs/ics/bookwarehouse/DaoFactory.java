@@ -59,7 +59,7 @@ public enum DaoFactory {
     }
     
     
-    public LostBookDao  getLostOrDamagedBookDao(){
+    public LostBookDao  getLostBookDao(){
         return new MysqlLostBookDao(getJDBCTemplate());
     }
     

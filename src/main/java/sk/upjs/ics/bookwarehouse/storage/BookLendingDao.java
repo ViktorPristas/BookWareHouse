@@ -17,11 +17,11 @@ import sk.upjs.ics.bookwarehouse.Teacher;
 public interface BookLendingDao {
 
     //CREATE
-    void save(BookLending bookLending);
+    BookLending save(BookLending bookLending);
     
-    void save(Book book, Teacher teacher, int lended, String comment);
+    BookLending save(Book book, Teacher teacher, int lended, String comment);
     
-    void save(Book book, Teacher teacher, int lended, String comment, int yearOfReturn);
+    BookLending save(Book book, Teacher teacher, int lended, String comment, int yearOfReturn);
     
 
     //READ   

@@ -7,35 +7,7 @@ public class Teacher {
     private String surname;
     private String email;
     private String password;
-
-    /**
-     * 3,4.. when primary school or 3G, 4G when gymnasium
-     *
-     */
-    private String yearOfSchoolClass;
-
-    /**
-     * A or B or nothing when there is just one class
-     *
-     */
-    private String nameOfSchoolClass;
     private int numberOfStudentsInClass;
-
-    public String getYearOfSchoolClass() {
-        return yearOfSchoolClass;
-    }
-
-    public void setYearOfSchoolClass(String yearOfSchoolClass) {
-        this.yearOfSchoolClass = yearOfSchoolClass;
-    }
-
-    public String getNameOfSchoolClass() {
-        return nameOfSchoolClass;
-    }
-
-    public void setNameOfSchoolClass(String nameOfSchoolClass) {
-        this.nameOfSchoolClass = nameOfSchoolClass;
-    }
 
     public int getNumberOfStudentsInClass() {
         return numberOfStudentsInClass;

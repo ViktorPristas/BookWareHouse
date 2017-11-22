@@ -15,7 +15,7 @@ import sk.upjs.ics.bookwarehouse.Admin;
 public interface AdminDao {
 
     //CREATE
-    void save(Admin admin);
+    Admin save(Admin admin);
     
     
 

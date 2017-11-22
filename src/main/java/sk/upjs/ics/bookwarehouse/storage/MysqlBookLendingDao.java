@@ -23,9 +23,9 @@ public class MysqlBookLendingDao implements BookLendingDao {
 
     //CREATE
     @Override
-    public void save(BookLending bookLending) {
+    public BookLending save(BookLending bookLending) {
         if (bookLending == null) {
-            return;
+            return null;
         }
         if (bookLending.getId() == null) { //INSERT
             SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
@@ -48,9 +48,9 @@ public class MysqlBookLendingDao implements BookLendingDao {
             data.put("idBook", bookLending.getBook().getId());
             bookLending.setId(simpleJdbcInsert.executeAndReturnKey(data).longValue());
         } else {    // UPDATE
-            String sql = "UPDATE BookLending SET username = ?, SET yearOfReturn = ?,"
-                    + "SET lended = ?, SET returned = ?, SET lost = ?"
-                    + "SET approved = ?, SET comment = ?  WHERE id = " + bookLending.getId();
+            String sql = "UPDATE BookLending SET yearOfReturn = ?,"
+                    + " lended = ?, returned = ?, lost = ?,"
+                    + " approved = ?, comment = ?  WHERE id = " + bookLending.getId();
             if (bookLending.isApproved()) {
                 jdbcTemplate.update(sql, bookLending.getYearOfReturn(), bookLending.getLended(),
                         bookLending.getReturned(), bookLending.getLost(), 1, bookLending.getComment());
@@ -59,25 +59,26 @@ public class MysqlBookLendingDao implements BookLendingDao {
                         bookLending.getReturned(), bookLending.getLost(), 0, bookLending.getComment());
             }
         }
+        return bookLending;
     }
 
     @Override
-    public void save(Book book, Teacher teacher, int lended, String comment) {
+    public BookLending save(Book book, Teacher teacher, int lended, String comment) {
         BookLending bookLending = new BookLending(book, teacher, lended, comment);
-        save(bookLending);
+        return save(bookLending);
     }
 
     @Override
-    public void save(Book book, Teacher teacher, int lended, String comment, int yearOfReturn) {
+    public BookLending save(Book book, Teacher teacher, int lended, String comment, int yearOfReturn) {
         BookLending bookLending = new BookLending(book, teacher, lended, comment, yearOfReturn);
-        save(bookLending);
+        return save(bookLending);
     }
 
     //READ
     @Override
     public List<BookLending> getAll() {
-        String sql = "SELECT id, yearOfReturn, lended, returned, lost, approved, comment,"
-                + "idTeacher, idBook FROM BookWareHouse.BookLending";
+        String sql = "SELECT id, yearOfReturn, lended, returned, lost, approved,"
+                + " comment, idTeacher, idBook FROM BookWareHouse.BookLending;";
         List<BookLending> bookLendings = jdbcTemplate.query(sql, new RowMapper<BookLending>() {
             @Override
             public BookLending mapRow(ResultSet rs, int i) throws SQLException {
@@ -91,20 +92,27 @@ public class MysqlBookLendingDao implements BookLendingDao {
 
                 //INITIALIZATION OF TEACHER
                 TeacherDao teacherDao = DaoFactory.INSTANCE.getTeacherDao();
-                long idTeacher = rs.getLong("bl.idTeacher");
+                long idTeacher = rs.getLong("idTeacher");
                 Teacher t = teacherDao.findById(idTeacher);
                 bl.setTeacher(t);
 
                 //INITIALIZATION OF BOOK
                 BookDao bd = DaoFactory.INSTANCE.getBookDao();
-                long idBook = rs.getLong("bl.idBook");
+                long idBook = rs.getLong("idBook");
                 Book b = bd.findById(idBook);
                 bl.setBook(b);
+
+                //INITIALIZATION OF APPROVED
+                if (rs.getInt("approved") == 1) {
+                    bl.setApproved(true);
+                } else {
+                    bl.setApproved(false);
+                }
 
                 return bl;
             }
         });
-        return null;
+        return bookLendings;
     }
 
     // DELETE

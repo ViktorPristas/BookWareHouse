@@ -20,9 +20,9 @@ public class MysqlSuperAdminDao implements SuperAdminDao {
 
     //CREATE
     @Override
-    public void save(SuperAdmin superAdmin) {
+    public SuperAdmin save(SuperAdmin superAdmin) {
         if (superAdmin == null) {
-            return;
+            return null;
         }
         if (superAdmin.getId() == null) { //INSERT
             SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
@@ -30,13 +30,14 @@ public class MysqlSuperAdminDao implements SuperAdminDao {
             simpleJdbcInsert.usingGeneratedKeyColumns("id");
             simpleJdbcInsert.usingColumns("userName", "password");
             Map<String, Object> data = new HashMap<>();
-            data.put("userName", superAdmin.getUsername());
+            data.put("userName", superAdmin.getUserName());
             data.put("password", superAdmin.getPassword());
             superAdmin.setId(simpleJdbcInsert.executeAndReturnKey(data).longValue());
         } else {    // UPDATE
-            String sql = "UPDATE SuperAdmin SET userName = ?, SET password = ?  WHERE id = " + superAdmin.getId();
-            jdbcTemplate.update(sql, superAdmin.getUsername(), superAdmin.getPassword());
+            String sql = "UPDATE SuperAdmin SET userName = ?, password = ?  WHERE id = " + superAdmin.getId();
+            jdbcTemplate.update(sql, superAdmin.getUserName(), superAdmin.getPassword());
         }
+        return superAdmin;
     }
 
     //READ
@@ -48,7 +49,7 @@ public class MysqlSuperAdminDao implements SuperAdminDao {
             public SuperAdmin mapRow(ResultSet rs, int i) throws SQLException {
                 SuperAdmin sa = new SuperAdmin();
                 sa.setId(rs.getLong("id"));
-                sa.setUsername(rs.getString("userName"));
+                sa.setUserName(rs.getString("userName"));
                 sa.setPassword(rs.getString("password"));
                 return sa;
             }

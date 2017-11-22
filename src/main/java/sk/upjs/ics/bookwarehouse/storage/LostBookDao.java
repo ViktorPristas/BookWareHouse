@@ -17,9 +17,9 @@ import sk.upjs.ics.bookwarehouse.LostBook;
 public interface LostBookDao {
 
     // CREATE
-    void save(BookLending bookLending, Admin admin, String comment);
+    LostBook save(BookLending bookLending, Admin admin, String comment);
     
-    void save(LostBook lostBook);
+    LostBook save(LostBook lostBook);
     
      // READ
     List<LostBook> getAll();

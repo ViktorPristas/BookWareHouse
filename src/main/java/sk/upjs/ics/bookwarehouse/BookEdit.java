@@ -68,6 +68,8 @@ public class BookEdit {
         this.comment = comment;
     }
    
-   
+   public void setId(){
+       this.id = null;
+   }
     
 }

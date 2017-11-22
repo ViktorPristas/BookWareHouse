@@ -22,9 +22,9 @@ public class MysqlBookEditDao implements BookEditDao {
 
     // CREATE
     @Override
-    public void save(BookEdit bookEdit) {
+    public BookEdit save(BookEdit bookEdit) {
         if (bookEdit == null) {
-            return;
+            return null;
         }
         if (bookEdit.getId() == null) { //INSERT
             SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
@@ -41,13 +41,14 @@ public class MysqlBookEditDao implements BookEditDao {
             data.put("comment", bookEdit.getComment());
             bookEdit.setId(simpleJdbcInsert.executeAndReturnKey(data).longValue());
         } else {    // UPDATE
-            String sql = "UPDATE BookEdit SET idBook = ?, SET nameOfAdmin = ?, "
-                    + "SET date = ?, SET numberBefore = ?,SET numberAfter = ?, "
-                    + "SET comment = ?,  WHERE id = " + bookEdit.getId();
+            String sql = "UPDATE BookEdit idBook = ?, nameOfAdmin = ?, "
+                    + "date = ?, numberBefore = ?, numberAfter = ?, "
+                    + "comment = ?,  WHERE id = " + bookEdit.getId();
             jdbcTemplate.update(sql, bookEdit.getBook().getId(), bookEdit.getNameOfAdmin(),
                     bookEdit.getDate(), bookEdit.getNumberBefore(),
                     bookEdit.getNumberAfter(), bookEdit.getComment());
         }
+        return bookEdit;
     }
 
     // READ

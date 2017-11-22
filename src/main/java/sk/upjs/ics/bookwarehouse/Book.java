@@ -5,10 +5,10 @@ public class Book {
     private String title;
     private String author;
     private int yearOfPublication;
-    private int schoolClass;
+    private String schoolClass;
     private int numberInStock;
     private int numberOfUsed;
-
+    
     public int getNumberOfUsed() {
         return numberOfUsed;
     }
@@ -61,11 +61,11 @@ public class Book {
         this.yearOfPublication = yearOfPublication;
     }
 
-    public int getSchoolClass() {
+    public String getSchoolClass() {
         return schoolClass;
     }
 
-    public void setSchoolClass(int schoolClass) {
+    public void setSchoolClass(String schoolClass) {
         this.schoolClass = schoolClass;
     }
 

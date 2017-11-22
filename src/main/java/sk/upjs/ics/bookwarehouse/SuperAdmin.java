@@ -3,7 +3,7 @@ package sk.upjs.ics.bookwarehouse;
 
 public class SuperAdmin {
     private Long id;
-    private String username;
+    private String userName;
     private String password;
 
     public Long getId() {
@@ -14,12 +14,12 @@ public class SuperAdmin {
         this.id = id;
     }
 
-    public String getUsername() {
-        return username;
+    public String getUserName() {
+        return userName;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassword() {

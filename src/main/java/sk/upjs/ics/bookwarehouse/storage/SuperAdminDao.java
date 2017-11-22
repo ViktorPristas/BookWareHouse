@@ -15,7 +15,7 @@ import sk.upjs.ics.bookwarehouse.SuperAdmin;
 public interface SuperAdminDao {
 
     //CREATE
-    void save(SuperAdmin superAdmin);
+    SuperAdmin save(SuperAdmin superAdmin);
     
     //READ
     List<SuperAdmin> getAll();

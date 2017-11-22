@@ -10,7 +10,6 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import sk.upjs.ics.bookwarehouse.Admin;
 
-
 public class MysqlAdminDao implements AdminDao {
 
     private JdbcTemplate jdbcTemplate;
@@ -18,12 +17,11 @@ public class MysqlAdminDao implements AdminDao {
     public MysqlAdminDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-    
-    
+
     @Override
-    public void save(Admin admin) {
+    public Admin save(Admin admin) {
         if (admin == null) {
-            return;
+            return admin;
         }
         if (admin.getId() == null) { //INSERT
             SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
@@ -36,12 +34,11 @@ public class MysqlAdminDao implements AdminDao {
             data.put("password", admin.getUserName());
             admin.setId(simpleJdbcInsert.executeAndReturnKey(data).longValue());
         } else {    // UPDATE
-            String sql = "UPDATE admin SET username = ?, SET email = ?, SET password = ? WHERE id = " + admin.getId();
+            String sql = "UPDATE admin SET username = ?, email = ?, password = ? WHERE id = " + admin.getId();
             jdbcTemplate.update(sql, admin.getUserName(), admin.getEmail(), admin.getPassword());
         }
+        return admin;
     }
-
-    
 
     @Override
     public List<Admin> getAll() {

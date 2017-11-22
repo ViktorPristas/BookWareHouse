@@ -2,7 +2,6 @@ package sk.upjs.ics.bookwarehouse.storage;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.time.LocalDateTime;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -25,18 +24,18 @@ public class MysqlLostBookDao implements LostBookDao {
 
     // CREATE
     @Override
-    public void save(BookLending bookLending, Admin admin, String comment) {
+    public LostBook save(BookLending bookLending, Admin admin, String comment) {
         if (bookLending == null || admin == null) {
-            return;
+            return null;
         }
         LostBook lostBook = new LostBook(bookLending, admin, comment);
-        save(lostBook);
+        return save(lostBook);
     }
 
     @Override
-    public void save(LostBook lostBook) {
+    public LostBook save(LostBook lostBook) {
         if (lostBook == null) {
-            return;
+            return null;
         }
         SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
         simpleJdbcInsert.withTableName("lostBook");
@@ -58,6 +57,7 @@ public class MysqlLostBookDao implements LostBookDao {
         data.put("comment", lostBook.getComment());
         data.put("usernameOfAdmin", lostBook.getUsernameOfAdmin());
         lostBook.setId(simpleJdbcInsert.executeAndReturnKey(data).longValue());
+        return lostBook;
     }
 
     // READ
@@ -75,7 +75,7 @@ public class MysqlLostBookDao implements LostBookDao {
                 lostBook.setTitle(rs.getString("title"));
                 lostBook.setAuthor(rs.getString("author"));
                 lostBook.setYearOfPublication(rs.getInt("yearOfPublication"));
-                lostBook.setSchoolClass(rs.getInt("schoolClass"));
+                lostBook.setSchoolClass(rs.getString("schoolClass"));
                 lostBook.setNumber(rs.getInt("number"));
                 lostBook.setIdTeacher(rs.getLong("idTeacher"));
                 lostBook.setNameOfTeacher(rs.getString("nameOfTeacher"));
@@ -110,7 +110,7 @@ public class MysqlLostBookDao implements LostBookDao {
                 ldb.setTitle(rs.getString("title"));
                 ldb.setAuthor(rs.getString("author"));
                 ldb.setYearOfPublication(rs.getInt("yearOfPublication"));
-                ldb.setSchoolClass(rs.getInt("schoolClass"));
+                ldb.setSchoolClass(rs.getString("schoolClass"));
                 ldb.setNumber(rs.getInt("number"));
                 ldb.setIdTeacher(rs.getLong("idTeacher"));
                 ldb.setNameOfTeacher(rs.getString("nameOfTeacher"));

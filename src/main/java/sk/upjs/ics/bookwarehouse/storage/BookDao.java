@@ -15,7 +15,7 @@ import sk.upjs.ics.bookwarehouse.Book;
 public interface BookDao {
 
     //CREATE
-    void save(Book book);
+    Book save(Book book);
 
     //READ
     Book findById(long id);
