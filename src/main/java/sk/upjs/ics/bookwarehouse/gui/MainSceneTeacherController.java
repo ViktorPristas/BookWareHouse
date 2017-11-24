@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -23,36 +24,44 @@ public class MainSceneTeacherController {
     private AnchorPane pane;
 
     @FXML
-    private MenuItem exitItem;
+    private Button openDBButton;
 
     @FXML
-    private MenuItem openDBItem;
+    private Button myBooksButton;
 
     @FXML
-    private MenuItem showMyBooksItem;
-
-    @FXML
-    private MenuItem lendBookItem;
-
-    @FXML
-    private MenuItem returnBookItem;
-
-    @FXML
-    private MenuItem aboutItem;
-
-    @FXML
-    private MenuItem accountSettingsItem;
-
-    @FXML
-    private MenuItem logOutItem;
+    private Button myProfileButton;
 
     @FXML
     void initialize() {
-       openDBItem.setOnAction(eh -> {
-            MainSceneTeacherWithDBController controller = new MainSceneTeacherWithDBController();
+       openDBButton.setOnAction(eh -> {
+            MainSceneTeacherDBController controller = new MainSceneTeacherDBController();
             try {
             FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("MainSceneTeacherWithDB.fxml"));
+                    getClass().getResource("MainSceneTeacherDB.fxml"));
+            loader.setController(controller);
+            
+            Parent parentPane = loader.load();
+            Scene scene = new Scene(parentPane);
+            
+            
+            Stage stage = (Stage) pane.getScene().getWindow();
+            stage.setScene(scene);
+            stage.setTitle("BookWareHouse");           
+            stage.show();
+           
+
+            // toto sa vykona az po zatvoreni okna
+        } catch (IOException iOException) {
+            iOException.printStackTrace();
+        }
+        });
+       
+       myBooksButton.setOnAction(eh -> {
+            TeacherMyBooksSceneController controller = new TeacherMyBooksSceneController();
+            try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("TeacherMyBooksScene.fxml"));
             loader.setController(controller);
             
             Parent parentPane = loader.load();
@@ -71,5 +80,8 @@ public class MainSceneTeacherController {
         }
         });
     }
-
 }
+
+
+
+    
