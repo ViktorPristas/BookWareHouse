@@ -2,9 +2,9 @@ package sk.upjs.ics.bookwarehouse;
 
 import java.time.LocalDateTime;
 
-
 public class BookEdit {
-   private Long id;
+
+    private Long id;
 
     public Long getId() {
         return id;
@@ -13,12 +13,12 @@ public class BookEdit {
     public void setId(long id) {
         this.id = id;
     }
-   private Book book;
-   private String nameOfAdmin;
-   private LocalDateTime date;
-   private int numberBefore;
-   private int numberAfter;
-   private String comment;
+    private Book book;
+    private String nameOfAdmin;
+    private LocalDateTime date;
+    private int numberBefore;
+    private int numberAfter;
+    private String comment;
 
     public Book getBook() {
         return book;
@@ -67,9 +67,9 @@ public class BookEdit {
     public void setComment(String comment) {
         this.comment = comment;
     }
-   
-   public void setId(){
-       this.id = null;
-   }
-    
+
+    public void setId() {
+        this.id = null;
+    }
+
 }

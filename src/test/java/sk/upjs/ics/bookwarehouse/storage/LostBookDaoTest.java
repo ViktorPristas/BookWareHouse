@@ -40,7 +40,7 @@ public class LostBookDaoTest {
         lostBook.setDate(LocalDateTime.now());
         lostBook.setComment("comment");
         lostBook.setUsernameOfAdmin("userNameOfAdmin");
-        
+
         lostBook = dao.save(lostBook);
         list = dao.getAll();
         Assert.assertEquals(size + 1, list.size());
@@ -48,7 +48,7 @@ public class LostBookDaoTest {
     }
 
     @Test
-    public void deleteByIdTest(){
+    public void deleteByIdTest() {
         LostBook lostBook = new LostBook();
         lostBook.setTitle("title");
         lostBook.setAuthor("author");
@@ -74,5 +74,5 @@ public class LostBookDaoTest {
         }
         Assert.assertTrue(b);
     }
-    
+
 }

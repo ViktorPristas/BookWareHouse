@@ -38,52 +38,121 @@ public class LogInSceneController {
     private Button registerButton;
 
     @FXML
+    private Button adminloginButton;
+
+    @FXML
+    private Button supadminloginButton;
+
+    @FXML
     void initialize() {
         registerButton.setOnAction(eh -> {
             RegistrationSceneController controller = new RegistrationSceneController();
             try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("RegistrationScene.fxml"));
-            loader.setController(controller);
-            
-            Parent parentPane = loader.load();
-            Scene scene = new Scene(parentPane);
-            
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setTitle("BookWareHouse");
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.show();
+                FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource("RegistrationScene.fxml"));
+                loader.setController(controller);
 
-            // toto sa vykona az po zatvoreni okna
-        } catch (IOException iOException) {
-            iOException.printStackTrace();
-        }
+                Parent parentPane = loader.load();
+                Scene scene = new Scene(parentPane);
+
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setTitle("BookWareHouse");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.show();
+
+                // toto sa vykona az po zatvoreni okna
+            } catch (IOException iOException) {
+                iOException.printStackTrace();
+            }
         });
-        
-         loginButton.setOnAction(eh -> {
+
+        loginButton.setOnAction(eh -> {
             MainSceneTeacherController controller = new MainSceneTeacherController();
             try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("MainSceneTeacher.fxml"));
-            loader.setController(controller);
-            
-            Parent parentPane = loader.load();
-            Scene scene = new Scene(parentPane);
-            
-            Stage stage = new Stage();
-            stage.setScene(scene);
-            stage.setTitle("BookWareHouse");
-            stage.initModality(Modality.APPLICATION_MODAL);
-            stage.show();
-            loginButton.getScene().getWindow().hide();
+                FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource("MainSceneTeacher.fxml"));
+                loader.setController(controller);
 
-            // toto sa vykona az po zatvoreni okna
-        } catch (IOException iOException) {
-            iOException.printStackTrace();
-        }
+                Parent parentPane = loader.load();
+                Scene scene = new Scene(parentPane);
+
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setTitle("BookWareHouse");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.show();
+                loginButton.getScene().getWindow().hide();
+
+                // toto sa vykona az po zatvoreni okna
+            } catch (IOException iOException) {
+                iOException.printStackTrace();
+            }
         });
-        
-        
+
+        forgotPasswordHyperlink.setOnAction(eh -> {
+            ForgottenPasswordSceneController controller = new ForgottenPasswordSceneController();
+            try {
+                FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource("ForgottenPasswordScene.fxml"));
+                loader.setController(controller);
+
+                Parent parentPane = loader.load();
+                Scene scene = new Scene(parentPane);
+
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setTitle("BookWareHouse");
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.showAndWait();
+
+                // toto sa vykona az po zatvoreni okna
+            } catch (IOException iOException) {
+                iOException.printStackTrace();
+            }
+        });
+
+        adminloginButton.setOnAction(eh -> {
+            MainSceneAdminController controller = new MainSceneAdminController();
+            try {
+                FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource("MainSceneAdmin.fxml"));
+                loader.setController(controller);
+
+                Parent parentPane = loader.load();
+                Scene scene = new Scene(parentPane);
+
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setTitle("BookWareHouse");
+                stage.show();
+                adminloginButton.getScene().getWindow().hide();
+
+                // toto sa vykona az po zatvoreni okna
+            } catch (IOException iOException) {
+                iOException.printStackTrace();
+            }
+        });
+
+        supadminloginButton.setOnAction(eh -> {
+            SupAMainSceneController controller = new SupAMainSceneController();
+            try {
+                FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource("SupAMainScene.fxml"));
+                loader.setController(controller);
+
+                Parent parentPane = loader.load();
+                Scene scene = new Scene(parentPane);
+
+                Stage stage = (Stage) supadminloginButton.getScene().getWindow();
+                stage.setScene(scene);
+                stage.setTitle("BookWareHouse");
+                stage.show();
+
+                // toto sa vykona az po zatvoreni okna
+            } catch (IOException iOException) {
+                iOException.printStackTrace();
+            }
+        });
     }
 }

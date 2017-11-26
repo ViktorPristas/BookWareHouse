@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="700.0" style="-fx-background-color: #20120F;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <AnchorPane layoutX="40.0" layoutY="40.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #81D8D0;" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="40.0">
+            <children>
+                <HBox layoutY="14.0" prefHeight="0.352" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                        <Label style="-fx-font-weight: bold;" text="Potvrdiť žiadosť" textFill="#20120f">
+                            <font>
+                                <Font size="24.0" />
+                            </font>
+                        </Label>
+                        <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                    </children>
+                </HBox>
+                <Button fx:id="confirmRequestButton" layoutX="467.0" layoutY="95.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="128.0" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2;" text="Potvrdiť" textFill="#20120f" />
+                <GridPane layoutX="62.0" layoutY="76.0" prefHeight="258.0" prefWidth="338.0" style="-fx-border-color: #20120F;">
+                    <columnConstraints>
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.79998779296875" minWidth="10.0" prefWidth="121.6000244140625" />
+                        <ColumnConstraints hgrow="SOMETIMES" maxWidth="173.20002441406248" minWidth="10.0" prefWidth="159.19997558593752" />
+                    </columnConstraints>
+                    <rowConstraints>
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                    <children>
+                        <Label text="Autor" />
+                        <Label text="Názov" GridPane.rowIndex="1" />
+                        <Label text="Ročník" GridPane.rowIndex="2" />
+                        <Label text="Učiteľ" GridPane.rowIndex="3" />
+                        <Label text="Žiadaný počet kusov" GridPane.rowIndex="4" />
+                        <Label fx:id="authorLabel" text="Autor" GridPane.columnIndex="1" />
+                        <Label fx:id="titleLabel" text="Názov" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <Label fx:id="schoolClassLabel" text="Ročník" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label fx:id="teacherLabel" text="Učiteľ" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="numberOfBooksLabel" prefHeight="27.0" prefWidth="96.0" promptText="Počet kusov" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                    </children>
+                </GridPane>
+                <Button fx:id="deleteRequestButton" layoutX="467.0" layoutY="185.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="128.0" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2;" text="Vymazať žiadosť" textFill="#cb0d0d" />
+            </children>
+        </AnchorPane>
+    </children>
+</AnchorPane>

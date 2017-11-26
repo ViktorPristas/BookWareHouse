@@ -22,7 +22,7 @@ public class SuperAdminDaoTest {
     public void saveNewTest() {
         List<SuperAdmin> list = dao.getAll();
         int size = list.size();
-        long id =  Collections.max(list, (o1, o2) -> {
+        long id = Collections.max(list, (o1, o2) -> {
             return o1.getId().compareTo(o2.getId());
         }).getId();
         SuperAdmin superAdmin = new SuperAdmin();

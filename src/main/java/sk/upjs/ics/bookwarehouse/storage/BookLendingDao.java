@@ -18,11 +18,10 @@ public interface BookLendingDao {
 
     //CREATE
     BookLending save(BookLending bookLending);
-    
+
     BookLending save(Book book, Teacher teacher, int lended, String comment);
-    
+
     BookLending save(Book book, Teacher teacher, int lended, String comment, int yearOfReturn);
-    
 
     //READ   
     List<BookLending> getAll();

@@ -16,12 +16,10 @@ public interface AdminDao {
 
     //CREATE
     Admin save(Admin admin);
-    
-    
 
     // DELETE
     boolean deleteById(long id);
 
     List<Admin> getAll();
-    
+
 }

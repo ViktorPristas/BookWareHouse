@@ -12,11 +12,11 @@ public interface BookEditDao {
 
     // CREATE AND UPDATE
     BookEdit save(BookEdit bookEdit);
-    
-     // READ
+
+    // READ
     List<BookEdit> getAll();
-    
+
     // DELETE
     boolean deleteById(long id);
-    
+
 }

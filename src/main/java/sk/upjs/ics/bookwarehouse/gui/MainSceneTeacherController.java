@@ -33,55 +33,93 @@ public class MainSceneTeacherController {
     private Button myProfileButton;
 
     @FXML
+    private Button logOutButton;
+
+    @FXML
     void initialize() {
-       openDBButton.setOnAction(eh -> {
+        openDBButton.setOnAction(eh -> {
             MainSceneTeacherDBController controller = new MainSceneTeacherDBController();
             try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("MainSceneTeacherDB.fxml"));
-            loader.setController(controller);
-            
-            Parent parentPane = loader.load();
-            Scene scene = new Scene(parentPane);
-            
-            
-            Stage stage = (Stage) pane.getScene().getWindow();
-            stage.setScene(scene);
-            stage.setTitle("BookWareHouse");           
-            stage.show();
-           
+                FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource("MainSceneTeacherDB.fxml"));
+                loader.setController(controller);
 
-            // toto sa vykona az po zatvoreni okna
-        } catch (IOException iOException) {
-            iOException.printStackTrace();
-        }
+                Parent parentPane = loader.load();
+                Scene scene = new Scene(parentPane);
+
+                Stage stage = (Stage) pane.getScene().getWindow();
+                stage.setScene(scene);
+                stage.setTitle("BookWareHouse");
+                stage.show();
+
+                // toto sa vykona az po zatvoreni okna
+            } catch (IOException iOException) {
+                iOException.printStackTrace();
+            }
         });
-       
-       myBooksButton.setOnAction(eh -> {
+
+        myBooksButton.setOnAction(eh -> {
             TeacherMyBooksSceneController controller = new TeacherMyBooksSceneController();
             try {
-            FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("TeacherMyBooksScene.fxml"));
-            loader.setController(controller);
-            
-            Parent parentPane = loader.load();
-            Scene scene = new Scene(parentPane);
-            
-            
-            Stage stage = (Stage) pane.getScene().getWindow();
-            stage.setScene(scene);
-            stage.setTitle("BookWareHouse");           
-            stage.show();
-           
+                FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource("TeacherMyBooksScene.fxml"));
+                loader.setController(controller);
 
-            // toto sa vykona az po zatvoreni okna
-        } catch (IOException iOException) {
-            iOException.printStackTrace();
-        }
+                Parent parentPane = loader.load();
+                Scene scene = new Scene(parentPane);
+
+                Stage stage = (Stage) pane.getScene().getWindow();
+                stage.setScene(scene);
+                stage.setTitle("BookWareHouse");
+                stage.show();
+
+                // toto sa vykona az po zatvoreni okna
+            } catch (IOException iOException) {
+                iOException.printStackTrace();
+            }
+        });
+
+        myProfileButton.setOnAction(eh -> {
+            MyProfileTeacherSceneController controller = new MyProfileTeacherSceneController();
+            try {
+                FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource("MyProfileTeacherScene.fxml"));
+                loader.setController(controller);
+
+                Parent parentPane = loader.load();
+                Scene scene = new Scene(parentPane);
+
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setTitle("BookWareHouse");
+                stage.show();
+
+                // toto sa vykona az po zatvoreni okna
+            } catch (IOException iOException) {
+                iOException.printStackTrace();
+            }
+        });
+
+        logOutButton.setOnAction(eh -> {
+            LogInSceneController controller = new LogInSceneController();
+            try {
+                FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource("LogInScene.fxml"));
+                loader.setController(controller);
+
+                Parent parentPane = loader.load();
+                Scene scene = new Scene(parentPane);
+
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.setTitle("BookWareHouse");
+                stage.show();
+                logOutButton.getScene().getWindow().hide();
+
+                // toto sa vykona az po zatvoreni okna
+            } catch (IOException iOException) {
+                iOException.printStackTrace();
+            }
         });
     }
 }
-
-
-
-    

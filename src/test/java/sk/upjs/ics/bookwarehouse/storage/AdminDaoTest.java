@@ -9,12 +9,10 @@ import org.junit.Test;
 import sk.upjs.ics.bookwarehouse.Admin;
 import sk.upjs.ics.bookwarehouse.DaoFactory;
 
-
-
 public class AdminDaoTest {
+
     AdminDao dao = DaoFactory.INSTANCE.getAdminDao();
-    
-    
+
     @Test
     public void testGetAll() {
         List<Admin> list = dao.getAll();
@@ -23,20 +21,19 @@ public class AdminDaoTest {
             assertTrue(list.size() > 0);
         }
     }
-    
-    
+
     @Test
     public void saveNewTest() {
         List<Admin> list = dao.getAll();
         int size = list.size();
-        long id =  Collections.max(list, (o1, o2) -> {
+        long id = Collections.max(list, (o1, o2) -> {
             return o1.getId().compareTo(o2.getId());
         }).getId();
         id++;
         Admin admin = new Admin();
         admin.setUserName("newAdmin" + id);
         admin.setPassword("password");
-        admin.setEmail("newAdmin" + id +"@gmail.com");
+        admin.setEmail("newAdmin" + id + "@gmail.com");
         admin = dao.save(admin);
         Assert.assertEquals(size + 1, dao.getAll().size());
         dao.deleteById(admin.getId());
@@ -56,8 +53,6 @@ public class AdminDaoTest {
         Assert.assertEquals(adminNew.getEmail(), adminOld.getEmail());
         dao.save(adminBackup);
     }
-
-    
 
     @Test
     public void deleteByIdTest() {

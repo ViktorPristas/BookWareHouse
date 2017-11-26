@@ -8,13 +8,13 @@ import org.springframework.jdbc.core.RowMapper;
 import probablyNotUsable.BookInStock;
 
 public class MysqlBookInStockDao {
-    
+
     private JdbcTemplate jdbcTemplate;
-    
+
     public MysqlBookInStockDao(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-    
+
     public List<BookInStock> getAll() {
         String sql = "SELECT id, idBook, idStock, number FROM BookWareHouse.BookInStock;";
         List<BookInStock> bookInStocks = jdbcTemplate.query(sql, new RowMapper<BookInStock>() {

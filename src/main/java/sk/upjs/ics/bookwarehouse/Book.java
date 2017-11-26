@@ -1,6 +1,7 @@
 package sk.upjs.ics.bookwarehouse;
 
 public class Book {
+
     private Long id;
     private String title;
     private String author;
@@ -8,7 +9,7 @@ public class Book {
     private String schoolClass;
     private int numberInStock;
     private int numberOfUsed;
-    
+
     public int getNumberOfUsed() {
         return numberOfUsed;
     }
@@ -16,7 +17,7 @@ public class Book {
     public void setNumberOfUsed(int numberOfUsed) {
         this.numberOfUsed = numberOfUsed;
     }
-    
+
     //BE AWARE- IN DATABASE THE NAME OF THIS COLUMN IS isUsed AND IT IS TINYINT
     private boolean used;
     private String comment;
@@ -84,6 +85,5 @@ public class Book {
     public void setUsed(boolean used) {
         this.used = used;
     }
-    
-    
+
 }

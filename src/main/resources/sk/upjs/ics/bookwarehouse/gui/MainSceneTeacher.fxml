@@ -1,47 +1,35 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 
 <AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: #20120F;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <MenuBar prefHeight="25.0" prefWidth="543.0" style="-fx-background-color: #E45652;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="56.4">
-        <menus>
-          <Menu mnemonicParsing="false" text="Súbor">
-            <items>
-              <MenuItem fx:id="exitItem" mnemonicParsing="false" text="Ukončiť" />
-            </items>
-          </Menu>
-            <Menu mnemonicParsing="false" text="Zobraziť">
-              <items>
-                <MenuItem fx:id="openDBItem" mnemonicParsing="false" text="Otvoriť databázu" />
-                  <MenuItem fx:id="showMyBooksItem" mnemonicParsing="false" text="Zobraziť moje knihy" />
-              </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Požičať">
-              <items>
-                <MenuItem fx:id="lendBookItem" mnemonicParsing="false" text="Požičať knihu" />
-                  <MenuItem fx:id="returnBookItem" mnemonicParsing="false" text="Vrátiť knihu" />
-              </items>
-            </Menu>
-          <Menu mnemonicParsing="false" text="Pomoc">
-            <items>
-              <MenuItem fx:id="aboutItem" mnemonicParsing="false" text="O programe" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <MenuBar layoutX="543.0" style="-fx-background-color: E45652;" AnchorPane.rightAnchor="0.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="Účet">
-            <items>
-              <MenuItem fx:id="accountSettingsItem" mnemonicParsing="false" text="Nastavenie účtu" />
-                  <MenuItem fx:id="logOutItem" mnemonicParsing="false" text="Odhlásiť sa" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-   </children>
+    <children>
+        <AnchorPane layoutX="125.0" layoutY="86.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #9C2B27;" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="40.0">
+            <children>
+                <HBox layoutY="338.0" prefHeight="27.0" prefWidth="673.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <Region prefHeight="37.0" prefWidth="40.0" />
+                        <Button fx:id="openDBButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="200.0" style="-fx-background-color: #E45652; -fx-border-color: #f8f8f8; -fx-border-width: 0.2;" text="Otvoriť databázu" textFill="#f8f8f8">
+                            <opaqueInsets>
+                                <Insets left="15.0" />
+                            </opaqueInsets>
+                        </Button>
+                        <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="myBooksButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="200.0" style="-fx-background-color: #E45652; -fx-border-color: #f8f8f8; -fx-border-width: 0.2;" text="Moje knihy" textFill="#f8f8f8" />
+                        <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="myProfileButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="200.0" style="-fx-background-color: #E45652; -fx-border-color: #f8f8f8; -fx-border-width: 0.2;" text="Môj profil" textFill="#f8f8f8" />
+                        <Region prefHeight="37.0" prefWidth="40.0" />
+                    </children>
+                    <opaqueInsets>
+                        <Insets left="15.0" />
+                    </opaqueInsets>
+                </HBox>
+            </children>
+        </AnchorPane>
+        <Button fx:id="logOutButton" layoutX="948.0" layoutY="1.0" mnemonicParsing="false" style="-fx-background-color: #E45652; -fx-border-color: #f8f8f8; -fx-border-width: 0.2;" text="Odhásiť sa" textFill="#f8f8f8" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+    </children>
 </AnchorPane>

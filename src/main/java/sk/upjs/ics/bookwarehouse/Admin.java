@@ -1,7 +1,7 @@
 package sk.upjs.ics.bookwarehouse;
 
-
 public class Admin {
+
     private Long id;
     private String userName;
     private String email;
@@ -38,9 +38,5 @@ public class Admin {
     public void setPassword(String password) {
         this.password = password;
     }
-    
-    
-    
-    
-    
+
 }

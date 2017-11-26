@@ -1,7 +1,7 @@
 package sk.upjs.ics.bookwarehouse;
 
-
 public class SuperAdmin {
+
     private Long id;
     private String userName;
     private String password;

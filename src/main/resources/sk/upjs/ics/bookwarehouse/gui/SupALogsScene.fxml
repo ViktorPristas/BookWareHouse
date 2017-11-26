@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: #20120F;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <TabPane layoutX="20.0" layoutY="70.0" prefHeight="394.0" prefWidth="960.0" tabClosingPolicy="UNAVAILABLE" AnchorPane.bottomAnchor="20.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="90.0">
+            <tabs>
+                <Tab text="Stratené knihy">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #19A15F;">
+                            <children>
+                                <TableView layoutX="26.0" layoutY="22.0" prefHeight="266.0" prefWidth="940.0" AnchorPane.bottomAnchor="85.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                    <columns>
+                                        <TableColumn minWidth="15.0" prefWidth="150.0" text="Autor" />
+                                        <TableColumn minWidth="15.0" prefWidth="150.0" text="Názov" />
+                                        <TableColumn prefWidth="75.0" text="Ročník" />
+                                        <TableColumn minWidth="15.0" prefWidth="150.0" text="Meno učiteľa" />
+                                        <TableColumn minWidth="15.0" prefWidth="150.0" text="Priezvisko učiteľa" />
+                                        <TableColumn prefWidth="110.0" text="Počet požičaných" />
+                                        <TableColumn prefWidth="110.0" text="Počet stratených" />
+                                        <TableColumn prefWidth="75.0" text="Počet na sklade" />
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+                <Tab text="Zmenené knihy">
+                    <content>
+                        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #19A15F;">
+                            <children>
+                                <TableView layoutX="14.0" layoutY="14.0" prefHeight="296.0" prefWidth="940.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                                    <columns>
+                                        <TableColumn prefWidth="150.0" text="Autor" />
+                                        <TableColumn prefWidth="150.0" text="Názov" />
+                                        <TableColumn prefWidth="75.0" text="Ročník" />
+                                        <TableColumn prefWidth="75.0" text="Zmenil">
+                                            <columns>
+                                                <TableColumn prefWidth="150.0" text="Meno" />
+                                                <TableColumn prefWidth="150.0" text="Priezvisko" />
+                                            </columns>
+                                        </TableColumn>
+                                        <TableColumn prefWidth="75.0" text="Počet pred" />
+                                        <TableColumn prefWidth="75.0" text="Počet po" />
+                                        <TableColumn prefWidth="150.0" text="Dátum úpravy" />
+                                    </columns>
+                                </TableView>
+                            </children>
+                        </AnchorPane>
+                    </content>
+                </Tab>
+            </tabs>
+        </TabPane>
+        <HBox layoutX="32.0" layoutY="24.0" prefHeight="44.0" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+            <children>
+                <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                <Label style="-fx-font-weight: bold;" text="Záznamy" textFill="#f8f8f8">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+            </children>
+        </HBox>
+        <Button fx:id="backButton" layoutY="1.0" mnemonicParsing="false" style="-fx-background-color: #19A15F; -fx-border-color: #20120F; -fx-border-width: 0.2;" text="Späť" textFill="#20120f" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+    </children>
+</AnchorPane>

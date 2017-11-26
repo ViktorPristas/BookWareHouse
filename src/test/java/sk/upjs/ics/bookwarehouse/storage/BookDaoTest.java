@@ -12,7 +12,7 @@ import sk.upjs.ics.bookwarehouse.DaoFactory;
 public class BookDaoTest {
 
     BookDao dao = DaoFactory.INSTANCE.getBookDao();
-    
+
     @Test
     public void testGetAll() {
         List<Book> list = dao.getAll();
@@ -21,7 +21,7 @@ public class BookDaoTest {
             assertTrue(list.size() > 0);
         }
     }
-    
+
     @Test
     public void saveNewTest() {
         List<Book> list = dao.getAll();
@@ -40,11 +40,11 @@ public class BookDaoTest {
         b.setComment("comment");
         b.setUsed(false);
         dao.save(b);
-        
+
         Assert.assertEquals(size + 1, dao.getAll().size());
         dao.deleteById(b.getId());
     }
-    
+
     @Test
     public void saveChangesTest() {
         Book bookBackup = dao.getAll().get(0);
@@ -70,7 +70,7 @@ public class BookDaoTest {
         Assert.assertEquals(bookOld.isUsed(), bookNew.isUsed());
         dao.save(bookBackup);
     }
-    
+
     @Test
     public void deleteByIdTest() {
         Book b = new Book();
@@ -82,7 +82,7 @@ public class BookDaoTest {
         b.setNumberOfUsed(17);
         b.setComment("comment");
         b.setUsed(false);
-        
+
         b = dao.save(b);
         long id = b.getId();
         dao.deleteById(id);
@@ -95,5 +95,5 @@ public class BookDaoTest {
         }
         Assert.assertTrue(bool);
     }
-    
+
 }

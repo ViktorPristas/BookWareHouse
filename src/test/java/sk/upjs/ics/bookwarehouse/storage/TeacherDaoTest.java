@@ -44,8 +44,8 @@ public class TeacherDaoTest {
 
     @Test
     public void saveChangesTest() {
-        Teacher teacherBackup =  dao.getAll().get(0);
-        
+        Teacher teacherBackup = dao.getAll().get(0);
+
         Teacher teacherOld = new Teacher();
         teacherOld.setId(teacherBackup.getId());
         double id = Math.floor(Math.random() * 100000);
@@ -55,7 +55,6 @@ public class TeacherDaoTest {
         teacherOld.setPassword("password");
         int n = (int) (Math.random() * 100);
         teacherOld.setNumberOfStudentsInClass(n);
-        
 
         dao.save(teacherOld);
         Teacher teacherNew = dao.getAll().get(0);
@@ -77,8 +76,7 @@ public class TeacherDaoTest {
         t.setPassword("password");
         t = dao.save(t);
         long id = t.getId();
-        
-        
+
         System.out.println(id);
         dao.deleteById(id);
         List<Teacher> list = dao.getAll();
@@ -90,8 +88,8 @@ public class TeacherDaoTest {
         }
         //DONT WANT TO DELETE TEACHER WITH BOOKLENDINGS
         List<BookLending> bookLendings = DaoFactory.INSTANCE.getBookLendingDao().getAll();
-        for(BookLending bl : bookLendings){
-            if(bl.getBook().getId().equals(id)){
+        for (BookLending bl : bookLendings) {
+            if (bl.getBook().getId().equals(id)) {
                 b = true;
             }
         }

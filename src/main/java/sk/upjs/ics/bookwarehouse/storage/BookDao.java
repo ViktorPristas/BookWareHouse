@@ -21,10 +21,8 @@ public interface BookDao {
     Book findById(long id);
 
     List<Book> getAll();
-    
+
     // DELETE
     boolean deleteById(long id);
-    
-    
-    
+
 }

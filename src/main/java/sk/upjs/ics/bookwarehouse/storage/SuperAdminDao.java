@@ -16,11 +16,11 @@ public interface SuperAdminDao {
 
     //CREATE
     SuperAdmin save(SuperAdmin superAdmin);
-    
+
     //READ
     List<SuperAdmin> getAll();
-    
+
     // DELETE
     boolean deleteById(long id);
 
-    }
+}

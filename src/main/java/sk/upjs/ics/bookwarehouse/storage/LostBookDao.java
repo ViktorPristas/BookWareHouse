@@ -18,18 +18,17 @@ public interface LostBookDao {
 
     // CREATE
     LostBook save(BookLending bookLending, Admin admin, String comment);
-    
+
     LostBook save(LostBook lostBook);
-    
-     // READ
+
+    // READ
     List<LostBook> getAll();
 
     List<LostBook> getByYear(int year);
-    
+
     //UPDATE
     //DONT WANT TO UPDATE 
-   
-     // DELETE
+    // DELETE
     boolean deleteById(long id);
 
-   }
+}

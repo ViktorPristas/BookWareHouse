@@ -8,48 +8,48 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: #20120F;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <MenuBar prefHeight="25.0" prefWidth="543.0" style="-fx-background-color: #E45652;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="56.4">
-        <menus>
-          <Menu mnemonicParsing="false" text="Súbor">
-            <items>
-              <MenuItem fx:id="exitItem" mnemonicParsing="false" text="Ukončiť" />
-            </items>
-          </Menu>
-            <Menu mnemonicParsing="false" text="Zobraziť">
-              <items>
-                <MenuItem fx:id="openDBItem" mnemonicParsing="false" text="Otvoriť databázu" />
-                  <MenuItem fx:id="showMyBooksItem" mnemonicParsing="false" text="Zobraziť moje knihy" />
-              </items>
-            </Menu>
-            <Menu mnemonicParsing="false" text="Požičať">
-              <items>
-                <MenuItem fx:id="lendBookItem" mnemonicParsing="false" text="Požičať knihu" />
-                  <MenuItem fx:id="returnBookItem" mnemonicParsing="false" text="Vrátiť knihu" />
-              </items>
-            </Menu>
-          <Menu mnemonicParsing="false" text="Pomoc">
-            <items>
-              <MenuItem fx:id="aboutItem" mnemonicParsing="false" text="O programe" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <MenuBar layoutX="543.0" style="-fx-background-color: E45652;" AnchorPane.rightAnchor="0.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="Účet">
-            <items>
-              <MenuItem fx:id="accountSettingsItem" mnemonicParsing="false" text="Nastavenie účtu" />
-                  <MenuItem fx:id="logOutItem" mnemonicParsing="false" text="Odhlásiť sa" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <TableView layoutX="24.0" layoutY="234.0" prefHeight="348.0" prefWidth="980.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
-        <columns>
-          <TableColumn prefWidth="75.0" text="C1" />
-          <TableColumn prefWidth="75.0" text="C2" />
-        </columns>
-      </TableView>
-   </children>
+    <children>
+        <MenuBar prefHeight="25.0" prefWidth="543.0" style="-fx-background-color: #E45652;" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="56.4">
+            <menus>
+                <Menu mnemonicParsing="false" text="Súbor">
+                    <items>
+                        <MenuItem fx:id="exitItem" mnemonicParsing="false" text="Ukončiť" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Zobraziť">
+                    <items>
+                        <MenuItem fx:id="openDBItem" mnemonicParsing="false" text="Otvoriť databázu" />
+                        <MenuItem fx:id="showMyBooksItem" mnemonicParsing="false" text="Zobraziť moje knihy" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Požičať">
+                    <items>
+                        <MenuItem fx:id="lendBookItem" mnemonicParsing="false" text="Požičať knihu" />
+                        <MenuItem fx:id="returnBookItem" mnemonicParsing="false" text="Vrátiť knihu" />
+                    </items>
+                </Menu>
+                <Menu mnemonicParsing="false" text="Pomoc">
+                    <items>
+                        <MenuItem fx:id="aboutItem" mnemonicParsing="false" text="O programe" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <MenuBar layoutX="543.0" style="-fx-background-color: E45652;" AnchorPane.rightAnchor="0.0">
+            <menus>
+                <Menu mnemonicParsing="false" text="Účet">
+                    <items>
+                        <MenuItem fx:id="accountSettingsItem" mnemonicParsing="false" text="Nastavenie účtu" />
+                        <MenuItem fx:id="logOutItem" mnemonicParsing="false" text="Odhlásiť sa" />
+                    </items>
+                </Menu>
+            </menus>
+        </MenuBar>
+        <TableView layoutX="24.0" layoutY="234.0" prefHeight="348.0" prefWidth="980.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
+            <columns>
+                <TableColumn prefWidth="75.0" text="C1" />
+                <TableColumn prefWidth="75.0" text="C2" />
+            </columns>
+        </TableView>
+    </children>
 </AnchorPane>

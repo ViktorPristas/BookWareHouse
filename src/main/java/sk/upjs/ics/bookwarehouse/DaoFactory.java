@@ -49,21 +49,20 @@ public enum DaoFactory {
     public BookLendingDao getBookLendingDao() {
         return new MysqlBookLendingDao(getJDBCTemplate());
     }
-    
-    public SuperAdminDao getSuperAdminDao(){
+
+    public SuperAdminDao getSuperAdminDao() {
         return new MysqlSuperAdminDao(getJDBCTemplate());
     }
-    
-    public TeacherDao getTeacherDao(){
+
+    public TeacherDao getTeacherDao() {
         return new MysqlTeacherDao(getJDBCTemplate());
     }
-    
-    
-    public LostBookDao  getLostBookDao(){
+
+    public LostBookDao getLostBookDao() {
         return new MysqlLostBookDao(getJDBCTemplate());
     }
-    
-    public BookEditDao getBookEditDao(){
+
+    public BookEditDao getBookEditDao() {
         return new MysqlBookEditDao(getJDBCTemplate());
     }
 }

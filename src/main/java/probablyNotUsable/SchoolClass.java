@@ -1,10 +1,10 @@
 package probablyNotUsable;
 
-
 public class SchoolClass {
+
     /*
     it can be a or b or aG etc.
-    */ 
+     */
     private String type;
     private long idTeacher;
     private long id;
@@ -41,7 +41,5 @@ public class SchoolClass {
     public void setYear(int year) {
         this.year = year;
     }
-    
-    
-    
+
 }

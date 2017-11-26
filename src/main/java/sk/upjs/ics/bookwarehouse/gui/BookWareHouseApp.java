@@ -7,7 +7,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class BookWareHouseApp extends Application{
+public class BookWareHouseApp extends Application {
 
     @Override
     public void start(Stage stage) throws Exception {
@@ -15,17 +15,17 @@ public class BookWareHouseApp extends Application{
         FXMLLoader loader = new FXMLLoader(
                 getClass().getResource("LogInScene.fxml"));
         loader.setController(controller);
-        
+
         Parent parentPane = loader.load();
         Scene scene = new Scene(parentPane);
-        
+
         stage.setScene(scene);
         stage.setTitle("BookWareHouse");
         stage.show();
     }
-    
+
     public static void main(String[] args) {
         launch(args);
     }
-    
+
 }

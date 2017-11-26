@@ -13,12 +13,12 @@ public class BookLending {
     private int lost;
     private String comment;
     private boolean approved;
-    
-    public BookLending(){
+
+    public BookLending() {
         //THIS CONSTRUCTOR IS USED WHEN FILLING THE OBJECT FROM DATABASE
     }
 
-    public BookLending(Book book, Teacher teacher,int lended, String comment,  int yearOfReturn) {
+    public BookLending(Book book, Teacher teacher, int lended, String comment, int yearOfReturn) {
         setBook(book);
         setTeacher(teacher);
         setYearOfReturn(yearOfReturn);

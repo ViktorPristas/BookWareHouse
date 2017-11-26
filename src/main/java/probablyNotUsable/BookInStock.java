@@ -1,8 +1,7 @@
-
 package probablyNotUsable;
 
-
 public class BookInStock {
+
     private long id;
     private long idBook;
     private long idStock;
@@ -39,9 +38,5 @@ public class BookInStock {
     public void setNumber(int number) {
         this.number = number;
     }
-    
-    
-    
-    
-    
+
 }

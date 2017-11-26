@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: #20120F;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
+    <children>
+        <TableView layoutX="218.0" layoutY="143.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: E45652;" AnchorPane.bottomAnchor="80.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="143.0">
+            <columns>
+                <TableColumn minWidth="100.0" prefWidth="300.0" text="Autor" />
+                <TableColumn minWidth="100.0" prefWidth="300.0" text="Názov" />
+                <TableColumn minWidth="50.0" prefWidth="95.0" text="Ročník" />
+                <TableColumn minWidth="50.0" prefWidth="95.0" text="Dátum vydania" />
+                <TableColumn minWidth="50.0" prefWidth="95.0" text="Počet kusov" />
+                <TableColumn minWidth="50.0" prefWidth="95.0" text="Počet požičaných" />
+            </columns>
+        </TableView>
+        <Button fx:id="lendButton" layoutX="479.0" layoutY="361.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="176.0" style="-fx-background-color: E45652; -fx-border-color: #f8f8f8; -fx-border-width: 0.2;" text="Požičať" textFill="#f8f8f8" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="40.0" />
+        <Button fx:id="backButton" layoutY="8.0" mnemonicParsing="false" style="-fx-background-color: E45652; -fx-border-color: #f8f8f8; -fx-border-width: 0.2;" text="Späť" textFill="#f8f8f8" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+        <HBox layoutX="43.0" layoutY="21.0" prefHeight="39.0" prefWidth="895.0" AnchorPane.leftAnchor="43.0" AnchorPane.rightAnchor="62.0">
+            <children>
+                <Region prefHeight="39.0" prefWidth="389.0" HBox.hgrow="ALWAYS" />
+                <Label style="-fx-font-weight: bold;" text="Databáza" textFill="#f8f8f8">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Region prefHeight="39.0" prefWidth="398.0" HBox.hgrow="ALWAYS" />
+            </children>
+        </HBox>
+        <HBox layoutX="43.0" layoutY="77.0" prefHeight="39.0" prefWidth="482.0">
+            <children>
+                <ComboBox prefWidth="150.0" promptText="Ročník" style="-fx-background-color: #9C2B27; -fx-border-color: #f8f8f8; -fx-border-width: 0.2;" />
+                <Region prefHeight="39.0" prefWidth="101.0" HBox.hgrow="ALWAYS" />
+                <Button fx:id="searchButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="201.0" style="-fx-background-color: E45652; -fx-border-color: #f8f8f8; -fx-border-width: 0.2;" text="Hľadaj" textFill="#f8f8f8" />
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>
