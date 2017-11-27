@@ -27,6 +27,7 @@ public class DefaultBookLendingManager implements BookLendingManager {
          deleteAllForYear(LocalDateTime.now().getYear());
     }
     
+    @Override
     public void deleteAllForYear(int year){
          List<BookLending> bookLendings = bookLendingDao.getAll();
         for(BookLending bookLending : bookLendings){

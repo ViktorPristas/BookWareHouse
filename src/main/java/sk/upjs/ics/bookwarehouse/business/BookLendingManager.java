@@ -9,4 +9,5 @@ public interface BookLendingManager {
 
     void deleteByTeacher(Teacher teacher);
     
+    void deleteAllForYear(int year);
 }
