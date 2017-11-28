@@ -10,7 +10,6 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #20120F;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <AnchorPane layoutX="180.0" layoutY="114.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #19A15F;" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="40.0">
@@ -29,33 +28,26 @@
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                         <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                     <children>
-                        <Label text="Meno" textFill="#20120f">
+                        <Label text="Prihlasovacie meno" textFill="#20120f">
                             <font>
                                 <Font size="14.0" />
                             </font>
                         </Label>
-                        <Label text="Priezvisko" textFill="#20120f" GridPane.rowIndex="1">
+                        <Label text="Heslo" textFill="#20120f" GridPane.rowIndex="2">
                             <font>
                                 <Font size="14.0" />
                             </font>
                         </Label>
-                        <Label text="Prihlasovacie meno" textFill="#20120f" GridPane.rowIndex="2">
+                        <TextField fx:id="userNameTextField" promptText="Prihl. meno" style="-fx-background-color: #19A15F; -fx-border-color: #20120F; -fx-border-width: 0.2;" GridPane.columnIndex="1" />
+                        <PasswordField fx:id="passwordTextField" promptText="Heslo" style="-fx-background-color: #19A15F; -fx-border-color: #20120F; -fx-border-width: 0.2;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <Label text="E-mail" textFill="#20120f" GridPane.rowIndex="1">
                             <font>
                                 <Font size="14.0" />
                             </font>
                         </Label>
-                        <Label text="Heslo" textFill="#20120f" GridPane.rowIndex="3">
-                            <font>
-                                <Font size="14.0" />
-                            </font>
-                        </Label>
-                        <TextField fx:id="nameTextField" promptText="Meno" style="-fx-background-color: #19A15F; -fx-border-color: #20120F; -fx-border-width: 0.2;" GridPane.columnIndex="1" />
-                        <TextField fx:id="surnameTextField" promptText="Priezvisko" style="-fx-background-color: #19A15F; -fx-border-color: #20120F; -fx-border-width: 0.2;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField fx:id="userNameTextField" promptText="Prihl. meno" style="-fx-background-color: #19A15F; -fx-border-color: #20120F; -fx-border-width: 0.2;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <PasswordField fx:id="passwordTextField" promptText="Heslo" style="-fx-background-color: #19A15F; -fx-border-color: #20120F; -fx-border-width: 0.2;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <TextField fx:id="emailTextField" promptText="E-mail" style="-fx-background-color: #19A15F; -fx-border-color: #20120F; -fx-border-width: 0.2;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                     </children>
                 </GridPane>
                 <Button fx:id="addAdminButton" layoutX="315.0" layoutY="267.0" mnemonicParsing="false" style="-fx-background-color: #19A15F; -fx-border-color: #20120F; -fx-border-width: 0.2;" text="Pridať administrátora" textFill="#20120f">

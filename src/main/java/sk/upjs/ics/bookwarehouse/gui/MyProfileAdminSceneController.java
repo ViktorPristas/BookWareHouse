@@ -19,10 +19,7 @@ public class MyProfileAdminSceneController {
     private Button saveChangesButton;
 
     @FXML
-    private TextField nameTextField;
-
-    @FXML
-    private TextField surnameTextField;
+    private TextField userNameTextField;
 
     @FXML
     private TextField emailTextField;

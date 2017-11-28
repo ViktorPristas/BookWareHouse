@@ -16,10 +16,7 @@ public class SupANewAdminSceneController {
     private URL location;
 
     @FXML
-    private TextField nameTextField;
-
-    @FXML
-    private TextField surnameTextField;
+    private TextField emailTextField;
 
     @FXML
     private TextField userNameTextField;

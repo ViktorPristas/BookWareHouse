@@ -2,19 +2,26 @@ package sk.upjs.ics.bookwarehouse.gui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import sk.upjs.ics.bookwarehouse.Book;
+import sk.upjs.ics.bookwarehouse.DaoFactory;
+import sk.upjs.ics.bookwarehouse.storage.BookDao;
 
 public class MainSceneTeacherController {
-
-    @FXML
+       @FXML
     private ResourceBundle resources;
 
     @FXML
@@ -34,6 +41,7 @@ public class MainSceneTeacherController {
 
     @FXML
     private Button logOutButton;
+
 
     @FXML
     void initialize() {
@@ -121,5 +129,7 @@ public class MainSceneTeacherController {
                 iOException.printStackTrace();
             }
         });
+        
+       
     }
 }
