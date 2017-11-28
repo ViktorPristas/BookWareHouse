@@ -14,12 +14,13 @@ public class DefaultBookEditManager implements BookEditManager {
     @Override
     public List<BookEdit> findByBook(Book book) {
         List<BookEdit> bookEdits = bookEditDao.getAll();
+        List<BookEdit> list = new ArrayList<>();
         for (BookEdit bookEdit : bookEdits) {
-            if (bookEdit.getBook().getId() != book.getId()) {
-                bookEdits.remove(bookEdit);
+            if (bookEdit.getBook().getId().equals(book.getId())) {
+                list.add(bookEdit);
             }
         }
-        return bookEdits;
+        return list;
     }
 
     @Override
@@ -28,12 +29,13 @@ public class DefaultBookEditManager implements BookEditManager {
             return findByBook(book);
         }
         List<BookEdit> bookEdits = bookEditDao.getAll();
+        List<BookEdit> list = new ArrayList<>();
         for (BookEdit bookEdit : bookEdits) {
-            if (bookEdit.getBook().getId() != book.getId() || bookEdit.getDate().getYear() != year) {
-                bookEdits.remove(bookEdit);
+            if (bookEdit.getBook().getId().equals(book.getId()) || bookEdit.getDate().getYear() == year) {
+                list.add(bookEdit);
             }
         }
-        return bookEdits;
+        return list;
     }
 
 }

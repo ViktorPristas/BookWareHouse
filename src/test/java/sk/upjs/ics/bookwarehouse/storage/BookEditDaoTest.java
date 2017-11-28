@@ -54,12 +54,13 @@ public class BookEditDaoTest {
         bookEdit.setNameOfAdmin("admin" + id);
         bookEdit.setNumberBefore(17);
         bookEdit.setNumberAfter(21);
-        dao.save(bookEdit);
+        bookEdit = dao.save(bookEdit);
 
         list = dao.getAll();
         if (list != null) {
             assertTrue(list.size() > 0);
         }
+        dao.deleteById(bookEdit.getId());
     }
 
     @Test
