@@ -3,6 +3,8 @@ package sk.upjs.ics.bookwarehouse.fxmodels;
 import java.util.List;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.LongProperty;
+import javafx.beans.property.SimpleLongProperty;
+import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -13,15 +15,15 @@ import sk.upjs.ics.bookwarehouse.storage.BookDao;
 public class BookFxModel {
 
     private ObservableList<Book> books;
-    private LongProperty id;
-    private StringProperty title;
-    private StringProperty author;
+    private LongProperty id = new SimpleLongProperty();
+    private StringProperty title = new SimpleStringProperty();
+    private StringProperty author= new SimpleStringProperty();
     private int yearOfPublication;
-    private StringProperty schoolClass;
+    private StringProperty schoolClass = new SimpleStringProperty();
     private int numberInStock;
     private int numberOfUsed;
     private boolean used;
-    private StringProperty comment;
+    private StringProperty comment = new SimpleStringProperty();
 
     public BookFxModel() {
         BookDao bookDao = DaoFactory.INSTANCE.getBookDao();
