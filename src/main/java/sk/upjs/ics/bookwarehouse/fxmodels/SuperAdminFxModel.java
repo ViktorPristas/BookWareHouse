@@ -4,16 +4,14 @@ import javafx.beans.property.LongProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import sk.upjs.ics.bookwarehouse.Admin;
+import sk.upjs.ics.bookwarehouse.SuperAdmin;
 
 
-public class AdminFxModel {
-    
-    private LongProperty id = new SimpleLongProperty();
+public class SuperAdminFxModel {
+    private LongProperty id = new SimpleLongProperty(); 
     private StringProperty userName = new SimpleStringProperty();
-    private StringProperty email = new SimpleStringProperty();
     private StringProperty password = new SimpleStringProperty();
-    
+
     public Long getId() {
         return id.get();
     }
@@ -33,22 +31,9 @@ public class AdminFxModel {
     public StringProperty userNameProperty() {
         return userName;
     }
-
     
     public void setUserName(String userName) {
         this.userName.set(userName);
-    }
-
-    public String getEmail() {
-        return email.get();
-    }
-    
-    public StringProperty emailProperty() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email.set(email);
     }
 
     public String getPassword() {
@@ -62,14 +47,12 @@ public class AdminFxModel {
     public void setPassword(String password) {
         this.password.set(password);
     }
-
-    public Admin getAdmin(){
-        Admin admin = new Admin();
-        admin.setId(getId());
-        admin.setUserName(getUserName());
-        admin.setPassword(getPassword());
-        admin.setEmail(getEmail());
-        return admin;
-    }
     
+    public SuperAdmin getSuperAdmin(){
+        SuperAdmin sa = new SuperAdmin();
+        sa.setId(getId());
+        sa.setUserName(getUserName());
+        sa.setPassword(getPassword());
+        return sa;
+    }
 }
