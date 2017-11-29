@@ -16,9 +16,10 @@ import sk.upjs.ics.bookwarehouse.storage.BookDao;
 public class BookFxModel {
 
     private ObservableList<Book> books = new SimpleListProperty<>();
+    private ObservableList<BookFxModel> booksmodel = FXCollections.observableArrayList();
     private LongProperty id = new SimpleLongProperty();
     private StringProperty title = new SimpleStringProperty();
-    private StringProperty author= new SimpleStringProperty();
+    private StringProperty author = new SimpleStringProperty();
     private int yearOfPublication;
     private StringProperty schoolClass = new SimpleStringProperty();
     private int numberInStock;
@@ -31,8 +32,11 @@ public class BookFxModel {
         List<Book> books = bookDao.getAll();
         this.books = FXCollections.observableArrayList(books);
     }
-    
-    
+
+    public ObservableList<BookFxModel> getBooksModel() {
+        return booksmodel;
+    }
+
     public ObservableList<Book> getBooks() {
         return books;
     }
@@ -141,6 +145,29 @@ public class BookFxModel {
         b.setNumberOfUsed(getNumberOfUsed());
         b.setUsed(isUsed());
         return b;
+    }
+
+    public void loadBookToModel() {
+        booksmodel.clear();
+        for (Book book : books) {
+            BookFxModel bookFxModel = new BookFxModel();
+
+            String title = book.getTitle();
+            String author = book.getAuthor();
+            int yearOfPublication = book.getYearOfPublication();
+            String schoolClass = book.getSchoolClass();
+            int numberInStock = book.getNumberInStock();
+            int numberOfUsed = book.getNumberOfUsed();
+
+            bookFxModel.setTitle(title);
+            bookFxModel.setAuthor(author);
+            bookFxModel.setYearOfPublication(yearOfPublication);
+            bookFxModel.setSchoolClass(schoolClass);
+            bookFxModel.setNumberInStock(numberInStock);
+            bookFxModel.setNumberOfUsed(numberOfUsed);
+            booksmodel.add(bookFxModel);
+        }
+
     }
 
 }

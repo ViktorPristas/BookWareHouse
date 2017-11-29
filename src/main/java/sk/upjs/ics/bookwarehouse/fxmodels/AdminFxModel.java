@@ -72,4 +72,6 @@ public class AdminFxModel {
         return admin;
     }
     
+
+    
 }

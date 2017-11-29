@@ -8,11 +8,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import sk.upjs.ics.bookwarehouse.fxmodels.BookFxModel;
 
 public class MainSceneAdminDBController {
+    
+     private final BookFxModel bookFxModel = new BookFxModel();
 
     @FXML
     private ResourceBundle resources;
@@ -34,6 +40,9 @@ public class MainSceneAdminDBController {
 
     @FXML
     private Button addNewBookButton;
+
+    @FXML
+    private TableView<BookFxModel> simpleTableView;
 
     @FXML
     void initialize() {
@@ -105,5 +114,35 @@ public class MainSceneAdminDBController {
                 iOException.printStackTrace();
             }
         });
+        
+         if (bookFxModel.getBooks().size() > 0) {
+            bookFxModel.loadBookToModel();
+        }
+
+        TableColumn<BookFxModel, String> titleCol = new TableColumn<>("Nazov");
+        titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
+        simpleTableView.getColumns().add(titleCol);
+
+        TableColumn<BookFxModel, String> authorCol = new TableColumn<>("Autor");
+        authorCol.setCellValueFactory(new PropertyValueFactory<>("author"));
+        simpleTableView.getColumns().add(authorCol);
+
+        TableColumn<BookFxModel, Integer> yearCol = new TableColumn<>("Rok vydania");
+        yearCol.setCellValueFactory(new PropertyValueFactory<>("yearOfPublication"));
+        simpleTableView.getColumns().add(yearCol);
+
+        TableColumn<BookFxModel, Integer> schoolClassCol = new TableColumn<>("Rocnik");
+        schoolClassCol.setCellValueFactory(new PropertyValueFactory<>("schoolClass"));
+        simpleTableView.getColumns().add(schoolClassCol);
+
+        TableColumn<BookFxModel, Integer> numberInStockCol = new TableColumn<>("Pocet na sklade");
+        yearCol.setCellValueFactory(new PropertyValueFactory<>("numberInStock"));
+        simpleTableView.getColumns().add(numberInStockCol);
+
+        TableColumn<BookFxModel, Integer> numberOfUsedCol = new TableColumn<>("Pocet rozdanych");
+        numberOfUsedCol.setCellValueFactory(new PropertyValueFactory<>("numberOfUsed"));
+        simpleTableView.getColumns().add(numberOfUsedCol);
+
+        simpleTableView.setItems(bookFxModel.getBooksModel());
     }
 }

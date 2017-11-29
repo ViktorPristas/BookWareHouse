@@ -34,6 +34,9 @@ public class RegistrationSceneController {
     private URL location;
 
     @FXML
+    private Button signUpButton;
+
+    @FXML
     private TextField nameTextField;
 
     @FXML
@@ -49,7 +52,7 @@ public class RegistrationSceneController {
     private PasswordField passwordConfTextField;
 
     @FXML
-    private Button signUpButton;
+    private TextField numberOfStudentsTextField;
 
     @FXML
     void initialize() {

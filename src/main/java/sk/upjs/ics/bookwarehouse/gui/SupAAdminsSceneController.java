@@ -8,8 +8,13 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import sk.upjs.ics.bookwarehouse.Admin;
+import sk.upjs.ics.bookwarehouse.fxmodels.AdminFxModel;
 
 public class SupAAdminsSceneController {
 
@@ -30,6 +35,9 @@ public class SupAAdminsSceneController {
 
     @FXML
     private Button resetPasswordButton;
+    
+    @FXML
+    private TableView<AdminFxModel> simpleTableView;
 
     @FXML
     void initialize() {
@@ -95,5 +103,16 @@ public class SupAAdminsSceneController {
                 iOException.printStackTrace();
             }
         });
+        
+        TableColumn<AdminFxModel, String> usernameCol = new TableColumn<>("Meno");
+        usernameCol.setCellValueFactory(new PropertyValueFactory<>("userName"));
+        simpleTableView.getColumns().add(usernameCol);
+        
+        TableColumn<AdminFxModel, String> emailCol = new TableColumn<>("E-mail");
+        emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
+        simpleTableView.getColumns().add(emailCol);
+        
+        
+        
     }
 }
