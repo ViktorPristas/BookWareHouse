@@ -24,6 +24,10 @@ public class Teacher {
     public void setId(long id) {
         this.id = id;
     }
+    
+    public void setId(){
+        this.id = null;
+    }
 
     public String getName() {
         return name;
@@ -54,7 +58,7 @@ public class Teacher {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = ManagerFactory.INSTANCE.getPasswordManager().hashPassword(password);
     }
 
     public boolean hasClass() {

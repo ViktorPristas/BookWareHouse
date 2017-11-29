@@ -4,6 +4,7 @@ import javafx.beans.property.LongProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import sk.upjs.ics.bookwarehouse.Teacher;
 
 public class TeacherFxModel {
 
@@ -25,7 +26,7 @@ public class TeacherFxModel {
     public Long getId() {
         return id.get();
     }
-    
+
     public LongProperty idProperty() {
         return id;
     }
@@ -41,7 +42,7 @@ public class TeacherFxModel {
     public StringProperty nameProperty() {
         return name;
     }
-    
+
     public void setName(String name) {
         this.name.set(name);
     }
@@ -53,7 +54,7 @@ public class TeacherFxModel {
     public StringProperty surnameProperty() {
         return surname;
     }
-    
+
     public void setSurname(String surname) {
         this.surname.set(surname);
     }
@@ -65,7 +66,7 @@ public class TeacherFxModel {
     public StringProperty emailProperty() {
         return email;
     }
-    
+
     public void setEmail(String email) {
         this.email.set(email);
     }
@@ -77,9 +78,19 @@ public class TeacherFxModel {
     public StringProperty passwordProperty() {
         return password;
     }
-    
+
     public void setPassword(String password) {
         this.password.set(password);
+    }
+
+    public Teacher getTeacher() {
+        Teacher t = new Teacher();
+        t.setName(getName());
+        t.setSurname(getSurname());
+        t.setEmail(getEmail());
+        t.setPassword(getPassword());
+        t.setId(getId());
+        return t;
     }
 
 }

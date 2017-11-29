@@ -3,6 +3,8 @@ package sk.upjs.ics.bookwarehouse.gui;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -14,8 +16,16 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import sk.upjs.ics.bookwarehouse.DaoFactory;
+import sk.upjs.ics.bookwarehouse.Teacher;
+import sk.upjs.ics.bookwarehouse.business.RegistrationManager;
+import sk.upjs.ics.bookwarehouse.fxmodels.TeacherFxModel;
+import sk.upjs.ics.bookwarehouse.storage.TeacherDao;
 
 public class RegistrationSceneController {
+
+    private final TeacherFxModel teacherFxModel = new TeacherFxModel();
+    private final TeacherDao teacherDao = DaoFactory.INSTANCE.getTeacherDao();
 
     @FXML
     private ResourceBundle resources;
@@ -43,23 +53,75 @@ public class RegistrationSceneController {
 
     @FXML
     void initialize() {
+        nameTextField.textProperty().bindBidirectional(
+                teacherFxModel.nameProperty());
+
+        surenameTextField.textProperty().bindBidirectional(
+                teacherFxModel.surnameProperty());
+
+        emailTextField.textProperty().bindBidirectional(
+                teacherFxModel.emailProperty());
+
+        emailTextField.textProperty().bindBidirectional(
+                teacherFxModel.emailProperty());
+
+        passwordTextField.textProperty().bindBidirectional(
+                teacherFxModel.passwordProperty());
+        passwordTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (passwordTextField.getText().equals(passwordConfTextField.getText())) {
+                    passwordTextField.setStyle("-fx-background-color: white;");
+                    passwordConfTextField.setStyle("-fx-background-color: white;");
+                    signUpButton.setDisable(false);
+                } else {
+                    passwordTextField.setStyle("-fx-background-color: red;");
+                    passwordConfTextField.setStyle("-fx-background-color: red;");
+                    signUpButton.setDisable(true);
+
+                }
+            }
+        });
+
+        passwordConfTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (passwordTextField.getText().equals(passwordConfTextField.getText())) {
+                    passwordTextField.setStyle("-fx-background-color: white;");
+                    passwordConfTextField.setStyle("-fx-background-color: white;");
+                    signUpButton.setDisable(false);
+                } else {
+                    passwordTextField.setStyle("-fx-background-color: red;");
+                    passwordConfTextField.setStyle("-fx-background-color: red;");
+                    signUpButton.setDisable(true);
+                }
+            }
+        });
+
         signUpButton.setOnAction(eh -> {
             ThankYouForRegistrationSceneController controller = new ThankYouForRegistrationSceneController();
             try {
-                FXMLLoader loader = new FXMLLoader(
-                        getClass().getResource("ThankYouForRegistrationScene.fxml"));
-                loader.setController(controller);
+                Teacher teacher = teacherFxModel.getTeacher();
+                teacher.setId();
+                teacher = teacherDao.save(teacher);
 
-                Parent parentPane = loader.load();
-                Scene scene = new Scene(parentPane);
+                if (registrationIsOk(teacher)) {
+                    FXMLLoader loader = new FXMLLoader(
+                            getClass().getResource("ThankYouForRegistrationScene.fxml"));
+                    loader.setController(controller);
 
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("BookWareHouse");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.show();
-                signUpButton.getScene().getWindow().hide();
+                    Parent parentPane = loader.load();
+                    Scene scene = new Scene(parentPane);
 
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.setTitle("BookWareHouse");
+                    stage.initModality(Modality.APPLICATION_MODAL);
+                    stage.show();
+                    signUpButton.getScene().getWindow().hide();
+                } else {
+                    //nejaky allert 
+                }
                 // toto sa vykona az po zatvoreni okna
             } catch (IOException iOException) {
                 iOException.printStackTrace();
@@ -67,4 +129,19 @@ public class RegistrationSceneController {
         });
     }
 
+    public boolean registrationIsOk(Teacher t) {
+        if (t.getName() == null || t.getName().equals("")) {
+            return false;
+        }
+        if ((t.getEmail() == null) || t.getEmail().equals("")) {
+            return false;
+        }
+        if ((t.getSurname()== null) || t.getSurname().equals("")) {
+            return false;
+        }
+        if(!RegistrationManager.isNewTeacherEmail(t.getEmail())){
+            return false;
+        }
+        return true;
+    }
 }

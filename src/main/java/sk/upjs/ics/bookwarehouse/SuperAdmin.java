@@ -27,6 +27,6 @@ public class SuperAdmin {
     }
 
     public void setPassword(String password) {
-        this.password = password;
+        this.password = ManagerFactory.INSTANCE.getPasswordManager().hashPassword(password);
     }
 }
