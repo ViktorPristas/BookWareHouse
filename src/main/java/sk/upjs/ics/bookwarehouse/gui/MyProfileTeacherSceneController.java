@@ -73,11 +73,15 @@ public class MyProfileTeacherSceneController {
                 boolean isEmailOk = true;
                 List<Teacher> list = teacherDao.getAll();
                 for (Teacher t : list) {
-                    if (!(t.getId().equals(teacher.getId()) && (t.getEmail().equals(teacher.getEmail())))) {
+                    if ((!t.getId().equals(teacher.getId()) && (t.getEmail().equals(teacher.getEmail())))) {
+                        System.out.println(t.getEmail());
+                        System.out.println(t.getId());
+                        System.out.println(teacher.getId());
                         isEmailOk = false;
                     }
                 }
-                if (isEmailOk) {
+                System.out.println(isEmailOk);
+               if (isEmailOk) {
                     teacher = teacherDao.save(teacher);
                     saveChangesButton.getScene().getWindow().hide();
                 }

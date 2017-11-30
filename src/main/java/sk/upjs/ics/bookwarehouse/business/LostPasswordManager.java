@@ -5,6 +5,7 @@ import javax.mail.*;
 import javax.mail.internet.*;
 import javax.activation.*;
 import sk.upjs.ics.bookwarehouse.DaoFactory;
+import sk.upjs.ics.bookwarehouse.ManagerFactory;
 import sk.upjs.ics.bookwarehouse.Teacher;
 import sk.upjs.ics.bookwarehouse.storage.TeacherDao;
 
@@ -26,42 +27,6 @@ public class LostPasswordManager {
             return false;
         }
 
-        /*String to = email;
-
-        String host = "mail.google.com";
-        final String user = "noreplyBookWareHouse@gmail.com";
-        final String password = "SilneHeslo123";
-
-        Properties props = new Properties();
-        props.put("mail.smtp.host", host);
-        props.put("mail.smtp.auth", "true");
-
-        Session session = Session.getDefaultInstance(props,
-                new javax.mail.Authenticator() {
-            protected PasswordAuthentication getPasswordAuthentication() {
-                return new PasswordAuthentication(user, password);
-            }
-        });
-
-        try {
-            MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(user));
-            message.addRecipient(Message.RecipientType.TO, new InternetAddress(to));
-            message.setSubject("Nové heslo");
-
-            String newPassword = java.util.UUID.randomUUID().toString().substring(0, 10);
-            TeacherDao dao = DaoFactory.INSTANCE.getTeacherDao();
-            Teacher teacher = dao.findByEmail(email);
-            if (teacher != null) {
-                teacher.setPassword(newPassword);
-            }
-            message.setText(newPassword);
-
-            Transport.send(message);
-
-        } catch (MessagingException e) {
-            e.printStackTrace();
-        }*/
         String USER_NAME = "noreplyBookWareHouse";  // GMail user name (just the part before "@gmail.com")
         String PASSWORD = "SilneHeslo123"; // GMail password
         String RECIPIENT = email;
@@ -75,10 +40,16 @@ public class LostPasswordManager {
         Teacher teacher = dao.findByEmail(email);
         if (teacher != null) {
             teacher.setPassword(newPassword);
+            dao.save(teacher);
+            teacher = dao.findByEmail(email);
+            System.out.println(ManagerFactory.INSTANCE.getPasswordManager().hashPassword(newPassword));
+            System.out.println(teacher.getPassword());
+            sendFromGMail(from, pass, to, subject, newPassword, email);
+            return true;
         }
+        System.out.println("nieco je zle");
+        return false;
 
-        sendFromGMail(from, pass, to, subject, newPassword, email);
-        return true;
     }
 
     private static void sendFromGMail(String from, String pass, String[] to, String subject, String body, String email) {

@@ -27,20 +27,25 @@ public class SHA256PasswordManager implements PasswordManager {
 
    
     private boolean isCorrectPassword(String passwordToCheck, String hashedPassword) {
+        System.out.println(passwordToCheck);
+         System.out.println(hashPassword(passwordToCheck));
+         System.out.println(hashedPassword);
+         
         return (hashPassword(passwordToCheck).equals(hashedPassword));
     }
 
     @Override
     public boolean isCorrectPassword(String passwordToCheck, int userType, long id) {
-        if (id == 1) {
+        if (userType == 1) {
             List<Teacher> list = DaoFactory.INSTANCE.getTeacherDao().getAll();
             for (Teacher teacher : list) {
                 if (teacher.getId().equals(id)) {
+                    System.out.println("skoro dobre2");
                     return isCorrectPassword(passwordToCheck, teacher.getPassword());
                 }
             }
         }
-        if (id == 2) {
+        if (userType == 2) {
             List<Admin> list = DaoFactory.INSTANCE.getAdminDao().getAll();
             for (Admin admin : list) {
                 if (admin.getId().equals(id)) {
@@ -48,7 +53,7 @@ public class SHA256PasswordManager implements PasswordManager {
                 }
             }
         }
-        if (id == 3) {
+        if (userType == 3) {
             List<SuperAdmin> list = DaoFactory.INSTANCE.getSuperAdminDao().getAll();
             for (SuperAdmin sa : list) {
                 if (sa.getId().equals(id)) {

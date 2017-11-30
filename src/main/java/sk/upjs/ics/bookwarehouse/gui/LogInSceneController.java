@@ -86,18 +86,20 @@ public class LogInSceneController {
                 //nejaky allert
             }
             int typeOfUser = UserIdentificationManager.getTypeOfUser();
-            if (passwordManager.isCorrectPassword(loginFxModel.getEmail(), typeOfUser, UserIdentificationManager.getId())) {
+            if (passwordManager.isCorrectPassword(loginFxModel.getPassword(), typeOfUser, UserIdentificationManager.getId())) {
+                if (typeOfUser == 1) {
+                    loginTeacher();
+                }
+                if (typeOfUser == 2) {
+                    loginAdmin();
+                }
+                if (typeOfUser == 3) {
+                    loginSuperAdmin();
+                }
+            } else {
                 //ten isty allert ako o 3 riadky vyssie
             }
-            if (typeOfUser == 1) {
-                loginTeacher();
-            }
-            if (typeOfUser == 2) {
-                loginAdmin();
-            }
-            if (typeOfUser == 3) {
-                loginSuperAdmin();
-            }
+
         });
 
         forgotPasswordHyperlink.setOnAction(eh -> {

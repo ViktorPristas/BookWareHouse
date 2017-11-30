@@ -70,9 +70,6 @@ public class RegistrationSceneController {
         emailTextField.textProperty().bindBidirectional(
                 teacherFxModel.emailProperty());
 
-        emailTextField.textProperty().bindBidirectional(
-                teacherFxModel.emailProperty());
-
         passwordTextField.textProperty().bindBidirectional(
                 teacherFxModel.passwordProperty());
 
@@ -114,6 +111,7 @@ public class RegistrationSceneController {
                 teacher.setId();
 
                 if (registrationIsOk(teacher)) {
+                    
                     teacher = teacherDao.save(teacher);
 
                     FXMLLoader loader = new FXMLLoader(

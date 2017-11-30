@@ -6,6 +6,7 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import sk.upjs.ics.bookwarehouse.DaoFactory;
 import sk.upjs.ics.bookwarehouse.Teacher;
+import sk.upjs.ics.bookwarehouse.business.UserIdentificationManager;
 
 public class TeacherFxModel {
     
@@ -98,8 +99,8 @@ public class TeacherFxModel {
         t.setName(getName());
         t.setSurname(getSurname());
         t.setEmail(getEmail());
-        t.setId(getId());
-        if (getPassword().equals("") || getPassword() == null) {
+        t.setId(UserIdentificationManager.getId());
+        if (getPassword() == null || getPassword().equals("")) {
             t.setPassword(getActualPassword());
         } else {
             t.setPassword(getPassword());
