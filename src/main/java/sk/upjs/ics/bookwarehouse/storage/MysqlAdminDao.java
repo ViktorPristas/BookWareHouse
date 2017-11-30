@@ -9,6 +9,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
 import sk.upjs.ics.bookwarehouse.Admin;
+import sk.upjs.ics.bookwarehouse.DaoFactory;
 
 public class MysqlAdminDao implements AdminDao {
 
@@ -68,5 +69,16 @@ public class MysqlAdminDao implements AdminDao {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    @Override
+    public Admin findById(Long id) {
+        List<Admin> list = DaoFactory.INSTANCE.getAdminDao().getAll();
+        for (Admin admin : list) {
+            if (admin.getId().equals(id)) {
+                return admin;
+            }
+        }
+        return null;
     }
 }

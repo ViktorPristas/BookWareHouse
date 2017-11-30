@@ -1,19 +1,29 @@
 package sk.upjs.ics.bookwarehouse.fxmodels;
 
+import java.util.List;
 import javafx.beans.property.LongProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import sk.upjs.ics.bookwarehouse.Admin;
-
+import sk.upjs.ics.bookwarehouse.DaoFactory;
 
 public class AdminFxModel {
-    
+
     private LongProperty id = new SimpleLongProperty();
     private StringProperty userName = new SimpleStringProperty();
     private StringProperty email = new SimpleStringProperty();
     private StringProperty password = new SimpleStringProperty();
-    
+    private String actualPassword;
+
+    public String getActualPassword() {
+        return actualPassword;
+    }
+
+    public void setActualPassword(String actualPassword) {
+        this.actualPassword = actualPassword;
+    }
+
     public Long getId() {
         return id.get();
     }
@@ -21,7 +31,7 @@ public class AdminFxModel {
     public LongProperty idProperty() {
         return id;
     }
-    
+
     public void setId(long id) {
         this.id.set(id);
     }
@@ -34,7 +44,6 @@ public class AdminFxModel {
         return userName;
     }
 
-    
     public void setUserName(String userName) {
         this.userName.set(userName);
     }
@@ -42,7 +51,7 @@ public class AdminFxModel {
     public String getEmail() {
         return email.get();
     }
-    
+
     public StringProperty emailProperty() {
         return email;
     }
@@ -58,12 +67,12 @@ public class AdminFxModel {
     public StringProperty passwordProperty() {
         return password;
     }
-    
+
     public void setPassword(String password) {
         this.password.set(password);
     }
 
-    public Admin getAdmin(){
+    public Admin getAdmin() {
         Admin admin = new Admin();
         admin.setId(getId());
         admin.setUserName(getUserName());
@@ -71,7 +80,13 @@ public class AdminFxModel {
         admin.setEmail(getEmail());
         return admin;
     }
-    
 
-    
+    public void loadActualTeacherToModel(Long adminId) {
+        Admin a = DaoFactory.INSTANCE.getAdminDao().findById(adminId);
+        setId(a.getId());
+        setUserName(a.getUserName());
+        setEmail(a.getEmail());
+        setActualPassword(a.getPassword());
+    }
+
 }

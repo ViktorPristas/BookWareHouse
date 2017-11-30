@@ -22,4 +22,6 @@ public interface AdminDao {
 
     List<Admin> getAll();
 
+    Admin findById(Long id);
+
 }

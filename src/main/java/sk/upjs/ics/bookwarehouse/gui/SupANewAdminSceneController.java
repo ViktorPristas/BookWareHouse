@@ -6,8 +6,11 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import sk.upjs.ics.bookwarehouse.fxmodels.AdminFxModel;
 
 public class SupANewAdminSceneController {
+
+    AdminFxModel adminFxModel = new AdminFxModel();
 
     @FXML
     private ResourceBundle resources;
@@ -29,6 +32,15 @@ public class SupANewAdminSceneController {
 
     @FXML
     void initialize() {
+        userNameTextField.textProperty().bindBidirectional(
+                adminFxModel.userNameProperty());
+
+        emailTextField.textProperty().bindBidirectional(
+                adminFxModel.emailProperty());
+
+        passwordTextField.textProperty().bindBidirectional(
+                adminFxModel.passwordProperty());
+
         addAdminButton.setOnAction(eh -> {
             addAdminButton.getScene().getWindow().hide();
         });
