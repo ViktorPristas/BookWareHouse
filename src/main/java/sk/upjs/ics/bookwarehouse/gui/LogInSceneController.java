@@ -13,12 +13,15 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import sk.upjs.ics.bookwarehouse.ManagerFactory;
+import sk.upjs.ics.bookwarehouse.business.PasswordManager;
 import sk.upjs.ics.bookwarehouse.business.UserIdentificationManager;
 import sk.upjs.ics.bookwarehouse.fxmodels.LoginFxModel;
 
 public class LogInSceneController {
 
     LoginFxModel loginFxModel = new LoginFxModel();
+    PasswordManager passwordManager = ManagerFactory.INSTANCE.getPasswordManager();
 
     @FXML
     private ResourceBundle resources;
@@ -82,14 +85,17 @@ public class LogInSceneController {
             if (!UserIdentificationManager.setUser(loginFxModel.getEmail())) {
                 //nejaky allert
             }
-            if (UserIdentificationManager.getTypeOfUser() == 1) {
-                if()
+            int typeOfUser = UserIdentificationManager.getTypeOfUser();
+            if (passwordManager.isCorrectPassword(loginFxModel.getEmail(), typeOfUser, UserIdentificationManager.getId())) {
+                //ten isty allert ako o 3 riadky vyssie
+            }
+            if (typeOfUser == 1) {
                 loginTeacher();
             }
-            if (UserIdentificationManager.getTypeOfUser() == 2) {
+            if (typeOfUser == 2) {
                 loginAdmin();
             }
-            if (UserIdentificationManager.getTypeOfUser() == 3) {
+            if (typeOfUser == 3) {
                 loginSuperAdmin();
             }
         });
