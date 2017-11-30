@@ -1,7 +1,10 @@
 package sk.upjs.ics.bookwarehouse.gui;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -66,17 +69,57 @@ public class MyProfileTeacherSceneController {
 
         saveChangesButton.setOnAction(eh -> {
             Teacher teacher = teacherFxModel.getTeacher();
-            if (registrationIsOk(teacher)) {
-                teacher = teacherDao.save(teacher);
-                saveChangesButton.getScene().getWindow().hide();
+            if (modificationIsOk(teacher)) {
+                boolean isEmailOk = true;
+                List<Teacher> list = teacherDao.getAll();
+                for (Teacher t : list) {
+                    if (!(t.getId().equals(teacher.getId()) && (t.getEmail().equals(teacher.getEmail())))) {
+                        isEmailOk = false;
+                    }
+                }
+                if (isEmailOk) {
+                    teacher = teacherDao.save(teacher);
+                    saveChangesButton.getScene().getWindow().hide();
+                }
             } else {
                 //nejaky alert
             }
         });
 
+        passwordTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (passwordTextField.getText().equals(repeatPasswordTextField.getText())) {
+                    passwordTextField.setStyle("-fx-background-color: white;");
+                    repeatPasswordTextField.setStyle("-fx-background-color: white;");
+                    saveChangesButton.setDisable(false);
+                } else {
+                    passwordTextField.setStyle("-fx-background-color: red;");
+                    repeatPasswordTextField.setStyle("-fx-background-color: red;");
+                    saveChangesButton.setDisable(true);
+
+                }
+            }
+        });
+
+        repeatPasswordTextField.textProperty().addListener(new ChangeListener<String>() {
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                if (passwordTextField.getText().equals(repeatPasswordTextField.getText())) {
+                    passwordTextField.setStyle("-fx-background-color: white;");
+                    repeatPasswordTextField.setStyle("-fx-background-color: white;");
+                    saveChangesButton.setDisable(false);
+                } else {
+                    passwordTextField.setStyle("-fx-background-color: red;");
+                    repeatPasswordTextField.setStyle("-fx-background-color: red;");
+                    saveChangesButton.setDisable(true);
+                }
+            }
+        });
+
     }
 
-    public boolean registrationIsOk(Teacher t) {
+    public boolean modificationIsOk(Teacher t) {
         if (t.getName() == null || t.getName().equals("")) {
             return false;
         }

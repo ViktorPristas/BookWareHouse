@@ -60,7 +60,7 @@ public class RegistrationSceneController {
 
     @FXML
     void initialize() {
-        
+
         nameTextField.textProperty().bindBidirectional(
                 teacherFxModel.nameProperty());
 
@@ -75,7 +75,7 @@ public class RegistrationSceneController {
 
         passwordTextField.textProperty().bindBidirectional(
                 teacherFxModel.passwordProperty());
-        
+
         passwordTextField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -106,19 +106,16 @@ public class RegistrationSceneController {
                 }
             }
         });
-        
-       
 
         signUpButton.setOnAction(eh -> {
             ThankYouForRegistrationSceneController controller = new ThankYouForRegistrationSceneController();
             try {
                 Teacher teacher = teacherFxModel.getTeacher();
                 teacher.setId();
-                
 
                 if (registrationIsOk(teacher)) {
                     teacher = teacherDao.save(teacher);
-                    
+
                     FXMLLoader loader = new FXMLLoader(
                             getClass().getResource("ThankYouForRegistrationScene.fxml"));
                     loader.setController(controller);
@@ -153,6 +150,9 @@ public class RegistrationSceneController {
             return false;
         }
         if (!RegistrationManager.isNewUserName(t.getEmail())) {
+            return false;
+        }
+        if (t.getPassword() == null || t.getPassword().equals("")) {
             return false;
         }
         return true;
