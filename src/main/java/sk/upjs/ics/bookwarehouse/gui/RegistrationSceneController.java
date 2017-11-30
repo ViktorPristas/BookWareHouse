@@ -17,6 +17,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sk.upjs.ics.bookwarehouse.DaoFactory;
+import sk.upjs.ics.bookwarehouse.ManagerFactory;
 import sk.upjs.ics.bookwarehouse.Teacher;
 import sk.upjs.ics.bookwarehouse.business.RegistrationManager;
 import sk.upjs.ics.bookwarehouse.fxmodels.TeacherFxModel;
@@ -139,10 +140,10 @@ public class RegistrationSceneController {
         if ((t.getEmail() == null) || t.getEmail().equals("")) {
             return false;
         }
-        if ((t.getSurname()== null) || t.getSurname().equals("")) {
+        if ((t.getSurname() == null) || t.getSurname().equals("")) {
             return false;
         }
-        if(!RegistrationManager.isNewTeacherEmail(t.getEmail())){
+        if (!RegistrationManager.isNewUserName(t.getEmail())) {
             return false;
         }
         return true;

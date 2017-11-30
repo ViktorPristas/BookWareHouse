@@ -7,24 +7,27 @@ import sk.upjs.ics.bookwarehouse.business.PasswordManager;
 import sk.upjs.ics.bookwarehouse.business.SHA256PasswordManager;
 import sk.upjs.ics.bookwarehouse.business.BookLendingManager;
 import sk.upjs.ics.bookwarehouse.business.DefaultBookLendingManager;
-
+import sk.upjs.ics.bookwarehouse.business.RegistrationManager;
 
 public enum ManagerFactory {
     INSTANCE;
-    
-    public PasswordManager getPasswordManager(){
+
+    public PasswordManager getPasswordManager() {
         return new SHA256PasswordManager();
     }
-    
-    public BookLendingManager getBookLendingManager(){
+
+    public BookLendingManager getBookLendingManager() {
         return new DefaultBookLendingManager();
     }
-    
-    public BookEditManager getBookEditManager(){
+
+    public BookEditManager getBookEditManager() {
         return new DefaultBookEditManager();
     }
-    
-    public LostPasswordManager getLostPasswordManager(){
+
+    public LostPasswordManager getLostPasswordManager() {
         return new LostPasswordManager();
     }
+
+    
+    
 }
