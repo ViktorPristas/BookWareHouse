@@ -109,6 +109,7 @@ public class MainSceneTeacherController {
         });
 
         logOutButton.setOnAction(eh -> {
+            // UserIdentificationManager.logOut();
             LogInSceneController controller = new LogInSceneController();
             try {
                 FXMLLoader loader = new FXMLLoader(

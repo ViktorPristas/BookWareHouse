@@ -103,6 +103,8 @@ public class RegistrationSceneController {
                 }
             }
         });
+        
+       
 
         signUpButton.setOnAction(eh -> {
             ThankYouForRegistrationSceneController controller = new ThankYouForRegistrationSceneController();

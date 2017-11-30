@@ -47,4 +47,9 @@ public class UserIdentificationManager {
         return false;
     }
 
+    public static void logOut() {
+        UserIdentificationManager.typeOfUser = 0;
+        UserIdentificationManager.id = null;
+    }
+
 }

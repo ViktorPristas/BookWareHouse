@@ -72,6 +72,7 @@ public class SupAMainSceneController {
         });
 
         logOutButton.setOnAction(eh -> {
+            // UserIdentificationManager.logOut();
             LogInSceneController controller = new LogInSceneController();
             try {
                 FXMLLoader loader = new FXMLLoader(

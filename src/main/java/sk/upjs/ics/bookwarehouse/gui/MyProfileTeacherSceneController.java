@@ -17,6 +17,7 @@ public class MyProfileTeacherSceneController {
 
     @FXML
     private Button saveChangesButton;
+   
 
     @FXML
     private TextField nameTextField;
@@ -38,6 +39,8 @@ public class MyProfileTeacherSceneController {
 
     @FXML
     void initialize() {
+        
+        
         saveChangesButton.setOnAction(eh -> {
             saveChangesButton.getScene().getWindow().hide();
         });

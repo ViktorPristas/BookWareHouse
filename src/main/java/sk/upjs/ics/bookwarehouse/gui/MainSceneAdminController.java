@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import sk.upjs.ics.bookwarehouse.business.UserIdentificationManager;
 
 public class MainSceneAdminController {
 
@@ -58,6 +59,7 @@ public class MainSceneAdminController {
         });
 
         logOutButton.setOnAction(eh -> {
+           // UserIdentificationManager.logOut();
             LogInSceneController controller = new LogInSceneController();
             try {
                 FXMLLoader loader = new FXMLLoader(
