@@ -4,6 +4,6 @@ public interface PasswordManager {
 
     String hashPassword(String passwordForHash);
 
-    boolean isCorrectPassword(String passwordToCheck, String hashedPassword);
+    boolean isCorrectPassword(String passwordToCheck, int userType, long id);
 
 }

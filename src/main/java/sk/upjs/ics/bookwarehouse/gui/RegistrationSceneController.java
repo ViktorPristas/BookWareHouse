@@ -19,6 +19,7 @@ import javafx.stage.Stage;
 import sk.upjs.ics.bookwarehouse.DaoFactory;
 import sk.upjs.ics.bookwarehouse.ManagerFactory;
 import sk.upjs.ics.bookwarehouse.Teacher;
+import sk.upjs.ics.bookwarehouse.business.PasswordManager;
 import sk.upjs.ics.bookwarehouse.business.RegistrationManager;
 import sk.upjs.ics.bookwarehouse.fxmodels.TeacherFxModel;
 import sk.upjs.ics.bookwarehouse.storage.TeacherDao;
@@ -27,6 +28,7 @@ public class RegistrationSceneController {
 
     private final TeacherFxModel teacherFxModel = new TeacherFxModel();
     private final TeacherDao teacherDao = DaoFactory.INSTANCE.getTeacherDao();
+    private final PasswordManager passwordManager = ManagerFactory.INSTANCE.getPasswordManager();
 
     @FXML
     private ResourceBundle resources;

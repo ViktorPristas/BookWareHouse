@@ -13,8 +13,12 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import sk.upjs.ics.bookwarehouse.business.UserIdentificationManager;
+import sk.upjs.ics.bookwarehouse.fxmodels.LoginFxModel;
 
 public class LogInSceneController {
+
+    LoginFxModel loginFxModel = new LoginFxModel();
 
     @FXML
     private ResourceBundle resources;
@@ -45,6 +49,13 @@ public class LogInSceneController {
 
     @FXML
     void initialize() {
+
+        emailTextField.textProperty().bindBidirectional(
+                loginFxModel.emailProperty());
+
+        passwordTextField.textProperty().bindBidirectional(
+                loginFxModel.passwordProperty());
+
         registerButton.setOnAction(eh -> {
             RegistrationSceneController controller = new RegistrationSceneController();
             try {
@@ -68,25 +79,18 @@ public class LogInSceneController {
         });
 
         loginButton.setOnAction(eh -> {
-            MainSceneTeacherController controller = new MainSceneTeacherController();
-            try {
-                FXMLLoader loader = new FXMLLoader(
-                        getClass().getResource("MainSceneTeacher.fxml"));
-                loader.setController(controller);
-
-                Parent parentPane = loader.load();
-                Scene scene = new Scene(parentPane);
-
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("BookWareHouse");
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.show();
-                loginButton.getScene().getWindow().hide();
-
-                // toto sa vykona az po zatvoreni okna
-            } catch (IOException iOException) {
-                iOException.printStackTrace();
+            if (!UserIdentificationManager.setUser(loginFxModel.getEmail())) {
+                //nejaky allert
+            }
+            if (UserIdentificationManager.getTypeOfUser() == 1) {
+                if()
+                loginTeacher();
+            }
+            if (UserIdentificationManager.getTypeOfUser() == 2) {
+                loginAdmin();
+            }
+            if (UserIdentificationManager.getTypeOfUser() == 3) {
+                loginSuperAdmin();
             }
         });
 
@@ -113,46 +117,77 @@ public class LogInSceneController {
         });
 
         adminloginButton.setOnAction(eh -> {
-            MainSceneAdminController controller = new MainSceneAdminController();
-            try {
-                FXMLLoader loader = new FXMLLoader(
-                        getClass().getResource("MainSceneAdmin.fxml"));
-                loader.setController(controller);
-
-                Parent parentPane = loader.load();
-                Scene scene = new Scene(parentPane);
-
-                Stage stage = new Stage();
-                stage.setScene(scene);
-                stage.setTitle("BookWareHouse");
-                stage.show();
-                adminloginButton.getScene().getWindow().hide();
-
-                // toto sa vykona az po zatvoreni okna
-            } catch (IOException iOException) {
-                iOException.printStackTrace();
-            }
+            loginAdmin();
         });
 
         supadminloginButton.setOnAction(eh -> {
-            SupAMainSceneController controller = new SupAMainSceneController();
-            try {
-                FXMLLoader loader = new FXMLLoader(
-                        getClass().getResource("SupAMainScene.fxml"));
-                loader.setController(controller);
-
-                Parent parentPane = loader.load();
-                Scene scene = new Scene(parentPane);
-
-                Stage stage = (Stage) supadminloginButton.getScene().getWindow();
-                stage.setScene(scene);
-                stage.setTitle("BookWareHouse");
-                stage.show();
-
-                // toto sa vykona az po zatvoreni okna
-            } catch (IOException iOException) {
-                iOException.printStackTrace();
-            }
+            loginSuperAdmin();
         });
+    }
+
+    private void loginTeacher() {
+        MainSceneTeacherController controller = new MainSceneTeacherController();
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("MainSceneTeacher.fxml"));
+            loader.setController(controller);
+
+            Parent parentPane = loader.load();
+            Scene scene = new Scene(parentPane);
+
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("BookWareHouse");
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.show();
+            loginButton.getScene().getWindow().hide();
+
+            // toto sa vykona az po zatvoreni okna
+        } catch (IOException iOException) {
+            iOException.printStackTrace();
+        }
+    }
+
+    private void loginAdmin() {
+        MainSceneAdminController controller = new MainSceneAdminController();
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("MainSceneAdmin.fxml"));
+            loader.setController(controller);
+
+            Parent parentPane = loader.load();
+            Scene scene = new Scene(parentPane);
+
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.setTitle("BookWareHouse");
+            stage.show();
+            adminloginButton.getScene().getWindow().hide();
+
+            // toto sa vykona az po zatvoreni okna
+        } catch (IOException iOException) {
+            iOException.printStackTrace();
+        }
+    }
+
+    private void loginSuperAdmin() {
+        SupAMainSceneController controller = new SupAMainSceneController();
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("SupAMainScene.fxml"));
+            loader.setController(controller);
+
+            Parent parentPane = loader.load();
+            Scene scene = new Scene(parentPane);
+
+            Stage stage = (Stage) supadminloginButton.getScene().getWindow();
+            stage.setScene(scene);
+            stage.setTitle("BookWareHouse");
+            stage.show();
+
+            // toto sa vykona az po zatvoreni okna
+        } catch (IOException iOException) {
+            iOException.printStackTrace();
+        }
     }
 }
