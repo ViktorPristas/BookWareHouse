@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import sk.upjs.ics.bookwarehouse.DaoFactory;
 import sk.upjs.ics.bookwarehouse.Teacher;
 
 public class MysqlTeacherDao implements TeacherDao {
@@ -90,22 +91,13 @@ public class MysqlTeacherDao implements TeacherDao {
 
     @Override
     public Teacher findByEmail(String email) {
-        String sql = "SELECT id, name, surname, email, password, "
-                + "numberOfStudentsInClass FROM BookWareHouse.Teacher WHERE email = " + email;
-        List<Teacher> teachers = jdbcTemplate.query(sql, new RowMapper<Teacher>() {
-            @Override
-            public Teacher mapRow(ResultSet rs, int i) throws SQLException {
-                Teacher t = new Teacher();
-                t.setId(rs.getLong("id"));
-                t.setName(rs.getString("name"));
-                t.setSurname(rs.getString("surname"));
-                t.setEmail(rs.getString("email"));
-                t.setPassword(rs.getString("password"));
-                t.setNumberOfStudentsInClass(rs.getInt("numberOfStudentsInClass"));
-                return t;
+        List<Teacher> list = DaoFactory.INSTANCE.getTeacherDao().getAll();
+        for (Teacher teacher : list) {
+            if (teacher.getEmail().equals(email)) {
+                return teacher;
             }
-        });
-        return teachers.get(0);
+        }
+        return null;
     }
 
     // DELETE
