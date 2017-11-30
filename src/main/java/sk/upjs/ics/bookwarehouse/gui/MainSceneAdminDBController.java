@@ -116,7 +116,7 @@ public class MainSceneAdminDBController {
         });
         
          if (bookFxModel.getBooks().size() > 0) {
-            bookFxModel.loadBookToModel();
+            bookFxModel.loadBooksToModel();
         }
 
         TableColumn<BookFxModel, String> titleCol = new TableColumn<>("Nazov");

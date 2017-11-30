@@ -147,7 +147,7 @@ public class BookFxModel {
         return b;
     }
 
-    public void loadBookToModel() {
+    public void loadBooksToModel() {
         booksmodel.clear();
         for (Book book : books) {
             BookFxModel bookFxModel = new BookFxModel();

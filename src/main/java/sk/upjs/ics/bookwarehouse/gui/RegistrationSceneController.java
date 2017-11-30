@@ -21,6 +21,7 @@ import sk.upjs.ics.bookwarehouse.ManagerFactory;
 import sk.upjs.ics.bookwarehouse.Teacher;
 import sk.upjs.ics.bookwarehouse.business.PasswordManager;
 import sk.upjs.ics.bookwarehouse.business.RegistrationManager;
+import sk.upjs.ics.bookwarehouse.business.UserIdentificationManager;
 import sk.upjs.ics.bookwarehouse.fxmodels.TeacherFxModel;
 import sk.upjs.ics.bookwarehouse.storage.TeacherDao;
 
@@ -43,7 +44,7 @@ public class RegistrationSceneController {
     private TextField nameTextField;
 
     @FXML
-    private TextField surenameTextField;
+    private TextField surnameTextField;
 
     @FXML
     private TextField emailTextField;
@@ -59,10 +60,11 @@ public class RegistrationSceneController {
 
     @FXML
     void initialize() {
+        
         nameTextField.textProperty().bindBidirectional(
                 teacherFxModel.nameProperty());
 
-        surenameTextField.textProperty().bindBidirectional(
+        surnameTextField.textProperty().bindBidirectional(
                 teacherFxModel.surnameProperty());
 
         emailTextField.textProperty().bindBidirectional(
@@ -73,6 +75,7 @@ public class RegistrationSceneController {
 
         passwordTextField.textProperty().bindBidirectional(
                 teacherFxModel.passwordProperty());
+        
         passwordTextField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -111,9 +114,11 @@ public class RegistrationSceneController {
             try {
                 Teacher teacher = teacherFxModel.getTeacher();
                 teacher.setId();
-                teacher = teacherDao.save(teacher);
+                
 
                 if (registrationIsOk(teacher)) {
+                    teacher = teacherDao.save(teacher);
+                    
                     FXMLLoader loader = new FXMLLoader(
                             getClass().getResource("ThankYouForRegistrationScene.fxml"));
                     loader.setController(controller);
