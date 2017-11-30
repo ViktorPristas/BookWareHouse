@@ -5,6 +5,8 @@ import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import sk.upjs.ics.bookwarehouse.ManagerFactory;
+import sk.upjs.ics.bookwarehouse.business.LostPasswordManager;
 
 public class ForgottenPasswordSceneController {
 
@@ -23,6 +25,8 @@ public class ForgottenPasswordSceneController {
     @FXML
     void initialize() {
         sendPasswordButton.setOnAction(eh -> {
+            String email = emailTextField.textProperty().get();
+            LostPasswordManager.sendNewPassword(email);
             sendPasswordButton.getScene().getWindow().hide();
         });
     }
