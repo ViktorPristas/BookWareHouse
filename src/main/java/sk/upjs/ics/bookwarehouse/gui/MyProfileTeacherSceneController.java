@@ -9,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.util.converter.NumberStringConverter;
 import sk.upjs.ics.bookwarehouse.DaoFactory;
 import sk.upjs.ics.bookwarehouse.Teacher;
 import sk.upjs.ics.bookwarehouse.business.RegistrationManager;
@@ -18,8 +19,8 @@ import sk.upjs.ics.bookwarehouse.storage.TeacherDao;
 
 public class MyProfileTeacherSceneController {
 
-    TeacherFxModel teacherFxModel = new TeacherFxModel();
-    TeacherDao teacherDao = DaoFactory.INSTANCE.getTeacherDao();
+    private TeacherFxModel teacherFxModel = new TeacherFxModel();
+    private TeacherDao teacherDao = DaoFactory.INSTANCE.getTeacherDao();
 
     @FXML
     private ResourceBundle resources;
@@ -61,11 +62,11 @@ public class MyProfileTeacherSceneController {
         emailTextField.textProperty().bindBidirectional(
                 teacherFxModel.emailProperty());
 
-        emailTextField.textProperty().bindBidirectional(
-                teacherFxModel.emailProperty());
-
         passwordTextField.textProperty().bindBidirectional(
                 teacherFxModel.passwordProperty());
+
+        numberOfStudentsTextField.textProperty().bindBidirectional(
+                teacherFxModel.numberOfStudentsInClassProperty(), new NumberStringConverter());
 
         saveChangesButton.setOnAction(eh -> {
             Teacher teacher = teacherFxModel.getTeacher();
@@ -74,14 +75,10 @@ public class MyProfileTeacherSceneController {
                 List<Teacher> list = teacherDao.getAll();
                 for (Teacher t : list) {
                     if ((!t.getId().equals(teacher.getId()) && (t.getEmail().equals(teacher.getEmail())))) {
-                        System.out.println(t.getEmail());
-                        System.out.println(t.getId());
-                        System.out.println(teacher.getId());
                         isEmailOk = false;
                     }
                 }
-                System.out.println(isEmailOk);
-               if (isEmailOk) {
+                if (isEmailOk) {
                     teacher = teacherDao.save(teacher);
                     saveChangesButton.getScene().getWindow().hide();
                 }

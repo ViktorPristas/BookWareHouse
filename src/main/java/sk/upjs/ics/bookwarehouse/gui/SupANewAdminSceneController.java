@@ -6,11 +6,16 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import sk.upjs.ics.bookwarehouse.Admin;
+import sk.upjs.ics.bookwarehouse.DaoFactory;
+import sk.upjs.ics.bookwarehouse.business.RegistrationManager;
 import sk.upjs.ics.bookwarehouse.fxmodels.AdminFxModel;
+import sk.upjs.ics.bookwarehouse.storage.AdminDao;
 
 public class SupANewAdminSceneController {
 
-    AdminFxModel adminFxModel = new AdminFxModel();
+    private  AdminFxModel adminFxModel = new AdminFxModel();
+    private  AdminDao adminDao = DaoFactory.INSTANCE.getAdminDao();
 
     @FXML
     private ResourceBundle resources;
@@ -42,7 +47,31 @@ public class SupANewAdminSceneController {
                 adminFxModel.passwordProperty());
 
         addAdminButton.setOnAction(eh -> {
-            addAdminButton.getScene().getWindow().hide();
+            Admin admin = adminFxModel.getAdmin();
+            admin.setId();
+            if (registrationIsOk(admin)) {
+                admin = adminDao.save(admin);
+                addAdminButton.getScene().getWindow().hide();
+            }
         });
+    }
+
+    private boolean registrationIsOk(Admin a) {
+        if (a.getEmail() == null || a.getEmail().equals("")) {
+            return false;
+        }
+        if (a.getUserName() == null || a.getUserName().equals("")) {
+            return false;
+        }
+        if (a.getPassword() == null || a.getPassword().equals("")) {
+            return false;
+        }
+        if (!RegistrationManager.isNewUserName(a.getUserName())) {
+            return false;
+        }
+        if (!RegistrationManager.isNewAdminEmail(a.getEmail())) {
+            return false;
+        }
+        return true;
     }
 }

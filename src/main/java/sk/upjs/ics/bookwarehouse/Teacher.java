@@ -54,11 +54,14 @@ public class Teacher {
     }
 
     public String getPassword() {
+        //System.out.println(id);
+        //System.out.println(password);
         return password;
     }
 
     public void setPassword(String password) {
-        this.password = ManagerFactory.INSTANCE.getPasswordManager().hashPassword(password);
+       this.password = password;
+        //this.password = ManagerFactory.INSTANCE.getPasswordManager().hashPassword(password);
     }
 
     public boolean hasClass() {

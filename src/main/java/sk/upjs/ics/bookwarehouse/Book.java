@@ -86,4 +86,8 @@ public class Book {
         this.used = used;
     }
 
+    public void setId() {
+        this.id = null;
+    }
+
 }

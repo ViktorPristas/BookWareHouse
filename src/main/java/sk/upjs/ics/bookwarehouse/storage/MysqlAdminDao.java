@@ -31,8 +31,8 @@ public class MysqlAdminDao implements AdminDao {
             simpleJdbcInsert.usingColumns("userName", "email", "password");
             Map<String, Object> data = new HashMap<>();
             data.put("userName", admin.getUserName());
-            data.put("email", admin.getUserName());
-            data.put("password", admin.getUserName());
+            data.put("email", admin.getEmail());
+            data.put("password", admin.getPassword());
             admin.setId(simpleJdbcInsert.executeAndReturnKey(data).longValue());
         } else {    // UPDATE
             String sql = "UPDATE admin SET username = ?, email = ?, password = ? WHERE id = " + admin.getId();
@@ -51,7 +51,7 @@ public class MysqlAdminDao implements AdminDao {
                 Admin a = new Admin();
                 a.setId(rs.getInt("id"));
                 a.setUserName(rs.getString("userName"));
-                a.setEmail("email");
+                a.setEmail(rs.getString("email"));
                 a.setPassword(rs.getString("password"));
                 return a;
             }
@@ -75,7 +75,7 @@ public class MysqlAdminDao implements AdminDao {
     public Admin findById(Long id) {
         List<Admin> list = DaoFactory.INSTANCE.getAdminDao().getAll();
         for (Admin admin : list) {
-            if (admin.getId().equals(id)) {
+           if (admin.getId().equals(id)) {
                 return admin;
             }
         }

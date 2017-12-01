@@ -35,19 +35,18 @@ public class LostPasswordManager {
         String pass = PASSWORD;
         String[] to = {RECIPIENT}; // list of recipient email addresses
         String subject = "Nové heslo";
+
         String newPassword = java.util.UUID.randomUUID().toString().substring(0, 10);
+
         TeacherDao dao = DaoFactory.INSTANCE.getTeacherDao();
         Teacher teacher = dao.findByEmail(email);
         if (teacher != null) {
             teacher.setPassword(newPassword);
             dao.save(teacher);
             teacher = dao.findByEmail(email);
-            System.out.println(ManagerFactory.INSTANCE.getPasswordManager().hashPassword(newPassword));
-            System.out.println(teacher.getPassword());
             sendFromGMail(from, pass, to, subject, newPassword, email);
             return true;
         }
-        System.out.println("nieco je zle");
         return false;
 
     }

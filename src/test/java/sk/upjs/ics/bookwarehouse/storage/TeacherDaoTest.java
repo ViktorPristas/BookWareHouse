@@ -52,7 +52,7 @@ public class TeacherDaoTest {
         teacherOld.setName("name" + id);
         teacherOld.setSurname("surname" + id);
         teacherOld.setEmail("teacher" + id + "@gmail.com");
-        teacherOld.setPassword("password");
+        teacherOld.setPassword("password1");
         int n = (int) (Math.random() * 100);
         teacherOld.setNumberOfStudentsInClass(n);
 

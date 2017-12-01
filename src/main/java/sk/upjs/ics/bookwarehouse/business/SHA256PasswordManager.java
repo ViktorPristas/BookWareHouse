@@ -6,6 +6,7 @@ import java.util.List;
 import javax.xml.bind.DatatypeConverter;
 import sk.upjs.ics.bookwarehouse.Admin;
 import sk.upjs.ics.bookwarehouse.DaoFactory;
+import sk.upjs.ics.bookwarehouse.ManagerFactory;
 import sk.upjs.ics.bookwarehouse.SuperAdmin;
 import sk.upjs.ics.bookwarehouse.Teacher;
 
@@ -17,7 +18,7 @@ public class SHA256PasswordManager implements PasswordManager {
             MessageDigest md = MessageDigest.getInstance("SHA-256");
             md.update(passwordForHash.getBytes());
             byte[] data = md.digest();
-            return DatatypeConverter.printHexBinary(data);
+            return DatatypeConverter.printHexBinary(data).toString();
 
         } catch (NoSuchAlgorithmException noSuchAlgorithmException) {
             noSuchAlgorithmException.printStackTrace();
@@ -25,26 +26,23 @@ public class SHA256PasswordManager implements PasswordManager {
         return null;
     }
 
-   
     private boolean isCorrectPassword(String passwordToCheck, String hashedPassword) {
-        System.out.println(passwordToCheck);
+        /*System.out.println(passwordToCheck);
          System.out.println(hashPassword(passwordToCheck));
-         System.out.println(hashedPassword);
-         
-        return (hashPassword(passwordToCheck).equals(hashedPassword));
+         System.out.println(hashedPassword);*/
+
+        //return (hashPassword(passwordToCheck).equals(hashedPassword));
+        return passwordToCheck.equals(hashedPassword);
     }
 
     @Override
     public boolean isCorrectPassword(String passwordToCheck, int userType, long id) {
         if (userType == 1) {
-            List<Teacher> list = DaoFactory.INSTANCE.getTeacherDao().getAll();
-            for (Teacher teacher : list) {
-                if (teacher.getId().equals(id)) {
-                    System.out.println("skoro dobre2");
-                    return isCorrectPassword(passwordToCheck, teacher.getPassword());
-                }
-            }
+            Teacher teacher = DaoFactory.INSTANCE.getTeacherDao().findById(id);
+            String hashedPassword = teacher.getPassword();
+            return isCorrectPassword(passwordToCheck, hashedPassword);
         }
+
         if (userType == 2) {
             List<Admin> list = DaoFactory.INSTANCE.getAdminDao().getAll();
             for (Admin admin : list) {

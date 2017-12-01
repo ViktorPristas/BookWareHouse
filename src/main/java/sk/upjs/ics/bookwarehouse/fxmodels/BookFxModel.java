@@ -2,7 +2,10 @@ package sk.upjs.ics.bookwarehouse.fxmodels;
 
 import java.util.List;
 import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.LongProperty;
+import javafx.beans.property.SimpleBooleanProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
@@ -20,11 +23,11 @@ public class BookFxModel {
     private LongProperty id = new SimpleLongProperty();
     private StringProperty title = new SimpleStringProperty();
     private StringProperty author = new SimpleStringProperty();
-    private int yearOfPublication;
+    private IntegerProperty yearOfPublication = new SimpleIntegerProperty();
     private StringProperty schoolClass = new SimpleStringProperty();
-    private int numberInStock;
-    private int numberOfUsed;
-    private boolean used;
+    private IntegerProperty numberInStock = new SimpleIntegerProperty();
+    private IntegerProperty numberOfUsed = new SimpleIntegerProperty();
+    private BooleanProperty used = new SimpleBooleanProperty();
     private StringProperty comment = new SimpleStringProperty();
 
     public BookFxModel() {
@@ -42,11 +45,15 @@ public class BookFxModel {
     }
 
     public boolean isUsed() {
+        return used.get();
+    }
+
+    public BooleanProperty isUsedProperty() {
         return used;
     }
 
     public void setUsed(boolean used) {
-        this.used = used;
+        this.used.set(used);
     }
 
     public String getComment() {
@@ -98,11 +105,15 @@ public class BookFxModel {
     }
 
     public int getYearOfPublication() {
+        return yearOfPublication.get();
+    }
+
+    public IntegerProperty yearOfPublicationProperty() {
         return yearOfPublication;
     }
 
     public void setYearOfPublication(int yearOfPublication) {
-        this.yearOfPublication = yearOfPublication;
+        this.yearOfPublication.set(yearOfPublication);
     }
 
     public String getSchoolClass() {
@@ -118,19 +129,27 @@ public class BookFxModel {
     }
 
     public int getNumberInStock() {
+        return numberInStock.get();
+    }
+
+    public IntegerProperty numberInStockProperty() {
         return numberInStock;
     }
 
     public void setNumberInStock(int numberInStock) {
-        this.numberInStock = numberInStock;
+        this.numberInStock.set(numberInStock);
     }
 
-    public int getNumberOfUsed() {
+    public IntegerProperty numberOfUsedProperty() {
         return numberOfUsed;
     }
 
+    public int getNumberOfUsed() {
+        return numberOfUsed.get();
+    }
+
     public void setNumberOfUsed(int numberOfUsed) {
-        this.numberOfUsed = numberOfUsed;
+        this.numberOfUsed.set(numberOfUsed);
     }
 
     public Book getBook() {
@@ -159,6 +178,7 @@ public class BookFxModel {
             int numberInStock = book.getNumberInStock();
             int numberOfUsed = book.getNumberOfUsed();
 
+            System.out.println(yearOfPublication);
             bookFxModel.setTitle(title);
             bookFxModel.setAuthor(author);
             bookFxModel.setYearOfPublication(yearOfPublication);

@@ -16,6 +16,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import javafx.util.converter.NumberStringConverter;
 import sk.upjs.ics.bookwarehouse.DaoFactory;
 import sk.upjs.ics.bookwarehouse.ManagerFactory;
 import sk.upjs.ics.bookwarehouse.Teacher;
@@ -44,7 +45,7 @@ public class RegistrationSceneController {
     private TextField nameTextField;
 
     @FXML
-    private TextField surnameTextField;
+    private TextField surenameTextField;
 
     @FXML
     private TextField emailTextField;
@@ -64,7 +65,7 @@ public class RegistrationSceneController {
         nameTextField.textProperty().bindBidirectional(
                 teacherFxModel.nameProperty());
 
-        surnameTextField.textProperty().bindBidirectional(
+        surenameTextField.textProperty().bindBidirectional(
                 teacherFxModel.surnameProperty());
 
         emailTextField.textProperty().bindBidirectional(
@@ -72,6 +73,10 @@ public class RegistrationSceneController {
 
         passwordTextField.textProperty().bindBidirectional(
                 teacherFxModel.passwordProperty());
+        
+        numberOfStudentsTextField.textProperty().bindBidirectional(
+                teacherFxModel.numberOfStudentsInClassProperty(), new NumberStringConverter());
+
 
         passwordTextField.textProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -137,7 +142,7 @@ public class RegistrationSceneController {
         });
     }
 
-    public boolean registrationIsOk(Teacher t) {
+   public boolean registrationIsOk(Teacher t) {
         if (t.getName() == null || t.getName().equals("")) {
             return false;
         }
