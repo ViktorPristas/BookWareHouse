@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -43,6 +44,9 @@ public class MainSceneAdminDBController {
 
     @FXML
     private TableView<BookFxModel> simpleTableView;
+    
+    @FXML
+    private ComboBox<String> schoolClassComboBox;
 
     @FXML
     void initialize() {
@@ -90,11 +94,9 @@ public class MainSceneAdminDBController {
             }
         });
 
-        // no new controller created for the book editation..
-        // might cause problems when fxModel needed
         editBookButton.setOnAction(eh -> {
 
-            NewBookSceneController controller = new NewBookSceneController();
+            AdminEditBookSceneController controller = new AdminEditBookSceneController();
             try {
                 FXMLLoader loader = new FXMLLoader(
                         getClass().getResource("EditBookScene.fxml"));
@@ -144,5 +146,17 @@ public class MainSceneAdminDBController {
         simpleTableView.getColumns().add(numberOfUsedCol);
 
         simpleTableView.setItems(bookFxModel.getBooksModel());
+        
+        // naplnenie combobxu
+        schoolClassComboBox.getItems().addAll("<Všetko>", "1", "2", "3", "4", "5", "6", "7", "8", "9", "I. G", "II. G", "III. G", "IV. G");
+
+        searchButton.setOnAction(eh -> {
+            String selectedClass = schoolClassComboBox.getValue();
+
+            if (bookFxModel.getBooks().size() > 0) {
+                bookFxModel.loadFilteredBooksToModel(selectedClass);
+            }
+
+        });
     }
 }

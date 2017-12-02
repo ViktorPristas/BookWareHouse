@@ -190,4 +190,30 @@ public class BookFxModel {
 
     }
 
+    public void loadFilteredBooksToModel(String selectedSchoolClass) {
+        booksmodel.clear();
+        for (Book book : books) {
+            if (book.getSchoolClass().equals(selectedSchoolClass) || selectedSchoolClass.equals("<Všetko>")) {
+                BookFxModel bookFxModel = new BookFxModel();
+
+                String title = book.getTitle();
+                String author = book.getAuthor();
+                int yearOfPublication = book.getYearOfPublication();
+                String schoolClass = book.getSchoolClass();
+                int numberInStock = book.getNumberInStock();
+                int numberOfUsed = book.getNumberOfUsed();
+
+                System.out.println(yearOfPublication);
+                bookFxModel.setTitle(title);
+                bookFxModel.setAuthor(author);
+                bookFxModel.setYearOfPublication(yearOfPublication);
+                bookFxModel.setSchoolClass(schoolClass);
+                bookFxModel.setNumberInStock(numberInStock);
+                bookFxModel.setNumberOfUsed(numberOfUsed);
+                booksmodel.add(bookFxModel);
+            }
+        }
+
+    }
+
 }

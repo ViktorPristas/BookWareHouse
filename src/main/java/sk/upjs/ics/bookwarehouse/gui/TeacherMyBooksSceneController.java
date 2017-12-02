@@ -8,10 +8,17 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import sk.upjs.ics.bookwarehouse.fxmodels.BookFxModel;
+import sk.upjs.ics.bookwarehouse.fxmodels.BookLendingFxModel;
 
 public class TeacherMyBooksSceneController {
+
+    private final BookLendingFxModel bookLendingFxModel = new BookLendingFxModel();
 
     @FXML
     private ResourceBundle resources;
@@ -24,6 +31,9 @@ public class TeacherMyBooksSceneController {
 
     @FXML
     private Button backButton;
+
+    @FXML
+    private TableView<BookLendingFxModel> simpleTableView;
 
     @FXML
     void initialize() {
@@ -47,5 +57,29 @@ public class TeacherMyBooksSceneController {
                 iOException.printStackTrace();
             }
         });
+
+    
+        if (bookLendingFxModel.getLendings().size() > 0) {
+            bookLendingFxModel.loadBookLendingToModel();
+        }
+
+        TableColumn<BookLendingFxModel, Integer> yearOfReturnCol = new TableColumn<>("rok vratenia");
+        yearOfReturnCol.setCellValueFactory(new PropertyValueFactory<>("yearOfReturn"));
+        simpleTableView.getColumns().add(yearOfReturnCol);
+
+        TableColumn<BookLendingFxModel, Integer> lendedCol = new TableColumn<>("pocet rozdanych");
+        lendedCol.setCellValueFactory(new PropertyValueFactory<>("lended"));
+        simpleTableView.getColumns().add(lendedCol);
+
+        TableColumn<BookLendingFxModel, Integer> returnedCol = new TableColumn<>("pocet vratenych");
+        returnedCol.setCellValueFactory(new PropertyValueFactory<>("returned"));
+        simpleTableView.getColumns().add(returnedCol);
+
+        TableColumn<BookLendingFxModel, String> commentCol = new TableColumn<>("koment");
+        commentCol.setCellValueFactory(new PropertyValueFactory<>("comment"));
+        simpleTableView.getColumns().add(commentCol);
+
+        simpleTableView.setItems(bookLendingFxModel.getBookLendingsModel());
+
     }
 }

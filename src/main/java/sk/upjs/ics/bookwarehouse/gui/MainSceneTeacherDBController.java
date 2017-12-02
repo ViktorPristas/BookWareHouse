@@ -2,16 +2,13 @@ package sk.upjs.ics.bookwarehouse.gui;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -19,9 +16,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sk.upjs.ics.bookwarehouse.Book;
-import sk.upjs.ics.bookwarehouse.DaoFactory;
 import sk.upjs.ics.bookwarehouse.fxmodels.BookFxModel;
-import sk.upjs.ics.bookwarehouse.storage.BookDao;
 
 public class MainSceneTeacherDBController {
 
@@ -50,6 +45,9 @@ public class MainSceneTeacherDBController {
 
     @FXML
     private TableView<BookFxModel> simpleTableView;
+
+    @FXML
+    private ComboBox<String> schoolClassComboBox;
 
     @FXML
     void initialize() {
@@ -125,5 +123,18 @@ public class MainSceneTeacherDBController {
         simpleTableView.getColumns().add(numberOfUsedCol);
 
         simpleTableView.setItems(bookFxModel.getBooksModel());
+
+        // naplnenie combobxu
+        schoolClassComboBox.getItems().addAll("<Všetko>", "1", "2", "3", "4", "5", "6", "7", "8", "9", "I. G", "II. G", "III. G", "IV. G");
+
+        searchButton.setOnAction(eh -> {
+            String selectedClass = schoolClassComboBox.getValue();
+
+            if (bookFxModel.getBooks().size() > 0) {
+                bookFxModel.loadFilteredBooksToModel(selectedClass);
+            }
+
+        });
+
     }
 }
