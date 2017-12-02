@@ -25,7 +25,7 @@ public class MyProfileAdminSceneController {
     private AdminFxModel adminFxModel = new AdminFxModel();
     private AdminDao adminDao = DaoFactory.INSTANCE.getAdminDao();
 
-    @FXML
+@FXML
     private ResourceBundle resources;
 
     @FXML

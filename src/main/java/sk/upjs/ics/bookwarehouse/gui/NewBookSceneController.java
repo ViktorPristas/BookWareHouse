@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 import javafx.util.converter.NumberStringConverter;
 import sk.upjs.ics.bookwarehouse.Book;
@@ -32,7 +33,7 @@ public class NewBookSceneController {
     private TextField yearofPublicationTextField;
 
     @FXML
-    private TextField schoolClassTextField;
+    private ComboBox<String> schoolClassComboBox;
 
     @FXML
     private TextField numberInStockTextField;
@@ -51,11 +52,14 @@ public class NewBookSceneController {
         yearofPublicationTextField.textProperty().bindBidirectional(
                 bookFxModel.yearOfPublicationProperty(), new NumberStringConverter());
 
-        schoolClassTextField.textProperty().bindBidirectional(
-                bookFxModel.SchoolClassProperty());
+//        schoolClassComboBox.textProperty().bindBidirectional(
+//                bookFxModel.SchoolClassProperty());
 
         numberInStockTextField.textProperty().bindBidirectional(
                 bookFxModel.numberInStockProperty(), new NumberStringConverter());
+        
+        schoolClassComboBox.getItems().addAll("1", "2", "3", "4", "5", "6", "7", "8", "9", "I. G", "II. G", "III. G", "IV. G");
+
 
         saveButton.setOnAction(eh -> {
             Book b = bookFxModel.getBook();

@@ -89,7 +89,7 @@ public class MysqlBookDao implements BookDao {
                 } else {
                     b.setUsed(false);
                 }
-
+                
                 return b;
             }
         });

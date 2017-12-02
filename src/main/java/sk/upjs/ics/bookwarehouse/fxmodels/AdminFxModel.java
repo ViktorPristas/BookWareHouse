@@ -2,19 +2,39 @@ package sk.upjs.ics.bookwarehouse.fxmodels;
 
 import java.util.List;
 import javafx.beans.property.LongProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import sk.upjs.ics.bookwarehouse.Admin;
 import sk.upjs.ics.bookwarehouse.DaoFactory;
+import sk.upjs.ics.bookwarehouse.storage.AdminDao;
 
 public class AdminFxModel {
     
+    private ObservableList<Admin> admins = new SimpleListProperty<>();
+    private ObservableList<AdminFxModel> adminsModel = FXCollections.observableArrayList();
     private LongProperty id = new SimpleLongProperty();
     private StringProperty userName = new SimpleStringProperty();
     private StringProperty email = new SimpleStringProperty();
     private StringProperty password = new SimpleStringProperty();
     private String actualPassword;
+    
+    public AdminFxModel() {
+        AdminDao adminDao = DaoFactory.INSTANCE.getAdminDao();
+        List<Admin> admins = adminDao.getAll();
+        this.admins = FXCollections.observableArrayList(admins);
+    }
+    
+    public ObservableList<AdminFxModel> getAdminsModel() {
+        return adminsModel;
+    }
+    
+    public ObservableList<Admin> getAdmins() {
+        return admins;
+    }
     
     public String getActualPassword() {
         return actualPassword;
@@ -93,4 +113,18 @@ public class AdminFxModel {
         setActualPassword(a.getPassword());
     }
     
+    public void loadAdminToModel() {
+        adminsModel.clear();
+        for (Admin admin : admins) {
+            AdminFxModel adminFxModel = new AdminFxModel();
+            
+            String userName = admin.getUserName();
+            String email = admin.getEmail();
+            
+            adminFxModel.setUserName(userName);
+            adminFxModel.setEmail(email);
+            
+            adminsModel.add(adminFxModel);
+        }
+    }
 }

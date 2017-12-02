@@ -178,7 +178,7 @@ public class BookFxModel {
             int numberInStock = book.getNumberInStock();
             int numberOfUsed = book.getNumberOfUsed();
 
-            System.out.println(yearOfPublication);
+            // System.out.println(yearOfPublication);
             bookFxModel.setTitle(title);
             bookFxModel.setAuthor(author);
             bookFxModel.setYearOfPublication(yearOfPublication);

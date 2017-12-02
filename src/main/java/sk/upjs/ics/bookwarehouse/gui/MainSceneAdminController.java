@@ -8,14 +8,18 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import sk.upjs.ics.bookwarehouse.business.UserIdentificationManager;
+import sk.upjs.ics.bookwarehouse.fxmodels.BookLendingFxModel;
 
 public class MainSceneAdminController {
 
     @FXML
-    private AnchorPane pane;
+    private AnchorPane pane;    
 
     @FXML
     private ResourceBundle resources;
@@ -122,6 +126,7 @@ public class MainSceneAdminController {
                 iOException.printStackTrace();
             }
         });
-
+        
+       
     }
 }

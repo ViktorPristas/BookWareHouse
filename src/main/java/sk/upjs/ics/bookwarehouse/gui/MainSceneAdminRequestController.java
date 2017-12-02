@@ -2,16 +2,30 @@ package sk.upjs.ics.bookwarehouse.gui;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import org.springframework.jdbc.core.JdbcTemplate;
+import sk.upjs.ics.bookwarehouse.Teacher;
+import sk.upjs.ics.bookwarehouse.fxmodels.BookLendingFxModel;
+import sk.upjs.ics.bookwarehouse.fxmodels.TeacherFxModel;
+import sk.upjs.ics.bookwarehouse.storage.MysqlTeacherDao;
 
 public class MainSceneAdminRequestController {
+
+    private final BookLendingFxModel bookLendingFxModel = new BookLendingFxModel();
+    private final TeacherFxModel teacherFxModel = new TeacherFxModel();
 
     @FXML
     private ResourceBundle resources;
@@ -21,6 +35,12 @@ public class MainSceneAdminRequestController {
 
     @FXML
     private AnchorPane pane;
+
+    @FXML
+    private ComboBox<String> teacherComboBox;
+
+    @FXML
+    private TableView<BookLendingFxModel> simpleTableView;
 
     @FXML
     private Button backButton;
@@ -98,5 +118,42 @@ public class MainSceneAdminRequestController {
                 iOException.printStackTrace();
             }
         });
+
+        // filling the comboBox with teachers names
+        List<String> nameOfTeachers = teacherFxModel.getTeacherList();
+        nameOfTeachers.add(0, "<Všetko>");
+        teacherComboBox.getItems().addAll(nameOfTeachers);
+
+        searchButton.setOnAction(eh -> {
+            String selectedTeacher = teacherComboBox.getValue();
+            if (bookLendingFxModel.getLendings().size() > 0) {
+                bookLendingFxModel.loadFilteredTeachersToModel(selectedTeacher);
+            }
+        });
+
+        if (bookLendingFxModel.getLendings().size() > 0) {
+            bookLendingFxModel.loadLendingForAdminToModel();
+        }
+
+        // setting up the TableView
+        TableColumn<BookLendingFxModel, Integer> yearOfReturnCol = new TableColumn<>("rok vratenia");
+        yearOfReturnCol.setCellValueFactory(new PropertyValueFactory<>("yearOfReturn"));
+        simpleTableView.getColumns().add(yearOfReturnCol);
+
+        TableColumn<BookLendingFxModel, Integer> lendedCol = new TableColumn<>("pocet rozdanych");
+        lendedCol.setCellValueFactory(new PropertyValueFactory<>("lended"));
+        simpleTableView.getColumns().add(lendedCol);
+
+        TableColumn<BookLendingFxModel, Integer> returnedCol = new TableColumn<>("pocet vratenych");
+        returnedCol.setCellValueFactory(new PropertyValueFactory<>("returned"));
+        simpleTableView.getColumns().add(returnedCol);
+
+        TableColumn<BookLendingFxModel, String> commentCol = new TableColumn<>("koment");
+        commentCol.setCellValueFactory(new PropertyValueFactory<>("comment"));
+        simpleTableView.getColumns().add(commentCol);
+
+        simpleTableView.setItems(bookLendingFxModel.getBookLendingsModel());
+
     }
+
 }

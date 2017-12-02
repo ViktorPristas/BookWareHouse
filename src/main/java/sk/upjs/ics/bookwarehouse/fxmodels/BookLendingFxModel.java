@@ -15,6 +15,8 @@ import javafx.collections.ObservableList;
 import sk.upjs.ics.bookwarehouse.Book;
 import sk.upjs.ics.bookwarehouse.BookLending;
 import sk.upjs.ics.bookwarehouse.DaoFactory;
+import sk.upjs.ics.bookwarehouse.Teacher;
+import sk.upjs.ics.bookwarehouse.business.BookLendingManager;
 import sk.upjs.ics.bookwarehouse.storage.BookLendingDao;
 
 public class BookLendingFxModel {
@@ -33,8 +35,8 @@ public class BookLendingFxModel {
 
     public BookLendingFxModel() {
         BookLendingDao bookLendingDao = DaoFactory.INSTANCE.getBookLendingDao();
-        List<BookLending> lendings = bookLendingDao.getAll();
-        this.lendings = FXCollections.observableArrayList();
+        List<BookLending> lendings = bookLendingDao.getAll(); // povodne
+        this.lendings = FXCollections.observableArrayList(lendings);
     }
 
     public ObservableList<BookLendingFxModel> getBookLendingsModel() {
@@ -157,14 +159,42 @@ public class BookLendingFxModel {
         return approved;
     }
 
-    public void loadBookLendingToModel() {
+    public void loadBookLendingToModel(Long id) {
+        bookLendingsModel.clear();
+        for (BookLending bookLending : lendings) {
+            if (bookLending.getTeacher().getId() == id) {
+
+                BookLendingFxModel bookLendingFxModel = new BookLendingFxModel();
+
+                // Long teacherId = bookLending.getTeacher().getId();
+                //String;
+                int yearOfReturn = bookLending.getYearOfReturn();
+                int lended = bookLending.getLended();
+                int returned = bookLending.getReturned();
+                //lost;
+                String comment = bookLending.getComment();
+                // TODO
+                //Boolean approved = bookLending.getApproved();
+
+                // bookLendingFxModel.setTeacher(teacherId);
+                bookLendingFxModel.setYearOfReturn(yearOfReturn);
+                bookLendingFxModel.setLended(lended);
+                bookLendingFxModel.setReturned(returned);
+                bookLendingFxModel.setComment(comment);
+
+                bookLendingsModel.add(bookLendingFxModel);
+            }
+
+        }
+    }
+
+    public void loadLendingForAdminToModel() {
         bookLendingsModel.clear();
         for (BookLending bookLending : lendings) {
 
             BookLendingFxModel bookLendingFxModel = new BookLendingFxModel();
 
-            //id
-            //teacher;
+            // Long teacherId = bookLending.getTeacher().getId();
             //String;
             int yearOfReturn = bookLending.getYearOfReturn();
             int lended = bookLending.getLended();
@@ -174,14 +204,43 @@ public class BookLendingFxModel {
             // TODO
             //Boolean approved = bookLending.getApproved();
 
+            // bookLendingFxModel.setTeacher(teacherId);
             bookLendingFxModel.setYearOfReturn(yearOfReturn);
             bookLendingFxModel.setLended(lended);
             bookLendingFxModel.setReturned(returned);
             bookLendingFxModel.setComment(comment);
 
             bookLendingsModel.add(bookLendingFxModel);
-            System.out.println("vypisujem");
+        }
 
+    }
+
+    public void loadFilteredTeachersToModel(String selectedTeacher) {
+        bookLendingsModel.clear();
+        for (BookLending bookLending : lendings) {
+            String formatedNameOfTeacher = bookLending.getTeacher().getName() + " " + bookLending.getTeacher().getSurname();
+            if (formatedNameOfTeacher.equals(selectedTeacher) || selectedTeacher.equals("<Všetko>")) {
+
+                BookLendingFxModel bookLendingFxModel = new BookLendingFxModel();
+
+                // Long teacherId = bookLending.getTeacher().getId();
+                //String;
+                int yearOfReturn = bookLending.getYearOfReturn();
+                int lended = bookLending.getLended();
+                int returned = bookLending.getReturned();
+                //lost;
+                String comment = bookLending.getComment();
+                // TODO
+                //Boolean approved = bookLending.getApproved();
+
+                // bookLendingFxModel.setTeacher(teacherId);
+                bookLendingFxModel.setYearOfReturn(yearOfReturn);
+                bookLendingFxModel.setLended(lended);
+                bookLendingFxModel.setReturned(returned);
+                bookLendingFxModel.setComment(comment);
+
+                bookLendingsModel.add(bookLendingFxModel);
+            }
         }
     }
 

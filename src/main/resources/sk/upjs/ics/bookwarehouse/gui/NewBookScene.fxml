@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -47,8 +48,8 @@
                         <TextField fx:id="authorTextField" promptText="Autor" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2;" GridPane.columnIndex="1" />
                         <TextField fx:id="titleTextField" promptText="Názov" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextField fx:id="yearofPublicationTextField" promptText="Rok vydania" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField fx:id="schoolClassTextField" promptText="Ročník" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                         <TextField fx:id="numberInStockTextField" prefHeight="27.0" prefWidth="254.0" promptText="Skladom" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                  <ComboBox fx:id="schoolClassComboBox" prefHeight="25.0" prefWidth="328.0" promptText="Ročník" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                     </children>
                 </GridPane>
                 <Button fx:id="saveButton" layoutX="431.0" layoutY="288.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="128.0" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2;" text="Pridať" textFill="#20120f" />

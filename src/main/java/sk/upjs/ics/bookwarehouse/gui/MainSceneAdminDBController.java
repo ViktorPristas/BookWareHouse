@@ -99,7 +99,7 @@ public class MainSceneAdminDBController {
             AdminEditBookSceneController controller = new AdminEditBookSceneController();
             try {
                 FXMLLoader loader = new FXMLLoader(
-                        getClass().getResource("EditBookScene.fxml"));
+                        getClass().getResource("NewBookScene.fxml"));
                 loader.setController(controller);
 
                 Parent parentPane = loader.load();

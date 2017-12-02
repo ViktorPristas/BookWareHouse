@@ -89,6 +89,7 @@ public class MysqlBookLendingDao implements BookLendingDao {
                 bl.setReturned(rs.getInt("returned"));
                 bl.setLost(rs.getInt("lost"));
                 bl.setComment(rs.getString("comment"));
+                
 
                 //INITIALIZATION OF TEACHER
                 TeacherDao teacherDao = DaoFactory.INSTANCE.getTeacherDao();
@@ -108,7 +109,7 @@ public class MysqlBookLendingDao implements BookLendingDao {
                 } else {
                     bl.setApproved(false);
                 }
-
+                
                 return bl;
             }
         });

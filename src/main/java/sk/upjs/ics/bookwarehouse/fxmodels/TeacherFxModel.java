@@ -1,17 +1,25 @@
 package sk.upjs.ics.bookwarehouse.fxmodels;
 
+import java.util.ArrayList;
+import java.util.List;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.LongProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import sk.upjs.ics.bookwarehouse.Book;
 import sk.upjs.ics.bookwarehouse.DaoFactory;
 import sk.upjs.ics.bookwarehouse.Teacher;
 import sk.upjs.ics.bookwarehouse.business.UserIdentificationManager;
+import sk.upjs.ics.bookwarehouse.storage.TeacherDao;
 
 public class TeacherFxModel {
 
+    private ObservableList<Teacher> teachers = new SimpleListProperty<>();
     private LongProperty id = new SimpleLongProperty();
     private StringProperty name = new SimpleStringProperty();
     private StringProperty surname = new SimpleStringProperty();
@@ -19,6 +27,13 @@ public class TeacherFxModel {
     private StringProperty password = new SimpleStringProperty();
     private IntegerProperty numberOfStudentsInClass = new SimpleIntegerProperty();
     private String actualPassword;
+
+    public TeacherFxModel() {
+        TeacherDao teacherDao = DaoFactory.INSTANCE.getTeacherDao();
+        List<Teacher> teachers = teacherDao.getAll();
+        this.teachers = FXCollections.observableArrayList(teachers);
+        
+    }
 
     public String getActualPassword() {
         return actualPassword;
@@ -31,7 +46,7 @@ public class TeacherFxModel {
     public IntegerProperty numberOfStudentsInClassProperty() {
         return numberOfStudentsInClass;
     }
-    
+
     public int getNumberOfStudentsInClass() {
         return numberOfStudentsInClass.get();
     }
@@ -124,5 +139,15 @@ public class TeacherFxModel {
         setEmail(t.getEmail());
         setNumberOfStudentsInClass(getNumberOfStudentsInClass());
         setActualPassword(t.getPassword());
+    }
+
+    public List<String> getTeacherList() {
+        List<String> nameOfTeachers = new ArrayList<>();
+        for (Teacher teacher : teachers) {
+            String nameAndSurname = teacher.getName() + " " + teacher.getSurname();
+            nameOfTeachers.add(nameAndSurname);
+            System.out.println(nameAndSurname);
+        }
+        return nameOfTeachers;
     }
 }

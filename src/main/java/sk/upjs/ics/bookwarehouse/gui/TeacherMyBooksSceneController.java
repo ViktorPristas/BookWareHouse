@@ -13,6 +13,7 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import sk.upjs.ics.bookwarehouse.business.UserIdentificationManager;
 import sk.upjs.ics.bookwarehouse.fxmodels.BookFxModel;
 import sk.upjs.ics.bookwarehouse.fxmodels.BookLendingFxModel;
 
@@ -58,9 +59,8 @@ public class TeacherMyBooksSceneController {
             }
         });
 
-    
         if (bookLendingFxModel.getLendings().size() > 0) {
-            bookLendingFxModel.loadBookLendingToModel();
+            bookLendingFxModel.loadBookLendingToModel(UserIdentificationManager.getId());
         }
 
         TableColumn<BookLendingFxModel, Integer> yearOfReturnCol = new TableColumn<>("rok vratenia");

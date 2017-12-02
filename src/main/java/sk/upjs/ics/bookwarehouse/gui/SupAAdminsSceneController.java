@@ -18,6 +18,8 @@ import sk.upjs.ics.bookwarehouse.fxmodels.AdminFxModel;
 
 public class SupAAdminsSceneController {
 
+    private final AdminFxModel adminFxModel = new AdminFxModel();
+    
     @FXML
     private ResourceBundle resources;
 
@@ -104,6 +106,10 @@ public class SupAAdminsSceneController {
             }
         });
         
+        if (adminFxModel.getAdmins().size() > 0) {
+            adminFxModel.loadAdminToModel();
+        }
+        
         TableColumn<AdminFxModel, String> usernameCol = new TableColumn<>("Meno");
         usernameCol.setCellValueFactory(new PropertyValueFactory<>("userName"));
         simpleTableView.getColumns().add(usernameCol);
@@ -112,7 +118,7 @@ public class SupAAdminsSceneController {
         emailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
         simpleTableView.getColumns().add(emailCol);
         
-        
+        simpleTableView.setItems(adminFxModel.getAdminsModel());
         
     }
 }

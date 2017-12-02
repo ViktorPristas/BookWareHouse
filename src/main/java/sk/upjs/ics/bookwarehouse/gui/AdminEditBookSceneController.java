@@ -4,6 +4,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
 
 public class AdminEditBookSceneController {
@@ -24,7 +25,7 @@ public class AdminEditBookSceneController {
     private TextField yearofPublicationTextField;
 
     @FXML
-    private TextField schoolClassTextField;
+    private ComboBox<String> schoolClassComboBox;
 
     @FXML
     private TextField numberInStockTextField;
@@ -38,6 +39,9 @@ public class AdminEditBookSceneController {
         saveButton.setOnAction(eh -> {
             saveButton.getScene().getWindow().hide();
         });
+        
+        schoolClassComboBox.getItems().addAll("1", "2", "3", "4", "5", "6", "7", "8", "9", "I. G", "II. G", "III. G", "IV. G");
+
 
     }
 }
