@@ -26,7 +26,7 @@
         </HBox>
         <HBox layoutX="43.0" layoutY="77.0" prefHeight="39.0" prefWidth="482.0">
             <children>
-                <ComboBox fx:id="schoolClassComboBox" prefWidth="150.0" promptText="Ročník" style="-fx-background-color: #9C2B27; -fx-border-color: #f8f8f8; -fx-border-width: 0.2;" />
+                <ComboBox fx:id="schoolClassComboBox" prefWidth="150.0" promptText="Ročník" style="-fx-background-color: #9C2B27; -fx-border-color: #f8f8f8; -fx-border-width: 0.2" />
                 <Region prefHeight="39.0" prefWidth="101.0" HBox.hgrow="ALWAYS" />
                 <Button fx:id="searchButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="201.0" style="-fx-background-color: E45652; -fx-border-color: #f8f8f8; -fx-border-width: 0.2;" text="Hľadaj" textFill="#f8f8f8" />
             </children>

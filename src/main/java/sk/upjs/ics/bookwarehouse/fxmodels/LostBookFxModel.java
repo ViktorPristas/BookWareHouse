@@ -1,15 +1,26 @@
 package sk.upjs.ics.bookwarehouse.fxmodels;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.LongProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import static javafx.collections.FXCollections.observableList;
+import javafx.collections.ObservableList;
+import sk.upjs.ics.bookwarehouse.Book;
+import sk.upjs.ics.bookwarehouse.DaoFactory;
+import sk.upjs.ics.bookwarehouse.LostBook;
+import sk.upjs.ics.bookwarehouse.storage.LostBookDao;
 
 public class LostBookFxModel {
 
+    private ObservableList<LostBook> lostBooks = new SimpleListProperty<>();
+    private ObservableList<LostBookFxModel> lostBooksModel = FXCollections.observableArrayList();
     private LongProperty id = new SimpleLongProperty();
     //book
     //private LongProperty idBook = new SimpleLongProperty();
@@ -28,6 +39,20 @@ public class LostBookFxModel {
     private StringProperty date = new SimpleStringProperty();
     private IntegerProperty number = new SimpleIntegerProperty();
     //private StringProperty comment = new SimpleStringProperty("");
+    
+    public LostBookFxModel() {
+        LostBookDao lostBookDao = DaoFactory.INSTANCE.getLostBookDao();
+        List<LostBook> lostBooks = lostBookDao.getAll();
+        this.lostBooks = FXCollections.observableArrayList(lostBooks);
+    }
+    
+    public ObservableList<LostBookFxModel> getLostBooksFxModel() {
+        return lostBooksModel;
+    }
+    
+    public ObservableList<LostBook> getLostBooks() {
+        return lostBooks;
+    }
 
     public Long getId() {
         return id.get();
@@ -147,6 +172,34 @@ public class LostBookFxModel {
 
     public void setSurnameOfTeacher(String surnameOfTeacher) {
         this.surnameOfTeacher.set(surnameOfTeacher);
+    }
+    
+    public void loadBooksToModel() {
+        lostBooksModel.clear();
+        for (LostBook lostBook : lostBooks) {
+            LostBookFxModel lostBookFxModel = new LostBookFxModel();
+            
+            Long id = lostBook.getId();
+            String author = lostBook.getAuthor();
+            String title = lostBook.getTitle();
+            String schoolclass = lostBook.getSchoolClass();
+            String usernameOfAdmin = lostBook.getUsernameOfAdmin();
+            String nameOfTeacher = lostBook.getNameOfTeacher();
+            String surnameOfTeacher = lostBook.getSurnameOfTeacher();
+            LocalDateTime date = lostBook.getDate();
+            int number = lostBook.getNumber();
+            
+            lostBookFxModel.setId(id);
+            lostBookFxModel.setTitle(title);
+            lostBookFxModel.setAuthor(author);
+            lostBookFxModel.setSchoolClass(schoolclass);
+            lostBookFxModel.setNameOfAdmin(usernameOfAdmin);
+            lostBookFxModel.setNameOfTeacher(nameOfTeacher);
+            lostBookFxModel.setSurnameOfTeacher(surnameOfTeacher);
+            lostBookFxModel.setDate(date);
+            lostBookFxModel.setNumberAfter(number);
+            lostBooksModel.add(lostBookFxModel);
+        }
     }
 
 }
