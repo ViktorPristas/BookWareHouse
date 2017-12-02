@@ -10,13 +10,11 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="1000.0" style="-fx-background-color: #20120F;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <Button fx:id="supadminloginButton" layoutX="230.0" layoutY="455.0" mnemonicParsing="false" text="supadminlogin" />
-        <Button fx:id="adminloginButton" layoutX="94.0" layoutY="455.0" mnemonicParsing="false" text="adminlogin" />
         <AnchorPane layoutX="500.0" layoutY="32.0" prefHeight="436.0" prefWidth="477.0" style="-fx-background-color: #9C2B27;" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="500.00000000000006" AnchorPane.rightAnchor="22.80000000000001" AnchorPane.topAnchor="32.0">
             <children>
-                <Button fx:id="loginButton" layoutX="152.0" layoutY="325.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #E45652; -fx-border-color: #f8f8f8; -fx-border-width: 0.2;" text="Prihlásiť sa" textFill="#f8f8f8" />
-                <PasswordField fx:id="passwordTextField" layoutX="33.0" layoutY="264.0" prefHeight="25.0" prefWidth="425.0" promptText="Heslo" style="-fx-background-color: #9C2B27; -fx-border-color: #f8f8f8; -fx-border-width: 0.2;" />
                 <TextField fx:id="emailTextField" layoutX="33.0" layoutY="175.0" prefHeight="25.0" prefWidth="425.0" promptText="E-mail" style="-fx-background-color: #9C2B27; -fx-border-width: 0.2; -fx-border-color: #f8f8f8;" />
+                <PasswordField fx:id="passwordTextField" layoutX="33.0" layoutY="264.0" prefHeight="25.0" prefWidth="425.0" promptText="Heslo" style="-fx-background-color: #9C2B27; -fx-border-color: #f8f8f8; -fx-border-width: 0.2;" />
+                <Button fx:id="loginButton" defaultButton="true" layoutX="152.0" layoutY="325.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #E45652; -fx-border-color: #f8f8f8; -fx-border-width: 0.2;" text="Prihlásiť sa" textFill="#f8f8f8" />
                 <Label layoutX="187.0" layoutY="59.0" style="-fx-font-weight: bold;" text="Prihlásenie" textFill="#f8f8f8">
                     <font>
                         <Font size="22.0" />
@@ -27,6 +25,8 @@
                 <Label layoutX="35.0" layoutY="235.0" prefHeight="17.0" prefWidth="30.0" text="Heslo" textFill="#f8f8f8" />
             </children>
         </AnchorPane>
+        <Button fx:id="supadminloginButton" layoutX="230.0" layoutY="455.0" mnemonicParsing="false" text="supadminlogin" />
+        <Button fx:id="adminloginButton" layoutX="94.0" layoutY="455.0" mnemonicParsing="false" text="adminlogin" />
         <Label layoutX="94.0" layoutY="108.0" style="-fx-font-weight: bold;" text="Vitajte v BookWareHouse" textFill="#f8f8f8">
             <font>
                 <Font size="25.0" />
