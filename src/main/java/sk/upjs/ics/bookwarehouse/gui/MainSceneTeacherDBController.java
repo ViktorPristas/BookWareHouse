@@ -21,6 +21,7 @@ import sk.upjs.ics.bookwarehouse.fxmodels.BookFxModel;
 public class MainSceneTeacherDBController {
 
     private final BookFxModel bookFxModel = new BookFxModel();
+    private BookFxModel actualBookFxModel;
 
     @FXML
     private ResourceBundle resources;
@@ -52,7 +53,7 @@ public class MainSceneTeacherDBController {
     @FXML
     void initialize() {
         lendButton.setOnAction(eh -> {
-            ConfirmLendingSceneController controller = new ConfirmLendingSceneController();
+            ConfirmLendingSceneController controller = new ConfirmLendingSceneController(actualBookFxModel);
             try {
                 FXMLLoader loader = new FXMLLoader(
                         getClass().getResource("ConfirmLendingScene.fxml"));

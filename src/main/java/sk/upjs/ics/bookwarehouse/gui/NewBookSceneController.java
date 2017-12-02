@@ -54,22 +54,24 @@ public class NewBookSceneController {
 
 //        schoolClassComboBox.textProperty().bindBidirectional(
 //                bookFxModel.SchoolClassProperty());
-
         numberInStockTextField.textProperty().bindBidirectional(
                 bookFxModel.numberInStockProperty(), new NumberStringConverter());
-        
-        schoolClassComboBox.getItems().addAll("1", "2", "3", "4", "5", "6", "7", "8", "9", "I. G", "II. G", "III. G", "IV. G");
 
+        schoolClassComboBox.getItems().addAll(
+                "1", "2", "3", "4", "5", "6", "7", "8", "9", "I. G", "II. G", "III. G", "IV. G");
+
+        schoolClassComboBox.valueProperty().bindBidirectional(
+                bookFxModel.SchoolClassProperty());
 
         saveButton.setOnAction(eh -> {
             Book b = bookFxModel.getBook();
             b.setNumberOfUsed(0);
             b.setUsed(false);
             b.setId();
-            if(registrationIsOk(b)){
+            if (registrationIsOk(b)) {
                 bookDao.save(b);
                 saveButton.getScene().getWindow().hide();
-            }else{
+            } else {
                 //nejaky alert
             }
         });
@@ -79,20 +81,19 @@ public class NewBookSceneController {
         if (book.getAuthor() == null || book.getAuthor().equals("")) {
             return false;
         }
-        if (book.getTitle()== null || book.getTitle().equals("")) {
+        if (book.getTitle() == null || book.getTitle().equals("")) {
             return false;
         }
-        if (book.getYearOfPublication()== 0) {
+        if (book.getYearOfPublication() == 0) {
             return false;
         }
-        if (book.getSchoolClass()== null || book.getSchoolClass().equals("")) {
+        if (book.getSchoolClass() == null || book.getSchoolClass().equals("")) {
             return false;
         }
-        if(numberInStockTextField == null || numberInStockTextField.equals("")){
+        if (numberInStockTextField == null || numberInStockTextField.equals("")) {
             return false;
         }
-        
-        
+
         return true;
     }
 }
