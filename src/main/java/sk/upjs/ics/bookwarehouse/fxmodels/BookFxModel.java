@@ -29,6 +29,7 @@ public class BookFxModel {
     private IntegerProperty numberOfUsed = new SimpleIntegerProperty();
     private BooleanProperty used = new SimpleBooleanProperty();
     private StringProperty comment = new SimpleStringProperty();
+    private int numberInStockBefore;
 
     public BookFxModel() {
         BookDao bookDao = DaoFactory.INSTANCE.getBookDao();
@@ -38,6 +39,14 @@ public class BookFxModel {
 
     public ObservableList<BookFxModel> getBooksModel() {
         return booksmodel;
+    }
+
+    public int getNumberInStockBefore() {
+        return numberInStockBefore;
+    }
+
+    public void setNumberInStockBefore(int numberInStockBefore) {
+        this.numberInStockBefore = numberInStockBefore;
     }
 
     public ObservableList<Book> getBooks() {
@@ -179,12 +188,14 @@ public class BookFxModel {
             int numberOfUsed = book.getNumberOfUsed();
 
             System.out.println(yearOfPublication);
+            bookFxModel.setId(book.getId());
             bookFxModel.setTitle(title);
             bookFxModel.setAuthor(author);
             bookFxModel.setYearOfPublication(yearOfPublication);
             bookFxModel.setSchoolClass(schoolClass);
             bookFxModel.setNumberInStock(numberInStock);
             bookFxModel.setNumberOfUsed(numberOfUsed);
+            bookFxModel.setNumberInStockBefore(numberInStock);
             booksmodel.add(bookFxModel);
         }
 
@@ -203,13 +214,14 @@ public class BookFxModel {
                 int numberInStock = book.getNumberInStock();
                 int numberOfUsed = book.getNumberOfUsed();
 
-                System.out.println(yearOfPublication);
+                bookFxModel.setId(book.getId());
                 bookFxModel.setTitle(title);
                 bookFxModel.setAuthor(author);
                 bookFxModel.setYearOfPublication(yearOfPublication);
                 bookFxModel.setSchoolClass(schoolClass);
                 bookFxModel.setNumberInStock(numberInStock);
                 bookFxModel.setNumberOfUsed(numberOfUsed);
+                bookFxModel.setNumberInStockBefore(numberInStock);
                 booksmodel.add(bookFxModel);
             }
         }

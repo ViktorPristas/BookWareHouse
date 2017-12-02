@@ -3,6 +3,8 @@ package sk.upjs.ics.bookwarehouse.gui;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,8 +20,9 @@ import javafx.stage.Stage;
 import sk.upjs.ics.bookwarehouse.fxmodels.BookFxModel;
 
 public class MainSceneAdminDBController {
-    
-     private final BookFxModel bookFxModel = new BookFxModel();
+
+    private final BookFxModel bookFxModel = new BookFxModel();
+    private BookFxModel selectedBookFxModel;
 
     @FXML
     private ResourceBundle resources;
@@ -44,7 +47,7 @@ public class MainSceneAdminDBController {
 
     @FXML
     private TableView<BookFxModel> simpleTableView;
-    
+
     @FXML
     private ComboBox<String> schoolClassComboBox;
 
@@ -96,7 +99,7 @@ public class MainSceneAdminDBController {
 
         editBookButton.setOnAction(eh -> {
 
-            AdminEditBookSceneController controller = new AdminEditBookSceneController();
+            AdminEditBookSceneController controller = new AdminEditBookSceneController(selectedBookFxModel);
             try {
                 FXMLLoader loader = new FXMLLoader(
                         getClass().getResource("EditBookScene.fxml"));
@@ -116,10 +119,22 @@ public class MainSceneAdminDBController {
                 iOException.printStackTrace();
             }
         });
-        
-         if (bookFxModel.getBooks().size() > 0) {
+
+        if (bookFxModel.getBooks().size() > 0) {
             bookFxModel.loadBooksToModel();
         }
+
+        simpleTableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<BookFxModel>() {
+            @Override
+            public void changed(ObservableValue<? extends BookFxModel> observable, BookFxModel oldValue, BookFxModel newValue) {
+                selectedBookFxModel = simpleTableView.getSelectionModel().getSelectedItem();
+                if (selectedBookFxModel == null) {
+                    editBookButton.setDisable(true);
+                } else {
+                    editBookButton.setDisable(false);
+                }
+            }
+        });
 
         TableColumn<BookFxModel, String> titleCol = new TableColumn<>("Nazov");
         titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
@@ -146,7 +161,7 @@ public class MainSceneAdminDBController {
         simpleTableView.getColumns().add(numberOfUsedCol);
 
         simpleTableView.setItems(bookFxModel.getBooksModel());
-        
+
         // naplnenie combobxu
         schoolClassComboBox.getItems().addAll("<Všetko>", "1", "2", "3", "4", "5", "6", "7", "8", "9", "I. G", "II. G", "III. G", "IV. G");
 

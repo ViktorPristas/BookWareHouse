@@ -51,9 +51,9 @@ public class BookDaoTest {
         Book bookOld = new Book();
         bookOld.setId(bookBackup.getId());
         bookOld.setAuthor("author");
-        bookOld.setTitle("title-2");
+        bookOld.setTitle("title-23");
         bookOld.setYearOfPublication(2012);
-        bookOld.setSchoolClass("7");
+        bookOld.setSchoolClass("8");
         bookOld.setNumberInStock(21);
         bookOld.setNumberOfUsed(17);
         bookOld.setComment("comment");

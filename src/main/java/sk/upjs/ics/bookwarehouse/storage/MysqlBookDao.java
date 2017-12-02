@@ -48,7 +48,8 @@ public class MysqlBookDao implements BookDao {
             }
             data.put("comment", book.getComment());
             book.setId(simpleJdbcInsert.executeAndReturnKey(data).longValue());
-        } else {    // UPDATE
+        } else {
+            // UPDATE
             String sql = "UPDATE book SET title = ?, author = ?, yearOfPublication = ?,"
                     + " schoolClass = ?, numberInStock = ?, numberOfUsed = ?,"
                     + "isUsed = ?, comment = ? WHERE id =" + book.getId();
