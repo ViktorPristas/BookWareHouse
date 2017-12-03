@@ -6,20 +6,30 @@
 package sk.upjs.ics.bookwarehouse.fxmodels;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.LongProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleListProperty;
 import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import sk.upjs.ics.bookwarehouse.Book;
+import sk.upjs.ics.bookwarehouse.BookEdit;
+import sk.upjs.ics.bookwarehouse.DaoFactory;
 import sk.upjs.ics.bookwarehouse.Teacher;
+import sk.upjs.ics.bookwarehouse.storage.BookEditDao;
 
 /**
  *
  * @author tomas
  */
 public class BookEditFxModel {
+    
+    private ObservableList<BookEdit> bookEdits = new SimpleListProperty<>();
+    private ObservableList<BookEditFxModel> bookEditsModel = FXCollections.observableArrayList();
     private LongProperty id = new SimpleLongProperty();
     private StringProperty author = new SimpleStringProperty();
     private StringProperty title = new SimpleStringProperty();
@@ -30,6 +40,20 @@ public class BookEditFxModel {
     private IntegerProperty numberAfter = new SimpleIntegerProperty();
     //private StringProperty comment = new SimpleStringProperty("");
 
+    public BookEditFxModel() {
+        BookEditDao bookEditDao = DaoFactory.INSTANCE.getBookEditDao();
+        List<BookEdit> bookEdits = bookEditDao.getAll();
+        this.bookEdits = FXCollections.observableArrayList(bookEdits);
+    }
+    
+    public ObservableList<BookEditFxModel> getBookEditsModel() {
+        return bookEditsModel;
+    }
+    
+    public ObservableList<BookEdit> getBookEdits() {
+        return bookEdits;
+    }
+    
     public Long getId() {
         return id.get();
     }
@@ -140,5 +164,30 @@ public class BookEditFxModel {
         this.comment.set(comment);
     }*/
     
+    public void loadBooksToModel() {
+        bookEditsModel.clear();
+        for (BookEdit bookEdit : bookEdits){
+            BookEditFxModel bookEditFxModel = new BookEditFxModel();
+            
+            Long id = bookEdit.getId();
+            String author = bookEdit.getBook().getAuthor();
+            String title = bookEdit.getBook().getTitle();
+            String schoolClass = bookEdit.getBook().getSchoolClass();
+            String nameOfAdmin = bookEdit.getNameOfAdmin();
+            LocalDateTime date = bookEdit.getDate();
+            int numbersBefore = bookEdit.getNumberBefore();
+            int numbersAfter = bookEdit.getNumberAfter();
+            
+            bookEditFxModel.setId(id);
+            bookEditFxModel.setAuthor(author);
+            bookEditFxModel.setTitle(title);
+            bookEditFxModel.setSchoolClass(schoolClass);
+            bookEditFxModel.setNameOfAdmin(nameOfAdmin);
+            bookEditFxModel.setDate(date);
+            bookEditFxModel.setNumberBefore(numbersBefore);
+            bookEditFxModel.setNumberAfter(numbersAfter);
+            bookEditsModel.add(bookEditFxModel);
+        }
+    }
     
 }
