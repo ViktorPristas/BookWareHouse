@@ -2,19 +2,33 @@ package sk.upjs.ics.bookwarehouse.gui;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
+import javafx.util.converter.NumberStringConverter;
+import sk.upjs.ics.bookwarehouse.Book;
+import sk.upjs.ics.bookwarehouse.BookLending;
+import sk.upjs.ics.bookwarehouse.DaoFactory;
+import sk.upjs.ics.bookwarehouse.Teacher;
+import sk.upjs.ics.bookwarehouse.business.UserIdentificationManager;
 import sk.upjs.ics.bookwarehouse.fxmodels.BookFxModel;
+import sk.upjs.ics.bookwarehouse.storage.BookLendingDao;
 
 public class ConfirmLendingSceneController {
+
     private BookFxModel bookFxModel;
-    
+    private IntegerProperty number = new SimpleIntegerProperty(0);
+    private BookLendingDao bookLendingDao = DaoFactory.INSTANCE.getBookLendingDao();
+    private StringProperty commentProperty = new SimpleStringProperty();
+
     public ConfirmLendingSceneController(BookFxModel bookFxModel) {
         this.bookFxModel = bookFxModel;
-        bookFxModel.setNumberInStockBefore(bookFxModel.getNumberInStock());
     }
 
     @FXML
@@ -25,6 +39,9 @@ public class ConfirmLendingSceneController {
 
     @FXML
     private AnchorPane pane;
+    //???
+    @FXML
+    private TextField commentTextField;
 
     @FXML
     private TextField numberOfElementsTextField;
@@ -43,8 +60,31 @@ public class ConfirmLendingSceneController {
 
     @FXML
     void initialize() {
+        authorLabel.setText(bookFxModel.getAuthor());
+
+        titleLabel.setText(bookFxModel.getTitle());
+
+        classLabel.setText(bookFxModel.getSchoolClass());
+
+        numberOfElementsTextField.textProperty().bindBidirectional(
+                number, new NumberStringConverter());
+
+        commentTextField.textProperty().bindBidirectional(
+                commentProperty);
+
         confirmButton.setOnAction(eh -> {
-            confirmButton.getScene().getWindow().hide();
+            Book book = bookFxModel.getBook();
+            if (number.get() > 0 && number.get() <= book.getNumberInStock()) {
+                Teacher teacher = DaoFactory.INSTANCE.getTeacherDao().findById(UserIdentificationManager.getId());
+                BookLending bookLending = new BookLending(book, teacher, number.get(), commentProperty.get());
+                bookLendingDao.save(bookLending);
+                
+                //editing the number of books in stock
+                book.setNumberInStock(book.getNumberInStock()- number.get());
+                book.setNumberOfUsed(book.getNumberOfUsed()+ number.get());
+                DaoFactory.INSTANCE.getBookDao().save(book);
+                confirmButton.getScene().getWindow().hide();
+            }
         });
     }
 }

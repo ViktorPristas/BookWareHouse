@@ -122,7 +122,7 @@ public class MysqlBookDao implements BookDao {
                 return b;
             }
         });
-        return books.get(0);
+        return null;
     }
 
     // DELETE
