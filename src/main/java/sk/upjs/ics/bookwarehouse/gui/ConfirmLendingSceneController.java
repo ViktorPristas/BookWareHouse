@@ -74,6 +74,7 @@ public class ConfirmLendingSceneController {
 
         confirmButton.setOnAction(eh -> {
             Book book = bookFxModel.getBook();
+            System.out.println(book.getId());
             if (number.get() > 0 && number.get() <= book.getNumberInStock()) {
                 Teacher teacher = DaoFactory.INSTANCE.getTeacherDao().findById(UserIdentificationManager.getId());
                 BookLending bookLending = new BookLending(book, teacher, number.get(), commentProperty.get());

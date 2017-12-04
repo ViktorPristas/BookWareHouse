@@ -196,6 +196,7 @@ public class BookLendingFxModel {
 
             BookLendingFxModel bookLendingFxModel = new BookLendingFxModel();
 
+            Book b = bookLending.getBook();
             // Long teacherId = bookLending.getTeacher().getId();
             //String;
             int yearOfReturn = bookLending.getYearOfReturn();

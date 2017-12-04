@@ -97,7 +97,7 @@ public class MysqlBookDao implements BookDao {
         return books;
     }
 
-    @Override
+   /* @Override
     public Book findById(long id) {
         String sql = "SELECT id, title, author, yearOfPublication, schoolClass, numberInStock,"
                 + "numberOfUsed, isUsed, comment FROM BookWareHouse.Book WHERE id = " + id;
@@ -122,6 +122,17 @@ public class MysqlBookDao implements BookDao {
                 return b;
             }
         });
+        return null;
+    }*/
+    
+    @Override
+    public Book findById(long id) {
+        List<Book> list = getAll();
+        for (Book book : list) {
+            if(book.getId() == id){
+                return book;
+            }
+        }
         return null;
     }
 
