@@ -3,6 +3,8 @@ package sk.upjs.ics.bookwarehouse.gui;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -19,6 +21,7 @@ import sk.upjs.ics.bookwarehouse.fxmodels.AdminFxModel;
 public class SupAAdminsSceneController {
 
     private final AdminFxModel adminFxModel = new AdminFxModel();
+     private AdminFxModel selectedAdminFxModel;
     
     @FXML
     private ResourceBundle resources;
@@ -43,6 +46,19 @@ public class SupAAdminsSceneController {
 
     @FXML
     void initialize() {
+        simpleTableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<AdminFxModel>() {
+            @Override
+            public void changed(ObservableValue<? extends AdminFxModel> observable, AdminFxModel oldValue, AdminFxModel newValue) {
+                selectedAdminFxModel = simpleTableView.getSelectionModel().getSelectedItem();
+                if (selectedAdminFxModel == null) {
+                    resetPasswordButton.setDisable(true);
+                } else {
+                    resetPasswordButton.setDisable(false);
+                }
+            }
+        });
+
+        
         newAdminButton.setOnAction(eh -> {
             SupANewAdminSceneController controller = new SupANewAdminSceneController();
             try {
@@ -65,7 +81,7 @@ public class SupAAdminsSceneController {
         });
 
         resetPasswordButton.setOnAction(eh -> {
-            SupAResetPasswordSceneController controller = new SupAResetPasswordSceneController();
+            SupAResetPasswordSceneController controller = new SupAResetPasswordSceneController(selectedAdminFxModel);
             try {
                 FXMLLoader loader = new FXMLLoader(
                         getClass().getResource("SupAResetPasswordScene.fxml"));

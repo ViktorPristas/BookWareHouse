@@ -3,6 +3,8 @@ package sk.upjs.ics.bookwarehouse.gui;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -21,7 +23,7 @@ import sk.upjs.ics.bookwarehouse.fxmodels.BookFxModel;
 public class MainSceneTeacherDBController {
 
     private final BookFxModel bookFxModel = new BookFxModel();
-    private BookFxModel actualBookFxModel;
+    private BookFxModel selectedBookFxModel;
 
     @FXML
     private ResourceBundle resources;
@@ -53,7 +55,7 @@ public class MainSceneTeacherDBController {
     @FXML
     void initialize() {
         lendButton.setOnAction(eh -> {
-            ConfirmLendingSceneController controller = new ConfirmLendingSceneController(actualBookFxModel);
+            ConfirmLendingSceneController controller = new ConfirmLendingSceneController(selectedBookFxModel);
             try {
                 FXMLLoader loader = new FXMLLoader(
                         getClass().getResource("ConfirmLendingScene.fxml"));
@@ -71,6 +73,18 @@ public class MainSceneTeacherDBController {
                 // toto sa vykona az po zatvoreni okna
             } catch (IOException iOException) {
                 iOException.printStackTrace();
+            }
+        });
+        
+        simpleTableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<BookFxModel>() {
+            @Override
+            public void changed(ObservableValue<? extends BookFxModel> observable, BookFxModel oldValue, BookFxModel newValue) {
+                selectedBookFxModel = simpleTableView.getSelectionModel().getSelectedItem();
+                if (selectedBookFxModel == null) {
+                    lendButton.setDisable(true);
+                } else {
+                    lendButton.setDisable(false);
+                }
             }
         });
 

@@ -29,4 +29,6 @@ public interface BookLendingDao {
     // DELETE
     boolean deleteById(long id);
 
+    BookLending findById(long id);
+
 }

@@ -24,7 +24,7 @@ public class BookLendingFxModel {
     private ObservableList<BookLending> lendings = new SimpleListProperty<>();
     private ObservableList<BookLendingFxModel> bookLendingsModel = FXCollections.observableArrayList();
     private LongProperty id = new SimpleLongProperty();
-    private LongProperty teacher = new SimpleLongProperty();
+    private LongProperty teacherId = new SimpleLongProperty();
     private LongProperty bookId = new SimpleLongProperty();
     private IntegerProperty yearOfReturn = new SimpleIntegerProperty();
     private IntegerProperty lended = new SimpleIntegerProperty();
@@ -68,15 +68,15 @@ public class BookLendingFxModel {
     }
 
     public Long getTeacher() {
-        return teacher.get();
+        return teacherId.get();
     }
 
     public void setTeacher(Long teacher) {
-        this.teacher.set(teacher);
+        this.teacherId.set(teacher);
     }
 
     public LongProperty teacherProperty() {
-        return teacher;
+        return teacherId;
     }
 
     public Long getBook() {
@@ -232,6 +232,8 @@ public class BookLendingFxModel {
                 //Boolean approved = bookLending.getApproved();
 
                 // bookLendingFxModel.setTeacher(teacherId);
+                bookLendingFxModel.setBook(bookLending.getBook().getId());
+                bookLendingFxModel.setTeacher(bookLending.getTeacher().getId());
                 bookLendingFxModel.setYearOfReturn(yearOfReturn);
                 bookLendingFxModel.setLended(lended);
                 bookLendingFxModel.setReturned(returned);
@@ -252,6 +254,7 @@ public class BookLendingFxModel {
 
             BookLendingFxModel bookLendingFxModel = new BookLendingFxModel();
 
+            Book b = bookLending.getBook();
             // Long teacherId = bookLending.getTeacher().getId();
             //String;
             int yearOfReturn = bookLending.getYearOfReturn();
@@ -271,6 +274,8 @@ public class BookLendingFxModel {
             //Boolean approved = bookLending.getApproved();
 
             // bookLendingFxModel.setTeacher(teacherId);
+            //bookLendingFxModel.setBook(bookLending.getBook().getId());
+            bookLendingFxModel.setTeacher(bookLending.getTeacher().getId());
             bookLendingFxModel.setYearOfReturn(yearOfReturn);
             bookLendingFxModel.setLended(lended);
             bookLendingFxModel.setReturned(returned);
@@ -295,8 +300,6 @@ public class BookLendingFxModel {
 
                 BookLendingFxModel bookLendingFxModel = new BookLendingFxModel();
 
-                // Long teacherId = bookLending.getTeacher().getId();
-                //String;
                 int yearOfReturn = bookLending.getYearOfReturn();
                 int lended = bookLending.getLended();
                 int returned = bookLending.getReturned();
@@ -305,7 +308,9 @@ public class BookLendingFxModel {
                 // TODO
                 //Boolean approved = bookLending.getApproved();
 
-                // bookLendingFxModel.setTeacher(teacherId);
+                //bookLendingFxModel.setTeacher(teacherId);
+//                bookLendingFxModel.setBook(bookLending.getBook().getId());
+                bookLendingFxModel.setTeacher(bookLending.getTeacher().getId());
                 bookLendingFxModel.setYearOfReturn(yearOfReturn);
                 bookLendingFxModel.setLended(lended);
                 bookLendingFxModel.setReturned(returned);
