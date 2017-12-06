@@ -16,6 +16,7 @@ public class SupANewAdminSceneController {
 
     private  AdminFxModel adminFxModel = new AdminFxModel();
     private  AdminDao adminDao = DaoFactory.INSTANCE.getAdminDao();
+   
 
     @FXML
     private ResourceBundle resources;

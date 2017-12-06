@@ -6,8 +6,17 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import sk.upjs.ics.bookwarehouse.Admin;
+import sk.upjs.ics.bookwarehouse.DaoFactory;
+import sk.upjs.ics.bookwarehouse.fxmodels.AdminFxModel;
 
 public class SupAResetPasswordSceneController {
+
+    public SupAResetPasswordSceneController(AdminFxModel selectedAdminFxModel) {
+        this.adminFxModel = selectedAdminFxModel;
+    }
+
+    private AdminFxModel adminFxModel;
 
     @FXML
     private ResourceBundle resources;
@@ -26,8 +35,21 @@ public class SupAResetPasswordSceneController {
 
     @FXML
     void initialize() {
+        adminNameLabel.setText(adminFxModel.getUserName());
+
+        newPasswordTextField.textProperty().bindBidirectional(
+                adminFxModel.passwordProperty());
+
         confirmPasswordButton.setOnAction(eh -> {
-            confirmPasswordButton.getScene().getWindow().hide();
+            if (!(adminFxModel.getPassword().equals(null) && adminFxModel.getPassword().equals(""))) {
+                Admin admin = adminFxModel.getAdmin();
+                System.out.println(admin.getPassword());
+                DaoFactory.INSTANCE.getAdminDao().save(admin);
+                confirmPasswordButton.getScene().getWindow().hide();
+            } else {
+                //nejaky alert
+            }
         });
+
     }
 }
