@@ -19,6 +19,8 @@ public class BookLending {
     }
 
     public BookLending(Book book, Teacher teacher, int lended, String comment, int yearOfReturn) {
+        book.setUsed(true);
+        book = DaoFactory.INSTANCE.getBookDao().save(book);
         setBook(book);
         setTeacher(teacher);
         setYearOfReturn(yearOfReturn);
@@ -27,6 +29,8 @@ public class BookLending {
     }
 
     public BookLending(Book book, Teacher teacher, int lended, String comment) {
+        book.setUsed(true);
+        book = DaoFactory.INSTANCE.getBookDao().save(book);
         setBook(book);
         setTeacher(teacher);
         setLended(lended);

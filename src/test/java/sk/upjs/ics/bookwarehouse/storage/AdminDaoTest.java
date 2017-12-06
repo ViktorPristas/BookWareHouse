@@ -72,4 +72,19 @@ public class AdminDaoTest {
         }
         Assert.assertTrue(b);
     }
+
+    @Test
+    public void testFindById() {
+        Admin admin = new Admin();
+        admin.setUserName("newAdmin-999");
+        admin.setPassword("password333");
+        admin.setEmail("newAdmin-444@gmail.com");
+        admin = dao.save(admin);
+        long id = admin.getId();
+        Admin adminNew = dao.findById(id);
+        Assert.assertEquals(adminNew.getUserName(), admin.getUserName());
+        Assert.assertEquals(adminNew.getPassword(), admin.getPassword());
+        Assert.assertEquals(adminNew.getEmail(), admin.getEmail());
+        dao.deleteById(id);
+    }
 }

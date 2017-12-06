@@ -44,7 +44,7 @@ public class MysqlBookDao implements BookDao {
             if (book.isUsed()) {
                 data.put("isUsed", 1);
             } else {
-                data.put("isUsed", 1);
+                data.put("isUsed", 0);
             }
             data.put("comment", book.getComment());
             book.setId(simpleJdbcInsert.executeAndReturnKey(data).longValue());

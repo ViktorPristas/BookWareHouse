@@ -12,7 +12,7 @@ import javafx.scene.control.TextField;
 import javafx.util.converter.NumberStringConverter;
 import sk.upjs.ics.bookwarehouse.DaoFactory;
 import sk.upjs.ics.bookwarehouse.Teacher;
-import sk.upjs.ics.bookwarehouse.business.RegistrationManager;
+import sk.upjs.ics.bookwarehouse.business.DefaultRegistrationManager;
 import sk.upjs.ics.bookwarehouse.business.UserIdentificationManager;
 import sk.upjs.ics.bookwarehouse.fxmodels.TeacherFxModel;
 import sk.upjs.ics.bookwarehouse.storage.TeacherDao;

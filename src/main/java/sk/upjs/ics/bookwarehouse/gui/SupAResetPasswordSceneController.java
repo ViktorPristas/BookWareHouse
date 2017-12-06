@@ -2,6 +2,8 @@ package sk.upjs.ics.bookwarehouse.gui;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -17,6 +19,7 @@ public class SupAResetPasswordSceneController {
     }
 
     private AdminFxModel adminFxModel;
+    StringProperty newPassword = new SimpleStringProperty();
 
     @FXML
     private ResourceBundle resources;
@@ -38,13 +41,15 @@ public class SupAResetPasswordSceneController {
         adminNameLabel.setText(adminFxModel.getUserName());
 
         newPasswordTextField.textProperty().bindBidirectional(
-                adminFxModel.passwordProperty());
+                newPassword);
 
         confirmPasswordButton.setOnAction(eh -> {
-            if (!(adminFxModel.getPassword().equals(null) && adminFxModel.getPassword().equals(""))) {
+            if (!(newPassword.get().equals(null) && newPassword.get().equals(""))) {
+                adminFxModel.setPassword(newPassword.get());
                 Admin admin = adminFxModel.getAdmin();
-                System.out.println(admin.getPassword());
-                DaoFactory.INSTANCE.getAdminDao().save(admin);
+                System.out.println(admin.getId()+ ": " + admin.getPassword());
+                Admin a = DaoFactory.INSTANCE.getAdminDao().save(admin);
+                System.out.println(a.getId()+ ": " +a.getPassword());
                 confirmPasswordButton.getScene().getWindow().hide();
             } else {
                 //nejaky alert

@@ -7,7 +7,7 @@ import sk.upjs.ics.bookwarehouse.business.PasswordManager;
 import sk.upjs.ics.bookwarehouse.business.SHA256PasswordManager;
 import sk.upjs.ics.bookwarehouse.business.BookLendingManager;
 import sk.upjs.ics.bookwarehouse.business.DefaultBookLendingManager;
-import sk.upjs.ics.bookwarehouse.business.RegistrationManager;
+import sk.upjs.ics.bookwarehouse.business.DefaultRegistrationManager;
 
 public enum ManagerFactory {
     INSTANCE;
