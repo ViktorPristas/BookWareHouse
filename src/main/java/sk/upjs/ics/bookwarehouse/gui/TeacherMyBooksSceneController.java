@@ -37,6 +37,9 @@ public class TeacherMyBooksSceneController {
     private TableView<BookLendingFxModel> simpleTableView;
 
     @FXML
+    private Button exportToExcelButton;
+
+    @FXML
     void initialize() {
         backButton.setOnAction(eh -> {
             MainSceneTeacherController controller = new MainSceneTeacherController();
@@ -66,12 +69,11 @@ public class TeacherMyBooksSceneController {
         TableColumn<BookLendingFxModel, String> authorCol = new TableColumn<>("Autor");
         authorCol.setCellValueFactory(new PropertyValueFactory<>("author"));
         simpleTableView.getColumns().add(authorCol);
-        
-         TableColumn<BookLendingFxModel, String> titleCol = new TableColumn<>("Názov");
+
+        TableColumn<BookLendingFxModel, String> titleCol = new TableColumn<>("Názov");
         titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
         simpleTableView.getColumns().add(titleCol);
-        
-        
+
         TableColumn<BookLendingFxModel, Integer> yearOfReturnCol = new TableColumn<>("rok vratenia");
         yearOfReturnCol.setCellValueFactory(new PropertyValueFactory<>("yearOfReturn"));
         simpleTableView.getColumns().add(yearOfReturnCol);
@@ -87,8 +89,8 @@ public class TeacherMyBooksSceneController {
         TableColumn<BookLendingFxModel, String> commentCol = new TableColumn<>("koment");
         commentCol.setCellValueFactory(new PropertyValueFactory<>("comment"));
         simpleTableView.getColumns().add(commentCol);
-        
-         TableColumn<BookLendingFxModel, String> approvedCol = new TableColumn<>("Je potvrdené");
+
+        TableColumn<BookLendingFxModel, String> approvedCol = new TableColumn<>("Je potvrdené");
         approvedCol.setCellValueFactory(new PropertyValueFactory<>("approvedString"));
         simpleTableView.getColumns().add(approvedCol);
 
