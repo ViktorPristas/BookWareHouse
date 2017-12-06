@@ -30,11 +30,24 @@ public class BookFxModel {
     private BooleanProperty used = new SimpleBooleanProperty();
     private StringProperty comment = new SimpleStringProperty();
     private int numberInStockBefore;
+    private StringProperty isUsedString = new SimpleStringProperty();
 
     public BookFxModel() {
         BookDao bookDao = DaoFactory.INSTANCE.getBookDao();
         List<Book> books = bookDao.getAll();
         this.books = FXCollections.observableArrayList(books);
+    }
+
+    public StringProperty isUsedStringProperty() {
+        return isUsedString;
+    }
+
+    public String getIsUsedString() {
+        return isUsedString.get();
+    }
+
+    public void setIsUsedString(String isUsedString) {
+        this.isUsedString.set(isUsedString);
     }
 
     public ObservableList<BookFxModel> getBooksModel() {
@@ -187,6 +200,12 @@ public class BookFxModel {
             boolean isUsed = book.isUsed();
             int numberInStock = book.getNumberInStock();
             int numberOfUsed = book.getNumberOfUsed();
+            String isUsedString;
+            if (book.isUsed()) {
+                isUsedString = "áno";
+            } else {
+                isUsedString = "nie";
+            }
 
             bookFxModel.setId(book.getId());
             bookFxModel.setTitle(title);
@@ -197,6 +216,7 @@ public class BookFxModel {
             bookFxModel.setNumberInStock(numberInStock);
             bookFxModel.setNumberOfUsed(numberOfUsed);
             bookFxModel.setNumberInStockBefore(numberInStock);
+            bookFxModel.setIsUsedString(isUsedString);
             booksmodel.add(bookFxModel);
         }
 
@@ -214,6 +234,12 @@ public class BookFxModel {
                 String schoolClass = book.getSchoolClass();
                 int numberInStock = book.getNumberInStock();
                 int numberOfUsed = book.getNumberOfUsed();
+                String isUsedString;
+                if (book.isUsed()) {
+                    isUsedString = "áno";
+                } else {
+                    isUsedString = "nie";
+                }
 
                 bookFxModel.setId(book.getId());
                 bookFxModel.setTitle(title);
@@ -223,6 +249,7 @@ public class BookFxModel {
                 bookFxModel.setNumberInStock(numberInStock);
                 bookFxModel.setNumberOfUsed(numberOfUsed);
                 bookFxModel.setNumberInStockBefore(numberInStock);
+                bookFxModel.setIsUsedString(isUsedString);
                 booksmodel.add(bookFxModel);
             }
         }

@@ -138,7 +138,7 @@ public class MainSceneTeacherDBController {
         simpleTableView.getColumns().add(numberOfUsedCol);
         
         TableColumn<BookFxModel, Boolean> isUsedCol = new TableColumn<>("Používa sa");
-        isUsedCol.setCellValueFactory(new PropertyValueFactory<>("isUsed"));
+        isUsedCol.setCellValueFactory(new PropertyValueFactory<>("isUsedString"));
         simpleTableView.getColumns().add(isUsedCol);
 
         simpleTableView.setItems(bookFxModel.getBooksModel());

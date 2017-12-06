@@ -57,6 +57,9 @@ public class ConfirmLendingSceneController {
 
     @FXML
     private Label classLabel;
+    
+    @FXML
+    private Label numberInStockTextField;
 
     @FXML
     void initialize() {
@@ -65,6 +68,8 @@ public class ConfirmLendingSceneController {
         titleLabel.setText(bookFxModel.getTitle());
 
         classLabel.setText(bookFxModel.getSchoolClass());
+        
+        numberInStockTextField.setText("" + bookFxModel.getNumberInStock());
 
         numberOfElementsTextField.textProperty().bindBidirectional(
                 number, new NumberStringConverter());

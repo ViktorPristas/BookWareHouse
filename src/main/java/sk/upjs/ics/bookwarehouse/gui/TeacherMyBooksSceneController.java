@@ -87,6 +87,10 @@ public class TeacherMyBooksSceneController {
         TableColumn<BookLendingFxModel, String> commentCol = new TableColumn<>("koment");
         commentCol.setCellValueFactory(new PropertyValueFactory<>("comment"));
         simpleTableView.getColumns().add(commentCol);
+        
+         TableColumn<BookLendingFxModel, String> approvedCol = new TableColumn<>("Je potvrdené");
+        approvedCol.setCellValueFactory(new PropertyValueFactory<>("approvedString"));
+        simpleTableView.getColumns().add(approvedCol);
 
         simpleTableView.setItems(bookLendingFxModel.getBookLendingsModel());
 

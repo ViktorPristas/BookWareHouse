@@ -20,6 +20,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 import org.springframework.jdbc.core.JdbcTemplate;
 import sk.upjs.ics.bookwarehouse.Teacher;
+import sk.upjs.ics.bookwarehouse.business.UserIdentificationManager;
 import sk.upjs.ics.bookwarehouse.fxmodels.BookFxModel;
 import sk.upjs.ics.bookwarehouse.fxmodels.BookLendingFxModel;
 import sk.upjs.ics.bookwarehouse.fxmodels.TeacherFxModel;
@@ -147,8 +148,7 @@ public class MainSceneAdminRequestController {
         teacherComboBox.getItems()
                 .addAll(nameOfTeachers);
 
-        searchButton.setOnAction(eh
-                -> {
+        searchButton.setOnAction(eh -> {
             String selectedTeacher = teacherComboBox.getValue();
             if (bookLendingFxModel.getLendings().size() > 0) {
                 bookLendingFxModel.loadFilteredTeachersToModel(selectedTeacher);
@@ -156,44 +156,45 @@ public class MainSceneAdminRequestController {
         }
         );
 
-        if (bookLendingFxModel.getLendings()
-                .size() > 0) {
+        if (bookLendingFxModel.getLendings().size() > 0) {
             bookLendingFxModel.loadLendingForAdminToModel();
         }
 
-        // setting up the TableView
-        TableColumn<BookLendingFxModel, String> nameOfTeacherCol = new TableColumn<>("meno ucitela");
-        nameOfTeacherCol.setCellValueFactory(new PropertyValueFactory<>("nameOfTeacher"));
-        simpleTableView.getColumns().add(nameOfTeacherCol);
+        TableColumn<BookLendingFxModel, String> authorCol = new TableColumn<>("Autor");
+        authorCol.setCellValueFactory(new PropertyValueFactory<>("author"));
+        simpleTableView.getColumns().add(authorCol);
+
+        TableColumn<BookLendingFxModel, String> titleCol = new TableColumn<>("Názov");
+        titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
+        simpleTableView.getColumns().add(titleCol);
+
+        TableColumn<BookLendingFxModel, String> teacherNameCol = new TableColumn<>("Meno učiteľa");
+        teacherNameCol.setCellValueFactory(new PropertyValueFactory<>("nameOfTeacher"));
+        simpleTableView.getColumns().add(teacherNameCol);
         
+        TableColumn<BookLendingFxModel, String> teacherSurnameCol = new TableColumn<>("Priezvisko učiteľa");
+        teacherSurnameCol.setCellValueFactory(new PropertyValueFactory<>("surnameOfTeacher"));
+        simpleTableView.getColumns().add(teacherSurnameCol);
         
         TableColumn<BookLendingFxModel, Integer> yearOfReturnCol = new TableColumn<>("rok vratenia");
-
-        yearOfReturnCol.setCellValueFactory(
-                new PropertyValueFactory<>("yearOfReturn"));
-        simpleTableView.getColumns()
-                .add(yearOfReturnCol);
+        yearOfReturnCol.setCellValueFactory(new PropertyValueFactory<>("yearOfReturn"));
+        simpleTableView.getColumns().add(yearOfReturnCol);
 
         TableColumn<BookLendingFxModel, Integer> lendedCol = new TableColumn<>("pocet rozdanych");
-
-        lendedCol.setCellValueFactory(
-                new PropertyValueFactory<>("lended"));
-        simpleTableView.getColumns()
-                .add(lendedCol);
+        lendedCol.setCellValueFactory(new PropertyValueFactory<>("lended"));
+        simpleTableView.getColumns().add(lendedCol);
 
         TableColumn<BookLendingFxModel, Integer> returnedCol = new TableColumn<>("pocet vratenych");
-
-        returnedCol.setCellValueFactory(
-                new PropertyValueFactory<>("returned"));
-        simpleTableView.getColumns()
-                .add(returnedCol);
+        returnedCol.setCellValueFactory(new PropertyValueFactory<>("returned"));
+        simpleTableView.getColumns().add(returnedCol);
 
         TableColumn<BookLendingFxModel, String> commentCol = new TableColumn<>("koment");
+        commentCol.setCellValueFactory(new PropertyValueFactory<>("comment"));
+        simpleTableView.getColumns().add(commentCol);
 
-        commentCol.setCellValueFactory(
-                new PropertyValueFactory<>("comment"));
-        simpleTableView.getColumns()
-                .add(commentCol);
+        TableColumn<BookLendingFxModel, String> approvedCol = new TableColumn<>("Je potvrdené");
+        approvedCol.setCellValueFactory(new PropertyValueFactory<>("approvedString"));
+        simpleTableView.getColumns().add(approvedCol);
 
         simpleTableView.setItems(bookLendingFxModel.getBookLendingsModel());
 
