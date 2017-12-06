@@ -136,6 +136,11 @@ public class MainSceneAdminRequestController {
         }
 
         // setting up the TableView
+        TableColumn<BookLendingFxModel, String> nameOfTeacherCol = new TableColumn<>("meno ucitela");
+        nameOfTeacherCol.setCellValueFactory(new PropertyValueFactory<>("nameOfTeacher"));
+        simpleTableView.getColumns().add(nameOfTeacherCol);
+        
+        
         TableColumn<BookLendingFxModel, Integer> yearOfReturnCol = new TableColumn<>("rok vratenia");
         yearOfReturnCol.setCellValueFactory(new PropertyValueFactory<>("yearOfReturn"));
         simpleTableView.getColumns().add(yearOfReturnCol);

@@ -107,6 +107,7 @@ public class MysqlBookDao implements BookDao {
                 Book b = new Book();
                 b.setId(id);
                 b.setAuthor(rs.getString("author"));
+                b.setTitle(rs.getString("title"));
                 b.setYearOfPublication(rs.getInt("yearOfPublication"));
                 b.setSchoolClass(rs.getString("schoolClass"));
                 b.setNumberInStock(rs.getInt("numberInStock"));

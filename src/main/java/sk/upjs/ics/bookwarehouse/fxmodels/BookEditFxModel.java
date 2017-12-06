@@ -175,8 +175,8 @@ public class BookEditFxModel {
             String schoolClass = bookEdit.getBook().getSchoolClass();
             String nameOfAdmin = bookEdit.getNameOfAdmin();
             LocalDateTime date = bookEdit.getDate();
-            int numbersBefore = bookEdit.getNumberBefore();
-            int numbersAfter = bookEdit.getNumberAfter();
+            int numberBefore = bookEdit.getNumberBefore();
+            int numberAfter = bookEdit.getNumberAfter();
             
             bookEditFxModel.setId(id);
             bookEditFxModel.setAuthor(author);
@@ -184,8 +184,8 @@ public class BookEditFxModel {
             bookEditFxModel.setSchoolClass(schoolClass);
             bookEditFxModel.setNameOfAdmin(nameOfAdmin);
             bookEditFxModel.setDate(date);
-            bookEditFxModel.setNumberBefore(numbersBefore);
-            bookEditFxModel.setNumberAfter(numbersAfter);
+            bookEditFxModel.setNumberBefore(numberBefore); System.out.println("before: " + numberBefore);
+            bookEditFxModel.setNumberAfter(numberAfter); System.out.println("after: " + numberAfter);
             bookEditsModel.add(bookEditFxModel);
         }
     }

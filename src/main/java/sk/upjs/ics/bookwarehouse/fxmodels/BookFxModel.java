@@ -184,6 +184,7 @@ public class BookFxModel {
             String author = book.getAuthor();
             int yearOfPublication = book.getYearOfPublication();
             String schoolClass = book.getSchoolClass();
+            boolean isUsed = book.isUsed();
             int numberInStock = book.getNumberInStock();
             int numberOfUsed = book.getNumberOfUsed();
 
@@ -192,6 +193,7 @@ public class BookFxModel {
             bookFxModel.setAuthor(author);
             bookFxModel.setYearOfPublication(yearOfPublication);
             bookFxModel.setSchoolClass(schoolClass);
+            bookFxModel.setUsed(isUsed);
             bookFxModel.setNumberInStock(numberInStock);
             bookFxModel.setNumberOfUsed(numberOfUsed);
             bookFxModel.setNumberInStockBefore(numberInStock);

@@ -128,11 +128,11 @@ public class SupALogsSceneController {
         editedBookTableView.getColumns().add(dateEditCol);
         
         TableColumn<BookEditFxModel, Integer> numberBeforeEditCol = new TableColumn<>("Pocet pred");
-        numberBeforeEditCol.setCellValueFactory(new PropertyValueFactory<>("numbersBefore"));
+        numberBeforeEditCol.setCellValueFactory(new PropertyValueFactory<>("numberBefore"));
         editedBookTableView.getColumns().add(numberBeforeEditCol);
         
         TableColumn<BookEditFxModel, Integer> numberAfterEditCol = new TableColumn<>("Pocet po");
-        numberAfterEditCol.setCellValueFactory(new PropertyValueFactory<>("numbersAfter"));
+        numberAfterEditCol.setCellValueFactory(new PropertyValueFactory<>("numberAfter"));
         editedBookTableView.getColumns().add(numberAfterEditCol);
         
         editedBookTableView.setItems(bookEditFxModel.getBookEditsModel());

@@ -116,12 +116,16 @@ public class MainSceneTeacherDBController {
         simpleTableView.getColumns().add(schoolClassCol);
 
         TableColumn<BookFxModel, Integer> numberInStockCol = new TableColumn<>("Pocet na sklade");
-        yearCol.setCellValueFactory(new PropertyValueFactory<>("numberInStock"));
+        numberInStockCol.setCellValueFactory(new PropertyValueFactory<>("numberInStock"));
         simpleTableView.getColumns().add(numberInStockCol);
 
         TableColumn<BookFxModel, Integer> numberOfUsedCol = new TableColumn<>("Pocet rozdanych");
         numberOfUsedCol.setCellValueFactory(new PropertyValueFactory<>("numberOfUsed"));
         simpleTableView.getColumns().add(numberOfUsedCol);
+        
+        TableColumn<BookFxModel, Boolean> isUsedCol = new TableColumn<>("Používa sa");
+        isUsedCol.setCellValueFactory(new PropertyValueFactory<>("isUsed"));
+        simpleTableView.getColumns().add(isUsedCol);
 
         simpleTableView.setItems(bookFxModel.getBooksModel());
 

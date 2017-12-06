@@ -63,6 +63,15 @@ public class TeacherMyBooksSceneController {
             bookLendingFxModel.loadBookLendingToModel(UserIdentificationManager.getId());
         }
 
+        TableColumn<BookLendingFxModel, String> authorCol = new TableColumn<>("Autor");
+        authorCol.setCellValueFactory(new PropertyValueFactory<>("author"));
+        simpleTableView.getColumns().add(authorCol);
+        
+         TableColumn<BookLendingFxModel, String> titleCol = new TableColumn<>("Názov");
+        titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
+        simpleTableView.getColumns().add(titleCol);
+        
+        
         TableColumn<BookLendingFxModel, Integer> yearOfReturnCol = new TableColumn<>("rok vratenia");
         yearOfReturnCol.setCellValueFactory(new PropertyValueFactory<>("yearOfReturn"));
         simpleTableView.getColumns().add(yearOfReturnCol);
