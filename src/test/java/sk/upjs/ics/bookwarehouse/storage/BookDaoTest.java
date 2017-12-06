@@ -96,4 +96,31 @@ public class BookDaoTest {
         Assert.assertTrue(bool);
     }
 
+    
+    @Test
+    public void testFindById() {
+        Book b = new Book();
+        b.setAuthor("author333");
+        b.setTitle("title333");
+        b.setYearOfPublication(2010);
+        b.setSchoolClass("9");
+        b.setNumberInStock(31);
+        b.setNumberOfUsed(12);
+        b.setComment("comment333");
+        b.setUsed(false);
+        b = dao.save(b);
+        long id = b.getId();
+        
+        Book bookNew = dao.findById(id);
+        Assert.assertEquals(b.getAuthor(), bookNew.getAuthor());
+        Assert.assertEquals(b.getTitle(), bookNew.getTitle());
+        Assert.assertEquals(b.getYearOfPublication(), bookNew.getYearOfPublication());
+        Assert.assertEquals(b.getSchoolClass(), bookNew.getSchoolClass());
+        Assert.assertEquals(b.getNumberInStock(), bookNew.getNumberInStock());
+        Assert.assertEquals(b.getNumberOfUsed(), bookNew.getNumberOfUsed());
+        Assert.assertEquals(b.getComment(), bookNew.getComment());
+        Assert.assertEquals(b.isUsed(), bookNew.isUsed());
+        dao.deleteById(id);
+        
+    }
 }

@@ -6,7 +6,7 @@ import sk.upjs.ics.bookwarehouse.DaoFactory;
 import sk.upjs.ics.bookwarehouse.SuperAdmin;
 import sk.upjs.ics.bookwarehouse.Teacher;
 
-public class RegistrationManager {
+public class DefaultRegistrationManager {
 
     public static boolean isNewTeacherEmail(String email) {
         List<Teacher> list = DaoFactory.INSTANCE.getTeacherDao().getAll();

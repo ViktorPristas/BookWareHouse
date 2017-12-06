@@ -21,7 +21,7 @@ import sk.upjs.ics.bookwarehouse.DaoFactory;
 import sk.upjs.ics.bookwarehouse.ManagerFactory;
 import sk.upjs.ics.bookwarehouse.Teacher;
 import sk.upjs.ics.bookwarehouse.business.PasswordManager;
-import sk.upjs.ics.bookwarehouse.business.RegistrationManager;
+import sk.upjs.ics.bookwarehouse.business.DefaultRegistrationManager;
 import sk.upjs.ics.bookwarehouse.business.UserIdentificationManager;
 import sk.upjs.ics.bookwarehouse.fxmodels.TeacherFxModel;
 import sk.upjs.ics.bookwarehouse.storage.TeacherDao;
@@ -152,7 +152,7 @@ public class RegistrationSceneController {
         if ((t.getSurname() == null) || t.getSurname().equals("")) {
             return false;
         }
-        if (!RegistrationManager.isNewUserName(t.getEmail())) {
+        if (!DefaultRegistrationManager.isNewUserName(t.getEmail())) {
             return false;
         }
         if (t.getPassword() == null || t.getPassword().equals("")) {

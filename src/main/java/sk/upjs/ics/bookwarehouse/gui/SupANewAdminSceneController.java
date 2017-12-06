@@ -8,7 +8,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import sk.upjs.ics.bookwarehouse.Admin;
 import sk.upjs.ics.bookwarehouse.DaoFactory;
-import sk.upjs.ics.bookwarehouse.business.RegistrationManager;
+import sk.upjs.ics.bookwarehouse.business.DefaultRegistrationManager;
 import sk.upjs.ics.bookwarehouse.fxmodels.AdminFxModel;
 import sk.upjs.ics.bookwarehouse.storage.AdminDao;
 
@@ -67,10 +67,10 @@ public class SupANewAdminSceneController {
         if (a.getPassword() == null || a.getPassword().equals("")) {
             return false;
         }
-        if (!RegistrationManager.isNewUserName(a.getUserName())) {
+        if (!DefaultRegistrationManager.isNewUserName(a.getUserName())) {
             return false;
         }
-        if (!RegistrationManager.isNewAdminEmail(a.getEmail())) {
+        if (!DefaultRegistrationManager.isNewAdminEmail(a.getEmail())) {
             return false;
         }
         return true;

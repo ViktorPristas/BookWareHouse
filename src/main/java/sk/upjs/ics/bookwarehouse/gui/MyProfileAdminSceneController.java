@@ -13,7 +13,7 @@ import sk.upjs.ics.bookwarehouse.Admin;
 import sk.upjs.ics.bookwarehouse.DaoFactory;
 import sk.upjs.ics.bookwarehouse.ManagerFactory;
 import sk.upjs.ics.bookwarehouse.business.PasswordManager;
-import sk.upjs.ics.bookwarehouse.business.RegistrationManager;
+import sk.upjs.ics.bookwarehouse.business.DefaultRegistrationManager;
 import sk.upjs.ics.bookwarehouse.business.UserIdentificationManager;
 import sk.upjs.ics.bookwarehouse.fxmodels.AdminFxModel;
 import sk.upjs.ics.bookwarehouse.fxmodels.TeacherFxModel;

@@ -77,7 +77,7 @@ public class TeacherDaoTest {
         t = dao.save(t);
         long id = t.getId();
 
-        System.out.println(id);
+        // System.out.println(id);
         dao.deleteById(id);
         List<Teacher> list = dao.getAll();
         boolean b = true;
@@ -96,4 +96,22 @@ public class TeacherDaoTest {
         Assert.assertTrue(b);
     }
 
+    
+    @Test
+    public void testFindById() {
+        Teacher t = new Teacher();
+        t.setName("name-333");
+        t.setSurname("surname-333");
+        t.setEmail("email-333@gmail.com");
+        t.setPassword("password333");
+        t = dao.save(t);
+        long id = t.getId();
+        Teacher teacherNew = dao.findById(id);
+        Assert.assertEquals(t.getName(), teacherNew.getName());
+        Assert.assertEquals(t.getSurname(), teacherNew.getSurname());
+        Assert.assertEquals(t.getEmail(), teacherNew.getEmail());
+        Assert.assertEquals(t.getPassword(), teacherNew.getPassword());
+        Assert.assertEquals(t.getNumberOfStudentsInClass(), teacherNew.getNumberOfStudentsInClass());
+        dao.deleteById(id);
+    }
 }

@@ -123,7 +123,7 @@ public class AdminFxModel {
             
             adminFxModel.setUserName(userName);
             adminFxModel.setEmail(email);
-            
+            adminFxModel.setId(admin.getId());
             adminsModel.add(adminFxModel);
         }
     }
