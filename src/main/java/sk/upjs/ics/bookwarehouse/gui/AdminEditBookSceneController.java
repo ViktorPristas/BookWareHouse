@@ -20,6 +20,7 @@ public class AdminEditBookSceneController {
 
     private BookFxModel bookFxModel = new BookFxModel();
     private BookDao bookDao = DaoFactory.INSTANCE.getBookDao();
+    private MainSceneAdminDBController msadbc = new MainSceneAdminDBController();
 
     public AdminEditBookSceneController(BookFxModel bookFxModel) {
         this.bookFxModel = bookFxModel;
@@ -81,6 +82,7 @@ public class AdminEditBookSceneController {
                     DaoFactory.INSTANCE.getBookEditDao().save(bookEdit);
                 }
                 saveButton.getScene().getWindow().hide();
+                //msadbc.fillSimpleTable();
             } else {
                 //nejaky alert
             }

@@ -26,7 +26,7 @@
                         <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                     </children>
                 </HBox>
-                <Button fx:id="confirmRequestButton" layoutX="467.0" layoutY="95.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="128.0" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2;" text="Potvrdiť" textFill="#20120f" />
+                <Button fx:id="confirmRequestButton" layoutX="467.0" layoutY="95.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="128.0" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2; -fx-cursor: hand;" text="Potvrdiť" textFill="#20120f" />
                 <GridPane layoutX="62.0" layoutY="76.0" prefHeight="258.0" prefWidth="338.0" style="-fx-border-color: #20120F;">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" maxWidth="192.79998779296875" minWidth="10.0" prefWidth="121.6000244140625" />
@@ -52,7 +52,7 @@
                         <TextField fx:id="numberOfBooksLabel" prefHeight="27.0" prefWidth="96.0" promptText="Počet kusov" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                     </children>
                 </GridPane>
-                <Button fx:id="deleteRequestButton" layoutX="467.0" layoutY="185.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="128.0" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2;" text="Vymazať žiadosť" textFill="#cb0d0d" />
+                <Button fx:id="deleteRequestButton" layoutX="467.0" layoutY="185.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="128.0" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2; -fx-cursor: hand;" text="Vymazať žiadosť" textFill="#cb0d0d" />
             </children>
         </AnchorPane>
     </children>

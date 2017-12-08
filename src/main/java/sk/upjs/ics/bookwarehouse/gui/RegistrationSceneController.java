@@ -73,10 +73,9 @@ public class RegistrationSceneController {
 
         passwordTextField.textProperty().bindBidirectional(
                 teacherFxModel.passwordProperty());
-        
+
         numberOfStudentsTextField.textProperty().bindBidirectional(
                 teacherFxModel.numberOfStudentsInClassProperty(), new NumberStringConverter());
-
 
         passwordTextField.textProperty().addListener(new ChangeListener<String>() {
             @Override
@@ -116,7 +115,7 @@ public class RegistrationSceneController {
                 teacher.setId();
 
                 if (registrationIsOk(teacher)) {
-                    
+
                     teacher = teacherDao.save(teacher);
 
                     FXMLLoader loader = new FXMLLoader(
@@ -127,22 +126,23 @@ public class RegistrationSceneController {
                     Scene scene = new Scene(parentPane);
 
                     Stage stage = new Stage();
+                    stage.setResizable(false);
                     stage.setScene(scene);
                     stage.setTitle("BookWareHouse");
-                    stage.initModality(Modality.APPLICATION_MODAL);
+                    stage.setResizable(false);
                     stage.show();
                     signUpButton.getScene().getWindow().hide();
                 } else {
-                    //nejaky allert 
+                    showBadRegistrationWindow();
                 }
-                // toto sa vykona az po zatvoreni okna
+
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }
         });
     }
 
-   public boolean registrationIsOk(Teacher t) {
+    public boolean registrationIsOk(Teacher t) {
         if (t.getName() == null || t.getName().equals("")) {
             return false;
         }
@@ -159,5 +159,26 @@ public class RegistrationSceneController {
             return false;
         }
         return true;
+    }
+
+    public void showBadRegistrationWindow() {
+        AlertBoxFailToSignUpController controller = new AlertBoxFailToSignUpController();
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("AlertBoxFailToSignUp.fxml"));
+            loader.setController(controller);
+
+            Parent parentPane = loader.load();
+            Scene scene = new Scene(parentPane);
+
+            Stage stage = new Stage();
+            stage.setResizable(false);
+            stage.setScene(scene);
+            stage.setTitle("BookWareHouse");
+            stage.show();
+
+        } catch (IOException iOException) {
+            iOException.printStackTrace();
+        }
     }
 }

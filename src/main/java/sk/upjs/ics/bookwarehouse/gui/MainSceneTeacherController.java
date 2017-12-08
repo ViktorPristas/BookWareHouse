@@ -15,6 +15,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sk.upjs.ics.bookwarehouse.Book;
 import sk.upjs.ics.bookwarehouse.DaoFactory;
@@ -46,6 +47,7 @@ public class MainSceneTeacherController {
 
     @FXML
     void initialize() {
+        
         openDBButton.setOnAction(eh -> {
             MainSceneTeacherDBController controller = new MainSceneTeacherDBController();
             try {
@@ -99,6 +101,8 @@ public class MainSceneTeacherController {
                 Scene scene = new Scene(parentPane);
 
                 Stage stage = new Stage();
+                stage.setResizable(false);
+                stage.initModality(Modality.APPLICATION_MODAL);
                 stage.setScene(scene);
                 stage.setTitle("BookWareHouse");
                 stage.show();

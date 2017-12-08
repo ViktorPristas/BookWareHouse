@@ -16,6 +16,7 @@ public class NewBookSceneController {
 
     private BookFxModel bookFxModel = new BookFxModel();
     private BookDao bookDao = DaoFactory.INSTANCE.getBookDao();
+    private MainSceneAdminDBController msadbc = new MainSceneAdminDBController();
 
     @FXML
     private ResourceBundle resources;
@@ -43,6 +44,13 @@ public class NewBookSceneController {
 
     @FXML
     void initialize() {
+        
+        schoolClassComboBox.getItems().addAll(
+                "1", "2", "3", "4", "5", "6", "7", "8", "9", "I. G", "II. G", "III. G", "IV. G");
+        
+        numberInStockTextField.textProperty().bindBidirectional(
+                bookFxModel.numberInStockProperty(), new NumberStringConverter());
+        
         authorTextField.textProperty().bindBidirectional(
                 bookFxModel.AuthorProperty());
 
@@ -54,11 +62,6 @@ public class NewBookSceneController {
 
 //        schoolClassComboBox.textProperty().bindBidirectional(
 //                bookFxModel.SchoolClassProperty());
-        numberInStockTextField.textProperty().bindBidirectional(
-                bookFxModel.numberInStockProperty(), new NumberStringConverter());
-
-        schoolClassComboBox.getItems().addAll(
-                "1", "2", "3", "4", "5", "6", "7", "8", "9", "I. G", "II. G", "III. G", "IV. G");
 
         schoolClassComboBox.valueProperty().bindBidirectional(
                 bookFxModel.SchoolClassProperty());
@@ -70,6 +73,7 @@ public class NewBookSceneController {
             b.setId();
             if (registrationIsOk(b)) {
                 bookDao.save(b);
+                msadbc.refreshSimpleTable();
                 saveButton.getScene().getWindow().hide();
             } else {
                 //nejaky alert

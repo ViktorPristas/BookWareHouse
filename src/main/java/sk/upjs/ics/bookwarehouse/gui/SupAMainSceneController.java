@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class SupAMainSceneController {
@@ -26,6 +27,9 @@ public class SupAMainSceneController {
 
     @FXML
     private Button logOutButton;
+    
+    @FXML
+    private Button myProfileButton;
 
     @FXML
     void initialize() {
@@ -88,7 +92,30 @@ public class SupAMainSceneController {
                 logOutButton.getScene().getWindow().hide();
                 stage.show();
 
-                // toto sa vykona az po zatvoreni okna
+                
+            } catch (IOException iOException) {
+                iOException.printStackTrace();
+            }
+        });
+        
+        myProfileButton.setOnAction(eh -> {            
+        SupAMyProfileSceneController controller = new SupAMyProfileSceneController();
+            try {
+                FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource("SupAMyProfileScene.fxml"));
+                loader.setController(controller);
+
+                Parent parentPane = loader.load();
+                Scene scene = new Scene(parentPane);
+
+                Stage stage = new Stage();
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setResizable(false);
+                stage.setScene(scene);
+                stage.setTitle("BookWareHouse");
+                stage.show();
+
+                
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }

@@ -14,7 +14,7 @@
             <children>
                 <TextField fx:id="emailTextField" layoutX="33.0" layoutY="175.0" prefHeight="25.0" prefWidth="425.0" promptText="E-mail" style="-fx-background-color: #9C2B27; -fx-border-width: 0.2; -fx-border-color: #f8f8f8; -fx-text-fill: #f8f8f8;" />
                 <PasswordField fx:id="passwordTextField" layoutX="33.0" layoutY="264.0" prefHeight="25.0" prefWidth="425.0" promptText="Heslo" style="-fx-background-color: #9C2B27; -fx-border-color: #f8f8f8; -fx-border-width: 0.2;" />
-                <Button fx:id="loginButton" defaultButton="true" layoutX="152.0" layoutY="325.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #E45652; -fx-border-color: #f8f8f8; -fx-border-width: 0.2;" text="Prihlásiť sa" textFill="#f8f8f8" />
+                <Button fx:id="loginButton" defaultButton="true" layoutX="152.0" layoutY="325.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #E45652; -fx-border-color: #f8f8f8; -fx-border-width: 0.2; -fx-cursor: hand;" text="Prihlásiť sa" textFill="#f8f8f8" />
                 <Label layoutX="187.0" layoutY="59.0" style="-fx-font-weight: bold;" text="Prihlásenie" textFill="#f8f8f8">
                     <font>
                         <Font size="22.0" />
@@ -33,6 +33,6 @@
             </font>
         </Label>
         <Label layoutX="94.0" layoutY="284.0" text="Nemáte ešte vytvorené konto?" textFill="#f8f8f8" />
-        <Button fx:id="registerButton" layoutX="94.0" layoutY="343.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="195.0" style="-fx-background-color: #E45652; -fx-border-color: #f8f8f8; -fx-border-width: 0.2;" text="Zaregistrujte sa" textFill="#f8f8f8" />
+        <Button fx:id="registerButton" layoutX="94.0" layoutY="343.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="195.0" style="-fx-background-color: #E45652; -fx-border-color: #f8f8f8; -fx-border-width: 0.2; -fx-cursor: hand;" text="Zaregistrujte sa" textFill="#f8f8f8" />
     </children>
 </AnchorPane>

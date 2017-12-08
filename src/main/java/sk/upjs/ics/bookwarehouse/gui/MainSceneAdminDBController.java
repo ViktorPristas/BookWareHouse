@@ -86,10 +86,12 @@ public class MainSceneAdminDBController {
                 Scene scene = new Scene(parentPane);
 
                 Stage stage = new Stage();
+                stage.setResizable(false);
                 stage.setScene(scene);
                 stage.setTitle("BookWareHouse");
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.show();
+                
 
                 // toto sa vykona az po zatvoreni okna
             } catch (IOException iOException) {
@@ -102,17 +104,19 @@ public class MainSceneAdminDBController {
             AdminEditBookSceneController controller = new AdminEditBookSceneController(selectedBookFxModel);
             try {
                 FXMLLoader loader = new FXMLLoader(
-                        getClass().getResource("NewBookScene.fxml"));
+                        getClass().getResource("EditBookScene.fxml"));
                 loader.setController(controller);
 
                 Parent parentPane = loader.load();
                 Scene scene = new Scene(parentPane);
 
                 Stage stage = new Stage();
+                stage.setResizable(false);
                 stage.setScene(scene);
                 stage.setTitle("BookWareHouse: Upraviť knihu");
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.show();
+                
 
                 // toto sa vykona az po zatvoreni okna
             } catch (IOException iOException) {
@@ -120,6 +124,26 @@ public class MainSceneAdminDBController {
             }
         });
 
+        fillSimpleTable();
+
+        // naplnenie combobxu
+        schoolClassComboBox.getItems().addAll("<Všetko>", "1", "2", "3", "4", "5", "6", "7", "8", "9", "I. G", "II. G", "III. G", "IV. G");
+
+        searchButton.setOnAction(eh -> {
+            String selectedClass = schoolClassComboBox.getValue();
+
+            if (bookFxModel.getBooks().size() > 0) {
+                bookFxModel.loadFilteredBooksToModel(selectedClass);
+            }
+
+        });
+    }
+
+    public void refreshSimpleTable() {
+        simpleTableView.refresh();
+    }
+    
+    public void fillSimpleTable() {
         if (bookFxModel.getBooks().size() > 0) {
             bookFxModel.loadBooksToModel();
         }
@@ -159,23 +183,11 @@ public class MainSceneAdminDBController {
         TableColumn<BookFxModel, Integer> numberOfUsedCol = new TableColumn<>("Pocet rozdanych");
         numberOfUsedCol.setCellValueFactory(new PropertyValueFactory<>("numberOfUsed"));
         simpleTableView.getColumns().add(numberOfUsedCol);
-        
+
         TableColumn<BookFxModel, Boolean> isUsedCol = new TableColumn<>("Používa sa");
-        isUsedCol.setCellValueFactory(new PropertyValueFactory<>("isUsed"));
+        isUsedCol.setCellValueFactory(new PropertyValueFactory<>("isUsedString"));
         simpleTableView.getColumns().add(isUsedCol);
 
         simpleTableView.setItems(bookFxModel.getBooksModel());
-
-        // naplnenie combobxu
-        schoolClassComboBox.getItems().addAll("<Všetko>", "1", "2", "3", "4", "5", "6", "7", "8", "9", "I. G", "II. G", "III. G", "IV. G");
-
-        searchButton.setOnAction(eh -> {
-            String selectedClass = schoolClassComboBox.getValue();
-
-            if (bookFxModel.getBooks().size() > 0) {
-                bookFxModel.loadFilteredBooksToModel(selectedClass);
-            }
-
-        });
     }
 }

@@ -64,7 +64,8 @@ public class MainSceneTeacherDBController {
                 Parent parentPane = loader.load();
                 Scene scene = new Scene(parentPane);
 
-                Stage stage = new Stage();
+                Stage stage = new Stage();                
+                stage.setResizable(false);
                 stage.setScene(scene);
                 stage.setTitle("BookWareHouse");
                 stage.initModality(Modality.APPLICATION_MODAL);

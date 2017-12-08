@@ -17,6 +17,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.springframework.jdbc.core.JdbcTemplate;
 import sk.upjs.ics.bookwarehouse.Teacher;
@@ -107,6 +108,8 @@ public class MainSceneAdminRequestController {
 
                 Stage stage = new Stage();
                 stage.setScene(scene);
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setResizable(false);
                 stage.setTitle("BookWareHouse");
                 stage.show();
 
@@ -129,6 +132,8 @@ public class MainSceneAdminRequestController {
                 Scene scene = new Scene(parentPane);
 
                 Stage stage = new Stage();
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setResizable(false);
                 stage.setScene(scene);
                 stage.setTitle("BookWareHouse");
                 stage.show();

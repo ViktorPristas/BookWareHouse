@@ -10,12 +10,11 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #20120F;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <AnchorPane layoutX="40.0" layoutY="40.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #9C2B27;" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="40.0">
             <children>
-                <Button fx:id="saveChangesButton" layoutX="343.0" layoutY="265.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" style="-fx-background-color: #E45652; -fx-border-color: #f8f8f8; -fx-border-width: 0.2;" text="Uložiť zmeny" textFill="#f8f8f8" />
+                <Button fx:id="saveChangesButton" layoutX="343.0" layoutY="265.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="136.0" style="-fx-background-color: #E45652; -fx-border-color: #f8f8f8; -fx-border-width: 0.2; -fx-cursor: hand;" text="Uložiť zmeny" textFill="#f8f8f8" />
                 <Label layoutX="208.0" layoutY="14.0" text="Môj profil" textFill="#f8f8f8">
                     <font>
                         <Font size="24.0" />

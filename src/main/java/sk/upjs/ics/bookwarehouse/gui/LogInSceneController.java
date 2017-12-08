@@ -83,7 +83,7 @@ public class LogInSceneController {
 
         loginButton.setOnAction(eh -> {
             if (!UserIdentificationManager.setUser(loginFxModel.getEmail())) {
-                //nejaky allert
+                showWrongDatasWindow();
             }
             int typeOfUser = UserIdentificationManager.getTypeOfUser();
             if (passwordManager.isCorrectPassword(loginFxModel.getPassword(), typeOfUser, UserIdentificationManager.getId())) {
@@ -97,7 +97,7 @@ public class LogInSceneController {
                     loginSuperAdmin();
                 }
             } else {
-                //ten isty allert ako o 3 riadky vyssie
+                showWrongDatasWindow();
             }
 
         });
@@ -146,7 +146,6 @@ public class LogInSceneController {
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("BookWareHouse");
-            stage.initModality(Modality.APPLICATION_MODAL);
             stage.show();
             loginButton.getScene().getWindow().hide();
 
@@ -190,6 +189,29 @@ public class LogInSceneController {
 
             Stage stage = (Stage) supadminloginButton.getScene().getWindow();
             stage.setScene(scene);
+            stage.setTitle("BookWareHouse");
+            stage.show();
+
+            // toto sa vykona az po zatvoreni okna
+        } catch (IOException iOException) {
+            iOException.printStackTrace();
+        }
+    }
+
+    private void showWrongDatasWindow() {
+        AlertBoxFailToLoginController controller = new AlertBoxFailToLoginController();
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("AlertBoxFailToLogin.fxml"));
+            loader.setController(controller);
+
+            Parent parentPane = loader.load();
+            Scene scene = new Scene(parentPane);
+
+            Stage stage = new Stage();
+            stage.setScene(scene);
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(false);
             stage.setTitle("BookWareHouse");
             stage.show();
 

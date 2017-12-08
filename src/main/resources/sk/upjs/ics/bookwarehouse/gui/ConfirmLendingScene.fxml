@@ -15,7 +15,7 @@
     <children>
         <AnchorPane layoutX="40.0" layoutY="31.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #9C2B27;" AnchorPane.bottomAnchor="49.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0" AnchorPane.topAnchor="31.0">
             <children>
-                <Button fx:id="confirmButton" layoutX="446.0" layoutY="327.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="160.0" style="-fx-background-color: #9C2B27; -fx-border-color: f8f8f8; -fx-border-width: 0.2;" text="Potvrdiť" textFill="#f8f8f8" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+                <Button fx:id="confirmButton" layoutX="446.0" layoutY="327.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="160.0" style="-fx-background-color: #9C2B27; -fx-border-color: f8f8f8; -fx-border-width: 0.2; -fx-cursor: hand;" text="Potvrdiť" textFill="#f8f8f8" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
                 <HBox layoutY="30.0" prefHeight="25.0" prefWidth="520.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                     <children>
                         <Region prefHeight="35.0" prefWidth="162.0" HBox.hgrow="ALWAYS" />

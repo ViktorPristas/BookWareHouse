@@ -12,6 +12,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sk.upjs.ics.bookwarehouse.business.UserIdentificationManager;
 import sk.upjs.ics.bookwarehouse.fxmodels.BookLendingFxModel;
@@ -97,6 +98,8 @@ public class MainSceneAdminController {
 
                 Stage stage = new Stage();
                 stage.setScene(scene);
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setResizable(false);
                 stage.setTitle("BookWareHouse");
                 stage.show();
 

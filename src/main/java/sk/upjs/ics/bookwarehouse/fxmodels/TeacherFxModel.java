@@ -20,6 +20,7 @@ import sk.upjs.ics.bookwarehouse.storage.TeacherDao;
 public class TeacherFxModel {
 
     private ObservableList<Teacher> teachers = new SimpleListProperty<>();
+    private ObservableList<TeacherFxModel> teachersModel = FXCollections.observableArrayList();
     private LongProperty id = new SimpleLongProperty();
     private StringProperty name = new SimpleStringProperty();
     private StringProperty surname = new SimpleStringProperty();
@@ -33,6 +34,10 @@ public class TeacherFxModel {
         List<Teacher> teachers = teacherDao.getAll();
         this.teachers = FXCollections.observableArrayList(teachers);
         
+    }
+    
+    public ObservableList<TeacherFxModel> getTeachersModel() {
+        return teachersModel;
     }
 
     public String getActualPassword() {
@@ -149,5 +154,26 @@ public class TeacherFxModel {
             System.out.println(nameAndSurname);
         }
         return nameOfTeachers;
+    }
+    
+    public void loadTeacherToModel() {
+        teachersModel.clear();
+        for (Teacher teacher : teachers) {
+            TeacherFxModel teacherFxModel = new TeacherFxModel();
+            
+            Long id = teacher.getId();
+            String name = teacher.getName();
+            String surname = teacher.getSurname();
+            String email = teacher.getEmail();
+            int numberOfStudentsInClass = teacher.getNumberOfStudentsInClass();
+            
+            teacherFxModel.setId(id);
+            teacherFxModel.setName(name);
+            teacherFxModel.setSurname(surname);
+            teacherFxModel.setEmail(email);
+            teacherFxModel.setNumberOfStudentsInClass(numberOfStudentsInClass);
+            
+            teachersModel.add(teacherFxModel);
+        }
     }
 }
