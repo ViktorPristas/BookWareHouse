@@ -18,12 +18,21 @@
             </Label>
             <HBox layoutX="48.0" layoutY="123.0" prefHeight="19.0" prefWidth="488.0" AnchorPane.rightAnchor="14.0">
                <children>
-                  <Label text="Ste si istý, že chcete vymazať osobu " textFill="#20120f" />
-                  <Label fx:id="userLabel" text="User" textFill="#20120f" />
+                  <Label text="Ste si istý, že chcete vymazať osobu " textFill="#20120f">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
+                  <Label fx:id="userLabel" text="User" textFill="#20120f">
+                     <font>
+                        <Font size="14.0" />
+                     </font></Label>
                   <Label text="?" textFill="#20120f" />
                </children>
             </HBox>
-            <Label layoutX="48.0" layoutY="158.0" text="Túto akciu nie je možné vrátiť späť,&#10;užívateľ týmto príde o všetky svoje uložené dáta." textFill="#20120f" />
+            <Label layoutX="48.0" layoutY="158.0" text="Túto akciu nie je možné vrátiť späť,&#10;užívateľ týmto príde o všetky svoje uložené dáta." textFill="#20120f">
+               <font>
+                  <Font size="14.0" />
+               </font></Label>
          </children>
       </AnchorPane>
    </children>

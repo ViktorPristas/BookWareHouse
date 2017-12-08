@@ -37,12 +37,17 @@
               <content>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" style="-fx-background-color: #19A15F;">
                      <children>
-                        <TableView fx:id="requestsTableView" layoutX="46.0" layoutY="54.0" prefHeight="226.0" prefWidth="940.0" style="-fx-background-color: #19A15F;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
-                        <HBox layoutX="48.0" layoutY="14.0" prefHeight="27.0" prefWidth="482.0">
+                        <TableView fx:id="requestsTableView" layoutX="46.0" layoutY="54.0" prefHeight="244.0" prefWidth="940.0" style="-fx-background-color: #19A15F;" AnchorPane.bottomAnchor="60.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="55.0" />
+                        <HBox layoutX="10.0" layoutY="14.0" prefHeight="27.0" prefWidth="482.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0">
                            <children>
                               <ComboBox fx:id="teacherComboBox" prefWidth="150.0" promptText="Učitelia" />
-                              <Region prefHeight="27.0" prefWidth="142.0" />
-                              <Button fx:id="searchButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="188.0" style="-fx-background-color: #19A15F; -fx-border-color: #20120f; -fx-border-width: 0.2; -fx-cursor: hand;" text="Hľadať" />
+                              <Region prefHeight="27.0" prefWidth="74.0" />
+                              <Button fx:id="searchButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="188.0" style="-fx-background-color: #19A15F; -fx-border-color: #20120f; -fx-border-width: 0.2; -fx-cursor: hand;" text="Hľadať" textFill="#f8f8f8" />
+                              <Region prefHeight="27.0" prefWidth="77.0" HBox.hgrow="ALWAYS" />
+                              <Label prefHeight="27.0" text="Počet stratených kní vybraného učiteľa: " textFill="#f8f8f8" />
+                              <Label fx:id="numberLabel" prefHeight="27.0" text="Počet" textFill="#f8f8f8" />
+                              <Region prefHeight="200.0" prefWidth="5.0" />
+                              <Button fx:id="deleteForTeacherButton" mnemonicParsing="false" prefHeight="25.0" prefWidth="195.0" style="-fx-background-color: #19A15F; -fx-border-color: #20120F; -fx-border-width: 0.2; -fx-cursor: hand;" text="Vymazať všetko pre učiteľa" textFill="#aa2710" />
                            </children>
                         </HBox>
                         <Button fx:id="deleteButton" layoutX="766.0" layoutY="315.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="153.0" style="-fx-background-color: #19A15F; -fx-border-color: #20120F; -fx-border-width: 0.2; -fx-cursor: hand;" text="Vymazať" textFill="#aa2710" AnchorPane.bottomAnchor="20.0" AnchorPane.rightAnchor="40.0" />

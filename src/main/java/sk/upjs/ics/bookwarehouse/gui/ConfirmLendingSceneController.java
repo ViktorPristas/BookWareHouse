@@ -32,6 +32,7 @@ public class ConfirmLendingSceneController {
     private IntegerProperty number = new SimpleIntegerProperty(0);
     private BookLendingDao bookLendingDao = DaoFactory.INSTANCE.getBookLendingDao();
     private StringProperty commentProperty = new SimpleStringProperty();
+    
 
     public ConfirmLendingSceneController(BookFxModel bookFxModel) {
         this.bookFxModel = bookFxModel;

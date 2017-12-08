@@ -11,6 +11,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -53,6 +54,12 @@ public class SupALogsSceneController {
     private Button searchButton;
 
     @FXML
+    private Label numberLabel;
+
+    @FXML
+    private Button deleteForTeacherButton;
+
+    @FXML
     private Button deleteButton;
 
     @FXML
@@ -86,6 +93,29 @@ public class SupALogsSceneController {
             try {
                 FXMLLoader loader = new FXMLLoader(
                         getClass().getResource("AlertBoxDeleteRequest.fxml"));
+                loader.setController(controller);
+
+                Parent parentPane = loader.load();
+                Scene scene = new Scene(parentPane);
+
+                Stage stage = new Stage();
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setResizable(false);
+                stage.setScene(scene);
+                stage.setTitle("BookWareHouse");
+                stage.show();
+
+                // toto sa vykona az po zatvoreni okna
+            } catch (IOException iOException) {
+                iOException.printStackTrace();
+            }
+        });
+
+        deleteForTeacherButton.setOnAction(eh -> {
+            AlertBoxDeleteTeacherLostBooksController controller = new AlertBoxDeleteTeacherLostBooksController();
+            try {
+                FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource("AlertBoxDeleteTeacherLostBooks.fxml"));
                 loader.setController(controller);
 
                 Parent parentPane = loader.load();
@@ -166,6 +196,10 @@ public class SupALogsSceneController {
         TableColumn<BookLendingFxModel, String> commentCol = new TableColumn<>("koment");
         commentCol.setCellValueFactory(new PropertyValueFactory<>("comment"));
         requestsTableView.getColumns().add(commentCol);
+
+        TableColumn<BookLendingFxModel, Integer> lostCol = new TableColumn<>("Počet stratených");
+        lostCol.setCellValueFactory(new PropertyValueFactory<>("lost"));
+        requestsTableView.getColumns().add(lostCol);
 
         TableColumn<BookLendingFxModel, String> approvedCol = new TableColumn<>("Je potvrdené");
         approvedCol.setCellValueFactory(new PropertyValueFactory<>("approvedString"));

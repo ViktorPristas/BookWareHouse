@@ -1,13 +1,19 @@
 package sk.upjs.ics.bookwarehouse.gui;
 
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.stage.Modality;
+import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.NumberStringConverter;
 import sk.upjs.ics.bookwarehouse.Book;
@@ -54,11 +60,8 @@ public class EditLendingSceneController {
     private TextField numberOfBooksLabel;
 
     @FXML
-    private Button deleteRequestButton;
-
-    @FXML
     void initialize() {
-        
+
         Book book = DaoFactory.INSTANCE.getBookDao().findById(bookLendingFxModel.getBook());
         authorLabel.setText(book.getAuthor());
         titleLabel.setText(book.getTitle());
@@ -82,12 +85,28 @@ public class EditLendingSceneController {
 
                 confirmRequestButton.getScene().getWindow().hide();
             } else {
-                //nejaky alert, ze chce privela knih
+                AlertBoxNumberOfBooksInLendingController controller = new AlertBoxNumberOfBooksInLendingController();
+                try {
+                    FXMLLoader loader = new FXMLLoader(
+                            getClass().getResource("AlertBoxNumberOfBooksInLending.fxml"));
+                    loader.setController(controller);
+
+                    Parent parentPane = loader.load();
+                    Scene scene = new Scene(parentPane);
+
+                    Stage stage = new Stage();
+                    stage.setScene(scene);
+                    stage.setResizable(false);
+                    stage.setTitle("BookWareHouse");
+                    stage.initModality(Modality.APPLICATION_MODAL);
+                    stage.show();
+
+                    // toto sa vykona az po zatvoreni okna
+                } catch (IOException iOException) {
+                    iOException.printStackTrace();
+                }
             }
         });
 
-        deleteRequestButton.setOnAction(eh -> {
-            deleteRequestButton.getScene().getWindow().hide();
-        });
     }
 }

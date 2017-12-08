@@ -271,6 +271,7 @@ public class BookLendingFxModel {
             int yearOfReturn = bookLending.getYearOfReturn();
             int lended = bookLending.getLended();
             int returned = bookLending.getReturned();
+            int lost = bookLending.getLost();
             Book book = bookLending.getBook();
             String author = bookLending.getBook().getAuthor();
             String title = bookLending.getBook().getTitle();
@@ -292,6 +293,7 @@ public class BookLendingFxModel {
             bookLendingFxModel.setBook(book.getId());
             bookLendingFxModel.setAuthor(author);
             bookLendingFxModel.setTitle(title);
+            bookLendingFxModel.setLost(lost);
             bookLendingFxModel.setNameOfTeacher(nameOfTeacher);
             bookLendingFxModel.setSurnameOfTeacher(surnameOfTeacher);
             bookLendingFxModel.setComment(comment);

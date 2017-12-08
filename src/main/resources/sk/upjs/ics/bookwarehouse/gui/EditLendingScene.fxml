@@ -52,7 +52,6 @@
                         <TextField fx:id="numberOfBooksLabel" prefHeight="27.0" prefWidth="96.0" promptText="Počet kusov" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                     </children>
                 </GridPane>
-                <Button fx:id="deleteRequestButton" layoutX="467.0" layoutY="185.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="128.0" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2; -fx-cursor: hand;" text="Vymazať žiadosť" textFill="#cb0d0d" />
             </children>
         </AnchorPane>
     </children>
