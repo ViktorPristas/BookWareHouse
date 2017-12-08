@@ -64,19 +64,22 @@ public class MainSceneTeacherDBController {
                 Parent parentPane = loader.load();
                 Scene scene = new Scene(parentPane);
 
-                Stage stage = new Stage();                
+                Stage stage = new Stage();
                 stage.setResizable(false);
                 stage.setScene(scene);
                 stage.setTitle("BookWareHouse");
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.show();
 
+                stage.setOnHidden(handler -> {
+                    fillSimpleTable(true);
+                });
                 // toto sa vykona az po zatvoreni okna
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }
         });
-        
+
         simpleTableView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<BookFxModel>() {
             @Override
             public void changed(ObservableValue<? extends BookFxModel> observable, BookFxModel oldValue, BookFxModel newValue) {
@@ -110,7 +113,25 @@ public class MainSceneTeacherDBController {
             }
         });
 
-        if (bookFxModel.getBooks().size() > 0) {
+        fillSimpleTable(false);
+
+        // naplnenie combobxu
+        schoolClassComboBox.getItems().addAll("<Všetko>", "1", "2", "3", "4", "5", "6", "7", "8", "9", "I. G", "II. G", "III. G", "IV. G");
+
+        searchButton.setOnAction(eh -> {
+            String selectedClass = schoolClassComboBox.getValue();
+
+            if (bookFxModel.getBooks().size() > 0) {
+                bookFxModel.loadFilteredBooksToModel(selectedClass);
+            }
+
+        });
+
+    }
+
+    public void fillSimpleTable(boolean b) {
+        simpleTableView.getItems().clear();
+        if (bookFxModel.getBooks().size() > 0 || b) {
             bookFxModel.loadBooksToModel();
         }
 
@@ -137,24 +158,11 @@ public class MainSceneTeacherDBController {
         TableColumn<BookFxModel, Integer> numberOfUsedCol = new TableColumn<>("Pocet rozdanych");
         numberOfUsedCol.setCellValueFactory(new PropertyValueFactory<>("numberOfUsed"));
         simpleTableView.getColumns().add(numberOfUsedCol);
-        
+
         TableColumn<BookFxModel, Boolean> isUsedCol = new TableColumn<>("Používa sa");
         isUsedCol.setCellValueFactory(new PropertyValueFactory<>("isUsedString"));
         simpleTableView.getColumns().add(isUsedCol);
 
         simpleTableView.setItems(bookFxModel.getBooksModel());
-
-        // naplnenie combobxu
-        schoolClassComboBox.getItems().addAll("<Všetko>", "1", "2", "3", "4", "5", "6", "7", "8", "9", "I. G", "II. G", "III. G", "IV. G");
-
-        searchButton.setOnAction(eh -> {
-            String selectedClass = schoolClassComboBox.getValue();
-
-            if (bookFxModel.getBooks().size() > 0) {
-                bookFxModel.loadFilteredBooksToModel(selectedClass);
-            }
-
-        });
-
     }
 }

@@ -1,6 +1,8 @@
 package sk.upjs.ics.bookwarehouse.fxmodels;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.LongProperty;
@@ -33,9 +35,9 @@ public class TeacherFxModel {
         TeacherDao teacherDao = DaoFactory.INSTANCE.getTeacherDao();
         List<Teacher> teachers = teacherDao.getAll();
         this.teachers = FXCollections.observableArrayList(teachers);
-        
+
     }
-    
+
     public ObservableList<TeacherFxModel> getTeachersModel() {
         return teachersModel;
     }
@@ -148,31 +150,37 @@ public class TeacherFxModel {
 
     public List<String> getTeacherList() {
         List<String> nameOfTeachers = new ArrayList<>();
+        Collections.sort(teachers, new Comparator<Teacher>() {
+            @Override
+            public int compare(Teacher t1, Teacher t2) {
+                return t1.getSurname().compareTo(t2.getSurname());
+            }
+        });
         for (Teacher teacher : teachers) {
             String nameAndSurname = teacher.getName() + " " + teacher.getSurname();
             nameOfTeachers.add(nameAndSurname);
-            System.out.println(nameAndSurname);
+            //System.out.println(nameAndSurname);
         }
         return nameOfTeachers;
     }
-    
+
     public void loadTeacherToModel() {
         teachersModel.clear();
         for (Teacher teacher : teachers) {
             TeacherFxModel teacherFxModel = new TeacherFxModel();
-            
+
             Long id = teacher.getId();
             String name = teacher.getName();
             String surname = teacher.getSurname();
             String email = teacher.getEmail();
             int numberOfStudentsInClass = teacher.getNumberOfStudentsInClass();
-            
+
             teacherFxModel.setId(id);
             teacherFxModel.setName(name);
             teacherFxModel.setSurname(surname);
             teacherFxModel.setEmail(email);
             teacherFxModel.setNumberOfStudentsInClass(numberOfStudentsInClass);
-            
+
             teachersModel.add(teacherFxModel);
         }
     }
