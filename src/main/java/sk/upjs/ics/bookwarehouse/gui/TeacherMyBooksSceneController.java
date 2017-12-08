@@ -13,6 +13,9 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
+import sk.upjs.ics.bookwarehouse.DaoFactory;
+import sk.upjs.ics.bookwarehouse.Teacher;
+import sk.upjs.ics.bookwarehouse.business.DefaultBookLendingXLSManager;
 import sk.upjs.ics.bookwarehouse.business.UserIdentificationManager;
 import sk.upjs.ics.bookwarehouse.fxmodels.BookFxModel;
 import sk.upjs.ics.bookwarehouse.fxmodels.BookLendingFxModel;
@@ -20,6 +23,7 @@ import sk.upjs.ics.bookwarehouse.fxmodels.BookLendingFxModel;
 public class TeacherMyBooksSceneController {
 
     private final BookLendingFxModel bookLendingFxModel = new BookLendingFxModel();
+    private Teacher teacher = DaoFactory.INSTANCE.getTeacherDao().findById(UserIdentificationManager.getId());
 
     @FXML
     private ResourceBundle resources;
@@ -41,6 +45,10 @@ public class TeacherMyBooksSceneController {
 
     @FXML
     void initialize() {
+        exportToExcelButton.setOnAction(eh -> {
+            DefaultBookLendingXLSManager.exportMyBookLendingsToXls(teacher);
+        });
+        
         backButton.setOnAction(eh -> {
             MainSceneTeacherController controller = new MainSceneTeacherController();
             try {

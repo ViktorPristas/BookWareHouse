@@ -244,7 +244,7 @@ public class BookLendingFxModel {
                 } else {
                     approvedString = "nepotvrdené";
                 }
-              
+                bookLendingFxModel.setId(bookLending.getId());
                 bookLendingFxModel.setBook(bookLending.getBook().getId());
                 bookLendingFxModel.setTeacher(bookLending.getTeacher().getId());
                 bookLendingFxModel.setYearOfReturn(yearOfReturn);
@@ -267,7 +267,7 @@ public class BookLendingFxModel {
         for (BookLending bookLending : lendings) {
 
             BookLendingFxModel bookLendingFxModel = new BookLendingFxModel();
-            
+
             int yearOfReturn = bookLending.getYearOfReturn();
             int lended = bookLending.getLended();
             int returned = bookLending.getReturned();
@@ -283,7 +283,8 @@ public class BookLendingFxModel {
             } else {
                 approvedString = "nepotvrdené";
             }
-           
+            
+            bookLendingFxModel.setId(bookLending.getId());
             bookLendingFxModel.setBook(bookLending.getBook().getId());
             bookLendingFxModel.setTeacher(bookLending.getTeacher().getId());
             bookLendingFxModel.setYearOfReturn(yearOfReturn);
@@ -298,7 +299,7 @@ public class BookLendingFxModel {
             bookLendingFxModel.setApprovedString(approvedString);
 
             bookLendingsModel.add(bookLendingFxModel);
-            
+
         }
 
     }
@@ -310,37 +311,38 @@ public class BookLendingFxModel {
             if (formatedNameOfTeacher.equals(selectedTeacher) || selectedTeacher.equals("<Všetko>")) {
 
                 BookLendingFxModel bookLendingFxModel = new BookLendingFxModel();
-            
-            int yearOfReturn = bookLending.getYearOfReturn();
-            int lended = bookLending.getLended();
-            int returned = bookLending.getReturned();
-            Book book = bookLending.getBook();
-            String author = bookLending.getBook().getAuthor();
-            String title = bookLending.getBook().getTitle();
-            String nameOfTeacher = bookLending.getTeacher().getName();
-            String surnameOfTeacher = bookLending.getTeacher().getSurname();
-            String comment = bookLending.getComment();
-            String approvedString;
-            if (bookLending.isApproved()) {
-                approvedString = "potvrdené";
-            } else {
-                approvedString = "nepotvrdené";
-            }
-           
-            bookLendingFxModel.setBook(bookLending.getBook().getId());
-            bookLendingFxModel.setTeacher(bookLending.getTeacher().getId());
-            bookLendingFxModel.setYearOfReturn(yearOfReturn);
-            bookLendingFxModel.setLended(lended);
-            bookLendingFxModel.setReturned(returned);
-            bookLendingFxModel.setBook(book.getId());
-            bookLendingFxModel.setAuthor(author);
-            bookLendingFxModel.setTitle(title);
-            bookLendingFxModel.setNameOfTeacher(nameOfTeacher);
-            bookLendingFxModel.setSurnameOfTeacher(surnameOfTeacher);
-            bookLendingFxModel.setComment(comment);
-            bookLendingFxModel.setApprovedString(approvedString);
 
-            bookLendingsModel.add(bookLendingFxModel);
+                int yearOfReturn = bookLending.getYearOfReturn();
+                int lended = bookLending.getLended();
+                int returned = bookLending.getReturned();
+                Book book = bookLending.getBook();
+                String author = bookLending.getBook().getAuthor();
+                String title = bookLending.getBook().getTitle();
+                String nameOfTeacher = bookLending.getTeacher().getName();
+                String surnameOfTeacher = bookLending.getTeacher().getSurname();
+                String comment = bookLending.getComment();
+                String approvedString;
+                if (bookLending.isApproved()) {
+                    approvedString = "potvrdené";
+                } else {
+                    approvedString = "nepotvrdené";
+                }
+
+                bookLendingFxModel.setId(bookLending.getId());
+                bookLendingFxModel.setBook(bookLending.getBook().getId());
+                bookLendingFxModel.setTeacher(bookLending.getTeacher().getId());
+                bookLendingFxModel.setYearOfReturn(yearOfReturn);
+                bookLendingFxModel.setLended(lended);
+                bookLendingFxModel.setReturned(returned);
+                bookLendingFxModel.setBook(book.getId());
+                bookLendingFxModel.setAuthor(author);
+                bookLendingFxModel.setTitle(title);
+                bookLendingFxModel.setNameOfTeacher(nameOfTeacher);
+                bookLendingFxModel.setSurnameOfTeacher(surnameOfTeacher);
+                bookLendingFxModel.setComment(comment);
+                bookLendingFxModel.setApprovedString(approvedString);
+
+                bookLendingsModel.add(bookLendingFxModel);
             }
         }
     }
