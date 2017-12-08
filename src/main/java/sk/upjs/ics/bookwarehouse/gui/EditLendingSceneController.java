@@ -56,6 +56,7 @@ public class EditLendingSceneController {
     @FXML
     private Label teacherLabel;
 
+    //BE AWARE THIS IS A TEXTFIELD :)
     @FXML
     private TextField numberOfBooksLabel;
 
@@ -73,9 +74,12 @@ public class EditLendingSceneController {
                 numberOfBooksActually, new NumberStringConverter());
 
         confirmRequestButton.setOnAction(eh -> {
-            if (numberOfBooksActually.get() <= (book.getNumberInStock() + bookLendingFxModel.getLended())) {
+            int number = numberOfBooksActually.get();
+            System.out.println(number);
+            if (number <= (book.getNumberInStock() + bookLendingFxModel.getLended())) {
                 BookLending bookLending = DaoFactory.INSTANCE.getBookLendingDao().findById(bookLendingFxModel.getId());
-                bookLending.setLended(numberOfBooksActually.get());
+                bookLending.setLended(number);
+                bookLending.setApproved(true);
                 bookLendingDao.save(bookLending);
 
                 //editing the number of books in stock
