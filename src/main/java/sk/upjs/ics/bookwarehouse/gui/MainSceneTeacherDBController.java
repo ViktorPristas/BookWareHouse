@@ -71,10 +71,10 @@ public class MainSceneTeacherDBController {
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.show();
 
+                // toto sa vykona az po zatvoreni okna
                 stage.setOnHidden(handler -> {
                     fillSimpleTable(true);
                 });
-                // toto sa vykona az po zatvoreni okna
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }

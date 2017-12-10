@@ -10,6 +10,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import sk.upjs.ics.bookwarehouse.business.UserIdentificationManager;
 
 public class SupAMainSceneController {
 
@@ -76,7 +77,7 @@ public class SupAMainSceneController {
         });
 
         logOutButton.setOnAction(eh -> {
-            // UserIdentificationManager.logOut();
+            UserIdentificationManager.logOut();
             LogInSceneController controller = new LogInSceneController();
             try {
                 FXMLLoader loader = new FXMLLoader(

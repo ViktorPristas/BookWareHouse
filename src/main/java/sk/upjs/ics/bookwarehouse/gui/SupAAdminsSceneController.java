@@ -17,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sk.upjs.ics.bookwarehouse.Admin;
+import sk.upjs.ics.bookwarehouse.DaoFactory;
 import sk.upjs.ics.bookwarehouse.fxmodels.AdminFxModel;
 import sk.upjs.ics.bookwarehouse.fxmodels.TeacherFxModel;
 
@@ -25,7 +26,7 @@ public class SupAAdminsSceneController {
     private final AdminFxModel adminFxModel = new AdminFxModel();
     private final TeacherFxModel teacherFxModel = new TeacherFxModel();
     private AdminFxModel selectedAdminFxModel;
-
+    private TeacherFxModel selectedTeacherFxModel;
 
     @FXML
     private ResourceBundle resources;
@@ -137,16 +138,23 @@ public class SupAAdminsSceneController {
                 iOException.printStackTrace();
             }
         });
-        
+
         deleteAdminButton.setOnAction(eh -> {
             showDeleteUserWindow();
         });
-        
+
         deleteTeacherButton.setOnAction(eh -> {
             showDeleteUserWindow();
         });
 
-        if (adminFxModel.getAdmins().size() > 0) {
+        fillSimpleTable(false);
+
+    }
+
+    public void fillSimpleTable(boolean b) {
+        simpleTableView.getItems().clear();
+        simpleTableView.getColumns().clear();
+        if (adminFxModel.getAdmins().size() > 0 || b) {
             adminFxModel.loadAdminToModel();
         }
 
@@ -160,50 +168,57 @@ public class SupAAdminsSceneController {
 
         simpleTableView.setItems(adminFxModel.getAdminsModel());
 
-        if (teacherFxModel.getTeacherList().size() > 0) {
+        if (teacherFxModel.getTeacherList().size() > 0 || b) {
             teacherFxModel.loadTeacherToModel();
         }
-        
+
         TableColumn<TeacherFxModel, String> teacherNameCol = new TableColumn<>("Meno");
         teacherNameCol.setCellValueFactory(new PropertyValueFactory<>("name"));
         simpleTableViewTeachers.getColumns().add(teacherNameCol);
-        
+
         TableColumn<TeacherFxModel, String> teacherSurnameCol = new TableColumn<>("Priezvisko");
         teacherSurnameCol.setCellValueFactory(new PropertyValueFactory<>("surname"));
         simpleTableViewTeachers.getColumns().add(teacherSurnameCol);
-        
-         TableColumn<TeacherFxModel, String> teacherEmailCol = new TableColumn<>("E-mail");
+
+        TableColumn<TeacherFxModel, String> teacherEmailCol = new TableColumn<>("E-mail");
         teacherEmailCol.setCellValueFactory(new PropertyValueFactory<>("email"));
         simpleTableViewTeachers.getColumns().add(teacherEmailCol);
-        
-         TableColumn<TeacherFxModel, String> teacherNumberOfStudentsCol = new TableColumn<>("Počet žiakov");
+
+        TableColumn<TeacherFxModel, String> teacherNumberOfStudentsCol = new TableColumn<>("Počet žiakov");
         teacherNumberOfStudentsCol.setCellValueFactory(new PropertyValueFactory<>("numberOfStudentsInClass"));
         simpleTableViewTeachers.getColumns().add(teacherNumberOfStudentsCol);
-        
+
         simpleTableViewTeachers.setItems(teacherFxModel.getTeachersModel());
-
     }
-    
+
     public void showDeleteUserWindow() {
-           AlertBoxDeleteUserController controller = new AlertBoxDeleteUserController();
-                try {
-                    FXMLLoader loader = new FXMLLoader(
-                            getClass().getResource("AlertBoxDeleteUser.fxml"));
-                    loader.setController(controller);
+        AlertBoxDeleteUserController controller = new AlertBoxDeleteUserController();
+        try {
+            FXMLLoader loader = new FXMLLoader(
+                    getClass().getResource("AlertBoxDeleteUser.fxml"));
+            loader.setController(controller);
 
-                    Parent parentPane = loader.load();
-                    Scene scene = new Scene(parentPane);
+            Parent parentPane = loader.load();
+            Scene scene = new Scene(parentPane);
 
-                    Stage stage = new Stage();
-                    stage.initModality(Modality.APPLICATION_MODAL);
-                    stage.setResizable(false);
-                    stage.setScene(scene);
-                    stage.setTitle("BookWareHouse");
-                    stage.show();
+            Stage stage = new Stage();
+            stage.initModality(Modality.APPLICATION_MODAL);
+            stage.setResizable(false);
+            stage.setScene(scene);
+            stage.setTitle("BookWareHouse");
+            stage.show();
 
-                    // toto sa vykona az po zatvoreni okna
-                } catch (IOException iOException) {
-                    iOException.printStackTrace();
+            // toto sa vykona az po zatvoreni okna
+            stage.setOnHidden(eh -> {
+                if (selectedAdminFxModel != null) {
+                    Admin admin = selectedAdminFxModel.getAdmin();
+                    DaoFactory.INSTANCE.getAdminDao().deleteById(admin.getId());
+                    adminFxModel.loadAdminToModel();
                 }
+                fillSimpleTable(true);
+            });
+        } catch (IOException iOException) {
+            iOException.printStackTrace();
+        }
     }
 }

@@ -21,9 +21,10 @@ public class AdminFxModel {
     private StringProperty email = new SimpleStringProperty();
     private StringProperty password = new SimpleStringProperty();
     private String actualPassword;
+    private AdminDao adminDao = DaoFactory.INSTANCE.getAdminDao();
+        
     
     public AdminFxModel() {
-        AdminDao adminDao = DaoFactory.INSTANCE.getAdminDao();
         List<Admin> admins = adminDao.getAll();
         this.admins = FXCollections.observableArrayList(admins);
     }
@@ -114,8 +115,10 @@ public class AdminFxModel {
     }
     
     public void loadAdminToModel() {
+        List<Admin> admins = adminDao.getAll();
+        this.admins = FXCollections.observableArrayList(admins);
         adminsModel.clear();
-        for (Admin admin : admins) {
+        for (Admin admin : this.admins) {
             AdminFxModel adminFxModel = new AdminFxModel();
             
             String userName = admin.getUserName();
