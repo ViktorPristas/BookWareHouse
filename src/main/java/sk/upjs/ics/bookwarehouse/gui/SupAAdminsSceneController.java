@@ -18,6 +18,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sk.upjs.ics.bookwarehouse.Admin;
 import sk.upjs.ics.bookwarehouse.DaoFactory;
+import sk.upjs.ics.bookwarehouse.Teacher;
 import sk.upjs.ics.bookwarehouse.fxmodels.AdminFxModel;
 import sk.upjs.ics.bookwarehouse.fxmodels.TeacherFxModel;
 
@@ -27,6 +28,8 @@ public class SupAAdminsSceneController {
     private final TeacherFxModel teacherFxModel = new TeacherFxModel();
     private AdminFxModel selectedAdminFxModel;
     private TeacherFxModel selectedTeacherFxModel;
+    // 0 when admin 1 when teacher
+    private int deleteAdminOrTeacher = -1;
 
     @FXML
     private ResourceBundle resources;
@@ -65,6 +68,18 @@ public class SupAAdminsSceneController {
             public void changed(ObservableValue<? extends AdminFxModel> observable, AdminFxModel oldValue, AdminFxModel newValue) {
                 selectedAdminFxModel = simpleTableView.getSelectionModel().getSelectedItem();
                 if (selectedAdminFxModel == null) {
+                    resetPasswordButton.setDisable(true);
+                } else {
+                    resetPasswordButton.setDisable(false);
+                }
+            }
+        });
+
+        simpleTableViewTeachers.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TeacherFxModel>() {
+            @Override
+            public void changed(ObservableValue<? extends TeacherFxModel> observable, TeacherFxModel oldValue, TeacherFxModel newValue) {
+                selectedTeacherFxModel = simpleTableViewTeachers.getSelectionModel().getSelectedItem();
+                if (selectedTeacherFxModel == null) {
                     resetPasswordButton.setDisable(true);
                 } else {
                     resetPasswordButton.setDisable(false);
@@ -140,14 +155,17 @@ public class SupAAdminsSceneController {
         });
 
         deleteAdminButton.setOnAction(eh -> {
-            showDeleteUserWindow();
+            deleteAdminOrTeacher = 0;
+            showDeleteUserWindow(selectedAdminFxModel.getUserName());
         });
 
         deleteTeacherButton.setOnAction(eh -> {
-            showDeleteUserWindow();
+            deleteAdminOrTeacher = 1;
+            showDeleteUserWindow(selectedTeacherFxModel.getName() + " " + selectedTeacherFxModel.getSurname());
         });
 
         fillSimpleTable(false);
+        fillSimpleTableTeachers(false);
 
     }
 
@@ -167,7 +185,11 @@ public class SupAAdminsSceneController {
         simpleTableView.getColumns().add(emailCol);
 
         simpleTableView.setItems(adminFxModel.getAdminsModel());
+    }
 
+    private void fillSimpleTableTeachers(boolean b) {
+        simpleTableViewTeachers.getItems().clear();
+        simpleTableViewTeachers.getColumns().clear();
         if (teacherFxModel.getTeacherList().size() > 0 || b) {
             teacherFxModel.loadTeacherToModel();
         }
@@ -191,8 +213,8 @@ public class SupAAdminsSceneController {
         simpleTableViewTeachers.setItems(teacherFxModel.getTeachersModel());
     }
 
-    public void showDeleteUserWindow() {
-        AlertBoxDeleteUserController controller = new AlertBoxDeleteUserController();
+    public void showDeleteUserWindow(String string) {
+        AlertBoxDeleteUserController controller = new AlertBoxDeleteUserController(string);
         try {
             FXMLLoader loader = new FXMLLoader(
                     getClass().getResource("AlertBoxDeleteUser.fxml"));
@@ -210,12 +232,20 @@ public class SupAAdminsSceneController {
 
             // toto sa vykona az po zatvoreni okna
             stage.setOnHidden(eh -> {
-                if (selectedAdminFxModel != null) {
+                if (deleteAdminOrTeacher == 0) {
                     Admin admin = selectedAdminFxModel.getAdmin();
                     DaoFactory.INSTANCE.getAdminDao().deleteById(admin.getId());
                     adminFxModel.loadAdminToModel();
+                    fillSimpleTable(true);
                 }
-                fillSimpleTable(true);
+
+                if (deleteAdminOrTeacher == 1) {
+                    Teacher teacher = selectedTeacherFxModel.getTeacher();
+                    System.out.println("mazem" + teacher.getId() + " " + teacher.getEmail());
+                    DaoFactory.INSTANCE.getTeacherDao().deleteById(teacher.getId());
+                    teacherFxModel.loadTeacherToModel();
+                    fillSimpleTableTeachers(true);
+                }
             });
         } catch (IOException iOException) {
             iOException.printStackTrace();

@@ -30,9 +30,9 @@ public class TeacherFxModel {
     private StringProperty password = new SimpleStringProperty();
     private IntegerProperty numberOfStudentsInClass = new SimpleIntegerProperty();
     private String actualPassword;
+    private TeacherDao teacherDao = DaoFactory.INSTANCE.getTeacherDao();
 
     public TeacherFxModel() {
-        TeacherDao teacherDao = DaoFactory.INSTANCE.getTeacherDao();
         List<Teacher> teachers = teacherDao.getAll();
         this.teachers = FXCollections.observableArrayList(teachers);
 
@@ -124,6 +124,7 @@ public class TeacherFxModel {
 
     public Teacher getTeacher() {
         Teacher t = new Teacher();
+        t.setId(getId());
         t.setName(getName());
         t.setSurname(getSurname());
         t.setEmail(getEmail());
@@ -141,6 +142,7 @@ public class TeacherFxModel {
     public void loadActualTeacherToModel(Long teacherId) {
         Teacher t = DaoFactory.INSTANCE.getTeacherDao().findById(teacherId);
 
+        setId(t.getId());
         setName(t.getName());
         setSurname(t.getSurname());
         setEmail(t.getEmail());
@@ -166,7 +168,9 @@ public class TeacherFxModel {
 
     public void loadTeacherToModel() {
         teachersModel.clear();
-        for (Teacher teacher : teachers) {
+        List<Teacher> teachers = teacherDao.getAll();
+        this.teachers = FXCollections.observableArrayList(teachers);
+        for (Teacher teacher : this.teachers) {
             TeacherFxModel teacherFxModel = new TeacherFxModel();
 
             Long id = teacher.getId();

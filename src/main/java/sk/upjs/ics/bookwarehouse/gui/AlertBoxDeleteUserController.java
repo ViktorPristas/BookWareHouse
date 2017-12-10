@@ -2,11 +2,16 @@ package sk.upjs.ics.bookwarehouse.gui;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class AlertBoxDeleteUserController {
+    
+    public AlertBoxDeleteUserController(String string){
+        userLabel.setText(string);
+    }
 
     @FXML
     private ResourceBundle resources;
