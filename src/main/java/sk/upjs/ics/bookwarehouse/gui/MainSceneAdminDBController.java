@@ -138,10 +138,6 @@ public class MainSceneAdminDBController {
 
         });
     }
-
-    public void refreshSimpleTable() {
-        simpleTableView.refresh();
-    }
     
     public void fillSimpleTable() {
         if (bookFxModel.getBooks().size() > 0) {

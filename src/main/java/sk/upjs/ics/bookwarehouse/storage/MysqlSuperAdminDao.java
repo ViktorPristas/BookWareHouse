@@ -8,6 +8,7 @@ import java.util.Map;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.simple.SimpleJdbcInsert;
+import sk.upjs.ics.bookwarehouse.DaoFactory;
 import sk.upjs.ics.bookwarehouse.SuperAdmin;
 
 public class MysqlSuperAdminDao implements SuperAdminDao {
@@ -68,6 +69,17 @@ public class MysqlSuperAdminDao implements SuperAdminDao {
         } catch (Exception e) {
             return false;
         }
+    }
+
+    @Override
+    public SuperAdmin findById(Long id) {
+        List<SuperAdmin> list = DaoFactory.INSTANCE.getSuperAdminDao().getAll();
+        for(SuperAdmin superAdmin : list) {
+            if (superAdmin.getId().equals(id)) {
+                return superAdmin;
+            }
+        }
+        return null;
     }
 
 }

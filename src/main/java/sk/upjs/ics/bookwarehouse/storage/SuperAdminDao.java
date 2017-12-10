@@ -22,5 +22,7 @@ public interface SuperAdminDao {
 
     // DELETE
     boolean deleteById(long id);
+    
+    SuperAdmin findById(Long id);
 
 }

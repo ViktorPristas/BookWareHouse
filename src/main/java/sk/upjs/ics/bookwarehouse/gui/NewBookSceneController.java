@@ -16,7 +16,6 @@ public class NewBookSceneController {
 
     private BookFxModel bookFxModel = new BookFxModel();
     private BookDao bookDao = DaoFactory.INSTANCE.getBookDao();
-    private MainSceneAdminDBController msadbc = new MainSceneAdminDBController();
 
     @FXML
     private ResourceBundle resources;
@@ -73,7 +72,6 @@ public class NewBookSceneController {
             b.setId();
             if (registrationIsOk(b)) {
                 bookDao.save(b);
-                msadbc.refreshSimpleTable();
                 saveButton.getScene().getWindow().hide();
             } else {
                 //nejaky alert
