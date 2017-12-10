@@ -131,6 +131,7 @@ public class MainSceneTeacherDBController {
 
     public void fillSimpleTable(boolean b) {
         simpleTableView.getItems().clear();
+        simpleTableView.getColumns().clear();
         if (bookFxModel.getBooks().size() > 0 || b) {
             bookFxModel.loadBooksToModel();
         }

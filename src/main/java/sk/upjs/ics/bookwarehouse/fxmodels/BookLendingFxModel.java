@@ -37,10 +37,11 @@ public class BookLendingFxModel {
     private StringProperty title = new SimpleStringProperty();
     private StringProperty nameOfTeacher = new SimpleStringProperty();
     private StringProperty surnameOfTeacher = new SimpleStringProperty();
+    private BookLendingDao bookLendingDao = DaoFactory.INSTANCE.getBookLendingDao();
+      
 
     public BookLendingFxModel() {
-        BookLendingDao bookLendingDao = DaoFactory.INSTANCE.getBookLendingDao();
-        List<BookLending> lendings = bookLendingDao.getAll(); // povodne
+         List<BookLending> lendings = bookLendingDao.getAll(); // povodne
         this.lendings = FXCollections.observableArrayList(lendings);
     }
 
@@ -264,6 +265,8 @@ public class BookLendingFxModel {
 
     public void loadLendingForAdminToModel() {
         bookLendingsModel.clear();
+        List<BookLending> lendings = bookLendingDao.getAll(); // povodne
+        this.lendings = FXCollections.observableArrayList(lendings);
         for (BookLending bookLending : lendings) {
 
             BookLendingFxModel bookLendingFxModel = new BookLendingFxModel();

@@ -114,6 +114,10 @@ public class MainSceneAdminRequestController {
                 stage.show();
 
                 // toto sa vykona az po zatvoreni okna
+                stage.setOnHidden(handler -> {
+                    fillSimpleTable(true);
+                });
+
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }
@@ -122,7 +126,7 @@ public class MainSceneAdminRequestController {
 
         returnBookButton.setOnAction(eh
                 -> {
-            ReturnBookSceneController controller = new ReturnBookSceneController();
+            ReturnBookSceneController controller = new ReturnBookSceneController(selectedBookLendingFxModel);
             try {
                 FXMLLoader loader = new FXMLLoader(
                         getClass().getResource("ReturnBookScene.fxml"));
@@ -139,6 +143,9 @@ public class MainSceneAdminRequestController {
                 stage.show();
 
                 // toto sa vykona az po zatvoreni okna
+                stage.setOnHidden(handler -> {
+                    fillSimpleTable(true);
+                });
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }
@@ -161,7 +168,14 @@ public class MainSceneAdminRequestController {
         }
         );
 
-        if (bookLendingFxModel.getLendings().size() > 0) {
+        fillSimpleTable(false);
+
+    }
+
+    public void fillSimpleTable(boolean b) {
+        simpleTableView.getItems().clear();
+        simpleTableView.getColumns().clear();
+        if (bookLendingFxModel.getLendings().size() > 0 || b) {
             bookLendingFxModel.loadLendingForAdminToModel();
         }
 
@@ -176,11 +190,11 @@ public class MainSceneAdminRequestController {
         TableColumn<BookLendingFxModel, String> teacherNameCol = new TableColumn<>("Meno učiteľa");
         teacherNameCol.setCellValueFactory(new PropertyValueFactory<>("nameOfTeacher"));
         simpleTableView.getColumns().add(teacherNameCol);
-        
+
         TableColumn<BookLendingFxModel, String> teacherSurnameCol = new TableColumn<>("Priezvisko učiteľa");
         teacherSurnameCol.setCellValueFactory(new PropertyValueFactory<>("surnameOfTeacher"));
         simpleTableView.getColumns().add(teacherSurnameCol);
-        
+
         TableColumn<BookLendingFxModel, Integer> yearOfReturnCol = new TableColumn<>("rok vratenia");
         yearOfReturnCol.setCellValueFactory(new PropertyValueFactory<>("yearOfReturn"));
         simpleTableView.getColumns().add(yearOfReturnCol);
@@ -202,7 +216,6 @@ public class MainSceneAdminRequestController {
         simpleTableView.getColumns().add(approvedCol);
 
         simpleTableView.setItems(bookLendingFxModel.getBookLendingsModel());
-
     }
 
 }

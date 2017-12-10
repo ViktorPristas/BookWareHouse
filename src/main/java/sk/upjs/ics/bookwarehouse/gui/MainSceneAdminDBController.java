@@ -94,6 +94,9 @@ public class MainSceneAdminDBController {
                 
 
                 // toto sa vykona az po zatvoreni okna
+                stage.setOnHidden(handler -> {
+                    fillSimpleTable(true);
+                });
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }
@@ -119,12 +122,15 @@ public class MainSceneAdminDBController {
                 
 
                 // toto sa vykona az po zatvoreni okna
+                stage.setOnHidden(handler -> {
+                    fillSimpleTable(true);
+                });
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }
         });
 
-        fillSimpleTable();
+        fillSimpleTable(false);
 
         // naplnenie combobxu
         schoolClassComboBox.getItems().addAll("<Všetko>", "1", "2", "3", "4", "5", "6", "7", "8", "9", "I. G", "II. G", "III. G", "IV. G");
@@ -139,8 +145,10 @@ public class MainSceneAdminDBController {
         });
     }
     
-    public void fillSimpleTable() {
-        if (bookFxModel.getBooks().size() > 0) {
+    public void fillSimpleTable(boolean b) {
+        simpleTableView.getItems().clear();
+        simpleTableView.getColumns().clear();
+        if (bookFxModel.getBooks().size() > 0 || b) {
             bookFxModel.loadBooksToModel();
         }
 
