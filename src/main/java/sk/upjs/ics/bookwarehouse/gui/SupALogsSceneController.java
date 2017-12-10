@@ -5,6 +5,7 @@ import java.net.URL;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -17,8 +18,13 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import sk.upjs.ics.bookwarehouse.Admin;
 import sk.upjs.ics.bookwarehouse.BookEdit;
+import sk.upjs.ics.bookwarehouse.DaoFactory;
 import sk.upjs.ics.bookwarehouse.LostBook;
+import sk.upjs.ics.bookwarehouse.ManagerFactory;
+import sk.upjs.ics.bookwarehouse.Teacher;
+import sk.upjs.ics.bookwarehouse.business.BookLendingManager;
 import sk.upjs.ics.bookwarehouse.fxmodels.BookEditFxModel;
 import sk.upjs.ics.bookwarehouse.fxmodels.BookFxModel;
 import sk.upjs.ics.bookwarehouse.fxmodels.BookLendingFxModel;
@@ -31,6 +37,7 @@ public class SupALogsSceneController {
     private final TeacherFxModel teacherFxModel = new TeacherFxModel();
     private final BookEditFxModel bookEditFxModel = new BookEditFxModel();
     private final BookLendingFxModel bookLendingFxModel = new BookLendingFxModel();
+    private TeacherFxModel selectedTeacherFxModel;
 
     @FXML
     private ResourceBundle resources;
@@ -67,6 +74,7 @@ public class SupALogsSceneController {
 
     @FXML
     void initialize() {
+
         backButton.setOnAction(eh -> {
             SupAMainSceneController controller = new SupAMainSceneController();
             try {
@@ -106,6 +114,8 @@ public class SupALogsSceneController {
                 stage.show();
 
                 // toto sa vykona az po zatvoreni okna
+                stage.setOnHidden(eha -> {
+                });
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }
@@ -129,18 +139,38 @@ public class SupALogsSceneController {
                 stage.show();
 
                 // toto sa vykona az po zatvoreni okna
+                stage.setOnHidden(eha -> {
+                    BookLendingManager manager = ManagerFactory.INSTANCE.getBookLendingManager();
+                    Teacher t = null;
+                    List<Teacher> list = DaoFactory.INSTANCE.getTeacherDao().getAll();
+                    String selectedTeacher = teacherComboBox.getValue();
+                    for (Teacher teacher : list) {
+                        String formatedNameOfTeacher = teacher.getName() + " " + teacher.getSurname();
+                        if (formatedNameOfTeacher.equals(selectedTeacher)) {
+                            t = teacher;
+                            break;
+                        }
+                    }
+                    if (t != null) {
+                        manager.deleteByTeacher(t);
+                        fillLostBookTable(true);
+                        fillRequestsTable(true);
+                    }
+                });
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }
         });
 
-        fillLostBookTable();
+        fillLostBookTable(false);
 
         fillEditedBookTable();
 
         fillComboBox();
 
-        fillRequestsTable();
+        fillRequestsTable(false);
+
+        //  teacherComboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TeacherFxModel>);
     }
 
     public void fillComboBox() {
@@ -160,8 +190,10 @@ public class SupALogsSceneController {
         );
     }
 
-    public void fillRequestsTable() {
-        if (bookLendingFxModel.getLendings().size() > 0) {
+    public void fillRequestsTable(boolean b) {
+        requestsTableView.getItems().clear();
+        requestsTableView.getColumns().clear();
+        if (bookLendingFxModel.getLendings().size() > 0 || b) {
             bookLendingFxModel.loadLendingForAdminToModel();
         }
 
@@ -209,7 +241,6 @@ public class SupALogsSceneController {
     }
 
     public void fillEditedBookTable() {
-
         if (bookEditFxModel.getBookEdits().size() > 0) {
             bookEditFxModel.loadBooksToModel();
         }
@@ -245,8 +276,11 @@ public class SupALogsSceneController {
         editedBookTableView.setItems(bookEditFxModel.getBookEditsModel());
     }
 
-    public void fillLostBookTable() {
-        if (lostBookFxModel.getLostBooks().size() > 0) {
+    public void fillLostBookTable(boolean b) {
+
+        editedBookTableView.getItems().clear();
+        editedBookTableView.getColumns().clear();
+        if (lostBookFxModel.getLostBooks().size() > 0 || b) {
             lostBookFxModel.loadBooksToModel();
         }
 

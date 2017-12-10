@@ -264,10 +264,11 @@ public class BookLendingFxModel {
     }
 
     public void loadLendingForAdminToModel() {
+        
         bookLendingsModel.clear();
         List<BookLending> lendings = bookLendingDao.getAll(); // povodne
         this.lendings = FXCollections.observableArrayList(lendings);
-        for (BookLending bookLending : lendings) {
+        for (BookLending bookLending : this.lendings) {
 
             BookLendingFxModel bookLendingFxModel = new BookLendingFxModel();
 
@@ -311,7 +312,9 @@ public class BookLendingFxModel {
 
     public void loadFilteredTeachersToModel(String selectedTeacher) {
         bookLendingsModel.clear();
-        for (BookLending bookLending : lendings) {
+        List<BookLending> lendings = bookLendingDao.getAll(); // povodne
+        this.lendings = FXCollections.observableArrayList(lendings);
+        for (BookLending bookLending : this.lendings) {
             String formatedNameOfTeacher = bookLending.getTeacher().getName() + " " + bookLending.getTeacher().getSurname();
             if (formatedNameOfTeacher.equals(selectedTeacher) || selectedTeacher.equals("<Všetko>")) {
 

@@ -39,17 +39,17 @@ public class LostBookFxModel {
     private StringProperty date = new SimpleStringProperty();
     private IntegerProperty number = new SimpleIntegerProperty();
     //private StringProperty comment = new SimpleStringProperty("");
-    
+    private LostBookDao lostBookDao = DaoFactory.INSTANCE.getLostBookDao();
+
     public LostBookFxModel() {
-        LostBookDao lostBookDao = DaoFactory.INSTANCE.getLostBookDao();
         List<LostBook> lostBooks = lostBookDao.getAll();
         this.lostBooks = FXCollections.observableArrayList(lostBooks);
     }
-    
+
     public ObservableList<LostBookFxModel> getLostBooksFxModel() {
         return lostBooksModel;
     }
-    
+
     public ObservableList<LostBook> getLostBooks() {
         return lostBooks;
     }
@@ -173,12 +173,14 @@ public class LostBookFxModel {
     public void setSurnameOfTeacher(String surnameOfTeacher) {
         this.surnameOfTeacher.set(surnameOfTeacher);
     }
-    
+
     public void loadBooksToModel() {
         lostBooksModel.clear();
-        for (LostBook lostBook : lostBooks) {
+        List<LostBook> lostBooks = lostBookDao.getAll();
+        this.lostBooks = FXCollections.observableArrayList(lostBooks);
+        for (LostBook lostBook : this.lostBooks) {
             LostBookFxModel lostBookFxModel = new LostBookFxModel();
-            
+
             Long id = lostBook.getId();
             String author = lostBook.getAuthor();
             String title = lostBook.getTitle();
@@ -188,7 +190,7 @@ public class LostBookFxModel {
             String surnameOfTeacher = lostBook.getSurnameOfTeacher();
             LocalDateTime date = lostBook.getDate();
             int number = lostBook.getNumber();
-            
+
             lostBookFxModel.setId(id);
             lostBookFxModel.setTitle(title);
             lostBookFxModel.setAuthor(author);
