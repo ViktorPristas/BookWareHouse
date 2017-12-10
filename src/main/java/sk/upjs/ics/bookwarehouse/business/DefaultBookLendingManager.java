@@ -4,8 +4,11 @@ import com.sun.org.apache.bcel.internal.generic.RETURN;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import sk.upjs.ics.bookwarehouse.Admin;
+import sk.upjs.ics.bookwarehouse.Book;
 import sk.upjs.ics.bookwarehouse.BookLending;
 import sk.upjs.ics.bookwarehouse.DaoFactory;
+import sk.upjs.ics.bookwarehouse.LostBook;
 import sk.upjs.ics.bookwarehouse.Teacher;
 import sk.upjs.ics.bookwarehouse.storage.BookLendingDao;
 
@@ -15,9 +18,16 @@ public class DefaultBookLendingManager implements BookLendingManager {
 
     @Override
     public void deleteByTeacher(Teacher teacher) {
+        Admin admin = DaoFactory.INSTANCE.getAdminDao().getAll().get(0);
         List<BookLending> bookLendings = bookLendingDao.getAll();
         for (BookLending bookLending : bookLendings) {
             if (bookLending.getTeacher().getId() == teacher.getId()) {
+                LostBook lostBook = new LostBook(bookLending, admin, "strata");
+                DaoFactory.INSTANCE.getLostBookDao().save(lostBook);
+                Book book = bookLending.getBook();
+                book.setNumberOfUsed(book.getNumberOfUsed() - bookLending.getReturned());
+                book.setNumberInStock(book.getNumberInStock() + bookLending.getReturned());
+                DaoFactory.INSTANCE.getBookDao().save(book);
                 bookLendingDao.deleteById(bookLending.getId());
             }
         }

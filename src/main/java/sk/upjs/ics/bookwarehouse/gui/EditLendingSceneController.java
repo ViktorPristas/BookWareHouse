@@ -83,8 +83,8 @@ public class EditLendingSceneController {
                 bookLendingDao.save(bookLending);
 
                 //editing the number of books in stock
-                book.setNumberInStock(book.getNumberInStock() - numberOfBooksActually.get());
-                book.setNumberOfUsed(book.getNumberOfUsed() + numberOfBooksActually.get());
+                book.setNumberInStock(book.getNumberInStock() - numberOfBooksActually.get()+ bookLendingFxModel.getLended());
+                book.setNumberOfUsed(book.getNumberOfUsed() + numberOfBooksActually.get() - bookLendingFxModel.getLended());
                 DaoFactory.INSTANCE.getBookDao().save(book);
 
                 confirmRequestButton.getScene().getWindow().hide();

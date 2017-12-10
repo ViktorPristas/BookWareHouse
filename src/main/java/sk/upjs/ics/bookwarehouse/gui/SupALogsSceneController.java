@@ -278,8 +278,8 @@ public class SupALogsSceneController {
 
     public void fillLostBookTable(boolean b) {
 
-        editedBookTableView.getItems().clear();
-        editedBookTableView.getColumns().clear();
+        lostBookTableView.getItems().clear();
+        lostBookTableView.getColumns().clear();
         if (lostBookFxModel.getLostBooks().size() > 0 || b) {
             lostBookFxModel.loadBooksToModel();
         }
