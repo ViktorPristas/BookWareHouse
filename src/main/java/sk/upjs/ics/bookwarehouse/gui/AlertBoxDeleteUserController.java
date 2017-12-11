@@ -8,9 +8,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class AlertBoxDeleteUserController {
+    private String string;
     
     public AlertBoxDeleteUserController(String string){
-        userLabel.setText(string);
+        this.string = string;
     }
 
     @FXML
@@ -28,6 +29,7 @@ public class AlertBoxDeleteUserController {
     @FXML
     void initialize() {
         deleteButton.setOnAction(eh -> {
+            userLabel.setText(string);
             deleteButton.getScene().getWindow().hide();
         });
 

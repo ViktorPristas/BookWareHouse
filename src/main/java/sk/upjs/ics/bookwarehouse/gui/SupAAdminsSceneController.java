@@ -162,6 +162,7 @@ public class SupAAdminsSceneController {
         deleteTeacherButton.setOnAction(eh -> {
             deleteAdminOrTeacher = 1;
             showDeleteUserWindow(selectedTeacherFxModel.getName() + " " + selectedTeacherFxModel.getSurname());
+            
         });
 
         fillSimpleTable(false);
@@ -241,7 +242,6 @@ public class SupAAdminsSceneController {
 
                 if (deleteAdminOrTeacher == 1) {
                     Teacher teacher = selectedTeacherFxModel.getTeacher();
-                    System.out.println("mazem" + teacher.getId() + " " + teacher.getEmail());
                     DaoFactory.INSTANCE.getTeacherDao().deleteById(teacher.getId());
                     teacherFxModel.loadTeacherToModel();
                     fillSimpleTableTeachers(true);
