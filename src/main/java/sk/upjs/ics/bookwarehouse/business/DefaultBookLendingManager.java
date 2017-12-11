@@ -21,13 +21,23 @@ public class DefaultBookLendingManager implements BookLendingManager {
         Admin admin = DaoFactory.INSTANCE.getAdminDao().getAll().get(0);
         List<BookLending> bookLendings = bookLendingDao.getAll();
         for (BookLending bookLending : bookLendings) {
+            boolean areThereLostBooks = false;
             if (bookLending.getTeacher().getId() == teacher.getId()) {
-                LostBook lostBook = new LostBook(bookLending, admin, "strata");
-                DaoFactory.INSTANCE.getLostBookDao().save(lostBook);
-                Book book = bookLending.getBook();
-                book.setNumberOfUsed(book.getNumberOfUsed() - bookLending.getReturned());
-                book.setNumberInStock(book.getNumberInStock() + bookLending.getReturned());
-                DaoFactory.INSTANCE.getBookDao().save(book);
+                if (bookLending.isApproved()) {
+                    if (bookLending.getLost() > 0) {
+                        LostBook lostBook = new LostBook(bookLending, admin, "strata");
+                        DaoFactory.INSTANCE.getLostBookDao().save(lostBook);
+                    }
+                    Book book = bookLending.getBook();
+                    book.setNumberOfUsed(book.getNumberOfUsed() - bookLending.getReturned());
+                    book.setNumberInStock(book.getNumberInStock() + bookLending.getReturned());
+                    DaoFactory.INSTANCE.getBookDao().save(book);
+                } else {
+                    Book book = bookLending.getBook();
+                    book.setNumberOfUsed(book.getNumberOfUsed() - bookLending.getLended());
+                    book.setNumberInStock(book.getNumberInStock() + bookLending.getLended());
+                    DaoFactory.INSTANCE.getBookDao().save(book);
+                }
                 bookLendingDao.deleteById(bookLending.getId());
             }
         }
