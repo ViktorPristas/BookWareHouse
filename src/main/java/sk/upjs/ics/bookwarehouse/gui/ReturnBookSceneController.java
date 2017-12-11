@@ -108,6 +108,7 @@ private BookLendingFxModel bookLendingFxModel;
             if (number <= (bookLendingFxModel.getLended()) && bookLendingFxModel.getApprovedString().equals("potvrdené")) {
                 BookLending bookLending = DaoFactory.INSTANCE.getBookLendingDao().findById(bookLendingFxModel.getId());
                 bookLending.setReturned(number);
+                bookLending.setLost(bookLending.getLended() - bookLending.getReturned());
                 bookLendingDao.save(bookLending);
 
                 //editing the number of books in stock

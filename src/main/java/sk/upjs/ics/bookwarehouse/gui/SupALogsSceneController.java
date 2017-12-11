@@ -74,6 +74,7 @@ public class SupALogsSceneController {
 
     @FXML
     void initialize() {
+        numberLabel.setText("" + bookLendingFxModel.getNumberOfLostForTeacher());
 
         backButton.setOnAction(eh -> {
             SupAMainSceneController controller = new SupAMainSceneController();
@@ -185,7 +186,10 @@ public class SupALogsSceneController {
             String selectedTeacher = teacherComboBox.getValue();
             if (bookLendingFxModel.getLendings().size() > 0) {
                 bookLendingFxModel.loadFilteredTeachersToModel(selectedTeacher);
+
             }
+            numberLabel.setText("" + bookLendingFxModel.getNumberOfLostForTeacher());
+            System.out.println(bookLendingFxModel.getNumberOfLostForTeacher());
         }
         );
     }

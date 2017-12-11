@@ -38,11 +38,19 @@ public class BookLendingFxModel {
     private StringProperty nameOfTeacher = new SimpleStringProperty();
     private StringProperty surnameOfTeacher = new SimpleStringProperty();
     private BookLendingDao bookLendingDao = DaoFactory.INSTANCE.getBookLendingDao();
-      
+    private static int numberOfLostForTeacher;
 
     public BookLendingFxModel() {
-         List<BookLending> lendings = bookLendingDao.getAll(); // povodne
+        List<BookLending> lendings = bookLendingDao.getAll(); // povodne
         this.lendings = FXCollections.observableArrayList(lendings);
+    }
+
+    public int getNumberOfLostForTeacher() {
+        return numberOfLostForTeacher;
+    }
+
+    public void setNumberOfLostForTeacher(int numberOfLostForTeacher) {
+        this.numberOfLostForTeacher = numberOfLostForTeacher;
     }
 
     public ObservableList<BookLendingFxModel> getBookLendingsModel() {
@@ -256,6 +264,7 @@ public class BookLendingFxModel {
                 bookLendingFxModel.setTitle(title);
                 bookLendingFxModel.setComment(comment);
                 bookLendingFxModel.setApprovedString(approvedString);
+                bookLendingFxModel.setLost(bookLending.getLost());
 
                 bookLendingsModel.add(bookLendingFxModel);
             }
@@ -264,7 +273,7 @@ public class BookLendingFxModel {
     }
 
     public void loadLendingForAdminToModel() {
-        
+
         bookLendingsModel.clear();
         List<BookLending> lendings = bookLendingDao.getAll(); // povodne
         this.lendings = FXCollections.observableArrayList(lendings);
@@ -288,7 +297,7 @@ public class BookLendingFxModel {
             } else {
                 approvedString = "nepotvrdené";
             }
-            
+
             bookLendingFxModel.setId(bookLending.getId());
             bookLendingFxModel.setBook(bookLending.getBook().getId());
             bookLendingFxModel.setTeacher(bookLending.getTeacher().getId());
@@ -311,6 +320,7 @@ public class BookLendingFxModel {
     }
 
     public void loadFilteredTeachersToModel(String selectedTeacher) {
+        numberOfLostForTeacher = 0;
         bookLendingsModel.clear();
         List<BookLending> lendings = bookLendingDao.getAll(); // povodne
         this.lendings = FXCollections.observableArrayList(lendings);
@@ -342,6 +352,7 @@ public class BookLendingFxModel {
                 bookLendingFxModel.setYearOfReturn(yearOfReturn);
                 bookLendingFxModel.setLended(lended);
                 bookLendingFxModel.setReturned(returned);
+                bookLendingFxModel.setLost(bookLending.getLost());
                 bookLendingFxModel.setBook(book.getId());
                 bookLendingFxModel.setAuthor(author);
                 bookLendingFxModel.setTitle(title);
@@ -349,7 +360,7 @@ public class BookLendingFxModel {
                 bookLendingFxModel.setSurnameOfTeacher(surnameOfTeacher);
                 bookLendingFxModel.setComment(comment);
                 bookLendingFxModel.setApprovedString(approvedString);
-
+                numberOfLostForTeacher = numberOfLostForTeacher + bookLending.getLost();
                 bookLendingsModel.add(bookLendingFxModel);
             }
         }
