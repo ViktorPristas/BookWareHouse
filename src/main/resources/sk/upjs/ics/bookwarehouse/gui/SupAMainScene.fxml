@@ -14,7 +14,7 @@
                 <HBox layoutX="126.0" layoutY="180.0" prefHeight="32.0" prefWidth="920.0" AnchorPane.bottomAnchor="40.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                     <children>
                         <Region prefHeight="200.0" prefWidth="40.0" />
-                        <Button fx:id="adminsButton" mnemonicParsing="false" prefWidth="200.0" style="-fx-background-color: #19A15F; -fx-border-color: #20120F; -fx-border-width: 0.2; -fx-cursor: hand;" text="Administrátori" textFill="#20120f">
+                        <Button fx:id="adminsButton" mnemonicParsing="false" prefWidth="200.0" style="-fx-background-color: #19A15F; -fx-border-color: #20120F; -fx-border-width: 0.2; -fx-cursor: hand;" text="Používatelia" textFill="#20120f">
                             <font>
                                 <Font size="14.0" />
                             </font>

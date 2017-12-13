@@ -40,12 +40,12 @@
                         <Label text="Počet žiakov v triede (nepovinné)" textFill="#f8f8f8" GridPane.rowIndex="3" />
                         <Label text="Heslo" textFill="#f8f8f8" GridPane.rowIndex="4" />
                         <Label text="Heslo znovu" textFill="#f8f8f8" GridPane.rowIndex="5" />
-                        <TextField fx:id="nameTextField" promptText="Meno" style="-fx-background-color: #9C2B27; -fx-border-color: f8f8f8; -fx-border-width: 0.2;" GridPane.columnIndex="1" />
-                        <TextField fx:id="surnameTextField" promptText="Priezvisko" style="-fx-background-color: #9C2B27; -fx-border-color: f8f8f8; -fx-border-width: 0.2;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-                        <TextField fx:id="emailTextField" promptText="E-mail" style="-fx-background-color: #9C2B27; -fx-border-color: f8f8f8; -fx-border-width: 0.2;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-                        <TextField fx:id="numberOfStudentsTextField" promptText="Počet žiakov" style="-fx-background-color: #9C2B27; -fx-border-color: f8f8f8; -fx-border-width: 0.2;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-                        <PasswordField fx:id="passwordTextField" promptText="Heslo" style="-fx-background-color: #9C2B27; -fx-border-color: f8f8f8; -fx-border-width: 0.2;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                        <PasswordField fx:id="repeatPasswordTextField" promptText="Heslo znovu" style="-fx-background-color: #9C2B27; -fx-border-color: f8f8f8; -fx-border-width: 0.2;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                        <TextField fx:id="nameTextField" promptText="Meno" style="-fx-background-color: #9C2B27; -fx-border-color: f8f8f8; -fx-border-width: 0.2; -fx-text-fill: #f8f8f8;" GridPane.columnIndex="1" />
+                        <TextField fx:id="surnameTextField" promptText="Priezvisko" style="-fx-background-color: #9C2B27; -fx-border-color: f8f8f8; -fx-border-width: 0.2; -fx-text-fill: #f8f8f8;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                        <TextField fx:id="emailTextField" promptText="E-mail" style="-fx-background-color: #9C2B27; -fx-border-color: f8f8f8; -fx-border-width: 0.2; -fx-text-fill: #f8f8f8;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                        <TextField fx:id="numberOfStudentsTextField" promptText="Počet žiakov" style="-fx-background-color: #9C2B27; -fx-border-color: f8f8f8; -fx-border-width: 0.2; -fx-text-fill: #f8f8f8;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <PasswordField fx:id="passwordTextField" promptText="Heslo" style="-fx-background-color: #9C2B27; -fx-border-color: f8f8f8; -fx-border-width: 0.2; -fx-text-fill: #f8f8f8;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                        <PasswordField fx:id="repeatPasswordTextField" promptText="Heslo znovu" style="-fx-background-color: #9C2B27; -fx-border-color: f8f8f8; -fx-border-width: 0.2; -fx-text-fill: #f8f8f8;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                     </children>
                 </GridPane>
             </children>

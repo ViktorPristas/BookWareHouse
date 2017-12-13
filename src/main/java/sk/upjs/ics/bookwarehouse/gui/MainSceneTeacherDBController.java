@@ -136,7 +136,7 @@ public class MainSceneTeacherDBController {
             bookFxModel.loadBooksToModel();
         }
 
-        TableColumn<BookFxModel, String> titleCol = new TableColumn<>("Nazov");
+        TableColumn<BookFxModel, String> titleCol = new TableColumn<>("Názov");
         titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
         simpleTableView.getColumns().add(titleCol);
 
@@ -148,15 +148,15 @@ public class MainSceneTeacherDBController {
         yearCol.setCellValueFactory(new PropertyValueFactory<>("yearOfPublication"));
         simpleTableView.getColumns().add(yearCol);
 
-        TableColumn<BookFxModel, Integer> schoolClassCol = new TableColumn<>("Rocnik");
+        TableColumn<BookFxModel, Integer> schoolClassCol = new TableColumn<>("Ročník");
         schoolClassCol.setCellValueFactory(new PropertyValueFactory<>("schoolClass"));
         simpleTableView.getColumns().add(schoolClassCol);
 
-        TableColumn<BookFxModel, Integer> numberInStockCol = new TableColumn<>("Pocet na sklade");
+        TableColumn<BookFxModel, Integer> numberInStockCol = new TableColumn<>("Počet na sklade");
         numberInStockCol.setCellValueFactory(new PropertyValueFactory<>("numberInStock"));
         simpleTableView.getColumns().add(numberInStockCol);
 
-        TableColumn<BookFxModel, Integer> numberOfUsedCol = new TableColumn<>("Pocet rozdanych");
+        TableColumn<BookFxModel, Integer> numberOfUsedCol = new TableColumn<>("Počet rozdaných");
         numberOfUsedCol.setCellValueFactory(new PropertyValueFactory<>("numberOfUsed"));
         simpleTableView.getColumns().add(numberOfUsedCol);
 

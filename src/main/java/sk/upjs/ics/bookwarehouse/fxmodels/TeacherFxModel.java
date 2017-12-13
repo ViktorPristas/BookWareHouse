@@ -161,7 +161,6 @@ public class TeacherFxModel {
         for (Teacher teacher : teachers) {
             String nameAndSurname = teacher.getName() + " " + teacher.getSurname();
             nameOfTeachers.add(nameAndSurname);
-            //System.out.println(nameAndSurname);
         }
         return nameOfTeachers;
     }

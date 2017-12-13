@@ -44,7 +44,6 @@ public class Stock {
             md.update(stringForHash.getBytes());
             byte[] data = md.digest();
             String hashString = DatatypeConverter.printHexBinary(data);
-            System.out.println(hashString);
         } catch (NoSuchAlgorithmException noSuchAlgorithmException) {
         }
 

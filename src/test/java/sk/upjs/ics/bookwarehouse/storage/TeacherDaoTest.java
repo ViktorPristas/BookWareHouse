@@ -77,7 +77,6 @@ public class TeacherDaoTest {
         t = dao.save(t);
         long id = t.getId();
 
-        // System.out.println(id);
         dao.deleteById(id);
         List<Teacher> list = dao.getAll();
         boolean b = true;

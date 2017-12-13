@@ -20,7 +20,7 @@
                         <Font size="14.0" />
                      </font></Button>
                         <Region prefHeight="27.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                        <Button fx:id="openRequestsButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="200.0" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2; -fx-cursor: hand;" text="Otvoriť požiadávky" textFill="#20120f">
+                        <Button fx:id="openRequestsButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="200.0" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2; -fx-cursor: hand;" text="Otvoriť požiadavky" textFill="#20120f">
                      <font>
                         <Font size="14.0" />
                      </font></Button>

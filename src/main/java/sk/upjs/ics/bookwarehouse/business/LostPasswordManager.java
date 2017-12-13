@@ -37,6 +37,9 @@ public class LostPasswordManager {
         String subject = "Nové heslo";
 
         String newPassword = java.util.UUID.randomUUID().toString().substring(0, 10);
+        String body = "Vážený používateľ, \n\nzaznamenali sme požiadavku na nastavenie nového hesla k Vášmu účtu v BookWareHouse.\nVaše nové heslo je: " + newPassword
+                + "\nZadajte toto heslo pri prihlasovaní, následne si ho môžete zmeniť v časti \"Môj profil\" \n\nS pozdravom a prianím pekného dňa "
+                + "\ntím BookWareHouse";
 
         TeacherDao dao = DaoFactory.INSTANCE.getTeacherDao();
         Teacher teacher = dao.findByEmail(email);
@@ -44,7 +47,7 @@ public class LostPasswordManager {
             teacher.setPassword(newPassword);
             dao.save(teacher);
             teacher = dao.findByEmail(email);
-            sendFromGMail(from, pass, to, subject, newPassword, email);
+            sendFromGMail(from, pass, to, subject, body, email);
             return true;
         }
         return false;

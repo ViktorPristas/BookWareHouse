@@ -130,7 +130,6 @@ public class BookLendingDaoTest {
         bl = dao.save(bl);
         long id = bl.getId();
 
-        // System.out.println(id);
         dao.deleteById(id);
         List<BookLending> list = dao.getAll();
         boolean bool = true;

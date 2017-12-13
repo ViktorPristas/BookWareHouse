@@ -45,12 +45,6 @@ public class LogInSceneController {
     private Button registerButton;
 
     @FXML
-    private Button adminloginButton;
-
-    @FXML
-    private Button supadminloginButton;
-
-    @FXML
     void initialize() {
 
         emailTextField.textProperty().bindBidirectional(
@@ -83,7 +77,7 @@ public class LogInSceneController {
 
         loginButton.setOnAction(eh -> {
             if (!UserIdentificationManager.setUser(loginFxModel.getEmail())) {
-                showWrongDatasWindow();
+                showWrongDataWindow();
             }
             int typeOfUser = UserIdentificationManager.getTypeOfUser();
             if (passwordManager.isCorrectPassword(loginFxModel.getPassword(), typeOfUser, UserIdentificationManager.getId())) {
@@ -97,7 +91,7 @@ public class LogInSceneController {
                     loginSuperAdmin();
                 }
             } else {
-                showWrongDatasWindow();
+                showWrongDataWindow();
             }
 
         });
@@ -124,13 +118,6 @@ public class LogInSceneController {
             }
         });
 
-        adminloginButton.setOnAction(eh -> {
-            loginAdmin();
-        });
-
-        supadminloginButton.setOnAction(eh -> {
-            loginSuperAdmin();
-        });
     }
 
     private void loginTeacher() {
@@ -169,7 +156,7 @@ public class LogInSceneController {
             stage.setScene(scene);
             stage.setTitle("BookWareHouse");
             stage.show();
-            adminloginButton.getScene().getWindow().hide();
+            loginButton.getScene().getWindow().hide();
 
             // toto sa vykona az po zatvoreni okna
         } catch (IOException iOException) {
@@ -187,7 +174,7 @@ public class LogInSceneController {
             Parent parentPane = loader.load();
             Scene scene = new Scene(parentPane);
 
-            Stage stage = (Stage) supadminloginButton.getScene().getWindow();
+            Stage stage = (Stage) loginButton.getScene().getWindow();
             stage.setScene(scene);
             stage.setTitle("BookWareHouse");
             stage.show();
@@ -198,7 +185,7 @@ public class LogInSceneController {
         }
     }
 
-    private void showWrongDatasWindow() {
+    private void showWrongDataWindow() {
         AlertBoxFailToLoginController controller = new AlertBoxFailToLoginController();
         try {
             FXMLLoader loader = new FXMLLoader(

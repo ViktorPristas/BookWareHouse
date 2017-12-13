@@ -34,17 +34,17 @@
                     </rowConstraints>
                      <children>
                             <Label text="Meno" textFill="#f8f8f8" />
-                            <TextField fx:id="nameTextField" prefHeight="25.0" prefWidth="303.0" promptText="Meno" style="-fx-background-color: #9C2B27; -fx-border-color: #f8f8f8; -fx-border-width: 0.2;" GridPane.columnIndex="1" />
+                            <TextField fx:id="nameTextField" prefHeight="25.0" prefWidth="303.0" promptText="Meno" style="-fx-background-color: #9C2B27; -fx-border-color: #f8f8f8; -fx-border-width: 0.2; -fx-text-fill: #f8f8f8;" GridPane.columnIndex="1" />
                             <Label text="Priezvisko" textFill="#f8f8f8" GridPane.rowIndex="1" />
-                            <TextField fx:id="surenameTextField" prefHeight="25.0" prefWidth="303.0" promptText="Priezvisko" style="-fx-background-color: #9C2B27; -fx-border-color: #f8f8f8; -fx-border-width: 0.2;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                            <TextField fx:id="surenameTextField" prefHeight="25.0" prefWidth="303.0" promptText="Priezvisko" style="-fx-background-color: #9C2B27; -fx-border-color: #f8f8f8; -fx-border-width: 0.2; -fx-text-fill: #f8f8f8;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                             <Label text="E-mail" textFill="#f8f8f8" GridPane.rowIndex="2" />
-                            <TextField fx:id="emailTextField" prefHeight="25.0" prefWidth="303.0" promptText="E-mail" style="-fx-background-color: #9C2B27; -fx-border-color: #f8f8f8; -fx-border-width: 0.2;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+                            <TextField fx:id="emailTextField" prefHeight="25.0" prefWidth="303.0" promptText="E-mail" style="-fx-background-color: #9C2B27; -fx-border-color: #f8f8f8; -fx-border-width: 0.2; -fx-text-fill: #f8f8f8;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                             <Label text="Heslo" textFill="#f8f8f8" GridPane.rowIndex="3" />
-                            <PasswordField fx:id="passwordTextField" prefHeight="25.0" prefWidth="303.0" promptText="Heslo" style="-fx-background-color: #9C2B27; -fx-border-color: #f8f8f8; -fx-border-width: 0.2;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                            <PasswordField fx:id="passwordTextField" prefHeight="25.0" prefWidth="303.0" promptText="Heslo" style="-fx-background-color: #9C2B27; -fx-border-color: #f8f8f8; -fx-border-width: 0.2; -fx-text-fill: #f8f8f8;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                             <Label text="Heslo znovu" textFill="#f8f8f8" GridPane.rowIndex="4" />
-                            <PasswordField fx:id="passwordConfTextField" prefHeight="25.0" prefWidth="303.0" promptText="Heslo" style="-fx-background-color: #9C2B27; -fx-border-color: #f8f8f8; -fx-border-width: 0.2;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+                            <PasswordField fx:id="passwordConfTextField" prefHeight="25.0" prefWidth="303.0" promptText="Heslo" style="-fx-background-color: #9C2B27; -fx-border-color: #f8f8f8; -fx-border-width: 0.2; -fx-text-fill: #f8f8f8;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
                             <Label text="Počet študentov" textFill="#f8f8f8" GridPane.rowIndex="5" />
-                            <TextField fx:id="numberOfStudentsTextField" prefHeight="27.0" prefWidth="116.0" promptText="Len v prípade triedneho učiteľa" style="-fx-background-color: #9C2B27; -fx-border-color: #f8f8f8; -fx-border-width: 0.2;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+                            <TextField fx:id="numberOfStudentsTextField" prefHeight="27.0" prefWidth="116.0" promptText="Len v prípade triedneho učiteľa" style="-fx-background-color: #9C2B27; -fx-border-color: #f8f8f8; -fx-border-width: 0.2; -fx-text-fill: #f8f8f8;" GridPane.columnIndex="1" GridPane.rowIndex="5" />
                      </children>
                   </GridPane>
                   <Region prefHeight="200.0" prefWidth="80.0" HBox.hgrow="ALWAYS" />

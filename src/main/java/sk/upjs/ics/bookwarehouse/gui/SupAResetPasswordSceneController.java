@@ -47,9 +47,7 @@ public class SupAResetPasswordSceneController {
             if (!(newPassword.get().equals(null) && newPassword.get().equals(""))) {
                 adminFxModel.setPassword(newPassword.get());
                 Admin admin = adminFxModel.getAdmin();
-                System.out.println(admin.getId()+ ": " + admin.getPassword());
                 Admin a = DaoFactory.INSTANCE.getAdminDao().save(admin);
-                System.out.println(a.getId()+ ": " +a.getPassword());
                 confirmPasswordButton.getScene().getWindow().hide();
             } else {
                 //nejaky alert

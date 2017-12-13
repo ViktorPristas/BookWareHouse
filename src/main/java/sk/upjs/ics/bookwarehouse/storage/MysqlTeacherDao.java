@@ -26,7 +26,6 @@ public class MysqlTeacherDao implements TeacherDao {
             return null;
         }
         if (teacher.getId() == null) { //INSERT
-            System.out.println("ahoj dao");
             SimpleJdbcInsert simpleJdbcInsert = new SimpleJdbcInsert(jdbcTemplate);
             simpleJdbcInsert.withTableName("Teacher");
             simpleJdbcInsert.usingGeneratedKeyColumns("id");

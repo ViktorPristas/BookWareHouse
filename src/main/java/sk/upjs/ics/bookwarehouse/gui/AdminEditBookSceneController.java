@@ -74,8 +74,6 @@ public class AdminEditBookSceneController {
             if (modificationIsOk(book)) {
                 bookDao.save(book);
                 if (bookFxModel.getNumberInStockBefore() != book.getNumberInStock()) {
-                    System.out.println("pred " + bookFxModel.getNumberInStockBefore());
-                    System.out.println("po " + book.getNumberInStock());
                     AdminDao adminDao = DaoFactory.INSTANCE.getAdminDao();
                     Admin admin = adminDao.findById(UserIdentificationManager.getId());
                     BookEdit bookEdit = new BookEdit(admin, book, bookFxModel.getNumberInStockBefore());

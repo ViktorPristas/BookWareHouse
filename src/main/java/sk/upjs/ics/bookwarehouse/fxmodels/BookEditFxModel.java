@@ -184,8 +184,8 @@ public class BookEditFxModel {
             bookEditFxModel.setSchoolClass(schoolClass);
             bookEditFxModel.setNameOfAdmin(nameOfAdmin);
             bookEditFxModel.setDate(date);
-            bookEditFxModel.setNumberBefore(numberBefore); System.out.println("before: " + numberBefore);
-            bookEditFxModel.setNumberAfter(numberAfter); System.out.println("after: " + numberAfter);
+            bookEditFxModel.setNumberBefore(numberBefore);
+            bookEditFxModel.setNumberAfter(numberAfter);
             bookEditsModel.add(bookEditFxModel);
         }
     }

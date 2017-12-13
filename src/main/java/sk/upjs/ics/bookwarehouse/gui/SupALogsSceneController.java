@@ -67,9 +67,6 @@ public class SupALogsSceneController {
     private Button deleteForTeacherButton;
 
     @FXML
-    private Button deleteButton;
-
-    @FXML
     private Button backButton;
 
     @FXML
@@ -92,31 +89,6 @@ public class SupALogsSceneController {
                 stage.show();
 
                 // toto sa vykona az po zatvoreni okna
-            } catch (IOException iOException) {
-                iOException.printStackTrace();
-            }
-        });
-
-        deleteButton.setOnAction(eh -> {
-            AlertBoxDeleteRequestController controller = new AlertBoxDeleteRequestController();
-            try {
-                FXMLLoader loader = new FXMLLoader(
-                        getClass().getResource("AlertBoxDeleteRequest.fxml"));
-                loader.setController(controller);
-
-                Parent parentPane = loader.load();
-                Scene scene = new Scene(parentPane);
-
-                Stage stage = new Stage();
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.setResizable(false);
-                stage.setScene(scene);
-                stage.setTitle("BookWareHouse");
-                stage.show();
-
-                // toto sa vykona az po zatvoreni okna
-                stage.setOnHidden(eha -> {
-                });
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }
@@ -189,7 +161,6 @@ public class SupALogsSceneController {
 
             }
             numberLabel.setText("" + bookLendingFxModel.getNumberOfLostForTeacher());
-            System.out.println(bookLendingFxModel.getNumberOfLostForTeacher());
         }
         );
     }
@@ -217,19 +188,19 @@ public class SupALogsSceneController {
         teacherSurnameLendingCol.setCellValueFactory(new PropertyValueFactory<>("surnameOfTeacher"));
         requestsTableView.getColumns().add(teacherSurnameLendingCol);
 
-        TableColumn<BookLendingFxModel, Integer> yearOfReturnLendingCol = new TableColumn<>("rok vratenia");
+        TableColumn<BookLendingFxModel, Integer> yearOfReturnLendingCol = new TableColumn<>("Rok vrátenia");
         yearOfReturnLendingCol.setCellValueFactory(new PropertyValueFactory<>("yearOfReturn"));
         requestsTableView.getColumns().add(yearOfReturnLendingCol);
 
-        TableColumn<BookLendingFxModel, Integer> lendedCol = new TableColumn<>("pocet rozdanych");
+        TableColumn<BookLendingFxModel, Integer> lendedCol = new TableColumn<>("Počet rozdaných");
         lendedCol.setCellValueFactory(new PropertyValueFactory<>("lended"));
         requestsTableView.getColumns().add(lendedCol);
 
-        TableColumn<BookLendingFxModel, Integer> returnedCol = new TableColumn<>("pocet vratenych");
+        TableColumn<BookLendingFxModel, Integer> returnedCol = new TableColumn<>("Počet vrátených");
         returnedCol.setCellValueFactory(new PropertyValueFactory<>("returned"));
         requestsTableView.getColumns().add(returnedCol);
 
-        TableColumn<BookLendingFxModel, String> commentCol = new TableColumn<>("koment");
+        TableColumn<BookLendingFxModel, String> commentCol = new TableColumn<>("Komentár");
         commentCol.setCellValueFactory(new PropertyValueFactory<>("comment"));
         requestsTableView.getColumns().add(commentCol);
 
@@ -237,7 +208,7 @@ public class SupALogsSceneController {
         lostCol.setCellValueFactory(new PropertyValueFactory<>("lost"));
         requestsTableView.getColumns().add(lostCol);
 
-        TableColumn<BookLendingFxModel, String> approvedCol = new TableColumn<>("Je potvrdené");
+        TableColumn<BookLendingFxModel, String> approvedCol = new TableColumn<>("Potvrdené");
         approvedCol.setCellValueFactory(new PropertyValueFactory<>("approvedString"));
         requestsTableView.getColumns().add(approvedCol);
 
@@ -249,7 +220,7 @@ public class SupALogsSceneController {
             bookEditFxModel.loadBooksToModel();
         }
 
-        TableColumn<BookEditFxModel, String> titleEditCol = new TableColumn<>("Nazov");
+        TableColumn<BookEditFxModel, String> titleEditCol = new TableColumn<>("Názov");
         titleEditCol.setCellValueFactory(new PropertyValueFactory<>("title"));
         editedBookTableView.getColumns().add(titleEditCol);
 
@@ -257,7 +228,7 @@ public class SupALogsSceneController {
         authorEditCol.setCellValueFactory(new PropertyValueFactory<>("author"));
         editedBookTableView.getColumns().add(authorEditCol);
 
-        TableColumn<BookEditFxModel, String> schoolClassEditCol = new TableColumn<>("Rocnik");
+        TableColumn<BookEditFxModel, String> schoolClassEditCol = new TableColumn<>("Ročník");
         schoolClassEditCol.setCellValueFactory(new PropertyValueFactory<>("schoolClass"));
         editedBookTableView.getColumns().add(schoolClassEditCol);
 
@@ -265,15 +236,15 @@ public class SupALogsSceneController {
         adminNameEditCol.setCellValueFactory(new PropertyValueFactory<>("nameOfAdmin"));
         editedBookTableView.getColumns().add(adminNameEditCol);
 
-        TableColumn<BookEditFxModel, LocalDateTime> dateEditCol = new TableColumn<>("Datum");
+        TableColumn<BookEditFxModel, LocalDateTime> dateEditCol = new TableColumn<>("Dátum");
         dateEditCol.setCellValueFactory(new PropertyValueFactory<>("date"));
         editedBookTableView.getColumns().add(dateEditCol);
 
-        TableColumn<BookEditFxModel, Integer> numberBeforeEditCol = new TableColumn<>("Pocet pred");
+        TableColumn<BookEditFxModel, Integer> numberBeforeEditCol = new TableColumn<>("Počet pred");
         numberBeforeEditCol.setCellValueFactory(new PropertyValueFactory<>("numberBefore"));
         editedBookTableView.getColumns().add(numberBeforeEditCol);
 
-        TableColumn<BookEditFxModel, Integer> numberAfterEditCol = new TableColumn<>("Pocet po");
+        TableColumn<BookEditFxModel, Integer> numberAfterEditCol = new TableColumn<>("Počet po");
         numberAfterEditCol.setCellValueFactory(new PropertyValueFactory<>("numberAfter"));
         editedBookTableView.getColumns().add(numberAfterEditCol);
 
@@ -292,11 +263,11 @@ public class SupALogsSceneController {
         authorCol.setCellValueFactory(new PropertyValueFactory<>("author"));
         lostBookTableView.getColumns().add(authorCol);
 
-        TableColumn<LostBookFxModel, String> titleCol = new TableColumn<>("Nazov");
+        TableColumn<LostBookFxModel, String> titleCol = new TableColumn<>("Názov");
         titleCol.setCellValueFactory(new PropertyValueFactory<>("title"));
         lostBookTableView.getColumns().add(titleCol);
 
-        TableColumn<LostBookFxModel, String> schoolClassCol = new TableColumn<>("Rocnik");
+        TableColumn<LostBookFxModel, String> schoolClassCol = new TableColumn<>("Ročník");
         schoolClassCol.setCellValueFactory(new PropertyValueFactory<>("schoolClass"));
         lostBookTableView.getColumns().add(schoolClassCol);
 
@@ -304,19 +275,25 @@ public class SupALogsSceneController {
         adminNameCol.setCellValueFactory(new PropertyValueFactory<>("nameOfAdmin"));
         lostBookTableView.getColumns().add(adminNameCol);
 
-        TableColumn<LostBookFxModel, String> teacherNameCol = new TableColumn<>("Ucitel meno");
+//        TableColumn<LostBookFxModel, String> teacherCol = new TableColumn<>("Ucitel");
+//        lostBookTableView.getColumns().add(teacherCol);
+        
+        TableColumn<LostBookFxModel, String> teacherNameCol = new TableColumn<>("Meno učiteľa");
         teacherNameCol.setCellValueFactory(new PropertyValueFactory<>("nameOfTeacher"));
         lostBookTableView.getColumns().add(teacherNameCol);
 
-        TableColumn<LostBookFxModel, String> teacherSurnameCol = new TableColumn<>("Ucitel priezvisko");
+        TableColumn<LostBookFxModel, String> teacherSurnameCol = new TableColumn<>("Priezvisko učiteľa");
         teacherSurnameCol.setCellValueFactory(new PropertyValueFactory<>("surnameOfTeacher"));
         lostBookTableView.getColumns().add(teacherSurnameCol);
+        
+//        teacherCol.getColumns().add(teacherNameCol);
+//        teacherCol.getColumns().add(teacherSurnameCol);
 
-        TableColumn<LostBookFxModel, LocalDateTime> dateCol = new TableColumn<>("Datum");
+        TableColumn<LostBookFxModel, LocalDateTime> dateCol = new TableColumn<>("Dátum");
         dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
         lostBookTableView.getColumns().add(dateCol);
 
-        TableColumn<LostBookFxModel, Integer> numberCol = new TableColumn<>("Pocet");
+        TableColumn<LostBookFxModel, Integer> numberCol = new TableColumn<>("Počet");
         numberCol.setCellValueFactory(new PropertyValueFactory<>("number"));
         lostBookTableView.getColumns().add(numberCol);
 

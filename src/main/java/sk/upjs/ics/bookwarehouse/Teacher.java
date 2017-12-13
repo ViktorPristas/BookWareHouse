@@ -54,8 +54,6 @@ public class Teacher {
     }
 
     public String getPassword() {
-        //System.out.println(id);
-        //System.out.println(password);
         return password;
     }
 
