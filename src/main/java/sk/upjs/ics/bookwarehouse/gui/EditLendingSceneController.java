@@ -12,6 +12,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.converter.IntegerStringConverter;
@@ -79,7 +80,7 @@ public class EditLendingSceneController {
                 BookLending bookLending = DaoFactory.INSTANCE.getBookLendingDao().findById(bookLendingFxModel.getId());
                 bookLending.setLended(number);
                 bookLending.setApproved(true);
-               // bookLending.setLost(bookLending.getLended() - bookLending.getReturned());
+                // bookLending.setLost(bookLending.getLended() - bookLending.getReturned());
                 bookLendingDao.save(bookLending);
 
                 //editing the number of books in stock
@@ -102,6 +103,8 @@ public class EditLendingSceneController {
                     stage.setScene(scene);
                     stage.setResizable(false);
                     stage.setTitle("BookWareHouse");
+                    Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
+                    stage.getIcons().add(logo);
                     stage.initModality(Modality.APPLICATION_MODAL);
                     stage.show();
 

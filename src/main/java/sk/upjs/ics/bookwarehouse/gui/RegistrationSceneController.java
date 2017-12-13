@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.util.converter.NumberStringConverter;
@@ -130,6 +131,8 @@ public class RegistrationSceneController {
                     stage.setScene(scene);
                     stage.setTitle("BookWareHouse");
                     stage.setResizable(false);
+                    Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
+                    stage.getIcons().add(logo);
                     stage.show();
                     signUpButton.getScene().getWindow().hide();
                 } else {
@@ -175,6 +178,8 @@ public class RegistrationSceneController {
             stage.setResizable(false);
             stage.setScene(scene);
             stage.setTitle("BookWareHouse");
+            Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
+            stage.getIcons().add(logo);
             stage.show();
 
         } catch (IOException iOException) {

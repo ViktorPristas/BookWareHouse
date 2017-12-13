@@ -14,6 +14,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.TableView;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -23,7 +24,8 @@ import sk.upjs.ics.bookwarehouse.business.UserIdentificationManager;
 import sk.upjs.ics.bookwarehouse.storage.BookDao;
 
 public class MainSceneTeacherController {
-       @FXML
+
+    @FXML
     private ResourceBundle resources;
 
     @FXML
@@ -44,10 +46,9 @@ public class MainSceneTeacherController {
     @FXML
     private Button logOutButton;
 
-
     @FXML
     void initialize() {
-        
+
         openDBButton.setOnAction(eh -> {
             MainSceneTeacherDBController controller = new MainSceneTeacherDBController();
             try {
@@ -61,6 +62,8 @@ public class MainSceneTeacherController {
                 Stage stage = (Stage) pane.getScene().getWindow();
                 stage.setScene(scene);
                 stage.setTitle("BookWareHouse");
+                Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
+                stage.getIcons().add(logo);
                 stage.show();
 
                 // toto sa vykona az po zatvoreni okna
@@ -82,6 +85,8 @@ public class MainSceneTeacherController {
                 Stage stage = (Stage) pane.getScene().getWindow();
                 stage.setScene(scene);
                 stage.setTitle("BookWareHouse");
+                Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
+                stage.getIcons().add(logo);
                 stage.show();
 
                 // toto sa vykona az po zatvoreni okna
@@ -105,6 +110,8 @@ public class MainSceneTeacherController {
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.setScene(scene);
                 stage.setTitle("BookWareHouse");
+                Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
+                stage.getIcons().add(logo);
                 stage.show();
 
                 // toto sa vykona az po zatvoreni okna
@@ -127,6 +134,8 @@ public class MainSceneTeacherController {
                 Stage stage = new Stage();
                 stage.setScene(scene);
                 stage.setTitle("BookWareHouse");
+                Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
+                stage.getIcons().add(logo);
                 stage.show();
                 logOutButton.getScene().getWindow().hide();
 
@@ -135,7 +144,6 @@ public class MainSceneTeacherController {
                 iOException.printStackTrace();
             }
         });
-        
-       
+
     }
 }

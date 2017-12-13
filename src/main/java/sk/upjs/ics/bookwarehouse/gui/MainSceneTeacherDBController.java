@@ -14,6 +14,7 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -68,6 +69,8 @@ public class MainSceneTeacherDBController {
                 stage.setResizable(false);
                 stage.setScene(scene);
                 stage.setTitle("BookWareHouse");
+                Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
+                stage.getIcons().add(logo);
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.show();
 
@@ -105,6 +108,8 @@ public class MainSceneTeacherDBController {
                 Stage stage = (Stage) pane.getScene().getWindow();
                 stage.setScene(scene);
                 stage.setTitle("BookWareHouse");
+                Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
+                stage.getIcons().add(logo);
                 stage.show();
 
                 // toto sa vykona az po zatvoreni okna

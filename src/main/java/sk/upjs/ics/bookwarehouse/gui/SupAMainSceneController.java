@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sk.upjs.ics.bookwarehouse.business.UserIdentificationManager;
@@ -28,7 +29,7 @@ public class SupAMainSceneController {
 
     @FXML
     private Button logOutButton;
-    
+
     @FXML
     private Button myProfileButton;
 
@@ -47,6 +48,8 @@ public class SupAMainSceneController {
                 Stage stage = (Stage) adminsButton.getScene().getWindow();
                 stage.setScene(scene);
                 stage.setTitle("BookWareHouse");
+                Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
+                stage.getIcons().add(logo);
                 stage.show();
 
                 // toto sa vykona az po zatvoreni okna
@@ -68,6 +71,8 @@ public class SupAMainSceneController {
                 Stage stage = (Stage) logsButton.getScene().getWindow();
                 stage.setScene(scene);
                 stage.setTitle("BookWareHouse");
+                Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
+                stage.getIcons().add(logo);
                 stage.show();
 
                 // toto sa vykona az po zatvoreni okna
@@ -90,17 +95,18 @@ public class SupAMainSceneController {
                 Stage stage = new Stage();
                 stage.setScene(scene);
                 stage.setTitle("BookWareHouse");
+                Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
+                stage.getIcons().add(logo);
                 logOutButton.getScene().getWindow().hide();
                 stage.show();
 
-                
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }
         });
-        
-        myProfileButton.setOnAction(eh -> {            
-        SupAMyProfileSceneController controller = new SupAMyProfileSceneController();
+
+        myProfileButton.setOnAction(eh -> {
+            SupAMyProfileSceneController controller = new SupAMyProfileSceneController();
             try {
                 FXMLLoader loader = new FXMLLoader(
                         getClass().getResource("SupAMyProfileScene.fxml"));
@@ -114,9 +120,10 @@ public class SupAMainSceneController {
                 stage.setResizable(false);
                 stage.setScene(scene);
                 stage.setTitle("BookWareHouse");
+                Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
+                stage.getIcons().add(logo);
                 stage.show();
 
-                
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }

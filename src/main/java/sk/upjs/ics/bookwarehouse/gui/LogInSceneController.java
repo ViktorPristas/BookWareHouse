@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sk.upjs.ics.bookwarehouse.ManagerFactory;
@@ -66,6 +67,8 @@ public class LogInSceneController {
                 Stage stage = new Stage();
                 stage.setScene(scene);
                 stage.setTitle("BookWareHouse");
+                Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
+                stage.getIcons().add(logo);
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.show();
 
@@ -110,6 +113,8 @@ public class LogInSceneController {
                 stage.setScene(scene);
                 stage.setTitle("BookWareHouse");
                 stage.initModality(Modality.APPLICATION_MODAL);
+                Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
+                stage.getIcons().add(logo);
                 stage.showAndWait();
 
                 // toto sa vykona az po zatvoreni okna
@@ -133,6 +138,8 @@ public class LogInSceneController {
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("BookWareHouse");
+            Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
+            stage.getIcons().add(logo);
             stage.show();
             loginButton.getScene().getWindow().hide();
 
@@ -155,6 +162,8 @@ public class LogInSceneController {
             Stage stage = new Stage();
             stage.setScene(scene);
             stage.setTitle("BookWareHouse");
+            Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
+            stage.getIcons().add(logo);
             stage.show();
             loginButton.getScene().getWindow().hide();
 
@@ -177,6 +186,8 @@ public class LogInSceneController {
             Stage stage = (Stage) loginButton.getScene().getWindow();
             stage.setScene(scene);
             stage.setTitle("BookWareHouse");
+            Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
+            stage.getIcons().add(logo);
             stage.show();
 
             // toto sa vykona az po zatvoreni okna
@@ -200,6 +211,8 @@ public class LogInSceneController {
             stage.initModality(Modality.APPLICATION_MODAL);
             stage.setResizable(false);
             stage.setTitle("BookWareHouse");
+            Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
+            stage.getIcons().add(logo);
             stage.show();
 
             // toto sa vykona az po zatvoreni okna

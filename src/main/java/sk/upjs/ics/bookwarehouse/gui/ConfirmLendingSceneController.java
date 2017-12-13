@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -32,7 +33,6 @@ public class ConfirmLendingSceneController {
     private IntegerProperty number = new SimpleIntegerProperty(0);
     private BookLendingDao bookLendingDao = DaoFactory.INSTANCE.getBookLendingDao();
     private StringProperty commentProperty = new SimpleStringProperty();
-    
 
     public ConfirmLendingSceneController(BookFxModel bookFxModel) {
         this.bookFxModel = bookFxModel;
@@ -110,6 +110,8 @@ public class ConfirmLendingSceneController {
                     stage.initModality(Modality.APPLICATION_MODAL);
                     stage.setResizable(false);
                     stage.setScene(scene);
+                    Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
+                    stage.getIcons().add(logo);
                     stage.setTitle("BookWareHouse");
                     stage.show();
 

@@ -16,6 +16,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sk.upjs.ics.bookwarehouse.Admin;
@@ -86,6 +87,8 @@ public class SupALogsSceneController {
                 Stage stage = (Stage) backButton.getScene().getWindow();
                 stage.setScene(scene);
                 stage.setTitle("BookWareHouse");
+                Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
+                stage.getIcons().add(logo);
                 stage.show();
 
                 // toto sa vykona az po zatvoreni okna
@@ -109,6 +112,8 @@ public class SupALogsSceneController {
                 stage.setResizable(false);
                 stage.setScene(scene);
                 stage.setTitle("BookWareHouse");
+                Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
+                stage.getIcons().add(logo);
                 stage.show();
 
                 // toto sa vykona az po zatvoreni okna
@@ -277,7 +282,6 @@ public class SupALogsSceneController {
 
 //        TableColumn<LostBookFxModel, String> teacherCol = new TableColumn<>("Ucitel");
 //        lostBookTableView.getColumns().add(teacherCol);
-        
         TableColumn<LostBookFxModel, String> teacherNameCol = new TableColumn<>("Meno učiteľa");
         teacherNameCol.setCellValueFactory(new PropertyValueFactory<>("nameOfTeacher"));
         lostBookTableView.getColumns().add(teacherNameCol);
@@ -285,10 +289,9 @@ public class SupALogsSceneController {
         TableColumn<LostBookFxModel, String> teacherSurnameCol = new TableColumn<>("Priezvisko učiteľa");
         teacherSurnameCol.setCellValueFactory(new PropertyValueFactory<>("surnameOfTeacher"));
         lostBookTableView.getColumns().add(teacherSurnameCol);
-        
+
 //        teacherCol.getColumns().add(teacherNameCol);
 //        teacherCol.getColumns().add(teacherSurnameCol);
-
         TableColumn<LostBookFxModel, LocalDateTime> dateCol = new TableColumn<>("Dátum");
         dateCol.setCellValueFactory(new PropertyValueFactory<>("date"));
         lostBookTableView.getColumns().add(dateCol);
