@@ -202,23 +202,23 @@ public class MainSceneAdminRequestController {
         teacherSurnameCol.setCellValueFactory(new PropertyValueFactory<>("surnameOfTeacher"));
         simpleTableView.getColumns().add(teacherSurnameCol);
 
-        TableColumn<BookLendingFxModel, Integer> yearOfReturnCol = new TableColumn<>("rok vratenia");
+        TableColumn<BookLendingFxModel, Integer> yearOfReturnCol = new TableColumn<>("Rok vrátenia");
         yearOfReturnCol.setCellValueFactory(new PropertyValueFactory<>("yearOfReturn"));
         simpleTableView.getColumns().add(yearOfReturnCol);
 
-        TableColumn<BookLendingFxModel, Integer> lendedCol = new TableColumn<>("pocet rozdanych");
+        TableColumn<BookLendingFxModel, Integer> lendedCol = new TableColumn<>("Počet rozdaných");
         lendedCol.setCellValueFactory(new PropertyValueFactory<>("lended"));
         simpleTableView.getColumns().add(lendedCol);
 
-        TableColumn<BookLendingFxModel, Integer> returnedCol = new TableColumn<>("pocet vratenych");
+        TableColumn<BookLendingFxModel, Integer> returnedCol = new TableColumn<>("Počet vrátených");
         returnedCol.setCellValueFactory(new PropertyValueFactory<>("returned"));
         simpleTableView.getColumns().add(returnedCol);
 
-        TableColumn<BookLendingFxModel, String> commentCol = new TableColumn<>("koment");
+        TableColumn<BookLendingFxModel, String> commentCol = new TableColumn<>("Komentár");
         commentCol.setCellValueFactory(new PropertyValueFactory<>("comment"));
         simpleTableView.getColumns().add(commentCol);
 
-        TableColumn<BookLendingFxModel, String> approvedCol = new TableColumn<>("Je potvrdené");
+        TableColumn<BookLendingFxModel, String> approvedCol = new TableColumn<>("Potvrdené");
         approvedCol.setCellValueFactory(new PropertyValueFactory<>("approvedString"));
         simpleTableView.getColumns().add(approvedCol);
 

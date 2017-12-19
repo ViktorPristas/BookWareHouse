@@ -41,7 +41,7 @@
                      </font>
                   </Label>
                   <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <Label alignment="CENTER" prefHeight="200.0" prefWidth="200.0" text="Zobraziť požiadávky, upraviť&#10;a potvrdiť ich alebo&#10;zaevidovať vrátenie knihy&#10;pre jednotlivých učiteľov." textAlignment="CENTER" textFill="#20120f">
+                  <Label alignment="CENTER" prefHeight="200.0" prefWidth="200.0" text="Zobraziť požiadavky, upraviť&#10;a potvrdiť ich alebo&#10;zaevidovať vrátenie knihy&#10;pre jednotlivých učiteľov." textAlignment="CENTER" textFill="#20120f">
                      <font>
                         <Font size="14.0" />
                      </font>
