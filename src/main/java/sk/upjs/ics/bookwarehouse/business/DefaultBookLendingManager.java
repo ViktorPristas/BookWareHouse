@@ -29,7 +29,7 @@ public class DefaultBookLendingManager implements BookLendingManager {
                         DaoFactory.INSTANCE.getLostBookDao().save(lostBook);
                     }
                     Book book = bookLending.getBook();
-                    book.setNumberOfUsed(book.getNumberOfUsed() - bookLending.getReturned());
+                    book.setNumberOfUsed(book.getNumberOfUsed() - bookLending.getReturned() - bookLending.getLost());
                     book.setNumberInStock(book.getNumberInStock() + bookLending.getReturned());
                     DaoFactory.INSTANCE.getBookDao().save(book);
                 } else {

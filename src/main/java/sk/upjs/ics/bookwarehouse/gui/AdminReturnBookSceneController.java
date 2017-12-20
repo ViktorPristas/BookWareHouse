@@ -79,8 +79,8 @@ public class AdminReturnBookSceneController {
                 bookLendingDao.save(bookLending);
 
                 //editing the number of books in stock
-                book.setNumberInStock(book.getNumberInStock() + number);
-                book.setNumberOfUsed(book.getNumberOfUsed() - number);
+                //book.setNumberInStock(book.getNumberInStock() + number);
+                //book.setNumberOfUsed(book.getNumberOfUsed() - number);
                 DaoFactory.INSTANCE.getBookDao().save(book);
 
                 confirmButton.getScene().getWindow().hide();
