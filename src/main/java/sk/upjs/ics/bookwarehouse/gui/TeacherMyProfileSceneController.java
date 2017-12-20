@@ -70,7 +70,6 @@ public class TeacherMyProfileSceneController {
 
         saveChangesButton.setOnAction(eh -> {
             Teacher teacher = teacherFxModel.getTeacher();
-            //teacher.setNumberOfStudentsInClass(teacherFxModel.getNumberOfStudentsInClass());
             if (modificationIsOk(teacher)) {
                 boolean isEmailOk = true;
                 List<Teacher> list = teacherDao.getAll();

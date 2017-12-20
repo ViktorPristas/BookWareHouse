@@ -147,7 +147,7 @@ public class TeacherFxModel {
         setName(t.getName());
         setSurname(t.getSurname());
         setEmail(t.getEmail());
-        setNumberOfStudentsInClass(getNumberOfStudentsInClass());
+        setNumberOfStudentsInClass(t.getNumberOfStudentsInClass());
         setActualPassword(t.getPassword());
     }
 
