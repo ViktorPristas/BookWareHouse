@@ -70,6 +70,7 @@ public class TeacherMyProfileSceneController {
 
         saveChangesButton.setOnAction(eh -> {
             Teacher teacher = teacherFxModel.getTeacher();
+            //teacher.setNumberOfStudentsInClass(teacherFxModel.getNumberOfStudentsInClass());
             if (modificationIsOk(teacher)) {
                 boolean isEmailOk = true;
                 List<Teacher> list = teacherDao.getAll();
@@ -78,12 +79,15 @@ public class TeacherMyProfileSceneController {
                         isEmailOk = false;
                     }
                 }
+                
                 if (isEmailOk) {
                     teacher = teacherDao.save(teacher);
+                    
                     saveChangesButton.getScene().getWindow().hide();
                 }
+               
             } else {
-                //nejaky alert
+                // nic
             }
         });
 

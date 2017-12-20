@@ -136,6 +136,7 @@ public class TeacherFxModel {
         } else {
             t.setPassword(getPassword());
         }
+        t.setNumberOfStudentsInClass(getNumberOfStudentsInClass());
         return t;
     }
 
