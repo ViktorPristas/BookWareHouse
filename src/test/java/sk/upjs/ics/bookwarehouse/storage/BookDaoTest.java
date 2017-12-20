@@ -96,7 +96,6 @@ public class BookDaoTest {
         Assert.assertTrue(bool);
     }
 
-    
     @Test
     public void testFindById() {
         Book b = new Book();
@@ -110,7 +109,7 @@ public class BookDaoTest {
         b.setUsed(false);
         b = dao.save(b);
         long id = b.getId();
-        
+
         Book bookNew = dao.findById(id);
         Assert.assertEquals(b.getAuthor(), bookNew.getAuthor());
         Assert.assertEquals(b.getTitle(), bookNew.getTitle());
@@ -121,6 +120,6 @@ public class BookDaoTest {
         Assert.assertEquals(b.getComment(), bookNew.getComment());
         Assert.assertEquals(b.isUsed(), bookNew.isUsed());
         dao.deleteById(id);
-        
+
     }
 }

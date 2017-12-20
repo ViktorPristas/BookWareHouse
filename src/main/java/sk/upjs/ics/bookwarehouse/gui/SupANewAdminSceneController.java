@@ -14,9 +14,8 @@ import sk.upjs.ics.bookwarehouse.storage.AdminDao;
 
 public class SupANewAdminSceneController {
 
-    private  AdminFxModel adminFxModel = new AdminFxModel();
-    private  AdminDao adminDao = DaoFactory.INSTANCE.getAdminDao();
-   
+    private AdminFxModel adminFxModel = new AdminFxModel();
+    private AdminDao adminDao = DaoFactory.INSTANCE.getAdminDao();
 
     @FXML
     private ResourceBundle resources;

@@ -12,7 +12,7 @@ import sk.upjs.ics.bookwarehouse.DaoFactory;
 import sk.upjs.ics.bookwarehouse.fxmodels.BookFxModel;
 import sk.upjs.ics.bookwarehouse.storage.BookDao;
 
-public class NewBookSceneController {
+public class AdminNewBookSceneController {
 
     private BookFxModel bookFxModel = new BookFxModel();
     private BookDao bookDao = DaoFactory.INSTANCE.getBookDao();
@@ -43,13 +43,13 @@ public class NewBookSceneController {
 
     @FXML
     void initialize() {
-        
+
         schoolClassComboBox.getItems().addAll(
                 "1", "2", "3", "4", "5", "6", "7", "8", "9", "I. G", "II. G", "III. G", "IV. G");
-        
+
         numberInStockTextField.textProperty().bindBidirectional(
                 bookFxModel.numberInStockProperty(), new NumberStringConverter());
-        
+
         authorTextField.textProperty().bindBidirectional(
                 bookFxModel.AuthorProperty());
 
@@ -61,7 +61,6 @@ public class NewBookSceneController {
 
 //        schoolClassComboBox.textProperty().bindBidirectional(
 //                bookFxModel.SchoolClassProperty());
-
         schoolClassComboBox.valueProperty().bindBidirectional(
                 bookFxModel.SchoolClassProperty());
 

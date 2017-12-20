@@ -39,8 +39,8 @@ public class Admin {
         this.password = password;
 //this.password = ManagerFactory.INSTANCE.getPasswordManager().hashPassword(password);
     }
-    
-    public void setId(){
+
+    public void setId() {
         this.id = null;
     }
 

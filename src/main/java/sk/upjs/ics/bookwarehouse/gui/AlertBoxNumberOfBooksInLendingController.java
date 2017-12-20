@@ -6,7 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 public class AlertBoxNumberOfBooksInLendingController {
-    
+
     @FXML
     private ResourceBundle resources;
 
@@ -21,5 +21,5 @@ public class AlertBoxNumberOfBooksInLendingController {
         closeButton.setOnAction(eh -> {
             closeButton.getScene().getWindow().hide();
         });
-    }    
+    }
 }

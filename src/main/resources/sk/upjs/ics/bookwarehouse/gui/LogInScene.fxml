@@ -17,47 +17,47 @@
     <children>
         <AnchorPane layoutX="500.0" layoutY="32.0" prefHeight="436.0" prefWidth="477.0" style="-fx-background-color: #9C2B27;" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="500.0" AnchorPane.rightAnchor="22.800000000000068" AnchorPane.topAnchor="32.0">
             <children>
-            <VBox layoutX="52.0" layoutY="140.0" prefHeight="170.0" prefWidth="397.0" spacing="10.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
-               <children>
-                      <Label text="E-mail" textFill="#f8f8f8" />
-                      <TextField fx:id="emailTextField" prefHeight="25.0" prefWidth="425.0" promptText="E-mail" style="-fx-background-color: #9C2B27; -fx-border-width: 0.2; -fx-border-color: #f8f8f8; -fx-text-fill: #f8f8f8;" />
-                  <Region prefHeight="58.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
-                      <Label prefHeight="17.0" prefWidth="30.0" text="Heslo" textFill="#f8f8f8" />
-                      <PasswordField fx:id="passwordTextField" prefHeight="25.0" prefWidth="425.0" promptText="Heslo" style="-fx-background-color: #9C2B27; -fx-border-color: #f8f8f8; -fx-border-width: 0.2; -fx-text-fill: #f8f8f8;" />
-               </children>
-            </VBox>
-            <HBox layoutX="31.0" layoutY="327.0" prefHeight="36.0" prefWidth="200.0" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-               <children>
-                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                      <Button fx:id="loginButton" alignment="CENTER" defaultButton="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #E45652; -fx-border-color: #f8f8f8; -fx-border-width: 0.2; -fx-cursor: hand;" text="Prihlásiť sa" textFill="#f8f8f8" />
-                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-               </children>
-            </HBox>
-            <HBox layoutY="377.0" prefHeight="27.0" prefWidth="477.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-               <children>
-                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                      <Hyperlink fx:id="forgotPasswordHyperlink" prefHeight="23.0" prefWidth="118.0" text="Zabudnuté heslo" />
-                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-               </children>
-            </HBox>
-            <HBox layoutX="-6.0" layoutY="9.0" prefHeight="36.0" prefWidth="477.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-               <children>
-                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                      <Label prefHeight="32.0" prefWidth="148.0" style="-fx-font-weight: bold;" text="Prihlásenie" textFill="#f8f8f8">
-                          <font>
-                              <Font size="22.0" />
-                          </font>
-                      </Label>
-                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-               </children>
-            </HBox>
+                <VBox layoutX="52.0" layoutY="140.0" prefHeight="170.0" prefWidth="397.0" spacing="10.0" AnchorPane.leftAnchor="40.0" AnchorPane.rightAnchor="40.0">
+                    <children>
+                        <Label prefHeight="17.0" prefWidth="66.0" text="E-mail" textFill="#f8f8f8" />
+                        <TextField fx:id="emailTextField" prefHeight="25.0" prefWidth="425.0" promptText="E-mail" style="-fx-background-color: #9C2B27; -fx-border-width: 0.2; -fx-border-color: #f8f8f8; -fx-text-fill: #f8f8f8;" />
+                        <Region prefHeight="58.0" prefWidth="100.0" VBox.vgrow="ALWAYS" />
+                        <Label prefHeight="17.0" prefWidth="68.0" text="Heslo" textFill="#f8f8f8" />
+                        <PasswordField fx:id="passwordTextField" prefHeight="25.0" prefWidth="425.0" promptText="Heslo" style="-fx-background-color: #9C2B27; -fx-border-color: #f8f8f8; -fx-border-width: 0.2; -fx-text-fill: #f8f8f8;" />
+                    </children>
+                </VBox>
+                <HBox layoutX="31.0" layoutY="327.0" prefHeight="36.0" prefWidth="200.0" AnchorPane.bottomAnchor="65.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                        <Button fx:id="loginButton" alignment="CENTER" defaultButton="true" mnemonicParsing="false" prefHeight="25.0" prefWidth="174.0" style="-fx-background-color: #E45652; -fx-border-color: #f8f8f8; -fx-border-width: 0.2; -fx-cursor: hand;" text="Prihlásiť sa" textFill="#f8f8f8" />
+                        <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                    </children>
+                </HBox>
+                <HBox layoutY="377.0" prefHeight="27.0" prefWidth="477.0" AnchorPane.bottomAnchor="30.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                        <Hyperlink fx:id="forgotPasswordHyperlink" prefHeight="23.0" prefWidth="118.0" text="Zabudnuté heslo" />
+                        <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                    </children>
+                </HBox>
+                <HBox layoutX="-6.0" layoutY="9.0" prefHeight="36.0" prefWidth="477.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                        <Label prefHeight="32.0" prefWidth="148.0" style="-fx-font-weight: bold;" text="Prihlásenie" textFill="#f8f8f8">
+                            <font>
+                                <Font size="22.0" />
+                            </font>
+                        </Label>
+                        <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                    </children>
+                </HBox>
             </children>
         </AnchorPane>
-      <ImageView fitHeight="458.0" fitWidth="462.0" layoutX="10.0" layoutY="19.0" opacity="0.3" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@LogoBWH.png" />
-         </image>
-      </ImageView>
+        <ImageView fitHeight="458.0" fitWidth="462.0" layoutX="10.0" layoutY="19.0" opacity="0.3" pickOnBounds="true" preserveRatio="true">
+            <image>
+                <Image url="@LogoBWH.png" />
+            </image>
+        </ImageView>
         <Label layoutX="94.0" layoutY="108.0" style="-fx-font-weight: bold;" text="Vitajte v BookWareHouse" textFill="#f8f8f8">
             <font>
                 <Font size="25.0" />

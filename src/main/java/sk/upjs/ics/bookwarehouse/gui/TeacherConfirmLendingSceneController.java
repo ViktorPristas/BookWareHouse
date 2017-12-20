@@ -27,14 +27,14 @@ import sk.upjs.ics.bookwarehouse.business.UserIdentificationManager;
 import sk.upjs.ics.bookwarehouse.fxmodels.BookFxModel;
 import sk.upjs.ics.bookwarehouse.storage.BookLendingDao;
 
-public class ConfirmLendingSceneController {
+public class TeacherConfirmLendingSceneController {
 
     private BookFxModel bookFxModel;
     private IntegerProperty number = new SimpleIntegerProperty(0);
     private BookLendingDao bookLendingDao = DaoFactory.INSTANCE.getBookLendingDao();
     private StringProperty commentProperty = new SimpleStringProperty();
 
-    public ConfirmLendingSceneController(BookFxModel bookFxModel) {
+    public TeacherConfirmLendingSceneController(BookFxModel bookFxModel) {
         this.bookFxModel = bookFxModel;
     }
 

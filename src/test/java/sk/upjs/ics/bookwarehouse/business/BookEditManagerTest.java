@@ -47,10 +47,10 @@ public class BookEditManagerTest {
 
         DaoFactory.INSTANCE.getBookDao().deleteById(b.getId());
         dao.deleteById(bookEdit.getId());
-        
+
     }
 
-    public void findByBookAndYearTest(){
+    public void findByBookAndYearTest() {
         BookEditDao dao = DaoFactory.INSTANCE.getBookEditDao();
         int year = 2017;
 
@@ -84,6 +84,6 @@ public class BookEditManagerTest {
 
         DaoFactory.INSTANCE.getBookDao().deleteById(b.getId());
         dao.deleteById(bookEdit.getId());
-        
+
     }
 }

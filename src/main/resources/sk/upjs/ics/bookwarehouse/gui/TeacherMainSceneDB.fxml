@@ -31,6 +31,6 @@
                 <Button fx:id="searchButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="201.0" style="-fx-background-color: E45652; -fx-border-color: #f8f8f8; -fx-border-width: 0.2; -fx-cursor: hand;" text="Hľadaj" textFill="#f8f8f8" />
             </children>
         </HBox>
-      <TableView fx:id="simpleTableView" layoutX="525.0" layoutY="129.0" prefHeight="315.0" prefWidth="980.0" style="-fx-background-color: #E45652;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+        <TableView fx:id="simpleTableView" layoutX="525.0" layoutY="129.0" prefHeight="315.0" prefWidth="980.0" style="-fx-background-color: #E45652;" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" />
     </children>
 </AnchorPane>

@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
-
 public class AlertBoxDeleteTeacherLostBooksController {
 
     @FXML
@@ -26,5 +25,5 @@ public class AlertBoxDeleteTeacherLostBooksController {
         deleteButton.setOnAction(eh -> {
             deleteButton.getScene().getWindow().hide();
         });
-    }    
+    }
 }

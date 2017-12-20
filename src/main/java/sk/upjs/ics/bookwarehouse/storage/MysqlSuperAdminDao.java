@@ -74,7 +74,7 @@ public class MysqlSuperAdminDao implements SuperAdminDao {
     @Override
     public SuperAdmin findById(Long id) {
         List<SuperAdmin> list = DaoFactory.INSTANCE.getSuperAdminDao().getAll();
-        for(SuperAdmin superAdmin : list) {
+        for (SuperAdmin superAdmin : list) {
             if (superAdmin.getId().equals(id)) {
                 return superAdmin;
             }

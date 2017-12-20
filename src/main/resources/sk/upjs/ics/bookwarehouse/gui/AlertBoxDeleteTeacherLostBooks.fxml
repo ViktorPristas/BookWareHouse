@@ -7,36 +7,36 @@
 
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #20120F;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <AnchorPane layoutX="30.0" layoutY="30.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #19A15F;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
-         <children>
-            <Label layoutX="191.0" layoutY="33.0" text="Vymazať všetko" textFill="#20120f">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label layoutX="69.0" layoutY="108.0" text="Ste si istý, že chcete vymazať všetky záznamy o vymazaných knihách " textFill="#20120f">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="69.0" layoutY="128.0" text="používateľa" textFill="#20120f">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label fx:id="teacherLabel" layoutX="152.0" layoutY="128.0" text="POUŽÍVATEĽ" textFill="#20120f">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="69.0" layoutY="175.0" text="Upozornenie: túto akciu nie je možné vrátiť späť." textFill="#20120f">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-            <Button fx:id="deleteButton" layoutX="176.0" layoutY="266.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="197.0" style="-fx-background-color: #19A15F; -fx-border-color: #20120F; -fx-border-width: 0.2; -fx-cursor: hand;" text="Vymazať" textFill="#20120f" />
-         </children>
-      </AnchorPane>
-   </children>
+    <children>
+        <AnchorPane layoutX="30.0" layoutY="30.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #19A15F;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
+            <children>
+                <Label layoutX="191.0" layoutY="33.0" text="Vymazať všetko" textFill="#20120f">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label layoutX="69.0" layoutY="108.0" text="Ste si istý, že chcete vymazať všetky záznamy o vymazaných knihách " textFill="#20120f">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Label layoutX="69.0" layoutY="128.0" text="používateľa" textFill="#20120f">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Label fx:id="teacherLabel" layoutX="152.0" layoutY="128.0" text="POUŽÍVATEĽ" textFill="#20120f">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Label layoutX="69.0" layoutY="175.0" text="Upozornenie: túto akciu nie je možné vrátiť späť." textFill="#20120f">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+                <Button fx:id="deleteButton" layoutX="176.0" layoutY="266.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="197.0" style="-fx-background-color: #19A15F; -fx-border-color: #20120F; -fx-border-width: 0.2; -fx-cursor: hand;" text="Vymazať" textFill="#20120f" />
+            </children>
+        </AnchorPane>
+    </children>
 </AnchorPane>

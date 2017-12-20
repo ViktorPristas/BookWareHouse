@@ -39,14 +39,14 @@ public class RegistrationManagerTest {
     public void isNewAdminEmail() {
         String email1 = "email-222@gmail.com";
         String email2 = "takytoEmailNemozeExistovat";
-        
+
         Admin admin = new Admin();
         admin.setUserName("newAdmin-1");
         admin.setPassword("password");
         admin.setEmail(email1);
         admin = adminDao.save(admin);
         long id = admin.getId();
-        
+
         Assert.assertFalse(DefaultRegistrationManager.isNewAdminEmail(email1));
         Assert.assertTrue(DefaultRegistrationManager.isNewAdminEmail(email2));
 
@@ -66,14 +66,13 @@ public class RegistrationManagerTest {
         superAdmin = superAdminDao.save(superAdmin);
         long idSA = superAdmin.getId();
 
-        
         Admin admin = new Admin();
         admin.setUserName(uname2);
         admin.setPassword("password");
         admin.setEmail("nejakyMail");
         admin = adminDao.save(admin);
         long idA = admin.getId();
-        
+
         Teacher t = new Teacher();
         t.setName("name-1");
         t.setSurname("surname-1");
@@ -81,7 +80,7 @@ public class RegistrationManagerTest {
         t.setPassword("password");
         t = teacherDao.save(t);
         long idT = t.getId();
-        
+
         Assert.assertFalse(DefaultRegistrationManager.isNewUserName(uname1));
         Assert.assertFalse(DefaultRegistrationManager.isNewUserName(uname2));
         Assert.assertFalse(DefaultRegistrationManager.isNewUserName(uname3));

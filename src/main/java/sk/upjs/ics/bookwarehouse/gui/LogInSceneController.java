@@ -113,6 +113,7 @@ public class LogInSceneController {
                 stage.setScene(scene);
                 stage.setTitle("BookWareHouse");
                 stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setResizable(false);
                 Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
                 stage.getIcons().add(logo);
                 stage.showAndWait();
@@ -126,10 +127,10 @@ public class LogInSceneController {
     }
 
     private void loginTeacher() {
-        MainSceneTeacherController controller = new MainSceneTeacherController();
+        TeacherMainSceneController controller = new TeacherMainSceneController();
         try {
             FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("MainSceneTeacher.fxml"));
+                    getClass().getResource("TeacherMainScene.fxml"));
             loader.setController(controller);
 
             Parent parentPane = loader.load();
@@ -150,10 +151,10 @@ public class LogInSceneController {
     }
 
     private void loginAdmin() {
-        MainSceneAdminController controller = new MainSceneAdminController();
+        AdminMainSceneController controller = new AdminMainSceneController();
         try {
             FXMLLoader loader = new FXMLLoader(
-                    getClass().getResource("MainSceneAdmin.fxml"));
+                    getClass().getResource("AdminMainScene.fxml"));
             loader.setController(controller);
 
             Parent parentPane = loader.load();

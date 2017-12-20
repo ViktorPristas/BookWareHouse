@@ -17,7 +17,7 @@ public class DefaultRegistrationManager {
         }
         return true;
     }
-    
+
     public static boolean isNewAdminEmail(String email) {
         List<Admin> list = DaoFactory.INSTANCE.getAdminDao().getAll();
         for (Admin a : list) {
@@ -27,10 +27,10 @@ public class DefaultRegistrationManager {
         }
         return true;
     }
-    
+
     //when teacher username is the email
-    public static boolean isNewUserName(String userName){
-         List<Teacher> teachers = DaoFactory.INSTANCE.getTeacherDao().getAll();
+    public static boolean isNewUserName(String userName) {
+        List<Teacher> teachers = DaoFactory.INSTANCE.getTeacherDao().getAll();
         for (Teacher teacher : teachers) {
             if (teacher.getEmail().equals(userName)) {
                 return false;
@@ -48,8 +48,7 @@ public class DefaultRegistrationManager {
                 return false;
             }
         }
-        
-        
+
         return true;
     }
 }

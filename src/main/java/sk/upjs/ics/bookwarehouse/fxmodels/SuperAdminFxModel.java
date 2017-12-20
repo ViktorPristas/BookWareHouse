@@ -7,9 +7,9 @@ import javafx.beans.property.StringProperty;
 import sk.upjs.ics.bookwarehouse.DaoFactory;
 import sk.upjs.ics.bookwarehouse.SuperAdmin;
 
-
 public class SuperAdminFxModel {
-    private LongProperty id = new SimpleLongProperty(); 
+
+    private LongProperty id = new SimpleLongProperty();
     private StringProperty userName = new SimpleStringProperty();
     private StringProperty password = new SimpleStringProperty();
     private String actualPassword;
@@ -21,7 +21,7 @@ public class SuperAdminFxModel {
     public LongProperty idProperty() {
         return id;
     }
-    
+
     public void setId(long id) {
         this.id.set(id);
     }
@@ -33,7 +33,7 @@ public class SuperAdminFxModel {
     public StringProperty userNameProperty() {
         return userName;
     }
-    
+
     public void setUserName(String userName) {
         this.userName.set(userName);
     }
@@ -45,7 +45,7 @@ public class SuperAdminFxModel {
     public StringProperty passwordProperty() {
         return password;
     }
-    
+
     public void setPassword(String password) {
         this.password.set(password);
     }
@@ -57,10 +57,8 @@ public class SuperAdminFxModel {
     public void setActualPassword(String actualPassword) {
         this.actualPassword = actualPassword;
     }
-    
-    
-    
-    public SuperAdmin getSuperAdmin(){
+
+    public SuperAdmin getSuperAdmin() {
         SuperAdmin sa = new SuperAdmin();
         sa.setId(getId());
         sa.setUserName(getUserName());
@@ -68,15 +66,15 @@ public class SuperAdminFxModel {
             sa.setPassword(getActualPassword());
         } else {
             sa.setPassword(getPassword());
-        }        
+        }
         return sa;
     }
-    
+
     public void loadActualSuperAdminToModel(Long superAdminId) {
         SuperAdmin sa = DaoFactory.INSTANCE.getSuperAdminDao().findById(superAdminId);
         setId(sa.getId());
         setUserName(sa.getUserName());
         setActualPassword(sa.getPassword());
     }
-    
+
 }

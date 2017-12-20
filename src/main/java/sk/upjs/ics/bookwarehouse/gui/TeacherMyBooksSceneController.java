@@ -49,12 +49,12 @@ public class TeacherMyBooksSceneController {
         exportToExcelButton.setOnAction(eh -> {
             DefaultBookLendingXLSManager.exportMyBookLendingsToXls(teacher);
         });
-        
+
         backButton.setOnAction(eh -> {
-            MainSceneTeacherController controller = new MainSceneTeacherController();
+            TeacherMainSceneController controller = new TeacherMainSceneController();
             try {
                 FXMLLoader loader = new FXMLLoader(
-                        getClass().getResource("MainSceneTeacher.fxml"));
+                        getClass().getResource("TeacherMainScene.fxml"));
                 loader.setController(controller);
 
                 Parent parentPane = loader.load();
@@ -63,8 +63,8 @@ public class TeacherMyBooksSceneController {
                 Stage stage = (Stage) pane.getScene().getWindow();
                 stage.setScene(scene);
                 stage.setTitle("BookWareHouse");
-                        Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
-        stage.getIcons().add(logo);
+                Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
+                stage.getIcons().add(logo);
                 stage.show();
 
                 // toto sa vykona az po zatvoreni okna

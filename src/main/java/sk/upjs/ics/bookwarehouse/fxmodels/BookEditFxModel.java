@@ -27,7 +27,7 @@ import sk.upjs.ics.bookwarehouse.storage.BookEditDao;
  * @author tomas
  */
 public class BookEditFxModel {
-    
+
     private ObservableList<BookEdit> bookEdits = new SimpleListProperty<>();
     private ObservableList<BookEditFxModel> bookEditsModel = FXCollections.observableArrayList();
     private LongProperty id = new SimpleLongProperty();
@@ -45,15 +45,15 @@ public class BookEditFxModel {
         List<BookEdit> bookEdits = bookEditDao.getAll();
         this.bookEdits = FXCollections.observableArrayList(bookEdits);
     }
-    
+
     public ObservableList<BookEditFxModel> getBookEditsModel() {
         return bookEditsModel;
     }
-    
+
     public ObservableList<BookEdit> getBookEdits() {
         return bookEdits;
     }
-    
+
     public Long getId() {
         return id.get();
     }
@@ -61,7 +61,7 @@ public class BookEditFxModel {
     public LongProperty idProperty() {
         return id;
     }
-    
+
     public void setId(Long id) {
         this.id.set(id);
     }
@@ -73,7 +73,7 @@ public class BookEditFxModel {
     public StringProperty authorProperty() {
         return author;
     }
-    
+
     public void setAuthor(String author) {
         this.author.set(author);
     }
@@ -85,7 +85,7 @@ public class BookEditFxModel {
     public StringProperty titleProperty() {
         return title;
     }
-    
+
     public void setTitle(String title) {
         this.title.set(title);
     }
@@ -97,7 +97,7 @@ public class BookEditFxModel {
     public StringProperty schoolClassProperty() {
         return schoolClass;
     }
-    
+
     public void setSchoolClass(String schoolClass) {
         this.schoolClass.set(schoolClass);
     }
@@ -109,7 +109,7 @@ public class BookEditFxModel {
     public String getNameOfAdmin() {
         return nameOfAdmin.get();
     }
-    
+
     public void setNameOfAdmin(String nameOfAdmin) {
         this.nameOfAdmin.set(nameOfAdmin);
     }
@@ -121,7 +121,7 @@ public class BookEditFxModel {
     public LocalDateTime getDate() {
         return LocalDateTime.parse(date.toString());
     }
-    
+
     public void setDate(LocalDateTime date) {
         this.date.set(date.toString());
     }
@@ -133,7 +133,7 @@ public class BookEditFxModel {
     public IntegerProperty numberBeforeProperty() {
         return numberBefore;
     }
-    
+
     public void setNumberBefore(Integer numberBefore) {
         this.numberBefore.set(numberBefore);
     }
@@ -145,12 +145,11 @@ public class BookEditFxModel {
     public Integer getNumberAfter() {
         return numberAfter.get();
     }
-    
+
     public void setNumberAfter(Integer numberAfter) {
         this.numberAfter.set(numberAfter);
     }
 
-    
     // ASI NEBUDE
     /*public String getComment() {
         return comment.get();
@@ -163,12 +162,11 @@ public class BookEditFxModel {
     public void setComment(String comment) {
         this.comment.set(comment);
     }*/
-    
     public void loadBooksToModel() {
         bookEditsModel.clear();
-        for (BookEdit bookEdit : bookEdits){
+        for (BookEdit bookEdit : bookEdits) {
             BookEditFxModel bookEditFxModel = new BookEditFxModel();
-            
+
             Long id = bookEdit.getId();
             String author = bookEdit.getBook().getAuthor();
             String title = bookEdit.getBook().getTitle();
@@ -177,7 +175,7 @@ public class BookEditFxModel {
             LocalDateTime date = bookEdit.getDate();
             int numberBefore = bookEdit.getNumberBefore();
             int numberAfter = bookEdit.getNumberAfter();
-            
+
             bookEditFxModel.setId(id);
             bookEditFxModel.setAuthor(author);
             bookEditFxModel.setTitle(title);
@@ -189,5 +187,5 @@ public class BookEditFxModel {
             bookEditsModel.add(bookEditFxModel);
         }
     }
-    
+
 }

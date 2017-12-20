@@ -28,6 +28,4 @@ public enum ManagerFactory {
         return new LostPasswordManager();
     }
 
-    
-    
 }

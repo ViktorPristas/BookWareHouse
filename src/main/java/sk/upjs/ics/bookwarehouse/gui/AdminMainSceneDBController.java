@@ -20,7 +20,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sk.upjs.ics.bookwarehouse.fxmodels.BookFxModel;
 
-public class MainSceneAdminDBController {
+public class AdminMainSceneDBController {
 
     private final BookFxModel bookFxModel = new BookFxModel();
     private BookFxModel selectedBookFxModel;
@@ -55,10 +55,10 @@ public class MainSceneAdminDBController {
     @FXML
     void initialize() {
         backButton.setOnAction(eha -> {
-            MainSceneAdminController controller = new MainSceneAdminController();
+            AdminMainSceneController controller = new AdminMainSceneController();
             try {
                 FXMLLoader loader = new FXMLLoader(
-                        getClass().getResource("MainSceneAdmin.fxml"));
+                        getClass().getResource("AdminMainScene.fxml"));
                 loader.setController(controller);
 
                 Parent parentPane = loader.load();
@@ -79,10 +79,10 @@ public class MainSceneAdminDBController {
 
         addNewBookButton.setOnAction(eh -> {
 
-            NewBookSceneController controller = new NewBookSceneController();
+            AdminNewBookSceneController controller = new AdminNewBookSceneController();
             try {
                 FXMLLoader loader = new FXMLLoader(
-                        getClass().getResource("NewBookScene.fxml"));
+                        getClass().getResource("AdminNewBookScene.fxml"));
                 loader.setController(controller);
 
                 Parent parentPane = loader.load();
@@ -111,7 +111,7 @@ public class MainSceneAdminDBController {
             AdminEditBookSceneController controller = new AdminEditBookSceneController(selectedBookFxModel);
             try {
                 FXMLLoader loader = new FXMLLoader(
-                        getClass().getResource("EditBookScene.fxml"));
+                        getClass().getResource("AdminEditBookScene.fxml"));
                 loader.setController(controller);
 
                 Parent parentPane = loader.load();
@@ -198,5 +198,6 @@ public class MainSceneAdminDBController {
         simpleTableView.getColumns().add(isUsedCol);
 
         simpleTableView.setItems(bookFxModel.getBooksModel());
+
     }
 }

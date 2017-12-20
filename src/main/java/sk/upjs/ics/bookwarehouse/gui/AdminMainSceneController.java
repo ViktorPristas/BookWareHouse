@@ -2,28 +2,25 @@ package sk.upjs.ics.bookwarehouse.gui;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.List;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
-import javafx.scene.image.Image;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import sk.upjs.ics.bookwarehouse.Book;
-import sk.upjs.ics.bookwarehouse.DaoFactory;
 import sk.upjs.ics.bookwarehouse.business.UserIdentificationManager;
-import sk.upjs.ics.bookwarehouse.storage.BookDao;
+import sk.upjs.ics.bookwarehouse.fxmodels.BookLendingFxModel;
 
-public class MainSceneTeacherController {
+public class AdminMainSceneController {
+
+    @FXML
+    private AnchorPane pane;
 
     @FXML
     private ResourceBundle resources;
@@ -32,28 +29,24 @@ public class MainSceneTeacherController {
     private URL location;
 
     @FXML
-    private AnchorPane pane;
+    private Button logOutButton;
 
     @FXML
     private Button openDBButton;
 
     @FXML
-    private Button myBooksButton;
+    private Button openRequestsButton;
 
     @FXML
-    private Button myProfileButton;
-
-    @FXML
-    private Button logOutButton;
+    private Button editProfileButton;
 
     @FXML
     void initialize() {
-
         openDBButton.setOnAction(eh -> {
-            MainSceneTeacherDBController controller = new MainSceneTeacherDBController();
+            AdminMainSceneDBController controller = new AdminMainSceneDBController();
             try {
                 FXMLLoader loader = new FXMLLoader(
-                        getClass().getResource("MainSceneTeacherDB.fxml"));
+                        getClass().getResource("AdminMainSceneDB.fxml"));
                 loader.setController(controller);
 
                 Parent parentPane = loader.load();
@@ -62,56 +55,6 @@ public class MainSceneTeacherController {
                 Stage stage = (Stage) pane.getScene().getWindow();
                 stage.setScene(scene);
                 stage.setTitle("BookWareHouse");
-                Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
-                stage.getIcons().add(logo);
-                stage.show();
-
-                // toto sa vykona az po zatvoreni okna
-            } catch (IOException iOException) {
-                iOException.printStackTrace();
-            }
-        });
-
-        myBooksButton.setOnAction(eh -> {
-            TeacherMyBooksSceneController controller = new TeacherMyBooksSceneController();
-            try {
-                FXMLLoader loader = new FXMLLoader(
-                        getClass().getResource("TeacherMyBooksScene.fxml"));
-                loader.setController(controller);
-
-                Parent parentPane = loader.load();
-                Scene scene = new Scene(parentPane);
-
-                Stage stage = (Stage) pane.getScene().getWindow();
-                stage.setScene(scene);
-                stage.setTitle("BookWareHouse");
-                Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
-                stage.getIcons().add(logo);
-                stage.show();
-
-                // toto sa vykona az po zatvoreni okna
-            } catch (IOException iOException) {
-                iOException.printStackTrace();
-            }
-        });
-
-        myProfileButton.setOnAction(eh -> {
-            MyProfileTeacherSceneController controller = new MyProfileTeacherSceneController();
-            try {
-                FXMLLoader loader = new FXMLLoader(
-                        getClass().getResource("MyProfileTeacherScene.fxml"));
-                loader.setController(controller);
-
-                Parent parentPane = loader.load();
-                Scene scene = new Scene(parentPane);
-
-                Stage stage = new Stage();
-                stage.setResizable(false);
-                stage.initModality(Modality.APPLICATION_MODAL);
-                stage.setScene(scene);
-                stage.setTitle("BookWareHouse");
-                Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
-                stage.getIcons().add(logo);
                 stage.show();
 
                 // toto sa vykona az po zatvoreni okna
@@ -134,10 +77,52 @@ public class MainSceneTeacherController {
                 Stage stage = new Stage();
                 stage.setScene(scene);
                 stage.setTitle("BookWareHouse");
-                Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
-                stage.getIcons().add(logo);
                 stage.show();
                 logOutButton.getScene().getWindow().hide();
+
+                // toto sa vykona az po zatvoreni okna
+            } catch (IOException iOException) {
+                iOException.printStackTrace();
+            }
+        });
+
+        editProfileButton.setOnAction(eh -> {
+            AdminMyProfileSceneController controller = new AdminMyProfileSceneController();
+            try {
+                FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource("AdminMyProfileScene.fxml"));
+                loader.setController(controller);
+
+                Parent parentPane = loader.load();
+                Scene scene = new Scene(parentPane);
+
+                Stage stage = new Stage();
+                stage.setScene(scene);
+                stage.initModality(Modality.APPLICATION_MODAL);
+                stage.setResizable(false);
+                stage.setTitle("BookWareHouse");
+                stage.show();
+
+                // toto sa vykona az po zatvoreni okna
+            } catch (IOException iOException) {
+                iOException.printStackTrace();
+            }
+        });
+
+        openRequestsButton.setOnAction(eh -> {
+            AdminMainSceneRequestController controller = new AdminMainSceneRequestController();
+            try {
+                FXMLLoader loader = new FXMLLoader(
+                        getClass().getResource("AdminMainSceneRequest.fxml"));
+                loader.setController(controller);
+
+                Parent parentPane = loader.load();
+                Scene scene = new Scene(parentPane);
+
+                Stage stage = (Stage) openRequestsButton.getScene().getWindow();
+                stage.setScene(scene);
+                stage.setTitle("BookWareHouse");
+                stage.show();
 
                 // toto sa vykona az po zatvoreni okna
             } catch (IOException iOException) {

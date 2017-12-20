@@ -16,45 +16,48 @@
                     <children>
                         <Region prefHeight="27.0" prefWidth="40.0" HBox.hgrow="ALWAYS" />
                         <Button fx:id="openDBButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="200.0" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2; -fx-cursor: hand;" text="Otvoriť databázu" textFill="#20120f">
-                     <font>
-                        <Font size="14.0" />
-                     </font></Button>
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Button>
                         <Region prefHeight="27.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                         <Button fx:id="openRequestsButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="200.0" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2; -fx-cursor: hand;" text="Otvoriť požiadavky" textFill="#20120f">
-                     <font>
-                        <Font size="14.0" />
-                     </font></Button>
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Button>
                         <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
                         <Button fx:id="editProfileButton" mnemonicParsing="false" prefHeight="27.0" prefWidth="200.0" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2; -fx-cursor: hand;" text="Upraviť profil" textFill="#20120f">
-                     <font>
-                        <Font size="14.0" />
-                     </font></Button>
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Button>
                         <Region prefHeight="200.0" prefWidth="40.0" HBox.hgrow="ALWAYS" />
                     </children>
                 </HBox>
-            <HBox layoutX="67.0" layoutY="174.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
-               <children>
-                  <Region prefHeight="200.0" prefWidth="40.0" />
-                  <Label alignment="CENTER" prefHeight="200.0" prefWidth="200.0" text="Zobraziť všetky knihy, ktoré&#10;sú aktuálne na sklade,&#10;upraviť ich údaje, alebo &#10;pridať novú knihu." textAlignment="CENTER" textFill="#20120f">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <Label alignment="CENTER" prefHeight="200.0" prefWidth="200.0" text="Zobraziť požiadavky, upraviť&#10;a potvrdiť ich alebo&#10;zaevidovať vrátenie knihy&#10;pre jednotlivých učiteľov." textAlignment="CENTER" textFill="#20120f">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                  <Label alignment="CENTER" prefHeight="200.0" prefWidth="200.0" text="Upraviť užívateľské meno a&#10;e-mail, alebo zmeniť &#10;svoje staré heslo &#10;na nové." textAlignment="CENTER" textFill="#20120f">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Region prefHeight="200.0" prefWidth="40.0" />
-               </children>
-            </HBox>
+                <HBox layoutX="67.0" layoutY="174.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="100.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                    <children>
+                        <Region prefHeight="200.0" prefWidth="40.0" />
+                        <Label alignment="CENTER" prefHeight="200.0" prefWidth="200.0" text="Zobraziť všetky knihy, ktoré&#10;sú aktuálne na sklade,&#10;upraviť ich údaje, alebo &#10;pridať novú knihu." textAlignment="CENTER" textFill="#20120f">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                        <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                        <Label alignment="CENTER" prefHeight="200.0" prefWidth="200.0" text="Zobraziť požiadavky, upraviť&#10;a potvrdiť ich alebo&#10;zaevidovať vrátenie knihy&#10;pre jednotlivých učiteľov." textAlignment="CENTER" textFill="#20120f">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                        <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
+                        <Label alignment="CENTER" prefHeight="200.0" prefWidth="200.0" text="Upraviť užívateľské meno a&#10;e-mail, alebo zmeniť &#10;svoje staré heslo &#10;na nové." textAlignment="CENTER" textFill="#20120f">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                        <Region prefHeight="200.0" prefWidth="40.0" />
+                    </children>
+                </HBox>
             </children>
         </AnchorPane>
     </children>

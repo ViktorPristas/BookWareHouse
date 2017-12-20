@@ -41,7 +41,7 @@ public class SupAMyProfileSceneController {
     @FXML
     void initialize() {
         superAdminFxModel.loadActualSuperAdminToModel(UserIdentificationManager.getId());
-        
+
         saveChangesButton.setOnAction(eh -> {
             SuperAdmin superAdmin = superAdminFxModel.getSuperAdmin();
             if (modificationIsOk(superAdmin)) {
@@ -50,7 +50,7 @@ public class SupAMyProfileSceneController {
             } else {
                 // mozno nejaky alert
             }
-            
+
         });
 
         userNameTextField.textProperty().bindBidirectional(superAdminFxModel.userNameProperty());
@@ -72,7 +72,7 @@ public class SupAMyProfileSceneController {
                 }
             }
         });
-        
+
         repeatPasswordTextField.textProperty().addListener(new ChangeListener<String>() {
             @Override
             public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
@@ -87,9 +87,9 @@ public class SupAMyProfileSceneController {
                 }
             }
         });
-        
+
     }
-    
+
     private boolean modificationIsOk(SuperAdmin superAdmin) {
         if (superAdmin.getUserName() == null || superAdmin.getUserName().equals("")) {
             return false;

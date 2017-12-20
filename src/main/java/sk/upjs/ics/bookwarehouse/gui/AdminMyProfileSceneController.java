@@ -20,12 +20,12 @@ import sk.upjs.ics.bookwarehouse.fxmodels.TeacherFxModel;
 import sk.upjs.ics.bookwarehouse.storage.AdminDao;
 import sk.upjs.ics.bookwarehouse.storage.TeacherDao;
 
-public class MyProfileAdminSceneController {
+public class AdminMyProfileSceneController {
 
     private AdminFxModel adminFxModel = new AdminFxModel();
     private AdminDao adminDao = DaoFactory.INSTANCE.getAdminDao();
 
-@FXML
+    @FXML
     private ResourceBundle resources;
 
     @FXML

@@ -95,7 +95,6 @@ public class TeacherDaoTest {
         Assert.assertTrue(b);
     }
 
-    
     @Test
     public void testFindById() {
         Teacher t = new Teacher();

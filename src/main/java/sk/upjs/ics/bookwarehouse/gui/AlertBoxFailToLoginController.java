@@ -6,8 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 public class AlertBoxFailToLoginController {
-    
-    
+
     @FXML
     private ResourceBundle resources;
 
@@ -19,9 +18,9 @@ public class AlertBoxFailToLoginController {
 
     @FXML
     void initialize() {
-       closeButton.setOnAction(eh -> {
-           closeButton.getScene().getWindow().hide();
-       });
+        closeButton.setOnAction(eh -> {
+            closeButton.getScene().getWindow().hide();
+        });
 
     }
 }

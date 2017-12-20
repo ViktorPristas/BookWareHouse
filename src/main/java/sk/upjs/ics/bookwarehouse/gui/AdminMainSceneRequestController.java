@@ -2,7 +2,6 @@ package sk.upjs.ics.bookwarehouse.gui;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 import javafx.beans.value.ChangeListener;
@@ -20,15 +19,10 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import org.springframework.jdbc.core.JdbcTemplate;
-import sk.upjs.ics.bookwarehouse.Teacher;
-import sk.upjs.ics.bookwarehouse.business.UserIdentificationManager;
-import sk.upjs.ics.bookwarehouse.fxmodels.BookFxModel;
 import sk.upjs.ics.bookwarehouse.fxmodels.BookLendingFxModel;
 import sk.upjs.ics.bookwarehouse.fxmodels.TeacherFxModel;
-import sk.upjs.ics.bookwarehouse.storage.MysqlTeacherDao;
 
-public class MainSceneAdminRequestController {
+public class AdminMainSceneRequestController {
 
     private final BookLendingFxModel bookLendingFxModel = new BookLendingFxModel();
     private final TeacherFxModel teacherFxModel = new TeacherFxModel();
@@ -64,10 +58,10 @@ public class MainSceneAdminRequestController {
     @FXML
     void initialize() {
         backButton.setOnAction(eh -> {
-            MainSceneAdminController controller = new MainSceneAdminController();
+            AdminMainSceneController controller = new AdminMainSceneController();
             try {
                 FXMLLoader loader = new FXMLLoader(
-                        getClass().getResource("MainSceneAdmin.fxml"));
+                        getClass().getResource("AdminMainScene.fxml"));
                 loader.setController(controller);
 
                 Parent parentPane = loader.load();
@@ -100,10 +94,10 @@ public class MainSceneAdminRequestController {
 
         editLendingButton.setOnAction(eh
                 -> {
-            EditLendingSceneController controller = new EditLendingSceneController(selectedBookLendingFxModel);
+            AdminEditLendingSceneController controller = new AdminEditLendingSceneController(selectedBookLendingFxModel);
             try {
                 FXMLLoader loader = new FXMLLoader(
-                        getClass().getResource("EditLendingScene.fxml"));
+                        getClass().getResource("AdminEditLendingScene.fxml"));
                 loader.setController(controller);
 
                 Parent parentPane = loader.load();
@@ -131,10 +125,10 @@ public class MainSceneAdminRequestController {
 
         returnBookButton.setOnAction(eh
                 -> {
-            ReturnBookSceneController controller = new ReturnBookSceneController(selectedBookLendingFxModel);
+            AdminReturnBookSceneController controller = new AdminReturnBookSceneController(selectedBookLendingFxModel);
             try {
                 FXMLLoader loader = new FXMLLoader(
-                        getClass().getResource("ReturnBookScene.fxml"));
+                        getClass().getResource("AdminReturnBookScene.fxml"));
                 loader.setController(controller);
 
                 Parent parentPane = loader.load();
@@ -223,6 +217,12 @@ public class MainSceneAdminRequestController {
         simpleTableView.getColumns().add(approvedCol);
 
         simpleTableView.setItems(bookLendingFxModel.getBookLendingsModel());
+
+//        if (approvedCol.getText().equals("potvrdené")) {
+//            System.out.println("nasiel som");
+//        } else { 
+//            approvedCol.setStyle("-fx-background-color:lightgreen");
+//        }
     }
 
 }

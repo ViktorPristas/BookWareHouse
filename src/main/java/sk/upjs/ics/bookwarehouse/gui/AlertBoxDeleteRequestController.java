@@ -6,8 +6,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 
 public class AlertBoxDeleteRequestController {
-    
-        @FXML
+
+    @FXML
     private ResourceBundle resources;
 
     @FXML

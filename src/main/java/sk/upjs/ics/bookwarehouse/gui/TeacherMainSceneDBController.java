@@ -21,7 +21,7 @@ import javafx.stage.Stage;
 import sk.upjs.ics.bookwarehouse.Book;
 import sk.upjs.ics.bookwarehouse.fxmodels.BookFxModel;
 
-public class MainSceneTeacherDBController {
+public class TeacherMainSceneDBController {
 
     private final BookFxModel bookFxModel = new BookFxModel();
     private BookFxModel selectedBookFxModel;
@@ -56,10 +56,10 @@ public class MainSceneTeacherDBController {
     @FXML
     void initialize() {
         lendButton.setOnAction(eh -> {
-            ConfirmLendingSceneController controller = new ConfirmLendingSceneController(selectedBookFxModel);
+            TeacherConfirmLendingSceneController controller = new TeacherConfirmLendingSceneController(selectedBookFxModel);
             try {
                 FXMLLoader loader = new FXMLLoader(
-                        getClass().getResource("ConfirmLendingScene.fxml"));
+                        getClass().getResource("TeacherConfirmLendingScene.fxml"));
                 loader.setController(controller);
 
                 Parent parentPane = loader.load();
@@ -96,10 +96,10 @@ public class MainSceneTeacherDBController {
         });
 
         backButton.setOnAction(eha -> {
-            MainSceneTeacherController controller = new MainSceneTeacherController();
+            TeacherMainSceneController controller = new TeacherMainSceneController();
             try {
                 FXMLLoader loader = new FXMLLoader(
-                        getClass().getResource("MainSceneTeacher.fxml"));
+                        getClass().getResource("TeacherMainScene.fxml"));
                 loader.setController(controller);
 
                 Parent parentPane = loader.load();

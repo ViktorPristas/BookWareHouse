@@ -23,7 +23,7 @@
             </children>
         </HBox>
         <HBox layoutX="43.0" layoutY="77.0" prefHeight="39.0" prefWidth="482.0" />
-      <TableView fx:id="simpleTableView" layoutX="127.0" layoutY="222.0" prefHeight="305.0" prefWidth="980.0" style="-fx-background-color: E45652;" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="143.0" />
-      <Button fx:id="exportToExcelButton" layoutX="738.0" layoutY="460.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="251.0" style="-fx-background-color: E45652; -fx-border-color: f8f8f8; -fx-border-width: 0.2; -fx-cursor: hand;" text="Exportovať do externej tabuľky" textFill="#f8f8f8" AnchorPane.bottomAnchor="12.8" AnchorPane.rightAnchor="10.800000000000011" />
+        <TableView fx:id="simpleTableView" layoutX="127.0" layoutY="222.0" prefHeight="305.0" prefWidth="980.0" style="-fx-background-color: E45652;" AnchorPane.bottomAnchor="52.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="143.0" />
+        <Button fx:id="exportToExcelButton" layoutX="738.0" layoutY="460.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="251.0" style="-fx-background-color: E45652; -fx-border-color: f8f8f8; -fx-border-width: 0.2; -fx-cursor: hand;" text="Exportovať do externej tabuľky" textFill="#f8f8f8" AnchorPane.bottomAnchor="12.8" AnchorPane.rightAnchor="10.800000000000011" />
     </children>
 </AnchorPane>

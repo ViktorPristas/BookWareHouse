@@ -19,7 +19,7 @@
                 <HBox layoutY="14.0" prefHeight="0.352" prefWidth="200.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
                     <children>
                         <Region prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS" />
-                        <Label style="-fx-font-weight: bold;" text="Nová kniha" textFill="#20120f">
+                        <Label style="-fx-font-weight: bold;" text="Upraviť údaje" textFill="#20120f">
                             <font>
                                 <Font size="24.0" />
                             </font>
@@ -49,10 +49,10 @@
                         <TextField fx:id="titleTextField" promptText="Názov" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2;" GridPane.columnIndex="1" GridPane.rowIndex="1" />
                         <TextField fx:id="yearofPublicationTextField" promptText="Rok vydania" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2;" GridPane.columnIndex="1" GridPane.rowIndex="2" />
                         <TextField fx:id="numberInStockTextField" prefHeight="27.0" prefWidth="254.0" promptText="Skladom" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2;" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-                  <ComboBox fx:id="schoolClassComboBox" prefHeight="25.0" prefWidth="328.0" promptText="Ročník" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+                        <ComboBox fx:id="schoolClassComboBox" prefHeight="25.0" prefWidth="328.0" promptText="Ročník" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2;" GridPane.columnIndex="1" GridPane.rowIndex="3" />
                     </children>
                 </GridPane>
-                <Button fx:id="saveButton" layoutX="431.0" layoutY="288.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="128.0" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2; -fx-cursor: hand;" text="Pridať" textFill="#20120f" />
+                <Button fx:id="saveButton" layoutX="431.0" layoutY="288.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="128.0" style="-fx-background-color: #81D8D0; -fx-border-color: #20120F; -fx-border-width: 0.2; -fx-cursor: hand;" text="Upraviť" textFill="#20120f" />
             </children>
         </AnchorPane>
     </children>

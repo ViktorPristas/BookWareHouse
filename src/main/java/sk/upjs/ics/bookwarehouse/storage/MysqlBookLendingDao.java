@@ -111,7 +111,7 @@ public class MysqlBookLendingDao implements BookLendingDao {
 
                 return bl;
             }
-            
+
         });
         return bookLendings;
     }

@@ -17,7 +17,7 @@ import sk.upjs.ics.bookwarehouse.business.UserIdentificationManager;
 import sk.upjs.ics.bookwarehouse.fxmodels.TeacherFxModel;
 import sk.upjs.ics.bookwarehouse.storage.TeacherDao;
 
-public class MyProfileTeacherSceneController {
+public class TeacherMyProfileSceneController {
 
     private TeacherFxModel teacherFxModel = new TeacherFxModel();
     private TeacherDao teacherDao = DaoFactory.INSTANCE.getTeacherDao();

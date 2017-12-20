@@ -6,21 +6,21 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #20120F;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <AnchorPane layoutX="80.0" layoutY="61.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #9C2B27;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
-         <children>
-            <Button fx:id="closeButton" layoutX="182.0" layoutY="276.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" style="-fx-background-color: #E45652; -fx-border-color: #f8f8f8; -fx-border-width: 0.2; -fx-cursor: hand;" text="Zatvoriť" textFill="#f8f8f8" />
-            <Label layoutX="194.0" layoutY="40.0" text="Neplatný počet" textFill="#f8f8f8">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <Label layoutX="68.0" layoutY="123.0" text="Zadali ste väčší počet kníh ako sa aktualne nachádza na sklade.&#10;&#10;Zvolte prosím správny počet, &#10;alebo kontaktujte administrátora" textFill="#f8f8f8">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
-         </children>
-      </AnchorPane>
-   </children>
+    <children>
+        <AnchorPane layoutX="80.0" layoutY="61.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #9C2B27;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
+            <children>
+                <Button fx:id="closeButton" layoutX="182.0" layoutY="276.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="186.0" style="-fx-background-color: #E45652; -fx-border-color: #f8f8f8; -fx-border-width: 0.2; -fx-cursor: hand;" text="Zatvoriť" textFill="#f8f8f8" />
+                <Label layoutX="194.0" layoutY="40.0" text="Neplatný počet" textFill="#f8f8f8">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <Label layoutX="68.0" layoutY="123.0" text="Zadali ste väčší počet kníh ako sa aktualne nachádza na sklade.&#10;&#10;Zvolte prosím správny počet, &#10;alebo kontaktujte administrátora" textFill="#f8f8f8">
+                    <font>
+                        <Font size="14.0" />
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+    </children>
 </AnchorPane>

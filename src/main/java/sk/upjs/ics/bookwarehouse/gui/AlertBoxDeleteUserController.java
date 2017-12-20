@@ -7,9 +7,10 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 
 public class AlertBoxDeleteUserController {
+
     private String string;
-    
-    public AlertBoxDeleteUserController(String string){
+
+    public AlertBoxDeleteUserController(String string) {
         this.string = string;
     }
 

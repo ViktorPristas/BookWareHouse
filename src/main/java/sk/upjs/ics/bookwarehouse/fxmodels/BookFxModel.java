@@ -31,8 +31,7 @@ public class BookFxModel {
     private StringProperty comment = new SimpleStringProperty();
     private int numberInStockBefore;
     private StringProperty isUsedString = new SimpleStringProperty();
-    private  BookDao bookDao = DaoFactory.INSTANCE.getBookDao();
-       
+    private BookDao bookDao = DaoFactory.INSTANCE.getBookDao();
 
     public BookFxModel() {
         List<Book> books = bookDao.getAll();
@@ -193,8 +192,8 @@ public class BookFxModel {
         booksmodel.clear();
         List<Book> books = bookDao.getAll();
         this.books = FXCollections.observableArrayList(books);
-       
-          for (Book book : this.books) {
+
+        for (Book book : this.books) {
             BookFxModel bookFxModel = new BookFxModel();
 
             String title = book.getTitle();

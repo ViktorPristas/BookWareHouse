@@ -19,9 +19,9 @@ public class BookEdit {
     private int numberBefore;
     private int numberAfter;
     private String comment;
-    
-    public BookEdit(){
-        
+
+    public BookEdit() {
+
     }
 
     public BookEdit(Admin admin, Book book, int numberBefore) {

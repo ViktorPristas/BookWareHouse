@@ -22,7 +22,6 @@ public class UserIdentificationManager {
     //Teacher is 1
     //Admin is 2
     //SuperAdmin is 3
-    
     public static boolean setUser(String userName) {
         List<Teacher> teachers = DaoFactory.INSTANCE.getTeacherDao().getAll();
         for (Teacher teacher : teachers) {

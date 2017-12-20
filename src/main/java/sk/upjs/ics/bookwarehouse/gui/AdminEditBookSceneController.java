@@ -20,7 +20,7 @@ public class AdminEditBookSceneController {
 
     private BookFxModel bookFxModel = new BookFxModel();
     private BookDao bookDao = DaoFactory.INSTANCE.getBookDao();
-    private MainSceneAdminDBController msadbc = new MainSceneAdminDBController();
+    private AdminMainSceneDBController msadbc = new AdminMainSceneDBController();
 
     public AdminEditBookSceneController(BookFxModel bookFxModel) {
         this.bookFxModel = bookFxModel;
@@ -66,7 +66,7 @@ public class AdminEditBookSceneController {
                 bookFxModel.numberInStockProperty(), new NumberStringConverter());
 
         schoolClassComboBox.getItems().addAll("1", "2", "3", "4", "5", "6", "7", "8", "9", "I. G", "II. G", "III. G", "IV. G");
-        
+
         schoolClassComboBox.valueProperty().bindBidirectional(bookFxModel.SchoolClassProperty());
 
         saveButton.setOnAction(eh -> {

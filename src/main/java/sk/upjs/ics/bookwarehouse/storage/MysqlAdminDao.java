@@ -75,7 +75,7 @@ public class MysqlAdminDao implements AdminDao {
     public Admin findById(Long id) {
         List<Admin> list = DaoFactory.INSTANCE.getAdminDao().getAll();
         for (Admin admin : list) {
-           if (admin.getId().equals(id)) {
+            if (admin.getId().equals(id)) {
                 return admin;
             }
         }

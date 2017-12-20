@@ -7,33 +7,36 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #20120F;" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <AnchorPane layoutX="35.0" layoutY="38.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #19A15F;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
-         <children>
-            <Button fx:id="deleteButton" layoutX="313.0" layoutY="284.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="203.0" style="-fx-background-color: #19A15F; -fx-border-color: #20120F; -fx-border-width: 0.2; -fx-cursor: hand;" text="Vymazať" textFill="#20120f" />
-            <Label layoutX="192.0" layoutY="39.0" text="Vymazať osobu" textFill="#20120f">
-               <font>
-                  <Font size="24.0" />
-               </font>
-            </Label>
-            <HBox layoutX="48.0" layoutY="123.0" prefHeight="19.0" prefWidth="488.0" AnchorPane.rightAnchor="14.0">
-               <children>
-                  <Label text="Ste si istý, že chcete vymazať osobu " textFill="#20120f">
-                     <font>
+    <children>
+        <AnchorPane layoutX="35.0" layoutY="38.0" prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: #19A15F;" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="25.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="25.0">
+            <children>
+                <Button fx:id="deleteButton" layoutX="313.0" layoutY="284.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="203.0" style="-fx-background-color: #19A15F; -fx-border-color: #20120F; -fx-border-width: 0.2; -fx-cursor: hand;" text="Vymazať" textFill="#20120f" />
+                <Label layoutX="192.0" layoutY="39.0" text="Vymazať osobu" textFill="#20120f">
+                    <font>
+                        <Font size="24.0" />
+                    </font>
+                </Label>
+                <HBox layoutX="48.0" layoutY="123.0" prefHeight="19.0" prefWidth="488.0" AnchorPane.rightAnchor="14.0">
+                    <children>
+                        <Label text="Ste si istý, že chcete vymazať osobu " textFill="#20120f">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                        <Label fx:id="userLabel" text="User" textFill="#20120f">
+                            <font>
+                                <Font size="14.0" />
+                            </font>
+                        </Label>
+                        <Label text="?" textFill="#20120f" />
+                    </children>
+                </HBox>
+                <Label layoutX="48.0" layoutY="158.0" text="Túto akciu nie je možné vrátiť späť,&#10;užívateľ týmto príde o všetky svoje uložené dáta." textFill="#20120f">
+                    <font>
                         <Font size="14.0" />
-                     </font></Label>
-                  <Label fx:id="userLabel" text="User" textFill="#20120f">
-                     <font>
-                        <Font size="14.0" />
-                     </font></Label>
-                  <Label text="?" textFill="#20120f" />
-               </children>
-            </HBox>
-            <Label layoutX="48.0" layoutY="158.0" text="Túto akciu nie je možné vrátiť späť,&#10;užívateľ týmto príde o všetky svoje uložené dáta." textFill="#20120f">
-               <font>
-                  <Font size="14.0" />
-               </font></Label>
-         </children>
-      </AnchorPane>
-   </children>
+                    </font>
+                </Label>
+            </children>
+        </AnchorPane>
+    </children>
 </AnchorPane>

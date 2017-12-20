@@ -12,26 +12,23 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.util.converter.IntegerStringConverter;
 import javafx.util.converter.NumberStringConverter;
 import sk.upjs.ics.bookwarehouse.Book;
 import sk.upjs.ics.bookwarehouse.BookLending;
 import sk.upjs.ics.bookwarehouse.DaoFactory;
 import sk.upjs.ics.bookwarehouse.Teacher;
-import sk.upjs.ics.bookwarehouse.fxmodels.BookFxModel;
 import sk.upjs.ics.bookwarehouse.fxmodels.BookLendingFxModel;
 import sk.upjs.ics.bookwarehouse.storage.BookLendingDao;
 
-public class EditLendingSceneController {
+public class AdminReturnBookSceneController {
 
     private BookLendingFxModel bookLendingFxModel;
     private IntegerProperty numberOfBooksActually = new SimpleIntegerProperty();
     private BookLendingDao bookLendingDao = DaoFactory.INSTANCE.getBookLendingDao();
 
-    public EditLendingSceneController(BookLendingFxModel selectedBookLendingFxModel) {
+    public AdminReturnBookSceneController(BookLendingFxModel selectedBookLendingFxModel) {
         this.bookLendingFxModel = selectedBookLendingFxModel;
         numberOfBooksActually.set(bookLendingFxModel.getLended());
     }
@@ -43,13 +40,13 @@ public class EditLendingSceneController {
     private URL location;
 
     @FXML
-    private Button confirmRequestButton;
+    private Button confirmButton;
 
     @FXML
     private Label authorLabel;
 
     @FXML
-    private Label titleLabel;
+    private Label titelLabel;
 
     @FXML
     private Label schoolClassLabel;
@@ -57,40 +54,38 @@ public class EditLendingSceneController {
     @FXML
     private Label teacherLabel;
 
-    //BE AWARE THIS IS A TEXTFIELD :)
     @FXML
-    private TextField numberOfBooksLabel;
+    private TextField numberOfReturnedBooksTextField;
 
     @FXML
     void initialize() {
 
         Book book = DaoFactory.INSTANCE.getBookDao().findById(bookLendingFxModel.getBook());
         authorLabel.setText(book.getAuthor());
-        titleLabel.setText(book.getTitle());
+        titelLabel.setText(book.getTitle());
         schoolClassLabel.setText(book.getSchoolClass());
         Teacher teacher = DaoFactory.INSTANCE.getTeacherDao().findById(bookLendingFxModel.getTeacher());
         teacherLabel.setText(teacher.getName() + " " + teacher.getSurname());
 
-        numberOfBooksLabel.textProperty().bindBidirectional(
+        numberOfReturnedBooksTextField.textProperty().bindBidirectional(
                 numberOfBooksActually, new NumberStringConverter());
 
-        confirmRequestButton.setOnAction(eh -> {
+        confirmButton.setOnAction(eh -> {
             int number = numberOfBooksActually.get();
-            if (number <= (book.getNumberInStock() + bookLendingFxModel.getLended())) {
+            if (number <= (bookLendingFxModel.getLended()) && bookLendingFxModel.getApprovedString().equals("potvrdené")) {
                 BookLending bookLending = DaoFactory.INSTANCE.getBookLendingDao().findById(bookLendingFxModel.getId());
-                bookLending.setLended(number);
-                bookLending.setApproved(true);
-                // bookLending.setLost(bookLending.getLended() - bookLending.getReturned());
+                bookLending.setReturned(number);
+                bookLending.setLost(bookLending.getLended() - bookLending.getReturned());
                 bookLendingDao.save(bookLending);
 
                 //editing the number of books in stock
-                book.setNumberInStock(book.getNumberInStock() - numberOfBooksActually.get() + bookLendingFxModel.getLended());
-                book.setNumberOfUsed(book.getNumberOfUsed() + numberOfBooksActually.get() - bookLendingFxModel.getLended());
+                book.setNumberInStock(book.getNumberInStock() + number);
+                book.setNumberOfUsed(book.getNumberOfUsed() - number);
                 DaoFactory.INSTANCE.getBookDao().save(book);
 
-                confirmRequestButton.getScene().getWindow().hide();
+                confirmButton.getScene().getWindow().hide();
             } else {
-                AlertBoxNumberOfBooksInLendingController controller = new AlertBoxNumberOfBooksInLendingController();
+                /*AlertBoxNumberOfBooksInLendingController controller = new AlertBoxNumberOfBooksInLendingController();
                 try {
                     FXMLLoader loader = new FXMLLoader(
                             getClass().getResource("AlertBoxNumberOfBooksInLending.fxml"));
@@ -103,15 +98,13 @@ public class EditLendingSceneController {
                     stage.setScene(scene);
                     stage.setResizable(false);
                     stage.setTitle("BookWareHouse");
-                    Image logo = new Image(getClass().getResourceAsStream("LogoBWH.png"));
-                    stage.getIcons().add(logo);
                     stage.initModality(Modality.APPLICATION_MODAL);
                     stage.show();
 
                     // toto sa vykona az po zatvoreni okna
                 } catch (IOException iOException) {
                     iOException.printStackTrace();
-                }
+                }*/
             }
         });
 

@@ -57,10 +57,10 @@ public class DefaultBookLendingXLSManager {
         } catch (IOException ex) {
             Logger.getLogger(DefaultBookLendingXLSManager.class.getName()).log(Level.SEVERE, null, ex);
         }
-            
+
     }
 
-   /* public static void main(String[] args) {
+    /* public static void main(String[] args) {
         Teacher t = DaoFactory.INSTANCE.getTeacherDao().findById(72);
         DefaultBookLendingXLSManager.exportMyBookLendingsToXls(t);
     }*/

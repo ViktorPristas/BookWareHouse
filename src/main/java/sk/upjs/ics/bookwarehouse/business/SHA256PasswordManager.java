@@ -27,7 +27,6 @@ public class SHA256PasswordManager implements PasswordManager {
     }
 
     private boolean isCorrectPassword(String passwordToCheck, String hashedPassword) {
-        
 
         //return (hashPassword(passwordToCheck).equals(hashedPassword));
         return passwordToCheck.equals(hashedPassword);
