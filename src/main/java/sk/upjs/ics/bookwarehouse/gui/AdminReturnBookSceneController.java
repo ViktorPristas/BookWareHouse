@@ -101,7 +101,6 @@ public class AdminReturnBookSceneController {
                     stage.initModality(Modality.APPLICATION_MODAL);
                     stage.show();
 
-                    // toto sa vykona az po zatvoreni okna
                 } catch (IOException iOException) {
                     iOException.printStackTrace();
                 }*/

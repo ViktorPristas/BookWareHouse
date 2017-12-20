@@ -71,7 +71,6 @@ public class AdminMainSceneDBController {
                 stage.getIcons().add(logo);
                 stage.show();
 
-                // toto sa vykona az po zatvoreni okna
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }
@@ -97,7 +96,6 @@ public class AdminMainSceneDBController {
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.show();
 
-                // toto sa vykona az po zatvoreni okna
                 stage.setOnHidden(handler -> {
                     fillSimpleTable(true);
                 });
@@ -126,7 +124,6 @@ public class AdminMainSceneDBController {
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.show();
 
-                // toto sa vykona az po zatvoreni okna
                 stage.setOnHidden(handler -> {
                     fillSimpleTable(true);
                 });

@@ -57,7 +57,6 @@ public class AdminMainSceneController {
                 stage.setTitle("BookWareHouse");
                 stage.show();
 
-                // toto sa vykona az po zatvoreni okna
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }
@@ -80,7 +79,6 @@ public class AdminMainSceneController {
                 stage.show();
                 logOutButton.getScene().getWindow().hide();
 
-                // toto sa vykona az po zatvoreni okna
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }
@@ -103,7 +101,6 @@ public class AdminMainSceneController {
                 stage.setTitle("BookWareHouse");
                 stage.show();
 
-                // toto sa vykona az po zatvoreni okna
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }
@@ -124,7 +121,6 @@ public class AdminMainSceneController {
                 stage.setTitle("BookWareHouse");
                 stage.show();
 
-                // toto sa vykona az po zatvoreni okna
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }

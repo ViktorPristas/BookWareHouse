@@ -72,7 +72,6 @@ public class LogInSceneController {
                 stage.initModality(Modality.APPLICATION_MODAL);
                 stage.show();
 
-                // toto sa vykona az po zatvoreni okna
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }
@@ -118,7 +117,6 @@ public class LogInSceneController {
                 stage.getIcons().add(logo);
                 stage.showAndWait();
 
-                // toto sa vykona az po zatvoreni okna
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }
@@ -144,7 +142,6 @@ public class LogInSceneController {
             stage.show();
             loginButton.getScene().getWindow().hide();
 
-            // toto sa vykona az po zatvoreni okna
         } catch (IOException iOException) {
             iOException.printStackTrace();
         }
@@ -168,7 +165,6 @@ public class LogInSceneController {
             stage.show();
             loginButton.getScene().getWindow().hide();
 
-            // toto sa vykona az po zatvoreni okna
         } catch (IOException iOException) {
             iOException.printStackTrace();
         }
@@ -191,7 +187,6 @@ public class LogInSceneController {
             stage.getIcons().add(logo);
             stage.show();
 
-            // toto sa vykona az po zatvoreni okna
         } catch (IOException iOException) {
             iOException.printStackTrace();
         }
@@ -216,7 +211,6 @@ public class LogInSceneController {
             stage.getIcons().add(logo);
             stage.show();
 
-            // toto sa vykona az po zatvoreni okna
         } catch (IOException iOException) {
             iOException.printStackTrace();
         }

@@ -1,3 +1,4 @@
+// prepared with the help of https://stackoverflow.com/questions/30889732/javafx-tableview-change-row-color-based-on-column-value
 package sk.upjs.ics.bookwarehouse.gui;
 
 import java.io.IOException;
@@ -12,11 +13,14 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.TableCell;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import sk.upjs.ics.bookwarehouse.fxmodels.BookLendingFxModel;
@@ -74,7 +78,6 @@ public class AdminMainSceneRequestController {
                 stage.getIcons().add(logo);
                 stage.show();
 
-                // toto sa vykona az po zatvoreni okna
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }
@@ -112,7 +115,6 @@ public class AdminMainSceneRequestController {
                 stage.getIcons().add(logo);
                 stage.show();
 
-                // toto sa vykona az po zatvoreni okna
                 stage.setOnHidden(handler -> {
                     fillSimpleTable(true);
                 });
@@ -143,7 +145,6 @@ public class AdminMainSceneRequestController {
                 stage.getIcons().add(logo);
                 stage.show();
 
-                // toto sa vykona az po zatvoreni okna
                 stage.setOnHidden(handler -> {
                     fillSimpleTable(true);
                 });
@@ -214,15 +215,35 @@ public class AdminMainSceneRequestController {
 
         TableColumn<BookLendingFxModel, String> approvedCol = new TableColumn<>("Potvrdené");
         approvedCol.setCellValueFactory(new PropertyValueFactory<>("approvedString"));
+
+        approvedCol.setCellFactory(column -> {
+            return new TableCell<BookLendingFxModel, String>() {
+                @Override
+                protected void updateItem(String item, boolean empty) {
+                    super.updateItem(item, empty);
+
+                    setText(empty ? "" : getItem().toString());
+                    setGraphic(null);
+
+                    TableRow<BookLendingFxModel> currentRow = getTableRow();
+
+                    if (!isEmpty()) {
+
+                        if (item != null && item.equals("potvrdené")) {
+                            currentRow.setStyle("");
+                        } else {
+                            currentRow.setStyle("-fx-background-color:lightcoral");
+                        }
+                    }
+
+                }
+            };
+        });
+
         simpleTableView.getColumns().add(approvedCol);
 
         simpleTableView.setItems(bookLendingFxModel.getBookLendingsModel());
 
-//        if (approvedCol.getText().equals("potvrdené")) {
-//            System.out.println("nasiel som");
-//        } else { 
-//            approvedCol.setStyle("-fx-background-color:lightgreen");
-//        }
     }
 
 }

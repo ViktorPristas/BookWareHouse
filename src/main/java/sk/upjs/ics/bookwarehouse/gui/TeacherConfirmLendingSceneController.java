@@ -115,7 +115,6 @@ public class TeacherConfirmLendingSceneController {
                     stage.setTitle("BookWareHouse");
                     stage.show();
 
-                    // toto sa vykona az po zatvoreni okna
                 } catch (IOException iOException) {
                     iOException.printStackTrace();
                 }

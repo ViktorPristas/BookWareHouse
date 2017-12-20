@@ -1,3 +1,4 @@
+// prepared with the help of https://stackoverflow.com/questions/22656000/logger-getloggerclassname-class-getname-loglevel-severe-null-ex
 package sk.upjs.ics.bookwarehouse.business;
 
 import java.awt.Desktop;
@@ -59,9 +60,4 @@ public class DefaultBookLendingXLSManager {
         }
 
     }
-
-    /* public static void main(String[] args) {
-        Teacher t = DaoFactory.INSTANCE.getTeacherDao().findById(72);
-        DefaultBookLendingXLSManager.exportMyBookLendingsToXls(t);
-    }*/
 }

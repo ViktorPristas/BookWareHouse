@@ -52,7 +52,6 @@ public class SupAMainSceneController {
                 stage.getIcons().add(logo);
                 stage.show();
 
-                // toto sa vykona az po zatvoreni okna
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }
@@ -75,7 +74,6 @@ public class SupAMainSceneController {
                 stage.getIcons().add(logo);
                 stage.show();
 
-                // toto sa vykona az po zatvoreni okna
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }

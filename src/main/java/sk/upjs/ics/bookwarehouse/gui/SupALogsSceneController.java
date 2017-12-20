@@ -91,7 +91,6 @@ public class SupALogsSceneController {
                 stage.getIcons().add(logo);
                 stage.show();
 
-                // toto sa vykona az po zatvoreni okna
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }
@@ -116,7 +115,6 @@ public class SupALogsSceneController {
                 stage.getIcons().add(logo);
                 stage.show();
 
-                // toto sa vykona az po zatvoreni okna
                 stage.setOnHidden(eha -> {
                     BookLendingManager manager = ManagerFactory.INSTANCE.getBookLendingManager();
                     Teacher t = null;
@@ -148,7 +146,6 @@ public class SupALogsSceneController {
 
         fillRequestsTable(false);
 
-        //  teacherComboBox.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<TeacherFxModel>);
     }
 
     public void fillComboBox() {

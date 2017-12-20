@@ -107,7 +107,6 @@ public class SupAAdminsSceneController {
                 stage.getIcons().add(logo);
                 stage.show();
 
-                // toto sa vykona az po zatvoreni okna
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }
@@ -132,7 +131,6 @@ public class SupAAdminsSceneController {
                 stage.getIcons().add(logo);
                 stage.show();
 
-                // toto sa vykona az po zatvoreni okna
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }
@@ -155,7 +153,6 @@ public class SupAAdminsSceneController {
                 stage.getIcons().add(logo);
                 stage.show();
 
-                // toto sa vykona az po zatvoreni okna
             } catch (IOException iOException) {
                 iOException.printStackTrace();
             }
@@ -240,7 +237,6 @@ public class SupAAdminsSceneController {
             stage.getIcons().add(logo);
             stage.show();
 
-            // toto sa vykona az po zatvoreni okna
             stage.setOnHidden(eh -> {
                 if (deleteAdminOrTeacher == 0) {
                     Admin admin = selectedAdminFxModel.getAdmin();
